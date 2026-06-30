@@ -1,23 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+import {
+  getDocuments,
+  uploadDocuments,
+  type UploadedDocument,
+} from "./api/documents";
 
 function App() {
-  const [uploadedFiles, setUploadedFiles] = useState<string[]>([
-  "IGBT_Datasheet.pdf",
-  "Thermal_Cycling_Report.pdf",
-  "Maintenance_Log.csv",
-]);
+  const [uploadedFiles, setUploadedFiles] = useState<UploadedDocument[]>([]);
+  const [uploadStatus, setUploadStatus] = useState<string>("Checking backend...");
 
-function handleFileUpload(event: React.ChangeEvent<HTMLInputElement>) {
-  const files = event.target.files;
+  useEffect(() => {
+    async function loadDocuments() {
+      try {
+        const documents = await getDocuments();
+        setUploadedFiles(documents);
+      } catch {
+        setUploadStatus("Backend not connected");
+      }
+    }
 
-  if (!files) {
-    return;
+    loadDocuments();
+  }, []);
+
+  async function handleFileUpload(event: React.ChangeEvent<HTMLInputElement>) {
+    const files = event.target.files;
+
+    if (!files || files.length === 0) {
+      return;
+    }
+
+    try {
+      setUploadStatus("Uploading...");
+      await uploadDocuments(files);
+
+      const documents = await getDocuments();
+      setUploadedFiles(documents);
+      setUploadStatus("Backend connected");
+
+      setUploadStatus("Upload complete");
+    } catch {
+      setUploadStatus("Upload failed");
+    }
   }
-
-  const fileNames = Array.from(files).map((file) => file.name);
-  setUploadedFiles((currentFiles) => [...currentFiles, ...fileNames]);
-}
 
   return (
     <main className="app-shell">
@@ -33,7 +58,7 @@ function handleFileUpload(event: React.ChangeEvent<HTMLInputElement>) {
         </div>
         <div className="status-card">
           <span className="status-dot" />
-          Sprint 1: Frontend prototype
+          v0.2.0: Backend API integration
         </div>
       </header>
 
@@ -48,17 +73,31 @@ function handleFileUpload(event: React.ChangeEvent<HTMLInputElement>) {
           <label className="upload-box">
             <input type="file" multiple onChange={handleFileUpload} />
             <span>Click to upload documents</span>
-            <small>PDF, TXT, CSV, DOCX later</small>
+            <small>PDF, TXT, CSV supported now; parsing added in v0.3.0</small>
+            <small>Status: {uploadStatus}</small>
           </label>
 
           <div className="file-list">
             <h3>Uploaded files</h3>
-            {uploadedFiles.map((file) => (
-              <div className="file-row" key={file}>
-                <span>✓</span>
-                <p>{file}</p>
+            {uploadedFiles.length === 0 ? (
+              <div className="empty-state">
+                <strong>📂 No engineering documents uploaded yet.</strong>
+                <span>Upload a PDF, TXT, or CSV file to begin building the knowledge base.</span>
               </div>
-            ))}
+            ) : (
+              uploadedFiles.map((file) => (
+                <div className="file-row" key={file.filename}>
+                  <span>✓</span>
+                  <p>
+                    {file.filename}
+                    <small>
+                      {Math.round(file.size_bytes / 1024)} KB
+                      {file.uploaded_at ? ` · ${new Date(file.uploaded_at).toLocaleDateString()}` : ""}
+                    </small>
+                  </p>
+                </div>
+              ))
+            )}
           </div>
         </section>
 
