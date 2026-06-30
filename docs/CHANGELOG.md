@@ -1,11 +1,24 @@
 # Changelog
 
-Current Version: v0.2.0
+Current Version: v0.3.0
 All notable changes to this project will be documented in this file.
 
 The format follows Keep a Changelog principles.
 
 ---
+## v0.3.0_Engineering_Knowledge_Retrieval
+## Sprint 3.1 complete ✅
+
+Completed features:
+
+✅ PDF upload
+✅ PDF parsing
+✅ Text extraction
+✅ TXT generation
+✅ Metadata generation
+✅ Automatic processing pipeline
+✅ Modular parser service
+
 
 ## v0.2.0 - Backend API
 Released: 30 June 2026

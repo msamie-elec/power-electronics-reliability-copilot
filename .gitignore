@@ -36,3 +36,10 @@ logs/
 Thumbs.db
 .vscode/
 .idea/
+
+# Generated document processing outputs
+backend/documents/*
+!backend/documents/.gitkeep
+
+backend/metadata/*
+!backend/metadata/.gitkeep

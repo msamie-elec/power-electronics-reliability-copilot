@@ -2,6 +2,7 @@ from datetime import datetime
 from typing import Any
 
 from fastapi import UploadFile
+from app.services.parser_service import extract_text_from_pdf
 
 from app.config import UPLOAD_DIR
 
@@ -13,12 +14,17 @@ async def save_uploaded_file(file: UploadFile) -> dict[str, Any]:
 
     content = await file.read()
     destination.write_bytes(content)
+    extracted_metadata = None
+
+    if destination.suffix.lower() == ".pdf":
+        extracted_metadata = extract_text_from_pdf(destination)
 
     return {
         "filename": file.filename,
         "content_type": file.content_type,
         "size_bytes": len(content),
         "uploaded_at": datetime.now().isoformat(timespec="seconds"),
+        "extracted_metadata": extracted_metadata,
     }
 
 
