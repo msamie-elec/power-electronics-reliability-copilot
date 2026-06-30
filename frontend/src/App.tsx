@@ -1,20 +1,31 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+
 import {
   getDocuments,
   uploadDocuments,
   type UploadedDocument,
 } from "./api/documents";
 
+import { askRagQuestion, type RagResponse } from "./api/rag";
+
 function App() {
   const [uploadedFiles, setUploadedFiles] = useState<UploadedDocument[]>([]);
   const [uploadStatus, setUploadStatus] = useState<string>("Checking backend...");
+
+  const [question, setQuestion] = useState<string>(
+    "What does the document say about graph construction?"
+  );
+  const [ragResponse, setRagResponse] = useState<RagResponse | null>(null);
+  const [ragStatus, setRagStatus] = useState<string>("Ready");
+  const [isAnswerLoading, setIsAnswerLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function loadDocuments() {
       try {
         const documents = await getDocuments();
         setUploadedFiles(documents);
+        setUploadStatus("Backend connected");
       } catch {
         setUploadStatus("Backend not connected");
       }
@@ -26,9 +37,7 @@ function App() {
   async function handleFileUpload(event: React.ChangeEvent<HTMLInputElement>) {
     const files = event.target.files;
 
-    if (!files || files.length === 0) {
-      return;
-    }
+    if (!files || files.length === 0) return;
 
     try {
       setUploadStatus("Uploading...");
@@ -36,11 +45,25 @@ function App() {
 
       const documents = await getDocuments();
       setUploadedFiles(documents);
-      setUploadStatus("Backend connected");
-
       setUploadStatus("Upload complete");
     } catch {
       setUploadStatus("Upload failed");
+    }
+  }
+
+  async function handleAskQuestion() {
+    if (!question.trim()) return;
+
+    try {
+      setIsAnswerLoading(true);
+      setRagStatus("Searching indexed documents...");
+      const response = await askRagQuestion(question, 5);
+      setRagResponse(response);
+      setRagStatus("Answer generated");
+    } catch {
+      setRagStatus("Failed to generate answer");
+    } finally {
+      setIsAnswerLoading(false);
     }
   }
 
@@ -58,7 +81,7 @@ function App() {
         </div>
         <div className="status-card">
           <span className="status-dot" />
-          v0.2.0: Backend API integration
+          v0.3.0: Engineering Knowledge Retrieval
         </div>
       </header>
 
@@ -82,7 +105,10 @@ function App() {
             {uploadedFiles.length === 0 ? (
               <div className="empty-state">
                 <strong>📂 No engineering documents uploaded yet.</strong>
-                <span>Upload a PDF, TXT, or CSV file to begin building the knowledge base.</span>
+                <span>
+                  Upload a PDF, TXT, or CSV file to begin building the knowledge
+                  base.
+                </span>
               </div>
             ) : (
               uploadedFiles.map((file) => (
@@ -92,7 +118,9 @@ function App() {
                     {file.filename}
                     <small>
                       {Math.round(file.size_bytes / 1024)} KB
-                      {file.uploaded_at ? ` · ${new Date(file.uploaded_at).toLocaleDateString()}` : ""}
+                      {file.uploaded_at
+                        ? ` · ${new Date(file.uploaded_at).toLocaleDateString()}`
+                        : ""}
                     </small>
                   </p>
                 </div>
@@ -109,32 +137,31 @@ function App() {
           </p>
 
           <textarea
-            defaultValue={
-              "The inverter shows rising junction temperature and intermittent switching faults. What failure mechanisms are likely?"
-            }
+            value={question}
+            onChange={(event) => setQuestion(event.target.value)}
           />
 
-          <button>Analyse reliability issue</button>
+          <button onClick={handleAskQuestion} disabled={isAnswerLoading}>
+            {isAnswerLoading ? "Analysing..." : "Analyse reliability issue"}
+          </button>
+          <small className="rag-status">Status: {ragStatus}</small>
         </section>
 
         <section className="panel result-panel">
           <h2>3. AI recommendation</h2>
           <div className="answer-box">
-            <h3>Likely failure mechanism</h3>
+            <h3>Engineering answer</h3>
             <p>
-              Thermal cycling may be causing bond-wire fatigue or solder-layer
-              degradation in the IGBT module.
-            </p>
-
-            <h3>Recommended action</h3>
-            <p>
-              Inspect thermal interface material, review cooling performance,
-              compare VCE(sat) trends, and verify gate-driver behaviour.
+              {ragResponse
+                ? ragResponse.answer
+                : "Ask a reliability question to generate an evidence-backed answer."}
             </p>
 
             <div className="confidence">
               <span>Confidence</span>
-              <strong>Medium</strong>
+              <strong>
+                {ragResponse ? ragResponse.confidence : "Not evaluated"}
+              </strong>
             </div>
           </div>
         </section>
@@ -143,11 +170,24 @@ function App() {
       <section className="bottom-grid">
         <section className="panel">
           <h2>Evidence</h2>
-          <ul>
-            <li>IGBT datasheet: thermal limits and switching characteristics</li>
-            <li>Maintenance log: repeated temperature warnings</li>
-            <li>Reliability note: thermal cycling linked to fatigue mechanisms</li>
-          </ul>
+          {ragResponse ? (
+            <div className="evidence-list">
+              {ragResponse.sources.map((source) => (
+                <article className="evidence-card" key={source.chunk_id}>
+                  <div className="evidence-card-header">
+                    <strong>📄 {source.source_document}</strong>
+                    <span>Score {source.score}</span>
+                  </div>
+                  <p className="evidence-meta">Chunk: {source.chunk_id}</p>
+                  <p>{source.excerpt}</p>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <p className="empty-state">
+              Retrieved evidence will appear here after you ask a question.
+            </p>
+          )}
         </section>
 
         <section className="panel">

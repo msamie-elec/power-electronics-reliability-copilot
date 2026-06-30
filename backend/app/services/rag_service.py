@@ -3,6 +3,14 @@ from typing import Any
 from app.services.search_service import search_similar_chunks
 
 
+def calculate_confidence(score: float) -> str:
+    if score >= 0.85:
+        return "High"
+    if score >= 0.70:
+        return "Medium"
+    return "Low"
+
+
 def answer_question_with_retrieval(query: str, top_k: int = 5) -> dict[str, Any]:
     retrieval_result = search_similar_chunks(query=query, top_k=top_k)
     chunks = retrieval_result["results"]
@@ -16,6 +24,9 @@ def answer_question_with_retrieval(query: str, top_k: int = 5) -> dict[str, Any]
             "retrieved_chunks": [],
         }
 
+    top_score = chunks[0]["score"]
+    confidence = calculate_confidence(top_score)
+
     evidence_summary = []
 
     for chunk in chunks:
@@ -23,24 +34,24 @@ def answer_question_with_retrieval(query: str, top_k: int = 5) -> dict[str, Any]
             {
                 "source_document": chunk["source_document"],
                 "chunk_id": chunk["chunk_id"],
+                "chunk_index": chunk["chunk_index"],
                 "score": chunk["score"],
-                "excerpt": chunk["text"][:500],
+                "excerpt": chunk["text"][:700],
             }
         )
 
     answer = (
-        "Based on the retrieved engineering evidence, the most relevant information "
-        "appears in the indexed document chunks listed below. These chunks should be "
-        "reviewed to support diagnosis, identify likely failure mechanisms, and plan "
-        "inspection or maintenance actions."
+        "The retrieved engineering evidence suggests that the most relevant information "
+        "is contained in the source documents listed below. Review the highest-scoring "
+        "chunks first, as they are most semantically related to the question. "
+        "A full LLM-generated engineering explanation will be added in Sprint 3.7."
     )
-
-    confidence = "Medium" if chunks[0]["score"] >= 0.6 else "Low"
 
     return {
         "query": query,
         "answer": answer,
         "confidence": confidence,
+        "top_score": top_score,
         "sources": evidence_summary,
         "retrieved_chunks": chunks,
     }

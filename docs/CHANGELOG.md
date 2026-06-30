@@ -8,6 +8,88 @@ The format follows Keep a Changelog principles.
 ---
 ## v0.3.0_Engineering_Knowledge_Retrieval
 
+## Sprint 3.6 — Frontend Integration
+
+
+## Sprint 3.5 is fully working.
+What you've built
+
+The pipeline is now:
+
+Engineering Question
+        │
+        ▼
+Sentence Transformer
+(query embedding)
+        │
+        ▼
+Cosine Similarity Search
+        │
+        ▼
+Top-k Relevant Chunks
+        │
+        ▼
+RAG Service
+        │
+        ▼
+Structured Engineering Response
+
+The response now contains
+
+✅ query
+✅ answer
+✅ confidence
+✅ retrieved sources
+✅ similarity scores
+✅ supporting evidence
+
+
+Note: this part is hard coded
+
+"Based on the retrieved engineering evidence..."
+
+Everything else is real, including:
+real embeddings
+real semantic search
+real retrieval
+real evidence
+
+Only the final reasoning is currently a template.
+
+The reason in the Large enterprise systems are almost always separated into two layers.
+
+Retrieval Layer
+---------------
+Question
+↓
+
+Embedding
+
+↓
+
+Similarity Search
+
+↓
+
+Top-k Context
+
+
+Reasoning Layer
+---------------
+Prompt
+
+↓
+
+LLM
+
+↓
+
+Final Answer
+
+So it has now completely finished the Retrieval Layer.
+
+That is about half of a production RAG architecture.
+
 ## Sprint 3.4: Done
 Sprint 3.4 is working. 
 

@@ -25,21 +25,24 @@ input {
   margin: 0 auto;
 }
 
-.hero h1 {
-  color: white;
-}
-
+/* Header */
 .hero {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 24px;
-  align-items: flex-start;
   background: linear-gradient(135deg, #0f172a, #1e3a8a);
   color: white;
   border-radius: 24px;
   padding: 32px;
   margin-bottom: 24px;
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
+}
+
+.hero h1 {
+  color: white;
+  max-width: 680px;
+  line-height: 1.1;
 }
 
 .eyebrow {
@@ -63,7 +66,7 @@ h1 {
 }
 
 .subtitle {
-  max-width: 820px;
+  max-width: 720px;
   line-height: 1.6;
   color: #dbeafe;
   margin-bottom: 0;
@@ -73,6 +76,7 @@ h1 {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 999px;
@@ -87,6 +91,7 @@ h1 {
   border-radius: 50%;
 }
 
+/* Layout */
 .dashboard-grid {
   display: grid;
   grid-template-columns: 1.05fr 1.05fr 1.15fr;
@@ -96,7 +101,7 @@ h1 {
 
 .bottom-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: 20px;
 }
 
@@ -124,6 +129,7 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* Upload */
 .upload-box {
   display: flex;
   flex-direction: column;
@@ -165,9 +171,18 @@ h1 {
 }
 
 .file-row p {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   margin: 0;
 }
 
+.file-row small {
+  color: #94a3b8;
+  font-size: 0.78rem;
+}
+
+/* Question */
 textarea {
   width: 100%;
   min-height: 180px;
@@ -194,7 +209,21 @@ button:hover {
   background: #1d4ed8;
 }
 
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.rag-status {
+  display: block;
+  margin-top: 10px;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+/* Answer */
 .answer-box {
+  min-height: 220px;
   background: #f8fafc;
   border-radius: 16px;
   padding: 18px;
@@ -218,13 +247,46 @@ button:hover {
   margin-top: 16px;
 }
 
-ul {
-  padding-left: 20px;
-  margin-bottom: 0;
-  color: #475569;
-  line-height: 1.7;
+/* Evidence */
+.evidence-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
+.evidence-card {
+  border: 1px solid #dbe3ef;
+  border-radius: 16px;
+  padding: 16px;
+  background: #f8fafc;
+  text-align: left;
+}
+
+.evidence-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.evidence-card-header span {
+  color: #2563eb;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.evidence-meta {
+  color: #94a3b8;
+  font-size: 0.82rem;
+  margin-bottom: 8px;
+}
+
+.evidence-card p {
+  line-height: 1.55;
+}
+
+/* Graph */
 .graph-box {
   display: flex;
   flex-wrap: wrap;
@@ -241,6 +303,16 @@ ul {
   font-weight: 600;
 }
 
+/* Shared */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
 @media (max-width: 1100px) {
   .dashboard-grid,
   .bottom-grid {
@@ -249,24 +321,10 @@ ul {
 
   .hero {
     flex-direction: column;
+    align-items: flex-start;
   }
-}
 
-.file-row p {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.file-row small {
-  color: #94a3b8;
-  font-size: 0.78rem;
-}
-
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  color: #94a3b8;
-  font-size: 0.9rem;
+  .status-card {
+    white-space: normal;
+  }
 }
