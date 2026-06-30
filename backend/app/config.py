@@ -1,0 +1,9 @@
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+UPLOAD_DIR = BASE_DIR / "uploads"
+
+FRONTEND_ORIGIN = "http://localhost:5173"
+
+APP_NAME = "Power Electronics Reliability Copilot API"
+APP_VERSION = "0.2.0"
