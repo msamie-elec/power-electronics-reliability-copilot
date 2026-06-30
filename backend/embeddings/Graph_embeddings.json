@@ -4,7 +4,7 @@
   "embedding_model": "BAAI/bge-small-en-v1.5",
   "embedding_count": 25,
   "embedding_dimension": 384,
-  "created_at": "2026-06-30T17:55:18",
+  "created_at": "2026-06-30T20:03:44",
   "embeddings": [
     {
       "chunk_id": "doc_graph_chunk_000001",
@@ -17,7 +17,7 @@
       "word_count": 172,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.01772467792034149,
         -0.026514457538723946,
@@ -403,7 +403,8 @@
         0.08876311779022217,
         -0.022745024412870407,
         0.019933516159653664
-      ]
+      ],
+      "text": "[Page 1]\nWrite a narrative that explain all Graph steps from first to last step, fluent, simple and logically connected without \nthe bullet points: \nIn Graph Retrieval-Augmented Generation, the process of building a graph retriever begins long before a user asks \na question. The first step is understanding the problem domain and deciding what kind of reasoning the system \nshould eventually perform. For example, in a flight-booking platform, the system may need to reason about airports, \nairlines, routes, prices, stopovers, and customer preferences. In a predictive maintenance system, the graph may \nneed to represent components, sensors, faults, maintenance actions, and dependencies between subsystems. This \ninitial understanding is extremely important because it determines what entities and relationships will later exist \ninside the graph. \nOnce the objective is clear, the system starts collecting raw data from different sources. These sources may include \nPDFs, manuals, APIs, databases, telemetry streams, maintenance records, schedules, logs, or web documents. At \nthis stage, the information is usually unstructured and inconsistent. Different names may refer to the same entity, \nm"
     },
     {
       "chunk_id": "doc_graph_chunk_000002",
@@ -416,7 +417,7 @@
       "word_count": 170,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.008326305076479912,
         -0.02652265504002571,
@@ -802,7 +803,8 @@
         -0.01267140731215477,
         0.052630290389060974,
         -0.01171494647860527
-      ]
+      ],
+      "text": "s, telemetry streams, maintenance records, schedules, logs, or web documents. At \nthis stage, the information is usually unstructured and inconsistent. Different names may refer to the same entity, \nmeasurements may use different units, and some information may be duplicated or incomplete. Therefore, the next \nstage focuses on cleaning and normalization. The system standardizes terminology, removes duplicates, aligns \nformats, and resolves inconsistencies so that later stages can build a coherent graph rather than a fragmented one. \nAfter the data is cleaned, large documents are divided into smaller chunks. Although Graph RAG focuses on \nrelationships rather than isolated text retrieval, chunking is still useful because chunks can later become evidence \nnodes or semantic references linked to entities. These chunks make it easier to trace where information originated \nand provide grounding evidence during retrieval. \nThe next major step is entity extraction. Here, the system attempts to identify the important objects, concepts, or \nactors appearing in the data. In a healthcare application, entities may include symptoms, diseases, medications, and \nlaboratory tests. In an industrial"
     },
     {
       "chunk_id": "doc_graph_chunk_000003",
@@ -815,7 +817,7 @@
       "word_count": 174,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.02539423666894436,
         0.012356249615550041,
@@ -1201,7 +1203,8 @@
         0.03515680879354477,
         0.058975860476493835,
         -0.00114986312109977
-      ]
+      ],
+      "text": "identify the important objects, concepts, or \nactors appearing in the data. In a healthcare application, entities may include symptoms, diseases, medications, and \nlaboratory tests. In an industrial system, entities may include sensors, MOSFETs, cooling pumps, controllers, or fault \ncodes. This extraction can be performed using NLP models, rule-based systems, or modern LLM-based extraction \npipelines. At this stage, the graph begins to acquire semantic meaning because the system is no longer looking at \nraw text but at identifiable real-world concepts. \nHowever, isolated entities alone are not sufficient. The real power of Graph RAG comes from understanding how \nthose entities are connected. Therefore, the next stage is relationship extraction. The system analyzes the text to \ndiscover interactions, dependencies, or causal links between entities. For example, a sentence stating that \u201cpump \nfailure caused overheating in inverter module Q3\u201d may generate a relationship connecting the cooling pump to the \ninverter fault. Similarly, in a travel system, a flight may connect two airports while an airline operates that route. \nThese relationships form the edges of the graph and ultimately"
     },
     {
       "chunk_id": "doc_graph_chunk_000004",
@@ -1214,7 +1217,7 @@
       "word_count": 179,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         0.01759657822549343,
         -0.06770335137844086,
@@ -1600,7 +1603,8 @@
         0.04799271002411842,
         0.052543964236974716,
         0.05477467551827431
-      ]
+      ],
+      "text": "ling pump to the \ninverter fault. Similarly, in a travel system, a flight may connect two airports while an airline operates that route. \nThese relationships form the edges of the graph and ultimately create the network through which traversal later \noccurs. \nOnce entities and relationships are extracted, the system defines an ontology or schema. This acts as the structural \nblueprint of the graph. The ontology specifies what types of nodes are allowed, what kinds of relationships may exist \nbetween them, and how the domain is logically organized. This is one of the most important design stages because \na poorly designed ontology can make traversal inefficient or meaningless. A well-designed ontology ensures that the \ngraph reflects real-world structure rather than random connections. \nWith the ontology prepared, the actual graph construction process begins. Entities become nodes, relationships \nbecome edges, and metadata is attached to both. Gradually, the graph evolves into a connected knowledge structure \nrepresenting the domain. At this point, the graph is typically stored inside a graph database such as Neo4j, Amazon \nNeptune, or TigerGraph. These databases are specifically op"
     },
     {
       "chunk_id": "doc_graph_chunk_000005",
@@ -1613,7 +1617,7 @@
       "word_count": 167,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.03606148064136505,
         -0.03960973769426346,
@@ -1999,7 +2003,8 @@
         0.03832393139600754,
         0.03285762295126915,
         0.008439257740974426
-      ]
+      ],
+      "text": "ed knowledge structure \nrepresenting the domain. At this point, the graph is typically stored inside a graph database such as Neo4j, Amazon \nNeptune, or TigerGraph. These databases are specifically optimized for relationship-based querying and traversal. \nModern Graph RAG systems usually combine graph reasoning with vector semantics, so the next stage involves \ngenerating embeddings. Embeddings may be created for nodes, document chunks, summaries, or other graph \nelements. These embeddings allow the system to perform semantic similarity search in addition to structural \ntraversal. As a result, the retriever becomes hybrid in nature, combining vector search, graph traversal, keyword \nmatching, and metadata filtering into a unified retrieval framework. \nOnce embeddings are generated, indexing is performed. Vector indexes support semantic search, graph indexes \nsupport traversal operations, and metadata indexes enable filtering based on attributes such as time, confidence, \nseverity, or region. After indexing is complete, the offline graph-building phase is largely finished, and the system \nbecomes ready for live query processing. \nWhen a user finally submits a query, the online retri"
     },
     {
       "chunk_id": "doc_graph_chunk_000006",
@@ -2012,7 +2017,7 @@
       "word_count": 166,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.0375879630446434,
         0.014689886011183262,
@@ -2398,7 +2403,8 @@
         0.10631264746189117,
         9.259989019483328e-05,
         0.025229310616850853
-      ]
+      ],
+      "text": "egion. After indexing is complete, the offline graph-building phase is largely finished, and the system \nbecomes ready for live query processing. \nWhen a user finally submits a query, the online retrieval phase begins. The system first attempts to understand the \nquery itself. It extracts intent, entities, goals, constraints, and contextual meaning. For example, if the user asks why \n\n\n[Page 2]\nan inverter temperature is increasing, the system identifies concepts such as inverter, temperature, and fault \ndiagnosis. These extracted concepts help determine where traversal should begin inside the graph. \nThe retriever then searches for suitable starting nodes. These entry points may represent components, symptoms, \nlocations, users, routes, or any other entities relevant to the query. Once the starting nodes are identified, the most \nimportant phase begins: graph traversal. During traversal, the retriever moves through connected nodes and \nrelationships to discover contextual reasoning paths. Instead of retrieving isolated chunks purely by similarity, the \nsystem dynamically explores relationships such as causality, dependency, hierarchy, connectivity, or operational \nflow. \nFor examp"
     },
     {
       "chunk_id": "doc_graph_chunk_000007",
@@ -2411,7 +2417,7 @@
       "word_count": 160,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.028703633695840836,
         -0.014667182229459286,
@@ -2797,7 +2803,8 @@
         0.05408885329961777,
         0.03281265124678612,
         0.015207208693027496
-      ]
+      ],
+      "text": "ths. Instead of retrieving isolated chunks purely by similarity, the \nsystem dynamically explores relationships such as causality, dependency, hierarchy, connectivity, or operational \nflow. \nFor example, in an industrial maintenance system, traversal may begin at an overheating inverter, move to the \ncooling loop, discover reduced coolant flow, identify pump degradation, and finally associate the issue with \nabnormal vibration readings from a sensor. This creates a multi-hop reasoning chain that explains not only what \nhappened but why it happened. Similarly, in a travel application, traversal may explore airlines, airports, layovers, \nalliance agreements, prices, and route restrictions to construct an optimized travel recommendation. \nAs traversal continues, the system extracts a relevant subgraph containing the most useful nodes, relationships, and \nsupporting evidence. This subgraph effectively becomes the contextual memory used for reasoning. Since traversal \nmay discover many possible paths, the retriever then ranks and filters the results to remove irrelevant or low-\nconfidence information. Relevance scoring, reranking models, semantic weighting, and confidence metrics help"
     },
     {
       "chunk_id": "doc_graph_chunk_000008",
@@ -2810,7 +2817,7 @@
       "word_count": 154,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.06323382258415222,
         -0.024124694988131523,
@@ -3196,7 +3203,8 @@
         0.07817672193050385,
         0.06791515648365021,
         -0.0035556291695684195
-      ]
+      ],
+      "text": "ible paths, the retriever then ranks and filters the results to remove irrelevant or low-\nconfidence information. Relevance scoring, reranking models, semantic weighting, and confidence metrics help \nnarrow the retrieved context to the most meaningful subset. \nThe selected subgraph is then transformed into a structured prompt for the LLM. Instead of sending raw \ndisconnected documents, the system sends organized contextual reasoning paths, connected entities, summaries, \nand supporting evidence. The LLM therefore receives not just information, but structured relational understanding. \nThis dramatically improves explainability, coherence, and multi-hop reasoning capability. \nFinally, the LLM generates the response using the retrieved graph context. The answer may include explanations, \nrecommendations, root-cause analysis, route suggestions, maintenance actions, or diagnostic conclusions. Because \nthe reasoning originated from connected graph structures rather than isolated text fragments, the output is usually \nmore context-aware, explainable, and logically grounded. \nIn advanced systems, the process does not end there. User feedback, corrections, new observations, or runtime \neven"
     },
     {
       "chunk_id": "doc_graph_chunk_000009",
@@ -3209,7 +3217,7 @@
       "word_count": 170,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.021269677206873894,
         -0.03601057082414627,
@@ -3595,7 +3603,8 @@
         0.02297905460000038,
         0.024240659549832344,
         0.0067353942431509495
-      ]
+      ],
+      "text": "ts, the output is usually \nmore context-aware, explainable, and logically grounded. \nIn advanced systems, the process does not end there. User feedback, corrections, new observations, or runtime \nevents may later update the graph itself. New entities and relationships can be added continuously, allowing the \ngraph retriever to evolve over time and become progressively more intelligent and contextually aware. \n  \nFor graph, do we need all vector index, graph index, and metadata index supports? \n  \nonce graph is embedded, is there any possibility to provide more relationships and entities by uploading some \nfurther information. I mean, can additional knowledge be supplied like RAG system? \nYes \u2014 in most modern Graph Retrieval-Augmented Generation architectures, all three types of indexing are \ncommonly used together because they solve different retrieval problems. A graph index helps the system efficiently \ntraverse relationships between nodes and edges. A vector index supports semantic similarity search using \nembeddings. A metadata index enables filtering and structured querying based on attributes such as time, severity, \nregion, device type, confidence score, or document source."
     },
     {
       "chunk_id": "doc_graph_chunk_000010",
@@ -3608,7 +3617,7 @@
       "word_count": 172,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.002795836655423045,
         -0.017165688797831535,
@@ -3994,7 +4003,8 @@
         0.05188772827386856,
         0.04925530031323433,
         0.024558205157518387
-      ]
+      ],
+      "text": "similarity search using \nembeddings. A metadata index enables filtering and structured querying based on attributes such as time, severity, \nregion, device type, confidence score, or document source. \nThe important point is that these indexes are complementary rather than competing. The graph index answers \nquestions like \u201cwhat is connected to this entity?\u201d or \u201cwhat reasoning path exists between these nodes?\u201d The vector \nindex answers questions like \u201cwhat information is semantically similar to this query?\u201d Meanwhile, the metadata \nindex answers questions such as \u201cshow only events from last week\u201d or \u201cretrieve only inverter faults from EV platform \nA.\u201d Modern enterprise Graph RAG systems usually combine all three because relying on only one retrieval strategy \nis often insufficient for complex reasoning systems. \nA typical retrieval flow therefore becomes hybrid. The query may first undergo semantic vector retrieval to identify \ncandidate entities or chunks. The graph traversal engine then explores relationships around those entities. Metadata \nfiltering may finally narrow the retrieved context based on operational constraints. This layered retrieval strategy is \none of the reasons G"
     },
     {
       "chunk_id": "doc_graph_chunk_000011",
@@ -4007,7 +4017,7 @@
       "word_count": 173,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.031709685921669006,
         -0.0052680326625704765,
@@ -4393,7 +4403,8 @@
         -0.000529776094481349,
         0.035532742738723755,
         -0.009654325433075428
-      ]
+      ],
+      "text": "en explores relationships around those entities. Metadata \nfiltering may finally narrow the retrieved context based on operational constraints. This layered retrieval strategy is \none of the reasons Graph RAG systems are significantly more powerful than classical vector-only RAG systems. \nYour second question is extremely important, and the answer is yes: a graph can absolutely continue growing after \nthe initial embedding and indexing stage. In fact, most practical Graph RAG systems are designed to evolve \n\n\n[Page 3]\ncontinuously over time. The graph is not frozen after creation. Additional documents, APIs, logs, manuals, events, or \ndatasets can later be uploaded, processed, and integrated into the existing graph structure. \nThe process is very similar to how classical RAG systems continuously ingest new documents, but Graph RAG adds \nan additional structural intelligence layer. When new information is uploaded, the system typically performs another \ningestion cycle. It cleans and chunks the new data, extracts new entities, identifies new relationships, and then \ncompares them with the existing graph. If the uploaded information introduces completely new entities, the system \ncre"
     },
     {
       "chunk_id": "doc_graph_chunk_000012",
@@ -4406,7 +4417,7 @@
       "word_count": 169,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.02754584141075611,
         -0.03975930064916611,
@@ -4792,7 +4803,8 @@
         0.01582701876759529,
         0.02630467526614666,
         0.0011471500620245934
-      ]
+      ],
+      "text": "unks the new data, extracts new entities, identifies new relationships, and then \ncompares them with the existing graph. If the uploaded information introduces completely new entities, the system \ncreates additional nodes. If it introduces new relationships between existing entities, the graph adds new edges. If \nit enriches existing entities with more context or evidence, the graph updates properties or attaches additional chunk \nnodes. \nFor example, suppose your predictive maintenance graph already contains nodes for an inverter, cooling system, \nand MOSFETs. Later, you upload a new maintenance report describing a newly observed thermal failure mode. The \ningestion pipeline may detect: \n\u2022 \na new fault entity, \n\u2022 \na new causal relationship, \n\u2022 \nadditional evidence chunks, \n\u2022 \nand possibly new sensor patterns. \nThe graph can then expand dynamically: \n[Pump \nDegradation] \n      \u2502 \ncauses \n      \u25bc \n[Coolant \nReduction] \n      \u2502 \nleads_to \n      \u25bc \n[Thermal \nOscillation] \n \nIf \u201cThermal Oscillation\u201d did not previously exist, a new node is created. If the relationship already existed but new \nevidence strengthens it, additional chunk nodes or confidence properties may be attached. \nThe"
     },
     {
       "chunk_id": "doc_graph_chunk_000013",
@@ -4805,7 +4817,7 @@
       "word_count": 175,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.043108779937028885,
         -0.07427769154310226,
@@ -5191,7 +5203,8 @@
         0.06774155050516129,
         0.012576895765960217,
         -0.04015793651342392
-      ]
+      ],
+      "text": "cillation\u201d did not previously exist, a new node is created. If the relationship already existed but new \nevidence strengthens it, additional chunk nodes or confidence properties may be attached. \nThe embeddings can also be updated incrementally. Newly added nodes and chunks receive embeddings and are \ninserted into the vector index without rebuilding the entire graph from scratch. Similarly, graph indexes and \nmetadata indexes are updated incrementally. This incremental ingestion capability is one of the biggest advantages \nof Graph RAG because it allows the system to continuously learn and evolve as new operational knowledge arrives. \nIn advanced architectures, the graph may even support streaming updates in near real time. For example: \n\u2022 \nnew sensor events, \n\u2022 \nlive airline schedules, \n\u2022 \nfresh cybersecurity alerts, \n\u2022 \nevolving medical guidelines, \n\u2022 \nor newly discovered component dependencies \ncan continuously modify the graph. This transforms the graph from a static database into a living contextual memory \nsystem. \nThis is also why Graph RAG is especially powerful for domains like: \n\u2022 \npredictive maintenance, \n\u2022 \nhealthcare, \n\u2022 \ncybersecurity, \n\u2022 \nsupply chains, \n\u2022 \nintellig"
     },
     {
       "chunk_id": "doc_graph_chunk_000014",
@@ -5204,7 +5217,7 @@
       "word_count": 171,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.022773057222366333,
         -0.005720975808799267,
@@ -5590,7 +5603,8 @@
         0.03876570239663124,
         0.029026852920651436,
         -0.0792655423283577
-      ]
+      ],
+      "text": "a living contextual memory \nsystem. \nThis is also why Graph RAG is especially powerful for domains like: \n\u2022 \npredictive maintenance, \n\u2022 \nhealthcare, \n\u2022 \ncybersecurity, \n\u2022 \nsupply chains, \n\u2022 \nintelligent transportation, \n\u2022 \nand digital twins, \nbecause the knowledge structure can evolve as the real system evolves. \nA very important conceptual distinction is that embeddings alone do not define the graph. The embeddings are only \none representation layer used for semantic similarity search. The real graph intelligence comes from the \n\n\n[Page 4]\nrelationships, topology, traversal paths, and connected reasoning structures. Therefore, even after embeddings are \ngenerated, the graph itself remains fully extensible and continuously updateable. \n \nwhat is provenance here: \nIn this context, provenance means: \ninformation about where a graph relationship came from, how it was created, and how trustworthy it is. \nIn other words: \nprovenance is the traceable origin and history of a node or edge. \n \n \nNote: \nIn distributed systems, \u201csynchronous\u201d does not mainly mean: \n\u2022 \n\u201coperations happen at the same time\u201d  \n\u2022 \nor \u201cmultiple systems process simultaneously\u201d  \nInstead, synchronous means: \none oper"
     },
     {
       "chunk_id": "doc_graph_chunk_000015",
@@ -5603,7 +5617,7 @@
       "word_count": 171,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.027069445699453354,
         0.0311154555529356,
@@ -5989,7 +6003,8 @@
         0.03342584893107414,
         -0.00605430593714118,
         -0.08373311907052994
-      ]
+      ],
+      "text": "Note: \nIn distributed systems, \u201csynchronous\u201d does not mainly mean: \n\u2022 \n\u201coperations happen at the same time\u201d  \n\u2022 \nor \u201cmultiple systems process simultaneously\u201d  \nInstead, synchronous means: \none operation directly waits for another operation to finish before continuing. \nSo the key idea is: \nrequest \u2192 wait \u2192 response \u2192 continue \nThe caller is blocked until the callee finishes. \n \nIn Your Architecture Narrative \nA more technically precise wording could be: \n\u201cSynchronous workflows are operations where the request lifecycle, execution ordering, and transactional \nconsistency require the system to wait for deterministic completion before proceeding to the next stage.\u201d \n \nwhat is a reconciliation workers? what is the difference between reconciliation workers and Delayed retry? do \nthese all do the same things (Apache Kafka, Azure Event Hubs, Amazon Kinesis, or cloud service buses)? \nA reconciliation worker is a background service that checks whether different systems ended up in the same \ncorrect state. \nFor example, after a flight booking: \nPayment system says: paid \nAirline booking API says: pending \nYour database says: awaiting confirmation \n \nA reconciliation worker periodically ch"
     },
     {
       "chunk_id": "doc_graph_chunk_000016",
@@ -6002,7 +6017,7 @@
       "word_count": 177,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.06541426479816437,
         -0.049533095210790634,
@@ -6388,7 +6403,8 @@
         0.06454098224639893,
         -0.030294369906187057,
         -0.07536839693784714
-      ]
+      ],
+      "text": "correct state. \nFor example, after a flight booking: \nPayment system says: paid \nAirline booking API says: pending \nYour database says: awaiting confirmation \n \nA reconciliation worker periodically checks these records, compares them, and fixes or escalates the mismatch. Its \njob is state correction and consistency checking. \nA delayed retry is different. It simply tries a failed operation again later. \nBooking API timed out \n\u2192 wait 30 seconds \n\u2192 try again \n\u2192 if still failing, try later or move to dead-letter queue \n \nSo: \nDelayed retry = repeat a failed action later \nReconciliation worker = inspect final states and repair inconsistencies \n \nThey often work together. A retry may eventually succeed, but reconciliation checks whether the whole workflow \nactually became consistent. \nKafka, Azure Event Hubs, Amazon Kinesis, and cloud service buses are related, but they do not all do exactly the \nsame thing. \n\n\n[Page 5]\nKafka, Event Hubs, and Kinesis are mainly event streaming platforms. They are good when many events \ncontinuously flow through the system, such as booking-created, payment-confirmed, flight-delayed, price-\nchanged, or graph-updated events. They allow multiple consumers t"
     },
     {
       "chunk_id": "doc_graph_chunk_000017",
@@ -6401,7 +6417,7 @@
       "word_count": 169,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.03854766860604286,
         -0.08800508826971054,
@@ -6787,7 +6803,8 @@
         0.04348520189523697,
         0.006185205187648535,
         -0.012949042022228241
-      ]
+      ],
+      "text": "ey are good when many events \ncontinuously flow through the system, such as booking-created, payment-confirmed, flight-delayed, price-\nchanged, or graph-updated events. They allow multiple consumers to read the same event stream independently. \nCloud service buses and queues such as Azure Service Bus, AWS SQS, or RabbitMQ are mainly message/workflow \nqueues. They are good for reliable task execution, retries, background jobs, and worker processing, such as send \nnotification, retry booking confirmation, update index, or run reconciliation. \nA simple distinction is: \nEvent streaming = publish facts/events for many services to react to \nQueue/service bus = assign work/tasks for workers to process \n \nFor your flight-booking system, you might use a service bus or queue first for notifications, retries, ingestion, and \nreconciliation. Kafka/Event Hubs/Kinesis become more useful later if the platform has high-volume continuous \nevents, analytics, monitoring streams, or many independent consumers. \nAlso, I noted what you defined as SYNC actions (an action wait for another before doing job) is similar as \nstateful. So, how do you differentiate the sync/async from stateful/stateless? \nExcel"
     },
     {
       "chunk_id": "doc_graph_chunk_000018",
@@ -6800,7 +6817,7 @@
       "word_count": 175,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.058757632970809937,
         0.015066944062709808,
@@ -7186,7 +7203,8 @@
         0.10990253835916519,
         -0.009480753913521767,
         -0.05711551383137703
-      ]
+      ],
+      "text": "mers. \nAlso, I noted what you defined as SYNC actions (an action wait for another before doing job) is similar as \nstateful. So, how do you differentiate the sync/async from stateful/stateless? \nExcellent observation. \n They are related concepts, and in many systems they overlap, which is why people often confuse them. But they \ndescribe different dimensions of system behaviour. \nThe cleanest way to separate them is this: \nConcept \nMain Question \nSync vs Async \n\u201cDo we WAIT?\u201d \nStateful vs Stateless \n\u201cDo we REMEMBER?\u201d \nThat is the fundamental distinction. \n \n1. Sync vs Async \u2192 Execution Behaviour \nThis describes: \nhow operations execute and coordinate in time. \n \nSynchronous \nrequest \n  \u2193 \nwait \n  \u2193 \nresponse \nThe workflow pauses until the operation finishes. \n \nAsynchronous \nrequest \n  \u2193 \ncontinue immediately \n  \u2193 \nresult arrives later \nThe workflow does not wait actively. \n \n2. Stateful vs Stateless \u2192 Memory Behaviour \nThis describes: \nwhether the system stores workflow/session memory between requests. \n \nStateful \n\n\n[Page 6]\nThe system remembers previous context. \nExample: \nuser selected: \n- London \u2192 Tokyo \n- ANA preferred \n- business class \n- payment pending \nThe workflow state i"
     },
     {
       "chunk_id": "doc_graph_chunk_000019",
@@ -7199,7 +7217,7 @@
       "word_count": 159,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.027572641149163246,
         0.007115496788173914,
@@ -7585,7 +7603,8 @@
         0.10482460260391235,
         -0.04987435042858124,
         -0.06322365999221802
-      ]
+      ],
+      "text": "between requests. \n \nStateful \n\n\n[Page 6]\nThe system remembers previous context. \nExample: \nuser selected: \n- London \u2192 Tokyo \n- ANA preferred \n- business class \n- payment pending \nThe workflow state is preserved. \nUsually stored in: \n\u2022 \nRedis  \n\u2022 \nPostgreSQL  \n\u2022 \nsession store  \n\u2022 \nworkflow engine  \n \nStateless \nThe service remembers nothing between requests. \nEvery request is independent. \nExample: \nGET /search?q=Tokyo \nThe API processes the request and forgets it afterward. \nFinal Senior-Level Definition \nYou could explain it in interviews like this: \n\u201cSynchronous versus asynchronous describes execution coordination and waiting behaviour, while stateful versus \nstateless describes persistence of workflow or session memory. Although many transactional workflows are both \nsynchronous and stateful, the two concepts represent different architectural dimensions.\u201d \n \n \n\n\n[Page 7]\nEnd-to-End Steps for Building a Graph Retriever in Graph Retrieval-Augmented Generation \nA Graph Retriever pipeline usually has two major phases: \n1. Offline Graph Construction Phase \n2. (building the knowledge graph) \n3. Online Retrieval & Traversal Phase \n(query-time reasoning and retrieval) \n \nBIG PICTURE F"
     },
     {
       "chunk_id": "doc_graph_chunk_000020",
@@ -7598,7 +7617,7 @@
       "word_count": 160,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         0.0026744790375232697,
         -0.0356757715344429,
@@ -7984,7 +8003,8 @@
         0.05740554258227348,
         -0.052024539560079575,
         0.02518794685602188
-      ]
+      ],
+      "text": "line usually has two major phases: \n1. Offline Graph Construction Phase \n2. (building the knowledge graph) \n3. Online Retrieval & Traversal Phase \n(query-time reasoning and retrieval) \n \nBIG PICTURE FLOW \nRaw \nData \n   \u2193 \nIngestion \n   \u2193 \nChunking \n& \nCleaning \n   \u2193 \nEntity \nExtraction \n   \u2193 \nRelationship \nExtraction \n   \u2193 \nOntology \n/ \nSchema \nDesign \n   \u2193 \nGraph \nConstruction \n   \u2193 \nGraph \nStorage \n& \nIndexing \n   \u2193 \nEmbedding \nGeneration \n   \u2193 \nHybrid \nRetrieval \nLayer \n   \u2193 \nGraph \nTraversal \nEngine \n   \u2193 \nSubgraph \nAssembly \n   \u2193 \nPrompt \nConstruction \n   \u2193 \nLLM \nReasoning \n   \u2193 \nFinal \nResponse \n \n \nPHASE 1 \u2014 DEFINE THE PROBLEM \nBefore building the graph: \nDefine: \nItem \nExample \nDomain \nFlight booking \nObjective \nRoute reasoning \nNode types \nAirport, airline, flight \nEdge types \nconnects_to, operated_by \nQueries \n\u201ccheapest route avoiding overnight stops\u201d \n \nPHASE 2 \u2014 DATA INGESTION \n\n\n[Page 8]\nCollect raw data. \nSources may include: \nSource \nExample \nPDFs \nmanuals \nAPIs \nflight data \nDatabases \nmaintenance records \nLogs \nsensor logs \nTables \nschedules \nWeb data \npolicies \n \nPHASE 3 \u2014 CLEANING & NORMALIZATION \nPrepare the data. \nTasks: \n\u2022 \nremove duplicates \n\u2022 \nstandardize na"
     },
     {
       "chunk_id": "doc_graph_chunk_000021",
@@ -7997,7 +8017,7 @@
       "word_count": 155,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.028147142380475998,
         -0.003853753674775362,
@@ -8383,7 +8403,8 @@
         0.022763239219784737,
         0.029478926211595535,
         0.004897203296422958
-      ]
+      ],
+      "text": "data \nDatabases \nmaintenance records \nLogs \nsensor logs \nTables \nschedules \nWeb data \npolicies \n \nPHASE 3 \u2014 CLEANING & NORMALIZATION \nPrepare the data. \nTasks: \n\u2022 \nremove duplicates \n\u2022 \nstandardize names \n\u2022 \nnormalize units \n\u2022 \nclean formatting \n\u2022 \nresolve inconsistencies \nExample: \n\"LHR \nAirport\" \n\"London \nHeathrow\" \n\"Heathrow\" \n \n\u2192 \nnormalized \nto \none \nentity \n \n \nPHASE 4 \u2014 CHUNKING \nSplit large documents into smaller units. \nExample: \nMaintenance \nManual \n  \u2192 \nSection \n     \u2192 \nParagraph \n        \u2192 \nChunk \n \nGraph RAG still often uses chunking because: \n\u2022 \nchunks become evidence nodes \n\u2022 \nchunks may later receive embeddings \n \nPHASE 5 \u2014 ENTITY EXTRACTION \nIdentify important entities. \nUsually done using: \n\u2022 \nNLP \n\u2022 \nNER models \n\u2022 \nLLM extraction \n\u2022 \nrules/patterns \n \nExample \n\n\n[Page 9]\nText: \nMOSFET \nQ3 \noverheated \ndue \nto \ncoolant \nfailure. \n \nExtract: \nEntity \nType \nMOSFET Q3 \nComponent \ncoolant failure \nFault \n \nPHASE 6 \u2014 RELATIONSHIP EXTRACTION \nIdentify relationships between entities. \n \nExample \nMOSFET \nQ3 \n\u2500\u2500affected_by\u2500\u2500> \nCoolant \nFailure \n \nMethods: \nMethod \nDescription \nRules \nRegex/pattern \nDependency parsing \nNLP \nLLM extraction \nMost modern \nKnowledge templates"
     },
     {
       "chunk_id": "doc_graph_chunk_000022",
@@ -8396,7 +8417,7 @@
       "word_count": 156,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.04225841909646988,
         0.05323153734207153,
@@ -8782,7 +8803,8 @@
         0.035601209849119186,
         0.051408011466264725,
         0.03580905869603157
-      ]
+      ],
+      "text": "entities. \n \nExample \nMOSFET \nQ3 \n\u2500\u2500affected_by\u2500\u2500> \nCoolant \nFailure \n \nMethods: \nMethod \nDescription \nRules \nRegex/pattern \nDependency parsing \nNLP \nLLM extraction \nMost modern \nKnowledge templates \nDomain ontology \n \nPHASE 7 \u2014 ONTOLOGY / SCHEMA DESIGN \nThis is VERY important. \nOntology defines: \n\u2022 \nnode types \n\u2022 \nedge types \n\u2022 \nallowed relationships \n\u2022 \nhierarchy \n \nExample Ontology \nNode \nTypes: \n- \nComponent \n- \nSensor \n- \nFault \n- \nMaintenance \nAction \n \nEdge \nTypes: \n- \nconnected_to \n- \nmonitored_by \n- \ncauses \n- \nmitigated_by \n \n \nPHASE 8 \u2014 GRAPH CONSTRUCTION \nNow create the graph. \n \nNodes \n\n\n[Page 10]\nNode: \n{ \n id: \"MOSFET_Q3\", \n type: \"Component\" \n} \n \n \nEdges \nEdge: \n{ \n source: \n\"Coolant_Failure\", \n relation: \n\"causes\", \n target: \n\"MOSFET_Q3\" \n} \n \n \nPHASE 9 \u2014 GRAPH STORAGE \nStore graph in graph database. \nCommon options: \nDatabase \nNotes \nNeo4j \nmost popular \nTigerGraph \nhigh-scale \nAmazon Neptune \nAWS-native \nArangoDB \ngraph + docs \n \nPHASE 10 \u2014 CREATE EMBEDDINGS \nModern Graph RAG usually combines: \n\u2022 \ngraph structure \n\u2022 \nvector embeddings \nGenerate embeddings for: \nItem \nWhy \nnodes \nsemantic search \nchunks \nretrieval \nsummaries \nreasoning \nedges sometimes \nsemantic"
     },
     {
       "chunk_id": "doc_graph_chunk_000023",
@@ -8795,7 +8817,7 @@
       "word_count": 155,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.07737068086862564,
         0.0024970544036477804,
@@ -9181,7 +9203,8 @@
         0.05244021862745285,
         -0.010743368417024612,
         -0.010811037383973598
-      ]
+      ],
+      "text": "Graph RAG usually combines: \n\u2022 \ngraph structure \n\u2022 \nvector embeddings \nGenerate embeddings for: \nItem \nWhy \nnodes \nsemantic search \nchunks \nretrieval \nsummaries \nreasoning \nedges sometimes \nsemantic relations \n \nPHASE 11 \u2014 INDEXING \nBuild retrieval indexes. \nPossible indexes: \nType \nPurpose \nVector index \nsemantic retrieval \nGraph index \ntraversal \nKeyword index \nBM25 \nMetadata index \nfiltering \nThis becomes: \nHybrid Retrieval \n\n\n[Page 11]\nVector \n+ \nGraph \n+ \nKeyword \n+ \nMetadata \n \n \nPHASE 12 \u2014 QUERY UNDERSTANDING \nAt runtime: \nUser asks question. \nExample: \n\"Why \nis \ninverter \ntemperature \nrising?\" \n \nSystem extracts: \nExtracted \nValue \nentity \ninverter \nissue \ntemperature \nintent \ndiagnosis \n \nPHASE 13 \u2014 START NODE IDENTIFICATION \nFind relevant graph entry points. \nExample: \nStart \nNodes: \n- \nInverter \n- \nTemperature \nSensor \n- \nCooling \nSystem \n \n \nPHASE 14 \u2014 GRAPH TRAVERSAL \nThis is the graph retriever core. \nTraverse through connected entities. \nExample: \nInverter \n \u2192 \nCooling \nLoop \n \u2192 \nPump \nFailure \n \u2192 \nReduced \nCoolant \nFlow \n \u2192 \nMOSFET \nOverheating \n \nTraversal strategies: \nStrategy \nUse \nBFS \nnearby context \nDFS \ndeep reasoning \nweighted traversal \npriorities \nsemanti"
     },
     {
       "chunk_id": "doc_graph_chunk_000024",
@@ -9194,7 +9217,7 @@
       "word_count": 166,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.048648156225681305,
         0.039039287716150284,
@@ -9580,7 +9603,8 @@
         0.08547854423522949,
         0.006057471036911011,
         0.021599872037768364
-      ]
+      ],
+      "text": "Loop \n \u2192 \nPump \nFailure \n \u2192 \nReduced \nCoolant \nFlow \n \u2192 \nMOSFET \nOverheating \n \nTraversal strategies: \nStrategy \nUse \nBFS \nnearby context \nDFS \ndeep reasoning \nweighted traversal \npriorities \nsemantic traversal \nAI-guided \n \nPHASE 15 \u2014 SUBGRAPH EXTRACTION \nCollect relevant connected region. \nExample: \nRelevant \nSubgraph: \n- \ninverter \n- \ncoolant \nloop \n- \npump \n\n\n[Page 12]\n- \nMOSFET \n- \nsensor \nalerts \n \nThis subgraph becomes contextual evidence. \n \nPHASE 16 \u2014 CONTEXT RANKING & FILTERING \nNot all traversed nodes are useful. \nApply: \n\u2022 \nreranking \n\u2022 \nscoring \n\u2022 \nrelevance filtering \n\u2022 \nconfidence weighting \n \nPHASE 17 \u2014 PROMPT ASSEMBLY \nBuild structured prompt. \nExample: \nRelevant \nComponents: \n- \nMOSFET \nQ3 \noverheating \n- \nCoolant \nflow \nreduction \n- \nPump \nefficiency \ndegraded \n \nReasoning \nPath: \nPump \nFailure \n\u2192 \nReduced \nCooling \n\u2192 \nThermal \nStress \n \n \nPHASE 18 \u2014 LLM REASONING \nNow send: \n\u2022 \nquery \n\u2022 \nretrieved graph context \n\u2022 \nreasoning paths \n\u2022 \nsupporting chunks \nto the LLM. \n \nPHASE 19 \u2014 RESPONSE GENERATION \nLLM produces: \n\u2022 \nanswer \n\u2022 \nexplanation \n\u2022 \nrecommendations \n\u2022 \nreasoning trace \n \nPHASE 20 \u2014 OPTIONAL FEEDBACK LOOP \nCapture: \n\u2022 \nuser feedback \n\u2022 \nsuccessful tra"
     },
     {
       "chunk_id": "doc_graph_chunk_000025",
@@ -9593,7 +9617,7 @@
       "word_count": 108,
       "embedding_model": "BAAI/bge-small-en-v1.5",
       "embedding_dimension": 384,
-      "created_at": "2026-06-30T17:55:18",
+      "created_at": "2026-06-30T20:03:44",
       "embedding": [
         -0.07532567530870438,
         0.005111441481858492,
@@ -9979,7 +10003,8 @@
         0.09872757643461227,
         -0.009246142581105232,
         -0.030700156465172768
-      ]
+      ],
+      "text": "PHASE 19 \u2014 RESPONSE GENERATION \nLLM produces: \n\u2022 \nanswer \n\u2022 \nexplanation \n\u2022 \nrecommendations \n\u2022 \nreasoning trace \n \nPHASE 20 \u2014 OPTIONAL FEEDBACK LOOP \nCapture: \n\u2022 \nuser feedback \n\u2022 \nsuccessful traversals \n\u2022 \ncorrections \n\u2022 \nnew relations \nThen update graph. \n \n\n\n[Page 13]\nFINAL MENTAL MODEL \nOFFLINE BUILD PHASE \nData \n \u2192 Entity Extraction \n \u2192 Relationship Extraction \n \u2192 Ontology \n \u2192 Graph Build \n \u2192 Embeddings \n \u2192 Indexing \n \n \nONLINE QUERY PHASE \nUser Query \n \u2192 Query Understanding \n \u2192 Start Node Detection \n \u2192 Graph Traversal \n \u2192 Subgraph Extraction \n \u2192 Prompt Building \n \u2192 LLM Reasoning \n \u2192 Final Answer \n \n \nKEY INSIGHT (MOST IMPORTANT) \nClassical RAG retrieves: \nsimilar \nchunks \n \nGraph RAG retrieves: \nconnected \nreasoning \nstructures \n \nThat is the fundamental difference."
     }
   ]
 }

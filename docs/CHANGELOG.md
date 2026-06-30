@@ -8,6 +8,151 @@ The format follows Keep a Changelog principles.
 ---
 ## v0.3.0_Engineering_Knowledge_Retrieval
 
+## Sprint 3.4: Done
+Sprint 3.4 is working. 
+
+The /search endpoint is registered correctly. Swagger has generated the request body schema, which means:
+
+✅ search.py is imported
+✅ search.router is registered
+✅ search_service.py imported successfully
+✅ FastAPI recognises the endpoint
+
+What have been built so far
+v0.3.0 Intelligent Document Search
+
+✓ Sprint 3.1
+Document Chunking
+
+✓ Sprint 3.2
+Chunk Metadata
+
+✓ Sprint 3.3
+Embedding Generation
+
+✓ Sprint 3.4
+Semantic Search
+
+Already completed:
+
+upload PDFs
+parse PDFs
+convert to text
+chunk text
+attach metadata
+generate embeddings
+semantic retrieval
+
+The pipeline is now:
+
+PDF
+   │
+   ▼
+Text Extraction
+   │
+   ▼
+Chunking
+   │
+   ▼
+Embeddings (384 dimensions)
+   │
+   ▼
+Vector Database (JSON for now)
+   │
+   ▼
+User Question
+   │
+   ▼
+Question Embedding
+   │
+   ▼
+Cosine Similarity
+   │
+   ▼
+Top-k Relevant Chunks
+
+
+## Sprints 3.1, 3.2, 3.3 done:
+✅ backend/embeddings/ folder created
+✅ Graph_embeddings.json generated
+✅ /embeddings/generate endpoint working
+✅ Response contains
+embedding model
+embedding dimension (384)
+chunk metadata
+embedding vectors
+✅ HTTP 200 returned
+
+This means Sprint 3.3 is successfully completed.
+
+What we have achieved so far
+Sprint 3.1
+
+✔ PDF extraction
+
+PDF
+    ↓
+Text
+Sprint 3.2
+
+✔ Intelligent chunking
+
+PDF
+    ↓
+Text
+    ↓
+Chunks
+Sprint 3.3
+
+✔ Vector embeddings
+
+PDF
+    ↓
+Text
+    ↓
+Chunks
+    ↓
+Embeddings
+
+You have now built the complete preprocessing pipeline.
+
+This is a major milestone because this is exactly how production RAG systems work.
+
+Current architecture
+Engineering PDF
+
+      │
+
+      ▼
+PDF Parser
+
+      │
+
+      ▼
+Extracted Text
+
+      │
+
+      ▼
+Chunk Generator
+
+      │
+
+      ▼
+Graph_chunks.json
+
+      │
+
+      ▼
+SentenceTransformer
+
+      │
+
+      ▼
+Graph_embeddings.json
+
+That is already a solid backend pipeline.
+
 ## Sprint 3.3: Embedding Generation
 We'll implement a proper vectorisation pipeline:
 

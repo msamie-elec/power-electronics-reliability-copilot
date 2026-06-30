@@ -49,6 +49,7 @@ def generate_embeddings_from_chunks_file(chunks_path: Path) -> dict[str, Any]:
                 "embedding_dimension": len(vector),
                 "created_at": created_at,
                 "embedding": vector.tolist(),
+                "text": chunk["text"],
             }
         )
 
