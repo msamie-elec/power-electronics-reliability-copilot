@@ -8,6 +8,32 @@ The format follows Keep a Changelog principles.
 ---
 ## v0.3.0_Engineering_Knowledge_Retrieval
 
+## Sprint 3.3: Embedding Generation
+We'll implement a proper vectorisation pipeline:
+
+PDF
+    ↓
+Extract Text
+    ↓
+Chunk
+    ↓
+Generate Embeddings
+    ↓
+Store Embeddings
+    ↓
+FAISS Index
+    ↓
+Semantic Search
+
+This is where the application evolves from a document manager into an actual AI retrieval system.
+
+Sprint 3.3 enables asking questions like:
+
+"What does the documentation say about bond wire fatigue?"
+
+and the system will retrieve the most relevant chunks based on semantic similarity rather than simple keyword matching. That will be the first genuinely AI-powered capability in the project.
+
+
 ## Sprint 3.2.1
 Updates the chunk JSON schema.
         Adds word_count.

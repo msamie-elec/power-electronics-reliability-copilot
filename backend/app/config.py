@@ -15,3 +15,6 @@ APP_VERSION = "0.3.0"
 CHUNKS_DIR = BASE_DIR / "chunks"
 
 EMBEDDINGS_DIR = BASE_DIR / "embeddings"
+
+EMBEDDING_MODEL_NAME = "BAAI/bge-small-en-v1.5"
+

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import documents, upload
+from app.api import documents, embeddings, upload
 from app.config import APP_NAME, APP_VERSION, FRONTEND_ORIGIN
 
 app = FastAPI(
@@ -29,3 +29,4 @@ def health_check() -> dict:
 
 app.include_router(upload.router)
 app.include_router(documents.router)
+app.include_router(embeddings.router)
