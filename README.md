@@ -1,89 +1,123 @@
-# React + TypeScript + Vite
+# Power Electronics Reliability Copilot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Enterprise AI Copilot for diagnosing reliability issues in power electronic systems using Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), Knowledge Graphs, and Agentic AI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Project Overview
 
-## React Compiler
+This project demonstrates the design and implementation of an enterprise-grade AI Copilot capable of assisting reliability engineers in analysing power electronics failures.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Example capabilities include:
 
-## Expanding the ESLint configuration
+- Upload engineering documents
+- Analyse datasheets and technical manuals
+- Retrieve evidence using RAG
+- Reason over engineering knowledge graphs
+- Recommend likely failure mechanisms
+- Explain recommendations with supporting evidence
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Technology Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+| Layer | Technology |
+|--------|------------|
+| Frontend | React + TypeScript + Vite |
+| Backend | FastAPI |
+| AI Framework | LlamaIndex |
+| Agent Framework | LangGraph |
+| Knowledge Graph | Neo4j |
+| Vector Store | FAISS (later Azure AI Search) |
+| LLM | OpenAI / Azure OpenAI |
+| Deployment | Docker |
+| Cloud | Microsoft Azure |
+| Orchestration | Kubernetes |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## Repository Structure
 
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+power-electronics-copilot
+│
+├── backend
+├── frontend
+├── graph
+├── docs
+├── architecture
+├── docker
+└── README.md
 ```
+
+---
+
+## Version Roadmap
+
+| Version | Description |
+|----------|-------------|
+| v0.1.0 | Frontend Prototype |
+| v0.2.0 | FastAPI Backend |
+| v0.3.0 | LlamaIndex RAG |
+| v0.4.0 | Neo4j Knowledge Graph |
+| v0.5.0 | LangGraph Agentic AI |
+| v0.6.0 | Azure Deployment |
+| v0.7.0 | Docker & Kubernetes |
+| v1.0.0 | Enterprise AI Copilot |
+
+---
 
 ## Skills Demonstrated
 
-✓ Enterprise AI Architecture
-✓ Retrieval-Augmented Generation (RAG)
-✓ Knowledge Graphs (Neo4j)
-✓ Agentic AI (LangGraph)
-✓ REST API Design (FastAPI)
-✓ React + TypeScript
-✓ Docker & Kubernetes
-✓ Azure AI Services
-✓ Git & GitHub
-✓ Software Architecture
-✓ Engineering Documentation
+- Enterprise AI Architecture
+- FastAPI API Development
+- React & TypeScript
+- Retrieval-Augmented Generation (RAG)
+- Knowledge Graphs (Neo4j)
+- Agentic AI (LangGraph)
+- LlamaIndex
+- Prompt Engineering
+- Azure AI
+- Docker
+- Kubernetes
+- Git & GitHub
+- Software Architecture
+- Engineering Documentation
+
+---
+
+## Current Status
+
+Current release:
+
+**v0.1.0 – Frontend Prototype**
+
+Completed:
+
+- Professional React interface
+- Enterprise repository structure
+- Versioned documentation
+- Architecture planning
+- Release roadmap
+
+Next milestone:
+
+**v0.2.0 – Backend API**
+
+---
+
+## Future Work
+
+- Real document upload
+- Document indexing
+- Semantic search
+- Knowledge Graph construction
+- Engineering reasoning agent
+- Cloud deployment
+- CI/CD pipeline
+
+---
+
+## License
+
+MIT License
