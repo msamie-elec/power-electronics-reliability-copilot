@@ -1,401 +1,163 @@
 # Changelog
 
 Current Version: v0.3.0
+
 All notable changes to this project will be documented in this file.
 
 The format follows Keep a Changelog principles.
 
 ---
-## v0.3.0_Engineering_Knowledge_Retrieval
 
-## Sprint 3.6 — Frontend Integration
+# v0.4.0
+# Sprint 4.1:
+Sprint 4.1 Status
 
+We can now officially mark the first major objective of v0.4.0 as complete.
 
-## Sprint 3.5 is fully working.
-What you've built
-
-The pipeline is now:
-
-Engineering Question
+Sprint 4.1 — Neo4j Integration
+Completed
+✅ Created dedicated Neo4j Aura database for the Power Electronics project
+✅ Configured secure environment variables
+✅ Installed Neo4j Python driver
+✅ Implemented Graph Service
+✅ Added /graph/health API endpoint
+✅ Verified FastAPI ↔ Neo4j connectivity
+✅ Confirmed successful query execution (RETURN 1)
+Current Architecture
+Frontend (React)
         │
         ▼
-Sentence Transformer
-(query embedding)
+FastAPI
         │
-        ▼
-Cosine Similarity Search
+        ├─────────────► FAISS
+        │                │
+        │                ▼
+        │           Semantic Search
         │
-        ▼
-Top-k Relevant Chunks
-        │
-        ▼
-RAG Service
-        │
-        ▼
-Structured Engineering Response
+        └─────────────► Neo4j Aura
+                         │
+                         ▼
+                 Graph Database
 
-The response now contains
+This is a significant architectural milestone: your application now has both retrieval mechanisms in place:
 
-✅ query
-✅ answer
-✅ confidence
-✅ retrieved sources
-✅ similarity scores
-✅ supporting evidence
+a vector store (FAISS) for semantic similarity, and
+a graph database (Neo4j) for structured relationships.
 
+which means:
 
-Note: this part is hard coded
+✅ FastAPI can reach Neo4j Aura
+✅ DNS resolution is working
+✅ Authentication succeeded
+✅ The Neo4j Python driver is working
+✅ Your .env configuration is correct
+✅ Your Graph Service is functioning
 
-"Based on the retrieved engineering evidence..."
 
-Everything else is real, including:
-real embeddings
-real semantic search
-real retrieval
-real evidence
+# v0.3.0 — Engineering RAG Copilot
 
-Only the final reasoning is currently a template.
+Release status:
+🚧 Release Candidate
 
-The reason in the Large enterprise systems are almost always separated into two layers.
+## Added
 
-Retrieval Layer
----------------
-Question
-↓
+### Sprint 3.1 — Document Processing
 
-Embedding
+- PDF parsing
+- Automatic text extraction
+- TXT generation
+- Metadata generation
 
-↓
+### Sprint 3.2 — Intelligent Chunking
 
-Similarity Search
+- Document chunk generation
+- Chunk metadata
+- Word counts
+- Chunk identifiers
+- Timestamp metadata
 
-↓
+### Sprint 3.3 — Embedding Generation
 
-Top-k Context
+- Sentence Transformer embeddings
+- Embedding persistence
+- Embedding metadata
 
+### Sprint 3.4 — Semantic Search
 
-Reasoning Layer
----------------
-Prompt
+- Cosine similarity search
+- Top-k retrieval
+- Search API
 
-↓
+### Sprint 3.5 — Engineering Retrieval
 
-LLM
+- Evidence retrieval
+- Structured engineering responses
+- Confidence estimation
 
-↓
+### Sprint 3.6 — Frontend Integration
 
-Final Answer
+- Frontend RAG integration
+- Evidence display
+- Confidence display
+- Source attribution
 
-So it has now completely finished the Retrieval Layer.
+### Sprint 3.7 — LLM Integration
 
-That is about half of a production RAG architecture.
+- OpenAI integration
+- Prompt engineering
+- Grounded engineering answers
+- RAG pipeline
 
-## Sprint 3.4: Done
-Sprint 3.4 is working. 
+### Sprint 3.8 — Testing & Release Preparation
 
-The /search endpoint is registered correctly. Swagger has generated the request body schema, which means:
+#### Sprint 3.8.1
 
-✅ search.py is imported
-✅ search.router is registered
-✅ search_service.py imported successfully
-✅ FastAPI recognises the endpoint
+- Pytest integration
+- API tests
+- TestClient configuration
+- Backend validation
 
-What have been built so far
-v0.3.0 Intelligent Document Search
+#### Sprint 3.8.2
 
-✓ Sprint 3.1
-Document Chunking
+- End-to-end workflow validation
+- Invalid input handling
+- File type validation
+- Empty question validation
+- Upload workflow improvements
 
-✓ Sprint 3.2
-Chunk Metadata
+#### Sprint 3.8.3
 
-✓ Sprint 3.3
-Embedding Generation
-
-✓ Sprint 3.4
-Semantic Search
-
-Already completed:
-
-upload PDFs
-parse PDFs
-convert to text
-chunk text
-attach metadata
-generate embeddings
-semantic retrieval
-
-The pipeline is now:
-
-PDF
-   │
-   ▼
-Text Extraction
-   │
-   ▼
-Chunking
-   │
-   ▼
-Embeddings (384 dimensions)
-   │
-   ▼
-Vector Database (JSON for now)
-   │
-   ▼
-User Question
-   │
-   ▼
-Question Embedding
-   │
-   ▼
-Cosine Similarity
-   │
-   ▼
-Top-k Relevant Chunks
-
-
-## Sprints 3.1, 3.2, 3.3 done:
-✅ backend/embeddings/ folder created
-✅ Graph_embeddings.json generated
-✅ /embeddings/generate endpoint working
-✅ Response contains
-embedding model
-embedding dimension (384)
-chunk metadata
-embedding vectors
-✅ HTTP 200 returned
-
-This means Sprint 3.3 is successfully completed.
-
-What we have achieved so far
-Sprint 3.1
-
-✔ PDF extraction
-
-PDF
-    ↓
-Text
-Sprint 3.2
-
-✔ Intelligent chunking
-
-PDF
-    ↓
-Text
-    ↓
-Chunks
-Sprint 3.3
-
-✔ Vector embeddings
-
-PDF
-    ↓
-Text
-    ↓
-Chunks
-    ↓
-Embeddings
-
-You have now built the complete preprocessing pipeline.
-
-This is a major milestone because this is exactly how production RAG systems work.
-
-Current architecture
-Engineering PDF
-
-      │
-
-      ▼
-PDF Parser
-
-      │
-
-      ▼
-Extracted Text
-
-      │
-
-      ▼
-Chunk Generator
-
-      │
-
-      ▼
-Graph_chunks.json
-
-      │
-
-      ▼
-SentenceTransformer
-
-      │
-
-      ▼
-Graph_embeddings.json
-
-That is already a solid backend pipeline.
-
-## Sprint 3.3: Embedding Generation
-We'll implement a proper vectorisation pipeline:
-
-PDF
-    ↓
-Extract Text
-    ↓
-Chunk
-    ↓
-Generate Embeddings
-    ↓
-Store Embeddings
-    ↓
-FAISS Index
-    ↓
-Semantic Search
-
-This is where the application evolves from a document manager into an actual AI retrieval system.
-
-Sprint 3.3 enables asking questions like:
-
-"What does the documentation say about bond wire fatigue?"
-
-and the system will retrieve the most relevant chunks based on semantic similarity rather than simple keyword matching. That will be the first genuinely AI-powered capability in the project.
-
-
-## Sprint 3.2.1
-Updates the chunk JSON schema.
-        Adds word_count.
-        Adds created_at.
-        Adds page_start and page_end (initially null).
-        Improves the chunk_id naming convention.
-        Creates an empty backend/embeddings/ folder with a .gitkeep file.
-        Updates the Sprint 3.2 release notes to document the finalized chunk schema.
-
-Therefore, Pipeline changed from:
-PDF
-   ↓
-Text
-   ↓
-Chunks
-
-to:
-Why these fields?
-Field	Why it matters
-chunk_id	Unique identifier
-source_document	Original uploaded PDF
-source_text_file	Extracted text source
-chunk_index	Preserve document order
-page_start	Future GraphRAG citations
-page_end	Future GraphRAG citations
-character_count	Chunk statistics
-word_count	Better diagnostics and chunk sizing
-created_at	Versioning and debugging
-text	Actual chunk content
-
-The rpository now has a very logical data flow:
-uploads/
-        │
-        ▼
-documents/
-        │
-        ▼
-metadata/
-        │
-        ▼
-chunks/
-        │
-        ▼
-embeddings/
-        │
-        ▼
-Neo4j
-        │
-        ▼
-GraphRAG
-
-## Sprint 3.2 is complete
-backend has evolved from:
-
-Upload PDF
-
-to
-
-Upload PDF
-        │
-        ▼
-uploads/
-        │
-        ▼
-PDF Parser
-        │
-        ▼
-documents/
-        │
-        ▼
-Chunk Generator
-        │
-        ▼
-chunks/
-
-Each stage has a single responsibility:
-| Folder    | Purpose                  |
-| --------- | ------------------------ |
-| uploads   | Original documents       |
-| documents | Extracted text           |
-| metadata  | Document metadata        |
-| chunks    | AI-ready document chunks |
-
-
-
-
-
-
-## Sprint 3.1 complete ✅
-
-Completed features:
-
-✅ PDF upload
-✅ PDF parsing
-✅ Text extraction
-✅ TXT generation
-✅ Metadata generation
-✅ Automatic processing pipeline
-✅ Modular parser service
-
-
-## v0.2.0 - Backend API
-Released: 30 June 2026
-
-### Added
-
-- FastAPI backend
-- REST API architecture
-- Swagger/OpenAPI documentation
-- CORS configuration
-- File upload endpoint
-- Document listing endpoint
-- Backend service layer
-- Utility modules
-- Frontend-backend integration
-- Automatic upload refresh
-- File metadata (size and upload date)
+- Documentation updates
+- README improvements
+- Roadmap updates
+- Release preparation
 
 ---
 
-## v0.1.0 - Frontend Prototype
+# v0.2.0 — Backend Foundation
+
 Released: 30 June 2026
 
-### Added
+## Added
 
-- React + TypeScript + Vite frontend
-- Enterprise dashboard layout
-- Professional UI styling
-- Engineering upload panel
-- AI question panel
-- Recommendation panel
-- Evidence panel
-- Knowledge graph preview
+- FastAPI backend
+- REST API architecture
+- Swagger/OpenAPI
+- File upload
+- Document management
+- Modular backend
+
+---
+
+# v0.1.0 — Frontend Prototype
+
+Released: 30 June 2026
+
+## Added
+
+- React frontend
+- TypeScript
+- Vite
+- Enterprise dashboard
+- Engineering UI
 - Project documentation
-- GitHub repository initialization
-- MIT License
-- Version roadmap
-- Release documentation

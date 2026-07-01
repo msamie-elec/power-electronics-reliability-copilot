@@ -12,13 +12,13 @@ The project is being developed incrementally as a portfolio-quality demonstratio
 
 ## Example capabilities
 
-* Upload engineering documents
-* Analyse datasheets and technical manuals
-* Retrieve technical evidence using RAG
-* Reason over engineering knowledge graphs
-* Recommend likely failure mechanisms
-* Explain recommendations with supporting evidence
-* Support engineering decision making
+- Upload PDF, TXT and CSV engineering documents
+- Automatically parse and index technical documents
+- Generate semantic embeddings
+- Retrieve relevant engineering evidence using RAG
+- Produce evidence-backed AI answers
+- Display confidence level and retrieved source chunks
+- Prepare engineering knowledge for future GraphRAG reasoning
 
 ---
 
@@ -28,11 +28,11 @@ The project is being developed incrementally as a portfolio-quality demonstratio
 | --------------- | ----------------------------- |
 | Frontend        | React + TypeScript + Vite     |
 | Backend         | FastAPI                       |
-| AI Framework    | LlamaIndex                    |
+| AI Framework    | LlamaIndex  + Sentence Transformers                   |
 | Agent Framework | LangGraph                     |
 | Knowledge Graph | Neo4j                         |
 | Vector Store    | FAISS (later Azure AI Search) |
-| LLM             | OpenAI / Azure OpenAI         |
+| LLM             | OpenAI GPT-4.1 (Azure OpenAI planned)         |
 | Deployment      | Docker                        |
 | Cloud           | Microsoft Azure               |
 | Orchestration   | Kubernetes                    |
@@ -99,46 +99,83 @@ power-electronics-copilot
 * Git & GitHub
 * Software Architecture
 * Engineering Documentation
-
+* Vector Databases (FAISS)
+* Automated Testing (Pytest)
 ---
 
 # Current Status
 
 **Current Release**
 
-## v0.2.0 — Backend Foundation
+## v0.3.0 — Engineering Knowledge Retrieval
 
 ### Completed
 
-* Professional React dashboard
-* FastAPI REST API
-* Modular backend architecture
-* File upload API
-* Document management API
-* Frontend–backend integration
-* Local document repository
-* Versioned release documentation
-* Enterprise project structure
+- Professional React + TypeScript dashboard
+- FastAPI REST API
+- Modular backend architecture
+- Multi-document upload
+- Document management API
+- PDF, TXT and CSV ingestion
+- Automatic text extraction
+- Document chunking
+- Embedding generation using Sentence Transformers
+- Local FAISS vector database
+- Semantic similarity search
+- Retrieval-Augmented Generation (RAG)
+- OpenAI LLM integration
+- Source attribution with evidence chunks
+- Engineering confidence indicator
+- Backend API validation
+- Automated API testing using Pytest
+- Manual validation scenarios
+- Enterprise project structure
 
 ### Next Release
 
-**v0.3.0 — Engineering Knowledge Retrieval**
+**v0.4.0 — Knowledge Graph Intelligence**
 
 Planned additions:
 
-* PDF parsing
-* Text extraction
-* Document chunking
-* Embedding generation
-* Vector database
-* Semantic search
-* Source attribution
+- Neo4j integration
+- Engineering ontology
+- Node and relationship creation
+- Graph database population
+- Graph retrieval
+- Hybrid Vector + Graph search
+- GraphRAG pipeline
+- Knowledge graph visualisation
 
 ---
 
 # Long-Term Architecture
 
 ```
+React + TypeScript
+          │
+          ▼
+FastAPI Backend
+          │
+          ▼
+Document Processing Pipeline
+          │
+          ▼
+Chunking + Embeddings
+          │
+    ┌─────┴─────┐
+    ▼           ▼
+ FAISS       Neo4j
+    │           │
+    └─────┬─────┘
+          ▼
+   Hybrid GraphRAG
+          ▼
+   LangGraph Agent
+          ▼
+ Engineering Recommendation
+
+```
+## Outdated Architecture:
 React Frontend
         │
         ▼

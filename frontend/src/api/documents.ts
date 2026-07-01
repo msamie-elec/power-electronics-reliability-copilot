@@ -20,7 +20,8 @@ export async function uploadDocuments(files: FileList): Promise<UploadedDocument
   });
 
   if (!response.ok) {
-    throw new Error("Failed to upload documents");
+    const errorData = await response.json().catch(() => null);
+    throw new Error(errorData?.detail ?? "Failed to upload documents");
   }
 
   const data = await response.json();

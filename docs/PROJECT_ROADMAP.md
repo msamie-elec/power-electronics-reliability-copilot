@@ -11,9 +11,11 @@ The long-term goal is to build a production-ready engineering copilot capable of
 # Version Roadmap
 
 ## v0.1.0 — Frontend Prototype
+
 **Status:** ✅ Completed
 
 **Capability**
+
 - Interactive React dashboard
 - Engineering Copilot user interface
 - Document upload panel
@@ -23,6 +25,7 @@ The long-term goal is to build a production-ready engineering copilot capable of
 - Knowledge graph preview
 
 **Main Technology**
+
 - React
 - TypeScript
 - Vite
@@ -30,9 +33,11 @@ The long-term goal is to build a production-ready engineering copilot capable of
 ---
 
 ## v0.2.0 — Backend Foundation
+
 **Status:** ✅ Completed
 
 **Capability**
+
 - FastAPI backend
 - REST API architecture
 - Document upload service
@@ -40,8 +45,10 @@ The long-term goal is to build a production-ready engineering copilot capable of
 - Frontend-to-backend integration
 - Local document repository
 - Modular backend architecture
+- Swagger/OpenAPI documentation
 
 **Main Technology**
+
 - FastAPI
 - Python
 - REST API
@@ -49,105 +56,176 @@ The long-term goal is to build a production-ready engineering copilot capable of
 
 ---
 
-## v0.3.0 — Engineering Knowledge Retrieval
-**Status:** Planned
+## v0.3.0 — Engineering RAG Copilot
+
+**Status:** ✅ Completed
 
 **Capability**
-- Intelligent document ingestion
-- PDF parsing
+
+- Multi-document upload
+- PDF, TXT and CSV ingestion
+- Automatic document parsing
 - Text extraction
 - Chunk generation
-- Embedding creation
-- Vector database
-- Semantic document retrieval
+- Sentence-transformer embeddings
+- Local FAISS vector database
+- Semantic similarity search
+- Retrieval-Augmented Generation (RAG)
+- OpenAI answer generation
+- Evidence-based responses
 - Source attribution
+- Confidence scoring
+- Frontend RAG integration
+- API validation
+- Automated testing with Pytest
+- End-to-end workflow validation
 
 **Main Technology**
-- LlamaIndex
-- OpenAI Embeddings
-- FAISS (initially)
-- Vector Store
+
+- FastAPI
+- React + TypeScript
+- Sentence Transformers
+- FAISS
+- OpenAI GPT
+- Pytest
 
 ---
 
-## v0.4.0 — Knowledge Graph Intelligence
-**Status:** Planned
+## v0.4.0 — Knowledge Graph Foundation
+
+**Status:** 🚧 Next Development
 
 **Capability**
-- Engineering knowledge graph
-- Reliability ontology
-- Failure reasoning
-- Graph-enhanced retrieval
-- Explainable engineering relationships
-- GraphRAG
+
+- Engineering ontology design
+- Reliability knowledge model
+- Neo4j graph database setup
+- Component nodes
+- Failure mode nodes
+- Symptom nodes
+- Evidence nodes
+- Maintenance action nodes
+- Relationship modelling
+- Cypher querying
+- Initial graph population
+- Graph inspection and validation
 
 **Main Technology**
+
 - Neo4j
 - Cypher
-- GraphRAG
+- Python
+- Graph data modelling
 
 ---
 
-## v0.5.0 — AI Engineering Agent
+## v0.5.0 — Hybrid GraphRAG Intelligence
+
 **Status:** Planned
 
 **Capability**
-- Multi-step engineering reasoning
-- Retrieval workflow
-- Graph reasoning
-- Evidence synthesis
-- Recommendation generation
-- Evaluation workflow
-- Agent memory
+
+- Hybrid Vector + Graph retrieval
+- Graph-enhanced evidence retrieval
+- Relationship-aware diagnostic reasoning
+- Subgraph retrieval
+- GraphRAG context assembly
+- Combined vector and graph prompts
+- Explainable engineering relationships
+- Improved reliability recommendations
 
 **Main Technology**
-- LangGraph
-- LangChain
+
+- Neo4j
+- GraphRAG
+- FAISS
+- OpenAI GPT
+- Cypher
 
 ---
 
-## v0.6.0 — Cloud Deployment
+## v0.6.0 — AI Engineering Agent
+
 **Status:** Planned
 
 **Capability**
-- Cloud-ready architecture
-- Secure configuration
+
+- LangGraph agent workflow
+- Multi-step engineering reasoning
+- Tool calling
+- Graph + Vector orchestration
+- Engineering planning agent
+- Reflection and self-evaluation
+- Memory-enabled workflows
+- Recommendation workflow automation
+
+**Main Technology**
+
+- LangGraph
+- LangChain
+- Tool orchestration
+- Agent memory
+
+---
+
+## v0.7.0 — Cloud Deployment
+
+**Status:** Planned
+
+**Capability**
+
 - Azure deployment
-- Persistent storage
+- Azure OpenAI integration
+- Azure AI Search
+- Persistent cloud storage
+- Secure configuration
+- Environment management
 - Monitoring
 - Logging
 
 **Main Technology**
+
 - Microsoft Azure
+- Azure OpenAI
+- Azure AI Search
 
 ---
 
-## v0.7.0 — Production Platform
+## v0.8.0 — Production Platform
+
 **Status:** Planned
 
 **Capability**
-- Containerised application
-- Scalable deployment
-- Production infrastructure
-- CI/CD readiness
+
+- Docker containers
+- Docker Compose
 - Kubernetes deployment
+- CI/CD pipeline
+- Production monitoring
+- Scalable infrastructure
+- Deployment documentation
 
 **Main Technology**
+
 - Docker
 - Docker Compose
 - Kubernetes
+- GitHub Actions
 
 ---
 
 # v1.0.0 — Enterprise AI Copilot
+
 **Status:** Planned
 
-**First Production-Ready Portfolio Release**
+**Enterprise Production Demonstrator**
 
 **Capability**
+
 - Complete engineering copilot
 - Intelligent document retrieval
-- Graph-based reasoning
+- Knowledge graph reasoning
+- Hybrid GraphRAG
 - AI engineering workflows
 - Explainable recommendations
 - Production deployment
@@ -155,9 +233,12 @@ The long-term goal is to build a production-ready engineering copilot capable of
 - End-to-end engineering AI platform
 
 **Main Technology**
+
 - React
 - FastAPI
-- LlamaIndex
+- Sentence Transformers
+- FAISS
+- OpenAI / Azure OpenAI
 - Neo4j
 - GraphRAG
 - LangGraph
@@ -167,17 +248,45 @@ The long-term goal is to build a production-ready engineering copilot capable of
 
 ---
 
-## Planned Release Documents
+# Current Progress
 
-```
+| Version | Progress |
+|---|---|
+| v0.1.0 | ✅ Complete |
+| v0.2.0 | ✅ Complete |
+| v0.3.0 | ✅ Complete |
+| v0.4.0 | 🚧 Next Development |
+| v0.5.0 | Planned |
+| v0.6.0 | Planned |
+| v0.7.0 | Planned |
+| v0.8.0 | Planned |
+| v1.0.0 | Planned |
+
+---
+
+# Planned Release Documents
+
+```text
 docs/releases/
 
 v0.1.0_Frontend_Prototype.md
 v0.2.0_Backend_Foundation.md
-v0.3.0_Engineering_Knowledge_Retrieval.md
-v0.4.0_Knowledge_Graph_Intelligence.md
-v0.5.0_AI_Engineering_Agent.md
-v0.6.0_Cloud_Deployment.md
-v0.7.0_Production_Platform.md
+v0.3.0_Engineering_RAG_Copilot.md
+v0.4.0_Knowledge_Graph_Foundation.md
+v0.5.0_Hybrid_GraphRAG_Intelligence.md
+v0.6.0_AI_Engineering_Agent.md
+v0.7.0_Cloud_Deployment.md
+v0.8.0_Production_Platform.md
 v1.0.0_Enterprise_AI_Copilot.md
+````
+
+---
+
+# Development Principle
+
+Each release is designed to add one major capability while keeping the system stable, testable, and demonstrable.
+
+The project is intentionally developed incrementally so that every version can be used as a portfolio milestone and as a foundation for the next stage of enterprise AI development.
+
+```
 ```

@@ -6,6 +6,8 @@ from app.config import APP_NAME, APP_VERSION, FRONTEND_ORIGIN
 
 from app.api import documents, embeddings, rag, search, upload
 
+from app.api import documents, embeddings, graph, rag, search, upload
+
 app = FastAPI(
     title=APP_NAME,
     version=APP_VERSION,
@@ -34,3 +36,4 @@ app.include_router(documents.router)
 app.include_router(embeddings.router)
 app.include_router(search.router)
 app.include_router(rag.router)
+app.include_router(graph.router)

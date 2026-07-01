@@ -4,7 +4,7 @@
   "chunk_count": 110,
   "chunk_size": 1200,
   "chunk_overlap": 200,
-  "created_at": "2026-06-30T21:39:50",
+  "created_at": "2026-07-01T11:52:54",
   "chunks": [
     {
       "chunk_id": "doc_rulebase_chunk_000001",
@@ -15,7 +15,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 168,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "[Page 1]\nRule-base design for scenarios 1 to 4: \n \nRules for: \n\u2022 \nHybrid / Graph / Agentic / Contextual RAG  \n\u2022 \nStateful orchestration  \n\u2022 \nEvent-driven systems  \n\u2022 \nAsync workflows  \n\u2022 \nDeterministic transactional services  \n\u2022 \nIdempotency  \n\u2022 \nObservability  \n\u2022 \nRuntime scaling  \n\u2022 \nRBAC/security/privacy  \n\u2022 \nCPU/GPU/runtime reasoning  \n\u2022 \nEnterprise deployment evolution \n \nIf the system needs trusted knowledge or policy information beyond what the LLM was trained on, then I use a RAG-\nbased system, because retrieval from approved documents is more reliable, auditable and controllable than relying \non the LLM memory alone, using vector retrieval, BM25 retrieval or Hybrid RAG to ensure grounded and explainable \nanswers. \nIf exact wording or precise terminology matters, then I include BM25 or keyword retrieval, because semantic \nretrieval alone may miss exact phrases, policy terms or identifiers, using Azure AI Search, OpenSearch or \nElasticsearch to ensure precision and trustworthiness. \nIf knowledge exists in multiple retrieval forms such as semantic similarity, keyword matching and structured \nrelationships, then I use Hybrid RAG, because combining retrieval strategies improves"
     },
     {
@@ -27,7 +27,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 164,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ss. \nIf knowledge exists in multiple retrieval forms such as semantic similarity, keyword matching and structured \nrelationships, then I use Hybrid RAG, because combining retrieval strategies improves recall, ranking and retrieval \nrobustness, using vector DBs together with BM25 indexes to ensure better evidence coverage. \nIf relationships between entities, routes, locations or dependencies are important, then I use Graph RAG, because \ngraph reasoning naturally models connected systems such as transport networks, healthcare pathways or geospatial \nrelationships, using Neo4j, Cosmos DB Gremlin or Neptune to ensure intelligent traversal and optimisation. \nIf the system needs access to APIs, tools or operational systems, then I use Agentic RAG, because the agent must \ncoordinate retrieval, reasoning and tool invocation rather than only generate text, using LangGraph, LangChain or \ntool routers to ensure orchestrated workflow execution. \nIf standardised access to external tools and APIs is important, then I consider MCP-based orchestration, because \nMCP helps unify communication between tools and agents using standard interfaces to ensure cleaner integration \nand interoperability. \nIf"
     },
     {
@@ -39,7 +39,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 167,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "important, then I consider MCP-based orchestration, because \nMCP helps unify communication between tools and agents using standard interfaces to ensure cleaner integration \nand interoperability. \nIf multiple capabilities are needed together such as retrieval, graph reasoning, contextual memory and tool \norchestration, then I use Agentic Contextual RAG with Hybrid and Graph retrieval, because real enterprise systems \nrarely depend on a single retrieval strategy, using LangGraph orchestration with vector search, graph retrieval and \nAPIs to ensure flexible and intelligent workflows. \nIf user preferences, historical behaviour or workflow context matter, then I use Contextual RAG, because the system \nmust remember and reuse user-related information during the interaction, using workflow state DBs, Redis caches \nand contextual retrieval to ensure personalised and state-aware responses. \n\n\n[Page 2]\nIf live operational data is required such as flight APIs, NHS/FHIR APIs, GPS streams, rail schedules or geospatial data, \nthen I integrate live APIs directly, because the LLM should never become the operational source of truth, using API \nadapters and backend services to ensure real-time corr"
     },
     {
@@ -51,7 +51,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 165,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "hedules or geospatial data, \nthen I integrate live APIs directly, because the LLM should never become the operational source of truth, using API \nadapters and backend services to ensure real-time correctness. \nIf there are sensitive, restricted or regulated operations such as payments, appointments, bookings or healthcare \nrecords, then I keep those processes deterministic and backend-controlled, because operational truth, privacy and \ncompliance must remain outside LLM reasoning, using secure APIs, backend workflows and databases to ensure \ngovernance and safety. \nIf the workflow involves multiple steps such as search, refinement, comparison, confirmation, booking, payment and \nnotification, then the system naturally becomes stateful and orchestration-driven, because each step depends on \nprevious workflow state and user decisions, using LangGraph orchestration and workflow state DBs to ensure \ncontrolled progression. \nIf workflow state exists such as booking state, appointment state, trip state, audit state or confirmation state, then \nit must remain externalised outside pods and LLM memory, because pods may restart or autoscale and LLM memory \nis not reliable persistent storage,"
     },
     {
@@ -63,7 +63,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 165,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "trip state, audit state or confirmation state, then \nit must remain externalised outside pods and LLM memory, because pods may restart or autoscale and LLM memory \nis not reliable persistent storage, using PostgreSQL, Cosmos DB, DynamoDB or Redis to ensure resilience and \npersistence. \nIf a component mainly processes APIs, retrieval or ranking requests, then I keep it mostly stateless, because stateless \nservices scale horizontally much more easily, using Kubernetes HPA or ECS autoscaling to ensure efficient scalability. \nIf the architecture contains both stateful and stateless components, then I explicitly separate them early in the \ndesign, because scaling, persistence and failure handling behave very differently for each type, using external \ndatabases for stateful data and autoscaled replicas for stateless services to ensure resilience and operational \nsimplicity. \nIf operations can execute independently or concurrently, then I use asynchronous orchestration and parallel tool \nexecution, because waiting synchronously for every operation increases latency and reduces scalability, using Python \nasync/await, queues and worker pods to ensure efficient concurrency. \nIf notification"
     },
     {
@@ -75,7 +75,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 156,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "cution, because waiting synchronously for every operation increases latency and reduces scalability, using Python \nasync/await, queues and worker pods to ensure efficient concurrency. \nIf notifications, retries, ingestion jobs, delayed processing or evaluation tasks should not block the user-facing \nrequest path, then I use asynchronous queues and workers, because background workloads should be decoupled \nfrom interactive workflows, using Azure Service Bus, Kafka, Event Hubs or SQS to ensure smoother traffic handling. \nIf the platform becomes highly event-driven with continuous updates and telemetry streams, then queues, event \nbuses and streaming systems become core architectural components, because synchronous blocking workflows \ncannot efficiently manage high-frequency operational events, using Kafka, Event Hubs, Kinesis or Service Bus to \nensure scalable event processing. \nIf burst traffic, traffic spikes or operational disruptions are expected, then autoscaling, queue smoothing, caching \nand asynchronous workers become essential, because fixed static allocation becomes inefficient and fragile under \nvariable load, using Kubernetes HPA, Cluster Autoscaler, Redis and queue metri"
     },
     {
@@ -87,7 +87,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 150,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "aching \nand asynchronous workers become essential, because fixed static allocation becomes inefficient and fragile under \nvariable load, using Kubernetes HPA, Cluster Autoscaler, Redis and queue metrics to ensure scalability and \noperational stability. \nIf queueing becomes necessary, then I identify which tasks require immediate response and which tasks can be \nprocessed asynchronously, because not every operation needs synchronous execution, using queue workers and \nscaling rules based on queue depth and latency targets to ensure efficient workload distribution. \nIf operations are operationally sensitive such as booking, payment, dispatch or healthcare scheduling, then I isolate \nthose services and keep them deterministic, because transactional workflows require stronger guarantees than \nconversational workflows, using dedicated backend services and controlled state transitions to ensure reliability. \nIf the system becomes strongly asynchronous and event-driven, then observability becomes critical very early, \nbecause debugging distributed asynchronous workflows is significantly harder than debugging synchronous systems, \nusing OpenTelemetry, Application Insights, CloudWatch, stru"
     },
     {
@@ -99,7 +99,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 153,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "omes critical very early, \nbecause debugging distributed asynchronous workflows is significantly harder than debugging synchronous systems, \nusing OpenTelemetry, Application Insights, CloudWatch, structured logging and tracing to ensure operational \nvisibility. \n\n\n[Page 3]\nIf there are continuous telemetry streams, event updates or distributed workflows, then I use event-consumer \nworker pods, because independent workers process streaming events more efficiently than synchronous APIs, using \nKafka consumers or EventHub consumers to ensure scalable stream processing. \nIf the platform combines AI reasoning, graph traversal, retrieval, telemetry and asynchronous workflows, then \ndistributed tracing and structured observability become mandatory, because failures may occur across many \ninteracting components, using structlog, correlation IDs, traces and central logging platforms to ensure traceability. \nIf updates, notifications or retries should not block APIs, then I process them asynchronously, because API \nresponsiveness must remain stable even during operational load spikes, using worker queues and event consumers \nto ensure low-latency user interactions. \nIf the system is mainly A"
     },
     {
@@ -111,7 +111,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 161,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "nously, because API \nresponsiveness must remain stable even during operational load spikes, using worker queues and event consumers \nto ensure low-latency user interactions. \nIf the system is mainly API-bound, orchestration-heavy or retrieval-focused, then it is usually CPU-bound and \nnetwork-bound rather than GPU-bound, because the workload depends more on API coordination and state \nmanagement than large-scale inference, using CPU node pools to ensure cost-efficient runtime allocation. \nIf the system introduces self-hosted LLMs, rerankers, computer vision or heavy ML inference, then GPU \ninfrastructure becomes justified, because those workloads require parallel tensor computation, using GPU node \npools and model-serving pods to ensure performant inference. \nIf runtime behaviour and operational load are important, then I carefully distinguish what can run asynchronously \nand what must remain tightly controlled and transactional, because not all workloads have the same consistency \nand latency requirements, using queues, caches and orchestration policies to ensure operational reliability. \nIf there is a need for resilience against pod restarts, scaling events or deployment changes,"
     },
     {
@@ -123,7 +123,7 @@
       "page_end": null,
       "character_count": 1198,
       "word_count": 164,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "latency requirements, using queues, caches and orchestration policies to ensure operational reliability. \nIf there is a need for resilience against pod restarts, scaling events or deployment changes, then I externalise \nworkflow state and session state into databases or caches, because pod-local memory is temporary and unreliable \nfor persistent workflow coordination, using Redis and managed databases to ensure continuity. \nIf there are operational updates or real-time state changes such as GPS telemetry, rail delays or ride dispatch updates, \nthen I design the platform as event-driven, because continuous polling and synchronous coordination become \ninefficient at scale, using streaming platforms and asynchronous workers to ensure responsiveness. \nIf graph optimisation or network traversal becomes central to the business logic, then graph databases become more \nsuitable than relational-only approaches, because connected systems are naturally represented as nodes and edges, \nusing Neo4j, Neptune or Cosmos DB Gremlin to ensure efficient graph traversal. \nIf reliability and debugging are important in distributed systems, then I use structured logging, exception handling \nand central"
     },
     {
@@ -135,7 +135,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 145,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "j, Neptune or Cosmos DB Gremlin to ensure efficient graph traversal. \nIf reliability and debugging are important in distributed systems, then I use structured logging, exception handling \nand central observability, because distributed failures are difficult to trace without consistent telemetry, using \ntry/except handling, structlog, StreamHandler, OpenTelemetry and central logging platforms to ensure \ndebuggability. \nIf deployment reproducibility and operational consistency are important, then I externalise runtime definitions into \nmanifests and infrastructure-as-code, because environments must remain reproducible across development, staging \nand production, using Kubernetes YAML, Terraform, Bicep or CloudFormation to ensure portability and repeatability. \nIf scalability, resilience and operational isolation become important, then I gradually evolve from modular monolith \ntoward selected microservices, because some workloads eventually require independent scaling and ownership \nboundaries, using service separation and orchestration platforms to ensure maintainability and enterprise scalability. \n  \n \nSecurity and privacy: \nAdd these rules to the same rule-based narrative: \nIf use"
     },
     {
@@ -147,7 +147,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 169,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "aries, using service separation and orchestration platforms to ensure maintainability and enterprise scalability. \n  \n \nSecurity and privacy: \nAdd these rules to the same rule-based narrative: \nIf users, staff or services have different permissions, then I use RBAC, because not every user or component should \naccess the same data or actions, using Entra ID/IAM roles, service accounts and least-privilege policies to ensure \ncontrolled access. \n\n\n[Page 4]\nIf the system handles sensitive personal, health, payment or location data, then I apply data minimisation, because \nthe platform should only collect and store what is necessary, using scoped schemas, retention rules and access \npolicies to reduce privacy risk. \nIf identity matters, then I use strong authentication and authorisation, because appointment booking, payment, ride \nassignment or ticketing must be tied to the correct user, using OAuth2/OIDC, Entra ID, Cognito, NHS identity \nintegration or verified mobile identity. \nIf service-to-service communication is required, then I use managed identities or workload identities, because \nservices should not rely on hardcoded credentials, using Azure Managed Identity, IAM roles, Key Va"
     },
     {
@@ -159,7 +159,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 170,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "-to-service communication is required, then I use managed identities or workload identities, because \nservices should not rely on hardcoded credentials, using Azure Managed Identity, IAM roles, Key Vault or Secrets \nManager to ensure secure access. \nIf secrets, API keys or payment credentials are needed, then I never store them in code, because leaked credentials \ncan compromise the whole platform, using Key Vault, Secrets Manager, environment injection and secret rotation. \nIf payment, booking, appointment or ticketing requests may be retried, then I use idempotency keys, because retries \nmust not create duplicate payments, bookings, appointments or tickets, using unique request IDs stored in the \ntransaction database and passed to provider APIs. \nIf a user must approve an action, then I use confirmation states, because the LLM should not autonomously execute \nsensitive operations, using backend state machines such as awaiting_confirmation, confirmed, cancelled, paid or \nbooked. \nIf the system processes regulated or high-risk operations, then I keep those operations deterministic, because \nauditability and safety are more important than free-form AI behaviour, using backend rules,"
     },
     {
@@ -171,7 +171,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 173,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "he system processes regulated or high-risk operations, then I keep those operations deterministic, because \nauditability and safety are more important than free-form AI behaviour, using backend rules, validated APIs and \nexplicit state transitions. \nIf the LLM suggests an action, then I validate it before execution, because AI output may be incomplete or unsafe, \nusing schemas, policy checks, business rules, source-of-truth validation and human confirmation. \nIf personal data appears in prompts or logs, then I redact or minimise it, because logs and prompts can become \nprivacy risks, using PII filtering, structured logging policies and safe prompt construction. \nIf auditability is required, then I log decisions, tool calls, confirmations and state changes, because regulated systems \nneed traceability, using audit tables, correlation IDs, workflow IDs and immutable log storage. \nIf the system uses external APIs, then I apply timeout, retry and circuit-breaker policies, because failures should not \nexpose sensitive state or cause duplicate actions, using controlled API adapters and monitored fallback paths. \nIf APIs are internet-facing, then I use WAF, rate limiting and API gateway p"
     },
     {
@@ -183,7 +183,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 175,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "should not \nexpose sensitive state or cause duplicate actions, using controlled API adapters and monitored fallback paths. \nIf APIs are internet-facing, then I use WAF, rate limiting and API gateway policies, because public endpoints are \nexposed to abuse and overload, using Azure Front Door/WAF, API Management, AWS WAF or API Gateway throttling. \nIf different services run in the same cluster, then I isolate them logically, because one compromised or overloaded \nservice should not affect all others, using namespaces, network policies, pod security policies, RBAC and separate \nservice accounts. \nIf databases contain sensitive data, then I encrypt data at rest and in transit, because storage and network traffic \nmust remain protected, using TLS, managed database encryption, private endpoints and key management. \nIf data has different sensitivity levels, then I separate storage and access paths, because public guidance, user state, \npayment records and audit logs should not share the same access model, using separate databases, \ncontainers/buckets and access policies. \nIf event streams or queues carry sensitive workflow data, then I protect and minimise message payloads, because \nqueu"
     },
     {
@@ -195,7 +195,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 163,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "access model, using separate databases, \ncontainers/buckets and access policies. \nIf event streams or queues carry sensitive workflow data, then I protect and minimise message payloads, because \nqueues can become hidden data-exposure points, using encrypted queues, short payloads, references instead of full \nrecords, and strict consumer permissions. \nIf operational data must be retained, then I define retention policies, because keeping data forever increases risk \nand cost, using hot/warm/cold storage tiers, lifecycle rules and audit retention schedules. \nIf users need trust in AI-generated explanations, then I provide evidence and citations, because the answer must be \ntraceable to approved sources, using RAG evidence, source metadata and response validators. \n\n\n[Page 5]\nIf the system is safety-critical or privacy-sensitive, then I monitor security events continuously, because threats and \nmisuse can occur at runtime, using Sentinel, Defender for Cloud, GuardDuty, Security Hub, SIEM alerts and anomaly \ndetection. \n \nRules for  \n \n\u2022 \ntrust boundaries  \n\u2022 \ndata freshness  \n\u2022 \neventual consistency  \n\u2022 \ngraceful degradation  \n\u2022 \nhuman override  \n\u2022 \npolicy enforcement  \n\u2022 \nmulti-tena"
     },
     {
@@ -207,7 +207,7 @@
       "page_end": null,
       "character_count": 1198,
       "word_count": 154,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "alerts and anomaly \ndetection. \n \nRules for  \n \n\u2022 \ntrust boundaries  \n\u2022 \ndata freshness  \n\u2022 \neventual consistency  \n\u2022 \ngraceful degradation  \n\u2022 \nhuman override  \n\u2022 \npolicy enforcement  \n\u2022 \nmulti-tenancy  \n\u2022 \nSLA/SLO thinking  \n\u2022 \ncost governance  \n\u2022 \nsafety fallback behaviour  \n\u2022 \nAI confidence handling  \n\u2022 \nversion governance  \n\u2022 \ngeo/compliance boundaries \n \nAdditional Recommended Rules \nTrust Boundaries & Source-of-Truth Governance \nIf multiple systems provide overlapping information, then I explicitly define the source of truth for each domain, \nbecause conflicting operational data creates inconsistency and unsafe behaviour, using bounded ownership such as \nscheduling systems for appointments, rail APIs for delays and payment systems for transaction state. \nIf AI-generated recommendations affect operational workflows, then I validate them against live operational \nsystems before execution, because retrieval or reasoning may become stale or incomplete, using validation services \nand operational API verification layers. \nIf operational data may become stale, delayed or partially unavailable, then I include freshness validation and \nconfidence indicators, because users must know"
     },
     {
@@ -219,7 +219,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 155,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "d operational API verification layers. \nIf operational data may become stale, delayed or partially unavailable, then I include freshness validation and \nconfidence indicators, because users must know whether information is live, delayed or estimated, using timestamps, \nTTL policies, freshness scores and degraded-mode messaging. \n \nGraceful Degradation & Failure Modes \nIf external dependencies fail or become slow, then the platform should degrade gracefully rather than fully fail, \nbecause distributed systems must continue operating under partial outages, using cached guidance, fallback \nworkflows, retry queues and degraded operational modes. \nIf live APIs become unavailable, then I provide fallback guidance and partial functionality where safe, because \noperational continuity is better than complete service failure, using cached policies, delayed retries and user-visible \ndegraded-state messaging. \n\n\n[Page 6]\nIf event streams become delayed or inconsistent, then I apply reconciliation workflows, because distributed systems \nmay experience eventual consistency and out-of-order updates, using reconciliation workers, replay logic and state-\ncorrection jobs. \n \nHuman Override & Governa"
     },
     {
@@ -231,7 +231,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 149,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "workflows, because distributed systems \nmay experience eventual consistency and out-of-order updates, using reconciliation workers, replay logic and state-\ncorrection jobs. \n \nHuman Override & Governance \nIf operational recommendations may impact safety, compliance or public operations, then humans or operational \nsystems remain the final authority, because AI assistance must not override regulated operational governance, using \napproval checkpoints, operator override workflows and backend validation layers. \nIf AI confidence is low or evidence is weak, then the system should escalate, defer or request clarification, because \nlow-confidence automation increases operational risk, using confidence thresholds, fallback workflows and human-\nreview escalation. \nIf recommendations affect fairness, accessibility or public service availability, then I apply policy-aware ranking rules, \nbecause optimisation alone may unintentionally disadvantage users or regions, using governance constraints and \nexplainable ranking policies. \n \nMulti-Tenancy & Isolation \nIf the platform serves multiple organisations, providers or operational regions, then I isolate tenant data and \nworkflows logically or p"
     },
     {
@@ -243,7 +243,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 154,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "d \nexplainable ranking policies. \n \nMulti-Tenancy & Isolation \nIf the platform serves multiple organisations, providers or operational regions, then I isolate tenant data and \nworkflows logically or physically, because tenant crossover creates security and governance risks, using tenant-\naware schemas, namespaces, RBAC and isolated storage boundaries. \nIf environments differ across development, staging and production, then I isolate configuration and secrets per \nenvironment, because cross-environment leakage can create operational and security failures, using environment-\nscoped IAM, vaults and deployment pipelines. \n \nData Governance & Lifecycle \nIf embeddings, indexes or prompts evolve over time, then I version AI artefacts explicitly, because retrieval behaviour \nand AI responses must remain reproducible and auditable, using embedding-version metadata, prompt registries \nand index versioning. \nIf models, prompts or ranking strategies change in production, then I evaluate them before rollout, because AI \nregressions may silently degrade system quality, using offline evaluation datasets, shadow testing and staged \ndeployments. \nIf operational telemetry grows continuously, then I"
     },
     {
@@ -255,7 +255,7 @@
       "page_end": null,
       "character_count": 1195,
       "word_count": 154,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "e rollout, because AI \nregressions may silently degrade system quality, using offline evaluation datasets, shadow testing and staged \ndeployments. \nIf operational telemetry grows continuously, then I separate hot operational data from long-term analytics storage, \nbecause real-time systems and historical analytics have different latency and retention requirements, using \nhot/warm/cold architecture. \n \nSLO/SLA & Runtime Governance \nIf the platform supports real-time operational workflows, then I define SLOs and latency budgets early, because \narchitecture decisions depend on acceptable response times and failure thresholds, using API latency targets, queue \nlag targets and uptime objectives. \nIf some workloads are more critical than others, then I prioritise queues and runtime resources, because \noperationally critical workflows must survive traffic spikes, using priority queues, QoS rules and workload isolation. \nIf runtime cost may grow rapidly with scale, then I continuously monitor AI and infrastructure consumption, because \nuncontrolled inference and orchestration costs can become operationally unsustainable, using token monitoring, \nautoscaling policies and budget alerts."
     },
     {
@@ -267,7 +267,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 159,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "AI and infrastructure consumption, because \nuncontrolled inference and orchestration costs can become operationally unsustainable, using token monitoring, \nautoscaling policies and budget alerts. \n \n\n\n[Page 7]\nSecurity & Compliance Extensions \nIf the system operates across countries or regulated regions, then I enforce data residency and regional governance \nboundaries, because legal compliance may restrict where data is processed or stored, using regional deployments \nand geo-scoped storage. \nIf APIs are exposed to third parties or partners, then I apply scoped API contracts and rate governance, because \nexternal integrations increase operational and abuse risk, using API gateways, quotas, signed tokens and usage \npolicies. \nIf AI prompts may contain operational instructions or sensitive context, then I protect against prompt injection and \ntool misuse, because external content may manipulate orchestration behaviour, using tool whitelisting, prompt \nisolation and retrieval sanitisation. \nIf the platform uses tool-calling agents, then I restrict tool permissions per workflow context, because not every \nworkflow should access every operational capability, using scoped tool registrie"
     },
     {
@@ -279,7 +279,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 150,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "n. \nIf the platform uses tool-calling agents, then I restrict tool permissions per workflow context, because not every \nworkflow should access every operational capability, using scoped tool registries and policy-aware orchestration. \n \nOperational AI Governance \nIf retrieval evidence is weak, conflicting or incomplete, then the system should communicate uncertainty explicitly, \nbecause users should distinguish between verified operational truth and probabilistic AI reasoning, using evidence \nscoring and confidence-aware responses. \nIf the AI system affects operational decisions, then I continuously evaluate hallucination, grounding and ranking \nquality, because production AI quality drifts over time, using RAGAS, DeepEval, human review datasets and \noperational feedback loops. \nIf enterprise adoption grows, then I evolve from experimentation toward governed AI lifecycle management, \nbecause production AI requires operational discipline, using CI/CD, evaluation gates, model registries and LLMOps \ngovernance. \n \nThese additions align extremely well with the direction already established in the brainstorming document for: \n\u2022 \ndeterministic workflows,  \n\u2022 \nsource-of-truth separation,"
     },
     {
@@ -291,7 +291,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 162,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "and LLMOps \ngovernance. \n \nThese additions align extremely well with the direction already established in the brainstorming document for: \n\u2022 \ndeterministic workflows,  \n\u2022 \nsource-of-truth separation,  \n\u2022 \norchestration,  \n\u2022 \nevent-driven systems,  \n\u2022 \noperational governance,  \n\u2022 \ngraph reasoning,  \n\u2022 \nreal-time coordination,  \n\u2022 \nand enterprise AI runtime managemen \n \nYes. Your rule-base already covers RAG, orchestration, state, async, observability, security, source of truth and \nruntime scaling, but CI/CD and LLMOps should become explicit rule groups. This aligns well with the role, which \nexplicitly mentions LLMOps, evaluation tools, model observability, RAG prototypes, agentic architectures, and \nDevOps/cloud deployment. \nAdd these two new rule blocks. \nA. CI/CD / DevSecOps rules \n\n\n[Page 8]\nIf the system is intended for production, then I define a CI/CD pipeline early, because AI systems must be tested, \npackaged, deployed and monitored consistently across environments, using GitHub Actions, Azure DevOps, GitLab \nCI or CodePipeline to ensure repeatable delivery. \nIf code changes are committed, then I trigger CI automatically, because every change should be validated before \nme"
     },
     {
@@ -303,7 +303,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 174,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ub Actions, Azure DevOps, GitLab \nCI or CodePipeline to ensure repeatable delivery. \nIf code changes are committed, then I trigger CI automatically, because every change should be validated before \nmerging, using linting, formatting checks, unit tests, integration tests, API tests and security scans. \nIf the system contains RAG, agents or prompts, then CI must test more than normal code, because AI behaviour can \nregress even when code still passes, using prompt regression tests, retrieval tests, agent workflow tests and golden \ntest questions. \n \nIf the system uses APIs, tools and agentic orchestration, then I include integration tests, because the agent must \ncorrectly call tools, handle responses and manage failures, using mocked APIs, contract tests and workflow \nsimulation. \n \nIf the system uses external APIs, then I add contract tests, because provider schema changes can break the \napplication, using OpenAPI schemas, Pydantic validation and mocked provider responses. \n \nIf the system handles sensitive workflows such as booking, payment, appointment or dispatch, then I add security \nand transaction tests, because failures may create unsafe or duplicated actions, using idempote"
     },
     {
@@ -315,7 +315,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 167,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "stem handles sensitive workflows such as booking, payment, appointment or dispatch, then I add security \nand transaction tests, because failures may create unsafe or duplicated actions, using idempotency tests, permission \ntests, secret scanning and dependency vulnerability scanning. \n \nIf CI succeeds, then I build a Docker image, because deployment should use the same tested artefact across \nenvironments, using Docker, image tags, SBOMs and container scanning. \n \nIf the Docker image passes validation, then I push it to a container registry, because deployment should pull \nimmutable versioned artefacts, using ACR, ECR, GCR or Artifact Registry. \n \nIf the system is deployed to cloud, then I use deployment manifests and infrastructure-as-code, because \nenvironments must be reproducible, using Kubernetes YAML, Helm, Terraform, Bicep, CloudFormation or task \ndefinitions. \n \nIf the deployment reaches dev or staging, then I run smoke tests and integration tests, because successful \ndeployment does not guarantee correct runtime behaviour, using health checks, API probes, synthetic user journeys \nand test tool calls. \n \nIf the release affects prompts, retrieval, ranking or agent workflow,"
     },
     {
@@ -327,7 +327,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 170,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "t does not guarantee correct runtime behaviour, using health checks, API probes, synthetic user journeys \nand test tool calls. \n \nIf the release affects prompts, retrieval, ranking or agent workflow, then I use approval gates or staged rollout, \nbecause AI changes may affect user trust and safety, using manual approvals, canary deployment, shadow testing \nor blue-green deployment. \n \nIf production deployment fails or quality drops, then I must be able to roll back, because runtime AI or workflow \nregressions can affect users quickly, using previous container images, versioned prompts, versioned indexes and \nrollback manifests. \n \nIf multiple environments exist, then secrets and configuration must be environment-specific, because \ndev/staging/prod should not share credentials or operational state, using Key Vault, Secrets Manager, managed \nidentity and environment-scoped variables. \n\n\n[Page 9]\n \nB. LLMOps / AI lifecycle rules \nIf the system uses prompts, then I version prompts explicitly, because prompt changes can alter behaviour even \nwhen code does not change, using prompt registries, Git versioning, metadata and release notes. \n \nIf the system uses retrieval, then I version inde"
     },
     {
@@ -339,7 +339,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 170,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "y, because prompt changes can alter behaviour even \nwhen code does not change, using prompt registries, Git versioning, metadata and release notes. \n \nIf the system uses retrieval, then I version indexes and embeddings, because retrieval behaviour depends on \nchunking, embedding model, metadata and index configuration, using index version IDs, embedding model tags and \ndocument lineage. \n \nIf the system uses RAG, then I evaluate retrieval quality continuously, because poor retrieval leads to weak or \nhallucinated answers, using precision, recall, hit rate, MRR, groundedness and answer relevance metrics. \n \nIf the system uses agentic workflows, then I evaluate tool-call behaviour, because the agent must choose the correct \ntool, pass valid arguments and respect safety boundaries, using agent trace tests, tool-call accuracy and workflow \ncompletion metrics. \n \nIf the system generates user-facing answers, then I evaluate groundedness and hallucination risk, because users \nmust be able to trust recommendations, using RAGAS, DeepEval, TruLens, LangSmith or human review sets. \n \nIf the system uses ranking or recommendation, then I evaluate ranking quality, because the best answer is not"
     },
     {
@@ -351,7 +351,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 172,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "trust recommendations, using RAGAS, DeepEval, TruLens, LangSmith or human review sets. \n \nIf the system uses ranking or recommendation, then I evaluate ranking quality, because the best answer is not only \ncorrect but also useful, using relevance scores, user selection rate, click-through rate, ranking regression tests and \nbusiness rules. \n \nIf the system uses LLMs in production, then I monitor latency and cost, because token usage and external API calls \ncan become expensive or slow, using token tracking, p95 latency, cost per session and budget alerts. \n \nIf the system calls tools or APIs through an agent, then I trace every tool call, because debugging agentic systems \nrequires visibility into intermediate reasoning and actions, using LangSmith, OpenTelemetry, Application Insights or \nCloudWatch/X-Ray. \n \nIf the system uses RAG evidence, then I store citations and source metadata, because answers must be auditable, \nusing \ndocument \nIDs, \nchunk \nIDs, \ntimestamps, \nsource \nURLs \nand \nretrieval \nscores. \n \nIf retrieved evidence is weak, conflicting or stale, then the system should avoid confident answers, because \nuncertainty must be handled safely, using confidence thresholds, c"
     },
     {
@@ -363,7 +363,7 @@
       "page_end": null,
       "character_count": 1196,
       "word_count": 166,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "retrieval \nscores. \n \nIf retrieved evidence is weak, conflicting or stale, then the system should avoid confident answers, because \nuncertainty must be handled safely, using confidence thresholds, clarification prompts, fallback responses and \nhuman escalation. \n \nIf the system uses live operational data, then I separate LLM reasoning from source-of-truth validation, because the \nLLM should not invent prices, availability, appointments, driver locations or train capacity, using live APIs, database \nvalidation and freshness checks. \n \nIf the model, prompt, retriever or ranking strategy changes, then I compare it against a baseline, because AI \nimprovements must be measurable, using offline evaluation sets, A/B testing, shadow mode and regression \ndashboards. \n\n\n[Page 10]\n \nIf production feedback is collected, then I feed it back into evaluation and improvement, because real user behaviour \nreveals gaps in prompts, retrieval and ranking, using feedback labels, failure analysis and iterative prompt/index \nupdates. \n \nA good new top-level rule category would be: \nRules for: \n\u2022 CI/CD and DevSecOps \n\u2022 AI artefact versioning \n\u2022 Prompt and retrieval regression testing \n\u2022 RAG evaluation"
     },
     {
@@ -375,7 +375,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 167,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ative prompt/index \nupdates. \n \nA good new top-level rule category would be: \nRules for: \n\u2022 CI/CD and DevSecOps \n\u2022 AI artefact versioning \n\u2022 Prompt and retrieval regression testing \n\u2022 RAG evaluation \n\u2022 Agent workflow testing \n\u2022 Runtime LLMOps monitoring \n\u2022 Cost, latency and token governance \n\u2022 Feedback-driven improvement \n \nThis fits your existing lifecycle structure, where CI/CD, testing, monitoring, evaluation and LLMOps are already \ntreated as part of the delivery lifecycle. \n \nAdditional Rules for Graph RAG Construction and Integration \nIf the business problem depends on relationships, routes, dependencies, hierarchies, causal chains, or network \ntraversal, then I introduce a graph layer, because vector retrieval alone cannot reliably represent how entities are \nconnected, using Neo4j, Amazon Neptune, Cosmos DB Gremlin, TigerGraph, or a property-graph layer. \nIf the graph is being introduced, then I first define the graph purpose, because not every system needs the same \ngraph, using domain questions such as route optimisation, root-cause analysis, nearby alternatives, referral \npathways, dependency tracing, or component impact analysis. \nIf the domain contains recurring object"
     },
     {
@@ -387,7 +387,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 162,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ng domain questions such as route optimisation, root-cause analysis, nearby alternatives, referral \npathways, dependency tracing, or component impact analysis. \nIf the domain contains recurring object types (means: it naturally contains reusable node ), then I define node types \nexplicitly, because graph quality depends on clear entity modelling, using nodes such as Airport, Airline, Route, Clinic, \nPatient Location, Service, Component, Sensor, Fault, Maintenance Action, Document, Chunk, Policy, or Event. \nIf the domain contains meaningful connections between objects, then I define edge types explicitly, because graph \nreasoning happens through relationships, using edges such as located_in, connected_to, operated_by, causes, \nmonitored_by, depends_on, belongs_to, available_at, refers_to, mentions, supports, contradicts, or mitigated_by. \nIf textual evidence is needed for LLM grounding, then I include chunk nodes as well as entity nodes, because Graph \nRAG should support both structured reasoning and evidence traceability, using Chunk \u2192 mentions \u2192 Entity and \nChunk \u2192 supports \u2192 Relationship links. \nIf the graph contains both real-world entities and document chunks, then I separate t"
     },
     {
@@ -399,7 +399,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 168,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "reasoning and evidence traceability, using Chunk \u2192 mentions \u2192 Entity and \nChunk \u2192 supports \u2192 Relationship links. \nIf the graph contains both real-world entities and document chunks, then I separate their node categories, because \nentity nodes represent domain concepts while chunk nodes represent evidence, using labels such as EntityNode, \nEvidenceChunk, SourceDocument, EventNode, and SummaryNode. \nIf the graph will support multiple scenarios, then I create an ontology or schema before ingestion, because \nuncontrolled extraction creates inconsistent nodes and duplicate relationships, using a controlled vocabulary of \nnode labels, edge labels, required properties, and allowed relationship patterns. \n\n\n[Page 11]\nIf the ontology is uncertain at the beginning, then I start with a minimal schema and expand it iteratively, because \nover-engineering the graph too early slows development, using a small MVP graph around the most important \nentities and relationships. \nIf entities may appear under different names, then I add entity resolution and normalisation, because the graph \nbecomes fragmented if \u201cLondon Heathrow\u201d, \u201cHeathrow Airport\u201d, and \u201cLHR\u201d are stored as unrelated nodes, using \nalia"
     },
     {
@@ -411,7 +411,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 162,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "er different names, then I add entity resolution and normalisation, because the graph \nbecomes fragmented if \u201cLondon Heathrow\u201d, \u201cHeathrow Airport\u201d, and \u201cLHR\u201d are stored as unrelated nodes, using \naliases, canonical IDs, fuzzy matching, metadata rules, and human review for uncertain matches. \nIf relationships are extracted from documents, then I store provenance for every edge, because graph reasoning \nmust remain auditable, using source document ID, chunk ID, extraction method, timestamp, confidence score, and \nversion metadata. \nIf relationship extraction uses an LLM, then I validate extracted triples before writing them to the graph, because \nLLMs may infer unsupported relationships, using schema validation, allowed edge rules, confidence thresholds, and \nhuman approval for high-risk domains. \nIf operational data changes continuously, then I distinguish static knowledge from live operational truth, because \nthe graph should not replace source-of-truth APIs, using live APIs for availability, prices, appointment slots, telemetry, \nor dispatch state. Your scenarios already apply this source-of-truth principle, for example flight prices and availability \ncome from GDS/aggregation API"
     },
     {
@@ -423,7 +423,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 166,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "bility, prices, appointment slots, telemetry, \nor dispatch state. Your scenarios already apply this source-of-truth principle, for example flight prices and availability \ncome from GDS/aggregation APIs rather than LLM memory.  \nIf graph data is derived from live systems, then I attach freshness metadata, because stale graph relationships can \nproduce unsafe recommendations, using last_updated, TTL, validity window, source system, and freshness score. \nIf the graph must evolve after deployment, then I design incremental ingestion, because new documents, APIs, logs, \nor events should add new nodes, edges, chunks, and embeddings without rebuilding everything from scratch. \nIf new knowledge is uploaded, then I run the same ingestion pipeline again, because Graph RAG updates like RAG \nbut adds structure, using parsing, chunking, entity extraction, relationship extraction, entity resolution, graph write, \nembedding update, and index refresh. \nIf the graph contains searchable text or concepts, then I embed nodes and chunks, because semantic search helps \nfind the right graph entry points, using embeddings for entity descriptions, chunk text, summaries, and relationship \ndescriptions. \nIf"
     },
     {
@@ -435,7 +435,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 164,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": ", then I embed nodes and chunks, because semantic search helps \nfind the right graph entry points, using embeddings for entity descriptions, chunk text, summaries, and relationship \ndescriptions. \nIf graph retrieval must be accurate, then I maintain graph index, vector index, and metadata index together, because \neach supports a different retrieval function: graph traversal finds connections, vector search finds semantic similarity, \nand metadata filtering enforces constraints. \nIf a user query arrives, then I first identify candidate entities and intent, because traversal needs suitable starting \npoints, using query parsing, entity linking, semantic search, keyword search, and metadata filtering. \nIf candidate entities are found, then I perform controlled graph traversal, because unlimited traversal can produce \nnoisy or irrelevant context, using hop limits, edge-type filters, path scoring, direction constraints, and domain-\nspecific traversal rules. \nIf several traversal paths are possible, then I rank the paths, because the best answer depends on relevance, \nconfidence, freshness, source quality, and business constraints, using weighted scoring over semantic similarity, \ngraph d"
     },
     {
@@ -447,7 +447,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 174,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ssible, then I rank the paths, because the best answer depends on relevance, \nconfidence, freshness, source quality, and business constraints, using weighted scoring over semantic similarity, \ngraph distance, edge confidence, recency, and user preferences. \nIf the retrieved graph is too large, then I extract a focused subgraph, because the LLM needs compact context rather \nthan the whole network, using top-k paths, neighbourhood pruning, community selection, and evidence-based \nfiltering. \nIf the LLM receives graph context, then I format it as structured reasoning evidence, because raw graph triples are \ndifficult to use directly, using entities, relationships, reasoning paths, supporting chunks, source citations, and \nconfidence indicators. \nIf the answer depends on a graph path, then I expose the reasoning path to the user, because Graph RAG is valuable \nfor explainability, using statements such as \u201cA connects to B, B depends on C, therefore C may influence A.\u201d \n\n\n[Page 12]\nIf the graph supports operational decisions, then I validate final recommendations against live systems, because \ngraph reasoning may suggest possibilities but live APIs confirm current truth, using availabili"
     },
     {
@@ -459,7 +459,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 165,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "aph supports operational decisions, then I validate final recommendations against live systems, because \ngraph reasoning may suggest possibilities but live APIs confirm current truth, using availability checks, booking APIs, \nscheduling APIs, telemetry APIs, or provider validation. \nIf graph traversal becomes central to the runtime, then I monitor graph performance separately, because graph \nqueries can become expensive, using query latency, traversal depth, number of visited nodes, cache hit rate, graph \nDB CPU/RAM, and slow-query logs. \nIf the graph changes over time, then I version graph schema, embeddings, prompts, indexes, and extraction rules, \nbecause retrieval behaviour must be reproducible and auditable. \nIf the graph is used in regulated or safety-sensitive systems, then I keep sensitive operations outside the graph \nretriever, because the graph should inform decisions but not execute official actions, using deterministic backend \nservices, confirmation states, audit logs, and source-of-truth validation. \nThis block fits naturally after your existing Graph RAG rule and before Agentic RAG rules. \n \n \n\n\n[Page 13]\nRULE GROUP \u2014 Shared Infrastructure vs Logical Responsibility"
     },
     {
@@ -471,7 +471,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 154,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "d source-of-truth validation. \nThis block fits naturally after your existing Graph RAG rule and before Agentic RAG rules. \n \n \n\n\n[Page 13]\nRULE GROUP \u2014 Shared Infrastructure vs Logical Responsibility \nIf the same infrastructure technology supports multiple operational responsibilities, then I separate logical \nownership even if the physical technology is shared, because orchestration memory, retrieval memory, transactional \nstate and audit state have different operational purposes, using separate schemas, namespaces, key prefixes, \nretention policies and access controls to ensure maintainability and governance. \nIf Redis or PostgreSQL supports multiple workloads, then I isolate data by responsibility rather than mixing all data \ntogether, because session memory, workflow state, RAG context, audit logs and transactional state have different \nlifecycle and consistency requirements, using schema separation, logical databases, tenant prefixes and scoped \naccess policies. \nIf orchestration state and retrieval context both use Redis or PostgreSQL, then I distinguish runtime workflow \nmemory from retrieval-conditioning memory, because orchestration continuity and retrieval augmentation so"
     },
     {
@@ -483,7 +483,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 151,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "state and retrieval context both use Redis or PostgreSQL, then I distinguish runtime workflow \nmemory from retrieval-conditioning memory, because orchestration continuity and retrieval augmentation solve \ndifferent operational problems, using separate context services and retrieval-aware context injection. \nIf a storage system becomes overloaded by mixed workloads, then I separate operational responsibilities physically, \nbecause transactional consistency, cache latency and retrieval scaling may evolve differently over time, using \ndedicated Redis clusters, separate PostgreSQL instances or workload-specific databases. \n \nRULE GROUP \u2014 Memory Hierarchy Governance \nIf memory exists at multiple architectural layers, then I explicitly define memory hierarchy and persistence \nboundaries, because request memory, session memory, retrieval memory, workflow state and audit history have \ndifferent reliability requirements, using local memory, Redis, PostgreSQL, vector DBs and audit stores appropriately. \nIf data is only needed during one request, then I keep it in local request memory only, because external persistence \nincreases unnecessary complexity and latency, using in-process variables"
     },
     {
@@ -495,7 +495,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 162,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "iately. \nIf data is only needed during one request, then I keep it in local request memory only, because external persistence \nincreases unnecessary complexity and latency, using in-process variables and temporary request context. \nIf memory must survive retries, autoscaling or pod restarts, then I externalise it immediately, because pod-local \nmemory is unreliable in distributed cloud environments, using Redis, PostgreSQL or distributed state stores. \nIf memory affects retrieval quality, then I treat it as retrieval context rather than transactional state, because \nretrieval augmentation and workflow persistence have different operational semantics, using contextual RAG stores \nand retrieval-aware memory injection. \nIf memory affects deterministic operational workflows, then I treat it as controlled state rather than conversational \ncontext, because transactional systems require explicit state transitions and auditability, using workflow state \nmachines and durable databases. \n \nRULE GROUP \u2014 Queue Governance \nIf work only needs to be completed once by one consumer, then I use queues instead of event streams, because \ntask-oriented workloads require ownership rather than broadcast"
     },
     {
@@ -507,7 +507,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 158,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "GROUP \u2014 Queue Governance \nIf work only needs to be completed once by one consumer, then I use queues instead of event streams, because \ntask-oriented workloads require ownership rather than broadcast propagation, using Service Bus, SQS or RabbitMQ. \nIf queue consumers process sensitive workflows, then I enforce idempotency and retry ownership, because retries \nmay otherwise create duplicated operational actions, using idempotency keys, retry policies and dead-letter queues. \nIf queue latency affects operational SLAs, then I monitor queue depth and processing lag continuously, because \nqueue backlog directly impacts user-facing responsiveness, using autoscaling triggers and operational metrics. \nIf asynchronous work becomes operationally critical, then I isolate worker types by responsibility, because \nnotification workers, reconciliation workers and ingestion workers scale differently and fail differently, using \ndedicated worker pools and workload-specific autoscaling. \nIf retries become frequent, then I separate retry queues from primary processing queues, because retry storms can \ndestabilise healthy operational workloads, using delayed retry queues and backoff policies. \nIf mes"
     },
     {
@@ -519,7 +519,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 163,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ome frequent, then I separate retry queues from primary processing queues, because retry storms can \ndestabilise healthy operational workloads, using delayed retry queues and backoff policies. \nIf messages repeatedly fail processing, then I move them into dead-letter queues, because poison messages should \nnot block operational throughput, using DLQ routing and operational review workflows. \n\n\n[Page 14]\n \nRULE GROUP \u2014 Event Streaming Governance \nIf multiple independent services must react to the same operational fact, then I use event streams instead of queues, \nbecause streams support replayable multi-consumer coordination, using Kafka, Event Hubs or Kinesis. \nIf event streams become operationally important, then I define event contracts explicitly, because distributed \nsystems require schema stability and version governance, using event schema registries, version IDs and correlation \nidentifiers. \nIf event ordering matters, then I partition events by entity or workflow key, because distributed streams may \notherwise process updates out of order, using partition keys and ordering policies. \nIf stream consumers evolve independently, then I decouple producers from consumers, because"
     },
     {
@@ -531,7 +531,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 151,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "istributed streams may \notherwise process updates out of order, using partition keys and ordering policies. \nIf stream consumers evolve independently, then I decouple producers from consumers, because operational services \nshould not require synchronized deployments, using contract-based event governance. \nIf stream lag increases, then I scale consumer groups independently, because event throughput and operational \ndemand fluctuate dynamically, using stream-lag autoscaling policies. \nIf event history may need replay or recovery, then I retain replayable event logs, because distributed systems require \noperational recovery and auditing, using Kafka retention policies or immutable event stores. \n \nRULE GROUP \u2014 Worker Architecture Governance \nIf asynchronous processing exists, then I design worker architecture explicitly rather than treating workers as generic \ninfrastructure, because each worker type owns distinct operational responsibilities, using dedicated worker services \nand workload isolation. \nIf worker workloads differ significantly, then I separate worker pools, because graph ingestion, retries, notifications \nand analytics have different scaling and latency characteristics,"
     },
     {
@@ -543,7 +543,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 159,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "d isolation. \nIf worker workloads differ significantly, then I separate worker pools, because graph ingestion, retries, notifications \nand analytics have different scaling and latency characteristics, using isolated deployments and autoscaling groups. \nIf workers consume operational events, then I treat them as runtime consumers rather than APIs, because worker \nexecution is event-driven rather than request-driven, using queue consumers and stream consumers. \nIf workers process operational state changes, then I make processing idempotent, because distributed systems \nnaturally generate retries and duplicate deliveries, using event IDs and state validation. \nIf workers fail repeatedly, then I escalate operational visibility, because silent background failures are difficult to \ndetect in distributed systems, using alerts, DLQs and operational dashboards. \nIf worker execution may overload shared infrastructure, then I apply concurrency limits and workload quotas, \nbecause uncontrolled async scaling can destabilise databases and APIs, using rate limiting and bounded concurrency. \n \nRULE GROUP \u2014 Stateful vs Stateless Governance \nIf any service replica can process the next request indepe"
     },
     {
@@ -555,7 +555,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 148,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "nc scaling can destabilise databases and APIs, using rate limiting and bounded concurrency. \n \nRULE GROUP \u2014 Stateful vs Stateless Governance \nIf any service replica can process the next request independently, then I keep the service stateless, because stateless \nservices scale horizontally more easily, using externalised shared state. \nIf workflow continuity matters across requests, then I externalise workflow state, because pod-local memory cannot \nguarantee continuity during autoscaling or restart events, using Redis and durable databases. \nIf transactional correctness matters, then I separate conversational context from operational state, because \nconversational memory is probabilistic while transactional state must remain deterministic, using workflow state \nmachines and controlled transitions. \nIf state transitions affect operational truth, then I validate allowed transitions explicitly, because invalid transitions \ncreate inconsistent distributed state, using state-machine orchestration and backend validators. \nIf state becomes distributed across multiple systems, then I introduce reconciliation workflows, because eventual \nconsistency naturally creates temporary divergence,"
     },
     {
@@ -567,7 +567,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 151,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "tration and backend validators. \nIf state becomes distributed across multiple systems, then I introduce reconciliation workflows, because eventual \nconsistency naturally creates temporary divergence, using reconciliation workers and repair logic. \n\n\n[Page 15]\n \nRULE GROUP \u2014 Source-of-Truth Governance \nIf AI recommendations affect operational workflows, then operational APIs remain the final source of truth, because \nretrieval and LLM reasoning may become stale or probabilistic, using live validation services before execution. \nIf retrieved information conflicts with operational systems, then I trust operational systems over retrieval context, \nbecause transactional systems own authoritative operational state, using source-priority validation policies. \nIf operational data changes rapidly, then I attach freshness metadata to retrieved evidence, because users must \ndistinguish between live and stale operational information, using TTLs, timestamps and confidence indicators. \nIf retrieval evidence becomes weak or incomplete, then I reduce automation confidence, because enterprise AI \nsystems should fail safely under uncertainty, using fallback workflows and escalation logic. \n \nRULE GR"
     },
     {
@@ -579,7 +579,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 151,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "evidence becomes weak or incomplete, then I reduce automation confidence, because enterprise AI \nsystems should fail safely under uncertainty, using fallback workflows and escalation logic. \n \nRULE GROUP \u2014 Operational Consistency Governance \nIf workflows span multiple distributed systems, then I assume eventual consistency rather than immediate global \nconsistency, because distributed systems naturally propagate updates asynchronously, using reconciliation and \nreplay workflows. \nIf distributed state may diverge temporarily, then I compare operational truth across systems continuously, because \npayment providers, booking systems and internal databases may update independently, using reconciliation engines \nand consistency checks. \nIf retries or duplicate events may occur, then I enforce idempotent processing, because distributed systems cannot \nguarantee exactly-once delivery reliably, using event IDs and deduplication policies. \nIf state recovery becomes necessary after outages, then I rebuild state from event history where possible, because \nreplayable operational logs improve resilience and auditability, using event sourcing or replay mechanisms. \n \nRULE GROUP \u2014 Operational Runt"
     },
     {
@@ -591,7 +591,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 152,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "I rebuild state from event history where possible, because \nreplayable operational logs improve resilience and auditability, using event sourcing or replay mechanisms. \n \nRULE GROUP \u2014 Operational Runtime Governance \nIf operational load changes dynamically, then I scale infrastructure based on workload metrics rather than static \nallocation, because queue depth, stream lag and API latency fluctuate continuously, using autoscaling controllers \nand runtime metrics. \nIf AI inference cost becomes significant, then I separate lightweight orchestration workloads from heavy inference \nworkloads, because orchestration is usually CPU/network-bound while inference may require GPUs, using workload-\nspecific node pools. \nIf runtime cost grows rapidly, then I monitor token usage, API consumption and autoscaling behaviour continuously, \nbecause uncontrolled AI orchestration can become operationally unsustainable, using budget alerts and runtime \nobservability. \nIf services share infrastructure, then I isolate critical workloads operationally, because retries, telemetry and \ningestion should not starve transactional workflows, using priority queues and workload isolation. \n \nRULE GROUP \u2014 Enterpris"
     },
     {
@@ -603,7 +603,7 @@
       "page_end": null,
       "character_count": 1198,
       "word_count": 152,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "I isolate critical workloads operationally, because retries, telemetry and \ningestion should not starve transactional workflows, using priority queues and workload isolation. \n \nRULE GROUP \u2014 Enterprise Multi-Tenant Governance \nIf the platform supports multiple tenants or providers, then I isolate retrieval indexes, workflow state and \noperational storage logically or physically, because tenant crossover creates governance and security risk, using \ntenant-aware routing and isolated namespaces. \nIf tenant-specific prompts or retrieval rules exist, then I version and scope them per tenant, because AI behaviour \nmay differ across organisations and regulatory environments, using tenant-scoped configuration registries. \n\n\n[Page 16]\nIf operational policies differ across regions or providers, then I externalise policy configuration from orchestration \nlogic, because hardcoded governance rules reduce maintainability and scalability, using policy engines and \nconfiguration stores. \nThese additions would close most of the remaining enterprise architecture gaps in your rulebase and align it much \nmore strongly with: \n\u2022 \ndistributed systems architecture,  \n\u2022 \nevent-driven runtime engineering,"
     },
     {
@@ -615,7 +615,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 166,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ns would close most of the remaining enterprise architecture gaps in your rulebase and align it much \nmore strongly with: \n\u2022 \ndistributed systems architecture,  \n\u2022 \nevent-driven runtime engineering,  \n\u2022 \noperational AI governance,  \n\u2022 \nenterprise orchestration,  \n\u2022 \nand large-scale production Agentic RAG systems \n \nRules for External API, SDK, Adapter, and GDS Integration \nIf the platform needs live operational data such as flight availability, fares, seat status, booking rules, or ticket \nconfirmation, then I integrate external provider APIs or GDS systems, because the LLM must not invent operational \ntruth, using Amadeus, Sabre, airline APIs, flight aggregators, or booking-provider APIs. \nIf the external system exposes standard HTTP endpoints, then I use REST API integration, because REST is simple, \nwidely supported, and suitable for search, booking, payment, notification, and validation workflows, using FastAPI \nservice adapters, HTTP clients, OpenAPI schemas, and typed request/response models. \nIf the external provider exposes flexible query-based access, then I consider GraphQL, because the application may \nneed to request only specific fields from complex travel objects, usi"
     },
     {
@@ -627,7 +627,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 161,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ponse models. \nIf the external provider exposes flexible query-based access, then I consider GraphQL, because the application may \nneed to request only specific fields from complex travel objects, using GraphQL clients and schema validation to \nreduce over-fetching and improve structured integration. \nIf a provider supplies an official SDK, then I prefer the SDK when it improves authentication, request signing, retries, \nerror handling, or compliance, because provider-maintained libraries reduce integration risk, using payment SDKs, \nGDS SDKs, cloud SDKs, or notification SDKs. \nIf the agent needs to call external systems, then I do not let the LLM call provider APIs directly, because provider-\nspecific APIs require validation, credentials, retries, and governance, using internal service adapters and tool \nwrappers. \nIf multiple providers offer similar functions, then I introduce a service adapter layer, because the orchestration logic \nshould remain independent of provider-specific formats, using adapters such as FlightSearchAdapter, \nBookingAdapter, PaymentAdapter, NotificationAdapter, and PolicyAdapter. \nIf provider APIs return different schemas, then I normalize responses into i"
     },
     {
@@ -639,7 +639,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 158,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "mats, using adapters such as FlightSearchAdapter, \nBookingAdapter, PaymentAdapter, NotificationAdapter, and PolicyAdapter. \nIf provider APIs return different schemas, then I normalize responses into internal domain models, because \ndownstream ranking, reasoning, validation, and UI logic need consistent structures, using Pydantic models, DTOs, \nschema mapping, and validation layers. \nIf provider APIs may change, then I add contract tests, because external schema changes can silently break the \nplatform, using OpenAPI contracts, mocked provider responses, schema validation, and CI integration tests. \nIf external APIs are slow or unreliable, then I use timeout, retry, fallback, and circuit-breaker policies, because the \nplatform must remain resilient under provider failure, using controlled adapters, retry queues, dead-letter queues, \nand degraded-mode responses. \nIf the workflow uses a GDS or travel aggregator, then I treat it as the authoritative source for availability and booking \nstate, because flight inventory and fares change continuously, using source-of-truth validation before payment or \nbooking confirmation. \nRules for RAG Ingestion Pipeline \n\n\n[Page 17]\nIf trusted document"
     },
     {
@@ -651,7 +651,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 167,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "te, because flight inventory and fares change continuously, using source-of-truth validation before payment or \nbooking confirmation. \nRules for RAG Ingestion Pipeline \n\n\n[Page 17]\nIf trusted documents are required for RAG, then I build an ingestion pipeline before retrieval, because raw \ndocuments cannot be searched reliably without preparation, using document loaders, parsing, cleaning, chunking, \nmetadata extraction, embedding, and indexing. \nIf source documents come in different formats such as PDFs, HTML, Word files, tables, APIs, or logs, then I parse \nthem into a common internal format, because retrieval needs consistent text and metadata, using document parsers, \nOCR only when necessary, layout extraction, and structured loaders. \nIf documents are long, then I chunk them before embedding, because LLMs and vector search work better with \nfocused evidence units, using semantic chunking, section-based chunking, sliding windows, or fixed-token chunking. \nIf exact policy wording matters, then I preserve source sections, headings, page numbers, and document IDs, \nbecause answers must be traceable to approved evidence, using metadata fields such as document_id, chunk_id, \npage, se"
     },
     {
@@ -663,7 +663,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 158,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ters, then I preserve source sections, headings, page numbers, and document IDs, \nbecause answers must be traceable to approved evidence, using metadata fields such as document_id, chunk_id, \npage, section, version, timestamp, and source owner. \nIf semantic retrieval is needed, then I create embeddings for chunks, because vector search requires numerical \nrepresentations of text meaning, using embedding models such as Azure OpenAI embeddings, OpenAI embeddings, \nBedrock embeddings, or local embedding models. \nIf exact keyword retrieval is also needed, then I create a BM25 or keyword index alongside the vector index, because \nsemantic search may miss exact policy terms, identifiers, codes, or airline-specific wording, using Elasticsearch, \nOpenSearch, or Azure AI Search. \nIf ingestion changes documents, chunking, embedding models, or metadata, then I version the index, because \nretrieval behaviour must remain reproducible and auditable, using index_version, embedding_model_version, \nchunking_strategy_version, and document lineage. \nIf new documents are uploaded later, then I run incremental ingestion rather than rebuilding everything \nunnecessarily, because enterprise knowledge chan"
     },
     {
@@ -675,7 +675,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 155,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "nking_strategy_version, and document lineage. \nIf new documents are uploaded later, then I run incremental ingestion rather than rebuilding everything \nunnecessarily, because enterprise knowledge changes continuously, using changed-document detection, re-parsing, \nre-chunking, re-embedding, and index refresh. \nRules for Graph Construction, Graph Embeddings, and Graph Updates \nAdd these rules: \nIf the domain contains connected entities such as airports, airlines, routes, countries, policies, alliances, restrictions, \nor dependencies, then I design a graph ontology, because graph retrieval requires clear node types and edge types \nbefore construction. \nIf graph knowledge is extracted from documents or APIs, then I extract entities and relationships, because graph \ndatabases store knowledge as nodes and edges, using LLM extraction, NLP extraction, rule-based extraction, or \nstructured API mapping. \nIf entities appear under different names, then I perform entity resolution, because duplicated nodes weaken graph \ntraversal, using canonical IDs, aliases, fuzzy matching, provider IDs, airport codes, and human review for uncertain \nmatches. \nIf relationships are extracted automatically, th"
     },
     {
@@ -687,7 +687,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 168,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ted nodes weaken graph \ntraversal, using canonical IDs, aliases, fuzzy matching, provider IDs, airport codes, and human review for uncertain \nmatches. \nIf relationships are extracted automatically, then I store provenance for every edge, because graph reasoning must \nremain auditable, using source document ID, chunk ID, extraction method, timestamp, confidence score, reviewer \nstatus, and version metadata. \nIf graph traversal is needed at runtime, then I store the graph in a graph database, because relational or vector stores \nalone are not optimized for multi-hop relationship traversal, using Neo4j, Amazon Neptune, Cosmos DB Gremlin, or \nTigerGraph. \nIf semantic graph entry-point search is needed, then I create embeddings for graph nodes and selected edges, \nbecause user queries may not exactly match graph labels, using node descriptions, entity summaries, relationship \ndescriptions, and graph-aware embeddings. \nIf both graph traversal and semantic similarity are needed, then I combine graph indexes with vector indexes, \nbecause vector search finds relevant starting points while graph traversal explores connected reasoning paths. \n\n\n[Page 18]\nIf new information arrives after deplo"
     },
     {
@@ -699,7 +699,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 166,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "e graph indexes with vector indexes, \nbecause vector search finds relevant starting points while graph traversal explores connected reasoning paths. \n\n\n[Page 18]\nIf new information arrives after deployment, then I update the graph incrementally, because Graph RAG should \nevolve like a living knowledge structure, using ingestion workers, graph update workers, entity matching, \nrelationship validation, and graph versioning. \nIf operational events affect graph knowledge, then I publish graph-update events, because route restrictions, delays, \nprovider changes, or policy updates may change relationships, using Kafka, Event Hubs, Kinesis, or queue-based \ngraph update workers. \nIf graph updates may affect production reasoning, then I validate and version graph changes before activation, \nbecause bad graph edges can damage reasoning quality, using staging graphs, schema validation, confidence \nthresholds, graph regression tests, and approval gates. \nIf graph reasoning is used in user-facing answers, then I expose the reasoning path, because Graph RAG is valuable \nfor explainability, using path summaries such as airport \u2192 route \u2192 airline \u2192 restriction \u2192 recommendation. \n \nREST APIs are the"
     },
     {
@@ -711,7 +711,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 180,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "nswers, then I expose the reasoning path, because Graph RAG is valuable \nfor explainability, using path summaries such as airport \u2192 route \u2192 airline \u2192 restriction \u2192 recommendation. \n \nREST APIs are the most common option. They are used when the external provider exposes normal HTTP endpoints \nsuch as search flights, check fare, create booking, or confirm payment. In Scenario 1, REST APIs are likely needed for \nflight search, booking, payment, notification, currency, and policy services. \nGraphQL APIs are useful when the client or orchestration layer needs flexible structured queries and wants to \nrequest only selected fields. For example, instead of receiving a large flight object, the platform may request only \nroute, fare, baggage, refund policy, and seat availability. GraphQL is useful, but not mandatory. \nSDKs are provider-supplied libraries. They are useful when the provider gives an official package for authentication, \nrequest signing, retries, object models, and error handling. For example, a payment provider or GDS provider may \noffer an SDK to simplify secure integration. \nService adapters are internal wrapper components that you build around external APIs, SDKs, or GDS sy"
     },
     {
@@ -723,7 +723,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 178,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "For example, a payment provider or GDS provider may \noffer an SDK to simplify secure integration. \nService adapters are internal wrapper components that you build around external APIs, SDKs, or GDS systems. They \nare very important because they hide provider-specific complexity from the agent. The LangGraph orchestrator \nshould not directly know the exact API format of Amadeus, Sabre, Stripe, or Twilio. Instead, it calls your internal \nadapter such as FlightSearchAdapter, BookingAdapter, or PaymentAdapter. \nGDS systems, such as Amadeus or Sabre, are specialist travel distribution systems. They are needed when the \nplatform requires real flight inventory, fares, seat availability, booking rules, ticketing, airline content, or travel-\nagency-grade operations. For a serious flight booking platform, a GDS or flight aggregation API becomes the \noperational source of truth, while the LLM remains only an assistant and orchestrator. Your current rulebase already \nsupports this principle by saying live operational data should come from live APIs and not from LLM memory. \n \nIf retrieved chunks, graph paths, or flight options are too many to send directly to the LLM, then I introduce a rankin"
     },
     {
@@ -735,7 +735,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 168,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ing live operational data should come from live APIs and not from LLM memory. \n \nIf retrieved chunks, graph paths, or flight options are too many to send directly to the LLM, then I introduce a ranking \nand reranking layer, because the system must select the most relevant, reliable, fresh, and useful evidence or options, \nusing search-engine scores, vector similarity, semantic rerankers, business-rule scoring, and optional ML ranking \nmodels. \n \n \n\n\n[Page 19]\nBelow is a strong extension to your existing rule-base that directly covers runtime scaling governance, horizontal vs \nvertical scaling decisions, autoscaling orchestration, replica management, and workload-aware scaling behaviour. It \nintegrates naturally with your existing: \n\u2022 \nRuntime Governance  \n\u2022 \nStateful vs Stateless Governance  \n\u2022 \nQueue Governance  \n\u2022 \nWorker Governance  \n\u2022 \nOperational Scaling  \n\u2022 \nCloud Runtime Engineering  \nThe following additions should be inserted mainly after: \n\u2022 \n\u201cRULE GROUP \u2014 Operational Runtime Governance\u201d  \n\u2022 \n\u201cRULE GROUP \u2014 Stateful vs Stateless Governance\u201d  \n \nRULE GROUP \u2014 Horizontal vs Vertical Scaling Governance \nIf any service replica can process the next request independently without r"
     },
     {
@@ -747,7 +747,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 156,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "Governance\u201d  \n\u2022 \n\u201cRULE GROUP \u2014 Stateful vs Stateless Governance\u201d  \n \nRULE GROUP \u2014 Horizontal vs Vertical Scaling Governance \nIf any service replica can process the next request independently without relying on pod-local memory, then I prefer \nhorizontal scaling, because stateless services scale more reliably and elastically across distributed cloud \nenvironments, using Kubernetes HPA, ECS autoscaling, or autoscaled container replicas to ensure resilience and \nparallel throughput. \nIf traffic fluctuates significantly over time, then I prefer horizontal autoscaling, because dynamic replica scaling \nhandles burst traffic more efficiently than permanently oversized infrastructure, using autoscaling rules based on \nCPU, request rate, queue depth, stream lag, or latency metrics. \nIf the workload is API-bound, retrieval-focused, orchestration-heavy, or network-bound, then I usually scale \nhorizontally first, because these workloads benefit more from parallel request processing than from larger individual \nmachines, using replicated FastAPI services, retrieval services, ranking services, or tool adapters. \nIf high availability and fault tolerance are important, then I prefer multiple repli"
     },
     {
@@ -759,7 +759,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 161,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "r individual \nmachines, using replicated FastAPI services, retrieval services, ranking services, or tool adapters. \nIf high availability and fault tolerance are important, then I prefer multiple replicas instead of one large server, \nbecause distributed replicas reduce single points of failure, using load balancers, replicated pods, and multi-zone \ndeployment strategies. \nIf the workload can execute safely in parallel, then I distribute requests across replicas, because parallelism improves \nthroughput and operational resilience, using stateless service replicas and shared external state stores. \nIf a service depends on heavy shared local memory, GPU memory, or tightly coupled state, then I consider vertical \nscaling, because distributing the workload across replicas may become inefficient or operationally complex, using \nlarger CPU/GPU machines and memory-optimized node pools. \nIf the workload is difficult to partition across replicas, then I prefer vertical scaling initially, because some systems \ndepend more on stronger single-node performance than on distributed parallel execution, using larger compute \ninstances and high-memory runtime nodes. \nIf graph traversal, large relatio"
     },
     {
@@ -771,7 +771,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 146,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "some systems \ndepend more on stronger single-node performance than on distributed parallel execution, using larger compute \ninstances and high-memory runtime nodes. \nIf graph traversal, large relational joins, or large-memory caching become dominant bottlenecks, then vertical scaling \nmay become necessary, because graph databases and memory-intensive systems often depend on high local \nmemory performance, using memory-optimized PostgreSQL, Redis, Neo4j, Neptune, or GPU inference nodes. \nIf the workload introduces large-scale AI inference, reranking, or model serving, then GPU-oriented vertical scaling \nbecomes justified, because heavy tensor operations benefit from specialized hardware acceleration, using GPU node \npools and inference-serving infrastructure. \nIf stateful databases become bottlenecks, then I scale them carefully using vertical scaling first and distributed \npartitioning only when necessary, because stateful distributed systems introduce operational complexity, using read \nreplicas, sharding, partitioning, or clustered database architectures. \nIf scaling decisions affect operational stability, then I define scaling boundaries explicitly, because uncontrolled \nscalin"
     },
     {
@@ -783,7 +783,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 157,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ad \nreplicas, sharding, partitioning, or clustered database architectures. \nIf scaling decisions affect operational stability, then I define scaling boundaries explicitly, because uncontrolled \nscaling can overload dependent systems such as databases, provider APIs, or queues, using autoscaling thresholds, \nconcurrency limits, and workload quotas. \n \n\n\n[Page 20]\nRULE GROUP \u2014 Autoscaling & Runtime Elasticity Governance \nIf runtime demand changes dynamically, then I use autoscaling controllers, because modern cloud systems should \nadapt infrastructure automatically rather than rely on static allocation, using Kubernetes HPA, KEDA, ECS autoscaling, \nAzure autoscale, or AWS autoscaling groups. \nIf scaling depends on API load, then I monitor request-rate, CPU usage, latency, and concurrency metrics, because \nAPI-bound systems require responsive horizontal scaling, using Prometheus, CloudWatch, Azure Monitor, or \nOpenTelemetry metrics. \nIf scaling depends on asynchronous workloads, then I scale workers using queue-depth and processing-lag metrics, \nbecause worker demand depends more on backlog than on HTTP traffic, using KEDA, Service Bus metrics, Kafka lag, \nSQS depth, or RabbitMQ queue"
     },
     {
@@ -795,7 +795,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 153,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ale workers using queue-depth and processing-lag metrics, \nbecause worker demand depends more on backlog than on HTTP traffic, using KEDA, Service Bus metrics, Kafka lag, \nSQS depth, or RabbitMQ queue metrics. \nIf stream consumers fall behind operational event throughput, then I scale consumer groups independently, because \nstream lag indicates insufficient event-processing capacity, using Kafka consumer lag, Event Hub lag metrics, or \nKinesis shard monitoring. \nIf autoscaling exists, then I define minimum and maximum replica boundaries, because uncontrolled autoscaling \nmay increase runtime instability or infrastructure cost, using replica limits, node quotas, and budget-aware scaling \npolicies. \nIf scaling decisions affect external providers or APIs, then I throttle outbound concurrency, because autoscaling can \nunintentionally overload dependent systems, using rate limiting, concurrency controls, and provider-aware quotas. \nIf runtime cost becomes operationally important, then I monitor scaling behaviour continuously, because \nuncontrolled autoscaling may create unsustainable infrastructure or AI inference costs, using token monitoring, \ninfrastructure budget alerts, and autosca"
     },
     {
@@ -807,7 +807,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 150,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "itor scaling behaviour continuously, because \nuncontrolled autoscaling may create unsustainable infrastructure or AI inference costs, using token monitoring, \ninfrastructure budget alerts, and autoscaling dashboards. \nIf workloads have different operational priorities, then I isolate scaling domains by workload type, because \ntransactional services, retrieval services, telemetry workers, and analytics consumers scale differently, using \nseparate autoscaling groups and workload-specific node pools. \nIf AI orchestration and heavy inference coexist, then I separate orchestration scaling from inference scaling, because \norchestration is usually CPU/network-bound while inference may require GPU resources, using dedicated \norchestration nodes and GPU inference pools. \n \nRULE GROUP \u2014 Replica & Distributed Service Governance \nIf a service is horizontally scalable, then I deploy multiple replicas behind a load balancer, because independent \nreplicas improve throughput and resilience, using Kubernetes Services, ingress controllers, API gateways, or ECS \nservice balancing. \nIf replicas share operational state, then I externalise that state into shared infrastructure, because replicas must \nre"
     },
     {
@@ -819,7 +819,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 156,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "rnetes Services, ingress controllers, API gateways, or ECS \nservice balancing. \nIf replicas share operational state, then I externalise that state into shared infrastructure, because replicas must \nremain interchangeable and stateless, using Redis, PostgreSQL, Cosmos DB, DynamoDB, or distributed caches. \nIf any replica can process the next request independently, then I treat the component as stateless, because stateless \nreplicas support safer autoscaling and failover, using shared external workflow state and request-aware \norchestration. \nIf replicas process asynchronous events or queue messages, then I design processing to be idempotent, because \ndistributed systems naturally generate retries and duplicate deliveries, using event IDs, workflow IDs, and \ndeduplication policies. \nIf replicas scale dynamically, then I avoid relying on local in-memory session continuity, because replicas may restart, \nterminate, or move across nodes during autoscaling, using external session stores and distributed workflow state. \nIf replicas consume events concurrently, then I coordinate ordering and partitioning carefully, because distributed \nprocessing may otherwise create inconsistent state tran"
     },
     {
@@ -831,7 +831,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 147,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "istributed workflow state. \nIf replicas consume events concurrently, then I coordinate ordering and partitioning carefully, because distributed \nprocessing may otherwise create inconsistent state transitions, using partition keys, workflow IDs, and ordered-\nconsumer policies. \nIf replicas fail independently, then I use health checks and orchestration restart policies, because distributed systems \nrequire automatic failure recovery, using liveness probes, readiness probes, restart policies, and self-healing \norchestration. \n \n\n\n[Page 21]\nRULE GROUP \u2014 Stateful vs Stateless Scaling Governance \nIf the workload is stateless, then I prioritize horizontal replica scaling, because stateless services naturally support \ndistributed parallel execution, using replicated API pods, retrieval services, ranking services, and orchestration \nworkers. \nIf the workload is stateful, then I scale more conservatively, because distributed state coordination introduces \nconsistency and synchronization complexity, using controlled database scaling and externalized workflow \npersistence. \nIf workflow continuity matters across retries or user sessions, then I externalise workflow state immediately, because \na"
     },
     {
@@ -843,7 +843,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 148,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ty, using controlled database scaling and externalized workflow \npersistence. \nIf workflow continuity matters across retries or user sessions, then I externalise workflow state immediately, because \nautoscaling and replica replacement make pod-local memory unreliable, using Redis, PostgreSQL, Cosmos DB, or \nworkflow-state databases. \nIf conversational memory and operational state coexist, then I separate contextual memory from deterministic \ntransactional state, because retrieval context and operational truth have different consistency requirements, using \ncontextual RAG stores and state-machine-controlled databases. \nIf state transitions affect operational truth, then I validate transitions explicitly, because distributed scaling increases \nthe risk of invalid concurrent updates, using state-machine orchestration and transactional validators. \n \nRULE GROUP \u2014 Queue-Aware Scaling Governance \nIf asynchronous workers process queue messages, then I scale workers independently from APIs, because queue \nbacklogs and user-facing request traffic behave differently, using worker autoscaling based on queue depth and \nprocessing lag. \nIf queue depth increases continuously, then I scale worker"
     },
     {
@@ -855,7 +855,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 157,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "cause queue \nbacklogs and user-facing request traffic behave differently, using worker autoscaling based on queue depth and \nprocessing lag. \nIf queue depth increases continuously, then I scale worker replicas horizontally, because growing queue lag indicates \ninsufficient processing throughput, using KEDA, Service Bus triggers, Kafka lag scaling, or RabbitMQ metrics. \nIf retry queues become overloaded, then I isolate retry workloads from primary processing workloads, because retry \nstorms can destabilize operational systems, using delayed retry queues, backoff policies, and isolated retry workers. \nIf worker replicas scale aggressively, then I enforce concurrency controls, because uncontrolled worker scaling may \noverload databases or external APIs, using bounded concurrency, rate limits, and workload quotas. \nIf queues carry operationally sensitive tasks, then I combine autoscaling with idempotent processing, because retries \nand distributed workers may process duplicate deliveries, using idempotency keys and workflow validation policies. \n \nRULE GROUP \u2014 Event-Driven Runtime Scaling Governance \nIf the system becomes event-driven with continuous operational updates, then I use str"
     },
     {
@@ -867,7 +867,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 154,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "using idempotency keys and workflow validation policies. \n \nRULE GROUP \u2014 Event-Driven Runtime Scaling Governance \nIf the system becomes event-driven with continuous operational updates, then I use stream-aware scaling instead \nof request-only scaling, because event throughput and stream lag become primary runtime metrics, using Kafka \nconsumer scaling, Event Hub consumer groups, or Kinesis shard scaling. \nIf operational events are high-frequency, then I partition streams by entity or workflow key, because distributed \nevent processing requires controlled ordering and parallelism, using partition keys and consumer-group scaling. \nIf multiple consumers independently process the same event stream, then I scale consumers independently, because \nnotification consumers, analytics consumers, reconciliation consumers, and AI evaluation consumers have different \nthroughput characteristics. \nIf event-stream lag increases, then I scale consumer workers horizontally, because lag indicates consumers cannot \nkeep up with event throughput, using autoscaling policies tied to stream backlog metrics. \nIf event throughput becomes extremely large, then I isolate hot streams from low-priority streams,"
     },
     {
@@ -879,7 +879,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 164,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "s cannot \nkeep up with event throughput, using autoscaling policies tied to stream backlog metrics. \nIf event throughput becomes extremely large, then I isolate hot streams from low-priority streams, because \noperationally critical events must not compete with telemetry or analytics traffic, using workload-isolated event \npartitions and priority-based consumer scaling. \nThese additions now fully extend your rule-base into: \n\u2022 \nenterprise runtime scaling,  \n\u2022 \nautoscaling governance,  \n\u2022 \nreplica management,  \n\u2022 \nstateful/stateless scaling,  \n\n\n[Page 22]\n\u2022 \nworker autoscaling,  \n\u2022 \nqueue-aware orchestration,  \n\u2022 \nstream-driven elasticity,  \n\u2022 \noperational runtime governance,  \n\u2022 \ncloud-native resilience engineering,  \n\u2022 \nand distributed systems scalability architecture. \n \n \n\n\n[Page 23]\nLet's build some flowcharts considering that: Nodes: represent different steps, actions, decisions, or outputs in a process. instead of shape for \nnodes, we better to use s for step, a for action, d for decision, o for output; then add a description about that node. Connecting Lines: indicate \nthe flow of the process from one node to another. They help visualize the sequence of actions and decisions"
     },
     {
@@ -891,7 +891,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 184,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "decision, o for output; then add a description about that node. Connecting Lines: indicate \nthe flow of the process from one node to another. They help visualize the sequence of actions and decisions within the flowchart. you can add \nkey element that provide vision why from a node, we will enter the next node. One node can be connected to multi-other node based on different \nmatters. now create a flowchart that present why we enter to a particular RAG architecture. \nFlowchart \u2014 Why We Enter a Particular RAG Architecture \nHigh-Level Entry Flow \ns1: Start system analysis \n    | \n    |-- understand business problem, operational truth, workflow complexity \n    v \n \nd1: Does the system need external trusted knowledge beyond LLM memory? \n    | \n    |-- No \u2192 o1: Use plain LLM or deterministic backend workflow \n    | \n    |-- Yes \u2192 retrieval from trusted documents required \n    v \n \nd2: Does exact wording, identifiers, policies or regulations matter? \n    | \n    |-- Yes \u2192 semantic retrieval alone may miss exact terms \n    |           | \n    |           v \n    |         o2: Add BM25 / keyword retrieval \n    | \n    |-- No \u2192 semantic similarity may be sufficient \n    v \n \nd3: Does the system"
     },
     {
@@ -903,7 +903,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 171,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "lone may miss exact terms \n    |           | \n    |           v \n    |         o2: Add BM25 / keyword retrieval \n    | \n    |-- No \u2192 semantic similarity may be sufficient \n    v \n \nd3: Does the system need semantic meaning and contextual similarity? \n    | \n    |-- Yes \u2192 documents contain conceptual similarity \n    |           | \n    |           v \n    |         o3: Add vector retrieval / embeddings \n    | \n    |-- No \u2192 keyword retrieval may be enough \n    v \n \nd4: Are both semantic understanding and exact wording important? \n    | \n    |-- Yes \u2192 need stronger recall + precision \n    |           | \n    |           v \n    |         o4: Use Hybrid RAG \n    | \n    |-- No \u2192 continue with simpler retrieval \n    v \n \nd5: Are relationships, routes, dependencies or connected entities important? \n    | \nMini Mapping Flow (Very Useful in Interview) \nd1: Need trusted documents? \n    \u2192 Yes \u2192 Basic RAG \n \nd2: Need semantic + exact retrieval? \n    \u2192 Yes \u2192 Hybrid RAG \n \nd3: Need relationships/routes/dependencies? \n    \u2192 Yes \u2192 Graph RAG \n \nd4: Need tools/APIs/actions? \n    \u2192 Yes \u2192 Agentic RAG \n \nd5: Need memory/workflow state? \n    \u2192 Yes \u2192 Contextual RAG \n \nd6: Need all together? \n    \u2192 Yes \u2192 Agen"
     },
     {
@@ -915,7 +915,7 @@
       "page_end": null,
       "character_count": 1197,
       "word_count": 158,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "dependencies? \n    \u2192 Yes \u2192 Graph RAG \n \nd4: Need tools/APIs/actions? \n    \u2192 Yes \u2192 Agentic RAG \n \nd5: Need memory/workflow state? \n    \u2192 Yes \u2192 Contextual RAG \n \nd6: Need all together? \n    \u2192 Yes \u2192 Agentic Contextual Hybrid Graph RAG \n \n \nMental Model Behind the Flow \nKnowledge Problem \n    \u2193 \nRetrieval Problem \n    \u2193 \nRelationship Problem \n    \u2193 \nAction/Tool Problem \n    \u2193 \nState/Workflow Problem \n    \u2193 \nEnterprise Orchestration Problem \n \n \nVery Important Architectural Insight \nBasic RAG \n    solves: \n        \"What information should I retrieve?\" \n \nHybrid RAG \n    solves: \n        \"How do I retrieve more accurately?\" \n \n\n\n[Page 24]\n    |-- Yes \u2192 system contains graph-like reasoning \n    |           | \n    |           v \n    |         o5: Add Graph RAG \n    | \n    |-- No \u2192 graph reasoning unnecessary initially \n    v \n \nd6: Does the system need APIs, tools or operational actions? \n    | \n    |-- Yes \u2192 retrieval alone cannot execute workflows \n    |           | \n    |           v \n    |         o6: Use Agentic RAG \n    | \n    |-- No \u2192 remain retrieval-oriented \n    v \n \nd7: Is the workflow multi-step and stateful? \n    | \n    |-- Yes \u2192 system must remember workflow context \n    |"
     },
     {
@@ -927,7 +927,7 @@
       "page_end": null,
       "character_count": 1191,
       "word_count": 155,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "o6: Use Agentic RAG \n    | \n    |-- No \u2192 remain retrieval-oriented \n    v \n \nd7: Is the workflow multi-step and stateful? \n    | \n    |-- Yes \u2192 system must remember workflow context \n    |           | \n    |           v \n    |         o7: Add Contextual RAG \n    | \n    |-- No \u2192 stateless interaction acceptable \n    v \n \nd8: Does the system combine retrieval, graph reasoning, APIs and workflow state? \n    | \n    |-- Yes \u2192 enterprise orchestration required \n    |           | \n    |           v \n    |         o8: Use Agentic Contextual Hybrid/Graph RAG \n    | \n    |-- No \u2192 simpler RAG architecture sufficient \n    v \n \no9: Final architecture selection \n \n \nExpanded Enterprise Decision Flow \ns1: Analyse business domain \n    | \n    |-- identify operational systems, workflows, governance, users \n    v \n \nd1: Is the LLM allowed to become source of truth? \n    | \n    |-- No \u2192 operational truth must remain external \n    |           | \nGraph RAG \n    solves: \n        \"How are entities connected?\" \n \nAgentic RAG \n    solves: \n        \"How do I execute workflows and tools?\" \n \nContextual RAG \n    solves: \n        \"How do I maintain workflow memory?\" \n \nEnterprise Agentic Contextual Gra"
     },
     {
@@ -939,7 +939,7 @@
       "page_end": null,
       "character_count": 1194,
       "word_count": 133,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "nnected?\" \n \nAgentic RAG \n    solves: \n        \"How do I execute workflows and tools?\" \n \nContextual RAG \n    solves: \n        \"How do I maintain workflow memory?\" \n \nEnterprise Agentic Contextual Graph/Hybrid RAG \n    solves: \n        \"How do I orchestrate a complete intelligent \noperational platform?\" \n \n \n\n\n[Page 25]\n    |           v \n    |         a1: Integrate trusted APIs/databases \n    | \n    |-- Yes \u2192 limited standalone AI use possible \n    v \n \nd2: Is trusted document retrieval needed? \n    | \n    |-- Yes \u2192 policies/guidance/knowledge required \n    |           | \n    |           v \n    |         a2: Build ingestion + indexing pipeline \n    | \n    |-- No \u2192 continue with operational APIs only \n    v \n \nd3: Are documents conceptual or exact-match oriented? \n    | \n    |-- Conceptual \u2192 semantic similarity important \n    |                    | \n    |                    v \n    |                  o1: Vector Retrieval \n    | \n    |-- Exact wording \u2192 precision critical \n    |                    | \n    |                    v \n    |                  o2: BM25 Retrieval \n    | \n    |-- Both \u2192 enterprise retrieval complexity \n                         | \n                         v"
     },
     {
@@ -951,7 +951,7 @@
       "page_end": null,
       "character_count": 1189,
       "word_count": 146,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "| \n    |                    v \n    |                  o2: BM25 Retrieval \n    | \n    |-- Both \u2192 enterprise retrieval complexity \n                         | \n                         v \n                       o3: Hybrid RAG \n    v \n \nd4: Does the business logic involve relationships or network traversal? \n    | \n    |-- Yes \u2192 routes/dependencies/interchanges matter \n    |           | \n    |           v \n    |         a3: Model graph entities and edges \n    |           | \n    |           v \n    |         o4: Graph RAG \n    | \n    |-- No \u2192 continue without graph layer \n    v \n \nd5: Must the AI call APIs or operational tools? \n    | \n    |-- Yes \u2192 orchestration required \n    |           | \n    |           v \n    |         a4: Add tool routers and workflow engine \n\n\n[Page 26]\n    |           | \n    |           v \n    |         o5: Agentic RAG \n    | \n    |-- No \u2192 remain retrieval-focused \n    v \n \nd6: Does the workflow evolve across multiple states? \n    | \n    |-- Yes \u2192 user journey is stateful \n    |           | \n    |           v \n    |         a5: Externalise workflow state \n    |           | \n    |           v \n    |         o6: Contextual RAG \n    | \n    |-- No \u2192 statel"
     },
     {
@@ -963,7 +963,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 149,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "rney is stateful \n    |           | \n    |           v \n    |         a5: Externalise workflow state \n    |           | \n    |           v \n    |         o6: Contextual RAG \n    | \n    |-- No \u2192 stateless interaction acceptable \n    v \n \nd7: Are there sensitive operations such as booking/payment/appointments? \n    | \n    |-- Yes \u2192 governance and determinism required \n    |           | \n    |           v \n    |         a6: Keep transactions outside LLM control \n    | \n    |-- No \u2192 lighter orchestration possible \n    v \n \nd8: Is the platform event-driven or highly asynchronous? \n    | \n    |-- Yes \u2192 distributed coordination required \n    |           | \n    |           v \n    |         a7: Add queues/event streaming/workers \n    | \n    |-- No \u2192 synchronous orchestration acceptable \n    v \n \nd9: Is the platform enterprise-scale and multi-capability? \n    | \n    |-- Yes \u2192 combine orchestration + retrieval + graph + state \n    |           | \n    |           v \n    |         o7: Agentic Contextual Hybrid Graph RAG \n    | \n    |-- No \u2192 simpler architecture sufficient \n    v \n \no8: Final enterprise RAG architecture \n \n\n\n[Page 27]\n \n \n \n\n\n[Page 28]\n \nFlowchart 1 \u2014 Decide synchronous vs asynch"
     },
     {
@@ -975,7 +975,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 156,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "tual Hybrid Graph RAG \n    | \n    |-- No \u2192 simpler architecture sufficient \n    v \n \no8: Final enterprise RAG architecture \n \n\n\n[Page 27]\n \n \n \n\n\n[Page 28]\n \nFlowchart 1 \u2014 Decide synchronous vs asynchronous \ns1: Start workflow analysis \n    | \n    v \nd1: Does the user need an immediate response? \n    |-- Yes \u2192 a1: Keep the first response path synchronous \n    |          | \n    |          v \n    |        a2: Return quick result, status, or confirmation request \n    | \n    |-- No \u2192 a3: Move work to async queue/worker \n               | \n               v \n             o1: Background processing \ns2: Analyse operation type \n    | \n    v \nd2: Is the operation transactional or high-risk? \n    | \n    |-- Yes \u2192 a4: Keep it synchronous and tightly controlled \n    |          | \n    |          v \n    |        a5: Use backend state machine, confirmation state, idempotency key \n    |          | \n    |          v \n    |        o2: Safe transactional workflow \n    | \n    |-- No \u2192 d3: Can the operation run independently or in parallel? \n                | \n                |-- Yes \u2192 a6: Use async execution \n                |          | \n                |          v \n                |        a7: Use qu"
     },
     {
@@ -987,7 +987,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 133,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "run independently or in parallel? \n                | \n                |-- Yes \u2192 a6: Use async execution \n                |          | \n                |          v \n                |        a7: Use queue/event bus/background worker \n                |          | \n                |          v \n                |        o3: Scalable async workflow \n                | \n                |-- No \u2192 a8: Keep synchronous sequence \n                           | \n                           v \n                         o4: Ordered request-response workflow \n \nFlowchart 2 \u2014 What should be synchronous? \ns1: Identify workflow step \n    | \n    v \nd1: Does it change money, booking, appointment, ticket, dispatch, or official state? \n    | \n    |-- Yes \u2192 a1: Use synchronous controlled backend service \n    |          | \nInterview summary \nIf it changes official state, money, booking, \nappointment, ticket, or dispatch, \nthen keep it synchronous, deterministic, \nconfirmed, and auditable. \n \nIf it enriches, notifies, retries, evaluates, ingests, \nlogs, or processes telemetry, \nthen make it asynchronous using queues, \nworkers, event streams, and autoscaling. \n \n \n\n\n[Page 29]\n    |          v \n    |        a2: V"
     },
     {
@@ -999,7 +999,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 141,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "es, retries, evaluates, ingests, \nlogs, or processes telemetry, \nthen make it asynchronous using queues, \nworkers, event streams, and autoscaling. \n \n \n\n\n[Page 29]\n    |          v \n    |        a2: Validate against source of truth \n    |          | \n    |          v \n    |        a3: Ask for user confirmation if needed \n    |          | \n    |          v \n    |        a4: Apply idempotency key \n    |          | \n    |          v \n    |        a5: Write transaction state to DB \n    |          | \n    |          v \n    |        o1: Deterministic confirmed action \n    | \n    |-- No \u2192 d2: Can it be delayed without harming user experience? \n                | \n                |-- Yes \u2192 a6: Move to async worker \n                |          | \n                |          v \n                |        o2: Background task \n                | \n                |-- No \u2192 a7: Keep synchronous but lightweight \n                           | \n                           v \n                         o3: Immediate response path \n \nFlowchart 3 \u2014 What should be asynchronous? \ns1: Identify candidate task \n    | \n    v \nd1: Is it notification, retry, ingestion, evaluation, logging enrichment, analytics, or \ndelay"
     },
     {
@@ -1011,7 +1011,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 165,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "e response path \n \nFlowchart 3 \u2014 What should be asynchronous? \ns1: Identify candidate task \n    | \n    v \nd1: Is it notification, retry, ingestion, evaluation, logging enrichment, analytics, or \ndelayed refresh? \n    | \n    |-- Yes \u2192 a1: Make it asynchronous \n    |          | \n    |          v \n    |        a2: Publish event/message to queue \n    |          | \n    |          v \n    |        a3: Worker pod consumes message \n    |          | \n    |          v \n    |        a4: Store result/status in DB \n    |          | \n    |          v \n    |        o1: Non-blocking background workflow \n    | \n    |-- No \u2192 d2: Is it a live user-facing decision? \n                | \n                |-- Yes \u2192 a5: Keep synchronous or use short async parallel calls \n                | \n\n\n[Page 30]\n                |-- No \u2192 a6: Schedule or queue it \n \nFlowchart 4 \u2014 Parallel async inside user request \ns1: User submits request \n    | \n    v \na1: Create workflow state \n    | \n    v \nd1: Are multiple independent checks needed? \n    | \n    |-- Yes \u2192 a2: Run parallel async calls \n    |          | \n    |          \u251c\u2500\u2500 a3: Live API lookup \n    |          \u251c\u2500\u2500 a4: RAG retrieval \n    |          \u251c\u2500\u2500 a5: User context lo"
     },
     {
@@ -1023,7 +1023,7 @@
       "page_end": null,
       "character_count": 1192,
       "word_count": 151,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "hecks needed? \n    | \n    |-- Yes \u2192 a2: Run parallel async calls \n    |          | \n    |          \u251c\u2500\u2500 a3: Live API lookup \n    |          \u251c\u2500\u2500 a4: RAG retrieval \n    |          \u251c\u2500\u2500 a5: User context lookup \n    |          \u251c\u2500\u2500 a6: Geospatial/graph lookup \n    |          \u2514\u2500\u2500 a7: Currency/calendar/availability check \n    |          | \n    |          v \n    |        a8: Apply timeout/retry/fallback \n    |          | \n    |          v \n    |        a9: Merge available results \n    |          | \n    |          v \n    |        o1: Fast enriched response \n    | \n    |-- No \u2192 a10: Execute normal synchronous sequence \n \nFlowchart 5 \u2014 Complete design after choosing async \ns1: Async requirement identified \n    | \n    v \na1: Classify event/task type \n    | \n    v \nd1: Is it occasional background work? \n    | \n    |-- Yes \u2192 a2: Use queue \n    |          | \n    |          v \n    |        a3: Azure Service Bus / AWS SQS \n    | \n    |-- No \u2192 d2: Is it continuous high-frequency telemetry? \n                | \n                |-- Yes \u2192 a4: Use event streaming \n                |          | \n                |          v \n                |        a5: Kafka / Event Hubs / Kinesis \n                |"
     },
     {
@@ -1035,7 +1035,7 @@
       "page_end": null,
       "character_count": 1198,
       "word_count": 155,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "| \n                |-- Yes \u2192 a4: Use event streaming \n                |          | \n                |          v \n                |        a5: Kafka / Event Hubs / Kinesis \n                | \n                |-- No \u2192 a6: Use background task/worker \n\n\n[Page 31]\n    | \n    v \na7: Create worker pods \n    | \n    v \na8: Define retry, timeout, dead-letter queue \n    | \n    v \na9: Define idempotency and event IDs \n    | \n    v \na10: Store status/state externally \n    | \n    v \na11: Add queue-depth autoscaling \n    | \n    v \na12: Add logs, traces, metrics and alerts \n    | \n    v \no1: Complete async architecture \n \nFlowchart 6 \u2014 Complete design after choosing synchronous \ns1: Synchronous requirement identified \n    | \n    v \na1: Keep operation in request/transaction path \n    | \n    v \na2: Validate user identity and permissions \n    | \n    v \na3: Validate source-of-truth data \n    | \n    v \nd1: Does user confirmation matter? \n    | \n    |-- Yes \u2192 a4: Move workflow to awaiting_confirmation \n    |          | \n    |          v \n    |        a5: User confirms \n    | \n    |-- No \u2192 a6: Continue backend-controlled action \n    | \n    v \na7: Execute deterministic backend service \n    | \n    v \na8"
     },
     {
@@ -1047,7 +1047,7 @@
       "page_end": null,
       "character_count": 1195,
       "word_count": 157,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "|          | \n    |          v \n    |        a5: User confirms \n    | \n    |-- No \u2192 a6: Continue backend-controlled action \n    | \n    v \na7: Execute deterministic backend service \n    | \n    v \na8: Use idempotency key for retry safety \n    | \n    v \na9: Write final state to database \n    | \n\n\n[Page 32]\n    v \na10: Emit audit log and optional async notification event \n    | \n    v \no1: Complete safe synchronous workflow \n \n \n \n \nFlowchart 1 \u2014 Decide whether the platform needs event-driven design \ns1: Start workflow analysis \n    | \n    v \nd1: Do important changes happen continuously or unpredictably? \n    | \n    |-- Yes \u2192 a1: Consider event-driven architecture \n    |          | \n    |          v \n    |        o1: Event-driven design is likely needed \n    | \n    |-- No \u2192 a2: Use normal request/response or scheduled workflow \n              | \n              v \n            o2: Event-driven design may not be necessary \n \nExamples of continuous changes: \nGPS updates \ndriver availability \nrail delays \nplatform changes \nappointment cancellations \npayment status updates \nqueue backlog \nsystem alerts \n \nFlowchart 2 \u2014 Identify what becomes an event \ns1: Identify operational change \n    |"
     },
     {
@@ -1059,7 +1059,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 158,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "rail delays \nplatform changes \nappointment cancellations \npayment status updates \nqueue backlog \nsystem alerts \n \nFlowchart 2 \u2014 Identify what becomes an event \ns1: Identify operational change \n    | \n    v \nd1: Does this change need other services to react? \n    | \n    |-- Yes \u2192 a1: Model it as an event \n    |          | \n    |          v \n    |        a2: Define event name, payload, timestamp, event ID \n    |          | \n    |          v \n    |        o1: Event contract created \n    | \nInterview summary \nIf the system needs many services to react to \nchanging operational facts, \nthen I use event-driven architecture. \n \nIf the task is occasional work to be completed, \nI use a queue. \n \nIf the system has continuous high-frequency \nupdates, \nI use an event stream. \n \nThen I define event contracts, producers, \nconsumers, retries, \ndead-letter queues, idempotency, ordering, \nautoscaling and observability. \n \n \n\n\n[Page 33]\n    |-- No \u2192 a3: Keep it as internal state update only \n \nExample events: \nride_requested \ndriver_location_updated \nappointment_cancelled \nnew_slot_available \ntrain_delayed \nplatform_changed \npayment_completed \nbooking_confirmed \n \nFlowchart 3 \u2014 Queue or event stream?"
     },
     {
@@ -1071,7 +1071,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 158,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ents: \nride_requested \ndriver_location_updated \nappointment_cancelled \nnew_slot_available \ntrain_delayed \nplatform_changed \npayment_completed \nbooking_confirmed \n \nFlowchart 3 \u2014 Queue or event stream? \ns1: Event-driven requirement identified \n    | \n    v \nd1: Is the event occasional and task-oriented? \n    | \n    |-- Yes \u2192 a1: Use queue \n    |          | \n    |          v \n    |        o1: Azure Service Bus / AWS SQS \n    | \n    |-- No \u2192 d2: Is the event high-frequency or continuous? \n                | \n                |-- Yes \u2192 a2: Use event stream \n                |          | \n                |          v \n                |        o2: Kafka / Azure Event Hubs / Kinesis \n                | \n                |-- No \u2192 a3: Use lightweight async worker or scheduler \n \nRule: \nQueue = work to be done \nStream = facts/events to be observed by many consumers \n \nFlowchart 4 \u2014 Event producer and consumer design \ns1: Event occurs \n    | \n    v \na1: Producer service creates event \n    | \n    v \na2: Add event ID, timestamp, source, correlation ID \n    | \n    v \na3: Publish event to queue or stream \n    | \n    v \nd1: Which services care about this event? \n\n\n[Page 34]\n    | \n    |-- Notification"
     },
     {
@@ -1083,7 +1083,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 176,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": ": Add event ID, timestamp, source, correlation ID \n    | \n    v \na3: Publish event to queue or stream \n    | \n    v \nd1: Which services care about this event? \n\n\n[Page 34]\n    | \n    |-- Notification needed \u2192 a4: Notification worker consumes event \n    | \n    |-- State update needed \u2192 a5: State worker updates DB \n    | \n    |-- Analytics needed \u2192 a6: Analytics worker stores event \n    | \n    |-- AI/RAG eval needed \u2192 a7: Evaluation worker processes event \n    | \n    |-- Operational alert needed \u2192 a8: Monitoring system triggers alert \n    | \n    v \no1: Event processed by independent consumers \n \nFlowchart 5 \u2014 Complete event-driven architecture after choosing events \ns1: Event-driven need identified \n    | \n    v \na1: Define event catalogue \n    | \n    v \na2: Define event schema \n    | \n    v \na3: Add event IDs and correlation IDs \n    | \n    v \na4: Choose queue or stream \n    | \n    v \na5: Create producer services \n    | \n    v \na6: Create consumer worker pods \n    | \n    v \na7: Store state externally \n    | \n    v \na8: Add retry and dead-letter queue \n    | \n    v \na9: Add idempotency handling \n    | \n    v \na10: Add ordering/reconciliation logic if needed \n    | \n    v \na11: Add au"
     },
     {
@@ -1095,7 +1095,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 147,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ate externally \n    | \n    v \na8: Add retry and dead-letter queue \n    | \n    v \na9: Add idempotency handling \n    | \n    v \na10: Add ordering/reconciliation logic if needed \n    | \n    v \na11: Add autoscaling based on queue depth or stream lag \n    | \n    v \na12: Add logs, metrics, traces and alerts \n    | \n\n\n[Page 35]\n    v \no1: Complete event-driven operation design \n \nFlowchart 6 \u2014 Event safety and reliability \ns1: Event received by consumer \n    | \n    v \nd1: Has this event already been processed? \n    | \n    |-- Yes \u2192 a1: Ignore duplicate using idempotency/event ID \n    |          | \n    |          v \n    |        o1: Duplicate safely ignored \n    | \n    |-- No \u2192 a2: Process event \n              | \n              v \n            d2: Did processing succeed? \n                | \n                |-- Yes \u2192 a3: Update state and acknowledge event \n                |          | \n                |          v \n                |        o2: Event completed \n                | \n                |-- No \u2192 d3: Is the failure retryable? \n                            | \n                            |-- Yes \u2192 a4: Retry with backoff \n                            | \n                            |-- No \u2192 a"
     },
     {
@@ -1107,7 +1107,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 140,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "- No \u2192 d3: Is the failure retryable? \n                            | \n                            |-- Yes \u2192 a4: Retry with backoff \n                            | \n                            |-- No \u2192 a5: Send to dead-letter queue \n                                      | \n                                      v \n                                    o3: Manual/debug review needed \n \nFlowchart 7 \u2014 Event-driven design for real-time systems \ns1: Real-time operational system \n    | \n    v \nd1: Are updates frequent and continuous? \n    | \n    |-- Yes \u2192 a1: Use event streaming \n    |          | \n    |          v \n    |        a2: Partition events by entity \n    |          | \n    |          v \n    |        a3: Use consumer groups \n    |          | \n    |          v \n    |        a4: Track stream lag \n    |          | \n    |          v \n    |        a5: Scale consumers \n\n\n[Page 36]\n    |          | \n    |          v \n    |        o1: High-throughput event processing \n    | \n    |-- No \u2192 a6: Use queue-based workers \n \nExamples: \nUber-like GPS updates \u2192 event stream \nTrain delay/platform updates \u2192 event stream \nAppointment reminders \u2192 queue \nFlight notification emails \u2192 queue \n \nFlowchart 8 \u2014 Ev"
     },
     {
@@ -1119,7 +1119,7 @@
       "page_end": null,
       "character_count": 1184,
       "word_count": 156,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "eue-based workers \n \nExamples: \nUber-like GPS updates \u2192 event stream \nTrain delay/platform updates \u2192 event stream \nAppointment reminders \u2192 queue \nFlight notification emails \u2192 queue \n \nFlowchart 8 \u2014 Event-driven operations with state \ns1: Event changes operational state \n    | \n    v \na1: Validate event schema \n    | \n    v \na2: Check timestamp and freshness \n    | \n    v \na3: Check event ordering/version \n    | \n    v \nd1: Is event newer than current state? \n    | \n    |-- Yes \u2192 a4: Update state store \n    |          | \n    |          v \n    |        a5: Emit follow-up event if needed \n    |          | \n    |        o1: State updated \n    | \n    |-- No \u2192 a6: Ignore stale/out-of-order event \n              | \n              v \n            o2: State preserved \n \nFlowchart 9 \u2014 Event-driven operations with AI \ns1: Event received \n    | \n    v \nd1: Does event require AI reasoning? \n    | \n    |-- No \u2192 a1: Process using deterministic worker \n    |          | \n    |          v \n    |        o1: Normal event processing \n    | \n    |-- Yes \u2192 a2: Retrieve relevant context \n\n\n[Page 37]\n              | \n              v \n            a3: Call LLM only for explanation/recommendation"
     },
     {
@@ -1131,7 +1131,7 @@
       "page_end": null,
       "character_count": 1197,
       "word_count": 135,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "Normal event processing \n    | \n    |-- Yes \u2192 a2: Retrieve relevant context \n\n\n[Page 37]\n              | \n              v \n            a3: Call LLM only for explanation/recommendation \n              | \n              v \n            a4: Validate AI output against source of truth \n              | \n              v \n            d2: Is output safe and grounded? \n                | \n                |-- Yes \u2192 a5: Create recommendation/notification \n                | \n                |-- No \u2192 a6: Escalate, fallback, or suppress output \n \n \n \nFlowchart 1 \u2014 Decide whether a component is stateless or stateful \ns1: Start component analysis \n    | \n    v \nd1: Does this component need to remember information between requests? \n    | \n    |-- No \u2192 a1: Treat as stateless \n    |          | \n    |          v \n    |        o1: Horizontally scalable service \n    | \n    |-- Yes \u2192 d2: Is the remembered information temporary or persistent? \n                | \n                |-- Temporary \u2192 a2: Store state in Redis/cache/session store \n                |               | \n                |               v \n                |             o2: Stateful workflow with external temporary state \n                |"
     },
     {
@@ -1143,7 +1143,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 145,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "Redis/cache/session store \n                |               | \n                |               v \n                |             o2: Stateful workflow with external temporary state \n                | \n                |-- Persistent \u2192 a3: Store state in durable database \n                                | \n                                v \n                              o3: Stateful workflow with durable external state \n \nFlowchart 2 \u2014 What should remain stateless? \ns1: Identify service/component \n    | \n    v \nd1: Can any replica process the next request without needing local memory? \n    | \n    |-- Yes \u2192 a1: Keep service stateless \n    |          | \n    |          v \n    |        a2: Pass request context explicitly \n    |          | \n    |          v \nInterview summary \nIf any replica can process the next request, I keep \nthe component stateless \nand scale it horizontally. \n \nIf the system must remember workflow progress, \nselected options, confirmation, \nbooking, payment, appointment, trip or ticket \nstate, I treat it as stateful. \n \nStateful data should not live in the LLM or pod \nmemory. \nIt should be externalised into Redis, PostgreSQL, \nCosmos DB, DynamoDB, \naudit logs or event"
     },
     {
@@ -1155,7 +1155,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 158,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "trip or ticket \nstate, I treat it as stateful. \n \nStateful data should not live in the LLM or pod \nmemory. \nIt should be externalised into Redis, PostgreSQL, \nCosmos DB, DynamoDB, \naudit logs or event stores. \n \nThis makes the system scalable, resilient and safe \nduring pod restarts, \nautoscaling and deployment changes. \n \n \n\n\n[Page 38]\n    |        a3: Store shared state externally if needed \n    |          | \n    |          v \n    |        o1: Stateless scalable component \n    | \n    |-- No \u2192 a4: Component depends on workflow/session/transaction state \n              | \n              v \n            o2: Treat as stateful process \n \nTypical stateless components: \nFastAPI endpoints \ntool adapters \nRAG retrievers \nranking services \nvalidation services \nresponse formatters \nnotification API wrappers \n \nFlowchart 3 \u2014 What should be stateful? \ns1: Identify data or workflow state \n    | \n    v \nd1: Does it represent \nuser/session/workflow/booking/payment/appointment/trip/ticket state? \n    | \n    |-- Yes \u2192 a1: Treat it as stateful \n    |          | \n    |          v \n    |        a2: Do not store it in LLM memory \n    |          | \n    |          v \n    |        a3: Do not rely on pod-loc"
     },
     {
@@ -1167,7 +1167,7 @@
       "page_end": null,
       "character_count": 1195,
       "word_count": 163,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "|-- Yes \u2192 a1: Treat it as stateful \n    |          | \n    |          v \n    |        a2: Do not store it in LLM memory \n    |          | \n    |          v \n    |        a3: Do not rely on pod-local memory \n    |          | \n    |          v \n    |        a4: Store it in external state service \n    |          | \n    |          v \n    |        o1: Reliable stateful workflow \n    | \n    |-- No \u2192 d2: Is it only request-level data? \n                | \n                |-- Yes \u2192 a5: Keep it local within the request only \n                |          | \n                |          v \n                |        o2: Stateless request processing \n \nTypical stateful data: \nuser preferences \nworkflow checkpoints \nselected flight / appointment / route \n\n\n[Page 39]\nconfirmation state \nbooking state \npayment state \ntrip state \ndriver availability state \nticket state \naudit logs \nnotification history \n \nFlowchart 4 \u2014 How to store state \ns1: Stateful data identified \n    | \n    v \nd1: Is the state short-lived and performance-sensitive? \n    | \n    |-- Yes \u2192 a1: Store in Redis/cache \n    |          | \n    |          v \n    |        o1: Fast temporary state \n    | \n    |-- No \u2192 d2: Is the state transa"
     },
     {
@@ -1179,7 +1179,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 146,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "-lived and performance-sensitive? \n    | \n    |-- Yes \u2192 a1: Store in Redis/cache \n    |          | \n    |          v \n    |        o1: Fast temporary state \n    | \n    |-- No \u2192 d2: Is the state transactional or auditable? \n                | \n                |-- Yes \u2192 a2: Store in durable database \n                |          | \n                |          v \n                |        o2: PostgreSQL / Cosmos DB / DynamoDB \n                | \n                |-- No \u2192 d3: Is it event history or audit trail? \n                            | \n                            |-- Yes \u2192 a3: Store in audit/event log \n                            |          | \n                            |          v \n                            |        o3: Audit log / event store / immutable storage \n \nFlowchart 5 \u2014 Stateless scaling design \ns1: Stateless component identified \n    | \n    v \na1: Containerise service \n    | \n    v \na2: Deploy multiple replicas/pods \n    | \n    v \na3: Place behind load balancer/service \n    | \n    v \na4: Define CPU/RAM requests and limits \n    | \n    v \na5: Add health checks \n    | \n\n\n[Page 40]\n    v \na6: Add autoscaling rule \n    | \n    v \nd1: Is traffic increasing? \n    | \n    |-- Ye"
     },
     {
@@ -1191,7 +1191,7 @@
       "page_end": null,
       "character_count": 1198,
       "word_count": 164,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "| \n    v \na4: Define CPU/RAM requests and limits \n    | \n    v \na5: Add health checks \n    | \n\n\n[Page 40]\n    v \na6: Add autoscaling rule \n    | \n    v \nd1: Is traffic increasing? \n    | \n    |-- Yes \u2192 a7: Scale replicas horizontally \n    |          | \n    |          v \n    |        o1: More pods handle more requests \n    | \n    |-- No \u2192 a8: Keep minimum replicas \n              | \n              v \n            o2: Cost-controlled baseline \n \nCommon scaling rules: \nAPI pods \u2192 request rate / CPU \nretriever pods \u2192 retrieval latency / CPU \nranking pods \u2192 queue length / CPU \ntool adapters \u2192 external API call volume \n \nFlowchart 6 \u2014 Stateful workflow design \ns1: Stateful workflow identified \n    | \n    v \na1: Define state model \n    | \n    v \na2: Define allowed transitions \n    | \n    v \na3: Store state externally \n    | \n    v \na4: Add confirmation states if needed \n    | \n    v \na5: Add idempotency keys for retry safety \n    | \n    v \na6: Add audit logging \n    | \n    v \na7: Add recovery/reconciliation logic \n    | \n    v \no1: Controlled stateful workflow \n \nExample states: \n\n\n[Page 41]\nsearch_started \noptions_returned \nselected_option \nawaiting_confirmation \nconfirmed \npayment_starte"
     },
     {
@@ -1203,7 +1203,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 125,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "reconciliation logic \n    | \n    v \no1: Controlled stateful workflow \n \nExample states: \n\n\n[Page 41]\nsearch_started \noptions_returned \nselected_option \nawaiting_confirmation \nconfirmed \npayment_started \npayment_completed \nbooking_completed \ncancelled \nfailed \n \nFlowchart 7 \u2014 State transition safety \ns1: State transition requested \n    | \n    v \na1: Load current state from DB \n    | \n    v \nd1: Is transition valid? \n    | \n    |-- No \u2192 a2: Reject transition \n    |          | \n    |          v \n    |        o1: Invalid or unsafe state change blocked \n    | \n    |-- Yes \u2192 a3: Validate source-of-truth data \n              | \n              v \n            d2: Is user confirmation required? \n                | \n                |-- Yes \u2192 a4: Move to awaiting_confirmation \n                |          | \n                |          v \n                |        o2: Wait for explicit user approval \n                | \n                |-- No \u2192 a5: Apply state update \n                          | \n                          v \n                        a6: Write audit log \n                          | \n                          v \n                        o3: State updated safely \n \nFlowchart 8 \u2014 What NOT t"
     },
     {
@@ -1215,7 +1215,7 @@
       "page_end": null,
       "character_count": 1177,
       "word_count": 153,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "v \n                        a6: Write audit log \n                          | \n                          v \n                        o3: State updated safely \n \nFlowchart 8 \u2014 What NOT to store in LLM or pod memory \ns1: Data considered for storage \n    | \n    v \nd1: Is it sensitive, transactional, auditable, or needed after restart? \n    | \n    |-- Yes \u2192 a1: Do not store in LLM memory \n    |          | \n    |          v \n\n\n[Page 42]\n    |        a2: Do not store only in pod memory \n    |          | \n    |          v \n    |        a3: Store in DB/cache/audit log \n    |          | \n    |          v \n    |        o1: Safe externalised state \n    | \n    |-- No \u2192 a4: Can remain temporary request context \n              | \n              v \n            o2: Local ephemeral processing acceptable \n \nFlowchart 9 \u2014 Stateful vs stateless in Kubernetes/cloud \ns1: Service deployment planning \n    | \n    v \nd1: Is service stateless? \n    | \n    |-- Yes \u2192 a1: Use Deployment / replica set \n    |          | \n    |          v \n    |        a2: Add load balancer/service \n    |          | \n    |          v \n    |        a3: Add HPA autoscaling \n    |          | \n    |          v \n    |"
     },
     {
@@ -1227,7 +1227,7 @@
       "page_end": null,
       "character_count": 1195,
       "word_count": 139,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "|          | \n    |          v \n    |        a2: Add load balancer/service \n    |          | \n    |          v \n    |        a3: Add HPA autoscaling \n    |          | \n    |          v \n    |        o1: Horizontally scalable stateless service \n    | \n    |-- No \u2192 d2: Is state stored externally? \n                | \n                |-- Yes \u2192 a4: Keep pod stateless but workflow state external \n                |          | \n                |          v \n                |        o2: Scalable service with external state \n                | \n                |-- No \u2192 a5: Avoid pod-local state for critical data \n                          | \n                          v \n                        a6: Redesign storage/state layer \n \nFlowchart 10 \u2014 Complete design after identifying stateful/stateless \ns1: Stateful/stateless analysis complete \n    | \n    v \na1: Mark each component as stateless or stateful \n    | \n    v \na2: Keep stateless services horizontally scalable \n    | \n    v \n\n\n[Page 43]\na3: Externalise stateful data into Redis/DB/event store \n    | \n    v \na4: Define state transitions and confirmation states \n    | \n    v \na5: Add idempotency keys where retries may occur \n    | \n    v"
     },
     {
@@ -1239,7 +1239,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 177,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": ": Externalise stateful data into Redis/DB/event store \n    | \n    v \na4: Define state transitions and confirmation states \n    | \n    v \na5: Add idempotency keys where retries may occur \n    | \n    v \na6: Add audit logs for regulated/high-risk actions \n    | \n    v \na7: Add resource requests/limits per service \n    | \n    v \na8: Define autoscaling rules \n    | \n    v \na9: Add observability for state changes and failures \n    | \n    v \no1: Complete runtime-safe state design \n \n \n \nIn addition to vector DB, BM25, graph DB, cache, databases and Redis, you should also consider these memory/storage types. \nMain memory and database types \n1. Relational DB \n   PostgreSQL / MySQL / SQL Server \n   \u2192 booking records, payment records, appointment state, ticket state \n \n2. NoSQL / Document DB \n   Cosmos DB / DynamoDB / MongoDB \n   \u2192 flexible workflow state, user profiles, session documents \n \n3. Vector DB / Vector Index \n   Azure AI Search / Pinecone / Qdrant / Weaviate / OpenSearch \n   \u2192 semantic retrieval over documents \n \n4. BM25 / Keyword Index \n   Azure AI Search / OpenSearch / Elasticsearch \n   \u2192 exact keyword, policy wording, identifiers \n \n5. Graph DB \n   Neo4j / Cosmos DB Gremlin / Ne"
     },
     {
@@ -1251,7 +1251,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 167,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "retrieval over documents \n \n4. BM25 / Keyword Index \n   Azure AI Search / OpenSearch / Elasticsearch \n   \u2192 exact keyword, policy wording, identifiers \n \n5. Graph DB \n   Neo4j / Cosmos DB Gremlin / Neptune \n   \u2192 routes, relationships, dependencies, networks \n \n6. Redis / Distributed Cache \n   Redis / ElastiCache / Azure Cache for Redis \n   \u2192 sessions, temporary workflow state, fast lookup, rate-limit counters \n\n\n[Page 44]\n \n7. Object Storage \n   Blob Storage / S3 \n   \u2192 raw documents, PDFs, logs, datasets, artefacts \n \n8. Event Store / Message Log \n   Kafka / Event Hubs / Kinesis \n   \u2192 GPS events, rail events, operational telemetry, replayable event history \n \n9. Queue Storage \n   Service Bus / SQS / RabbitMQ \n   \u2192 async jobs, notifications, retries, dead-letter queues \n \n10. Audit Log Store \n   Log Analytics / CloudWatch / immutable DB/table \n   \u2192 confirmations, payments, tool calls, governance evidence \n \n11. Time-Series DB \n   InfluxDB / TimescaleDB / CloudWatch metrics / Azure Monitor \n   \u2192 metrics, telemetry, latency, utilisation, GPS/occupancy trends \n \n12. Data Warehouse / Lakehouse \n   BigQuery / Synapse / Redshift / Snowflake / Databricks \n   \u2192 analytics, reporting, histori"
     },
     {
@@ -1263,7 +1263,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 163,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "or \n   \u2192 metrics, telemetry, latency, utilisation, GPS/occupancy trends \n \n12. Data Warehouse / Lakehouse \n   BigQuery / Synapse / Redshift / Snowflake / Databricks \n   \u2192 analytics, reporting, historical optimisation \n \n13. Feature Store \n   Feast / Azure ML Feature Store / SageMaker Feature Store \n   \u2192 ML features for prediction/ranking models \n \n14. Prompt / Config Registry \n   Git / PromptLayer / LangSmith / config DB \n   \u2192 prompt versions, model configs, retrieval settings \n \n15. Model Registry \n   Azure ML / MLflow / SageMaker \n   \u2192 model versions, evaluation history, deployment lineage \n \n16. Secret Store \n   Key Vault / Secrets Manager \n   \u2192 API keys, credentials, certificates \n \n17. Local / In-process Memory \n   Python memory inside pod \n   \u2192 temporary request-level variables only, not trusted persistent state \n \n18. LLM Context Window \n   Prompt/context memory \n   \u2192 temporary reasoning context only, not persistent memory \n \n19. Conversation Memory \n   Stored chat/session history \n\n\n[Page 45]\n   \u2192 user interaction continuity, but must be externalised into DB/cache \n \nFlowchart \u2014 Choosing the right memory / database \ns1: Start data/memory analysis \n    | \n    v \nd1: Is the d"
     },
     {
@@ -1275,7 +1275,7 @@
       "page_end": null,
       "character_count": 1197,
       "word_count": 163,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "ry \n\n\n[Page 45]\n   \u2192 user interaction continuity, but must be externalised into DB/cache \n \nFlowchart \u2014 Choosing the right memory / database \ns1: Start data/memory analysis \n    | \n    v \nd1: Is the data only needed during the current request? \n    | \n    |-- Yes \u2192 a1: Use local in-process memory \n    |          | \n    |          v \n    |        o1: Temporary request memory \n    | \n    |-- No \u2192 d2: Must the data survive pod restart or autoscaling? \n                | \n                |-- Yes \u2192 a2: Store outside pod \n                | \n                |-- No \u2192 a3: Use temporary cache \ns2: Persistent data identified \n    | \n    v \nd1: Is the data transactional, structured or auditable? \n    | \n    |-- Yes \u2192 a1: Use relational database \n    |          | \n    |          v \n    |        o1: PostgreSQL / SQL Server / MySQL \n    | \n    |-- No \u2192 d2: Is the data flexible, document-shaped or schema-changing? \n                | \n                |-- Yes \u2192 a2: Use NoSQL / document database \n                |          | \n                |          v \n                |        o2: Cosmos DB / DynamoDB / MongoDB \ns3: Retrieval knowledge identified \n    | \n    v \nd1: Is semantic meaning important?"
     },
     {
@@ -1287,7 +1287,7 @@
       "page_end": null,
       "character_count": 1192,
       "word_count": 178,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "|          | \n                |          v \n                |        o2: Cosmos DB / DynamoDB / MongoDB \ns3: Retrieval knowledge identified \n    | \n    v \nd1: Is semantic meaning important? \n    | \n    |-- Yes \u2192 a1: Use vector DB / vector index \n    |          | \n    |          v \n    |        o1: Azure AI Search / Pinecone / Qdrant / OpenSearch \n    | \n    |-- No \u2192 continue \n \nd2: Is exact wording, policy term, code or identifier important? \n    | \n    |-- Yes \u2192 a2: Use BM25 / keyword index \n    |          | \n    |          v \n    |        o2: Azure AI Search / OpenSearch / Elasticsearch \n\n\n[Page 46]\n    | \n    |-- No \u2192 continue \n \nd3: Are both semantic and exact retrieval needed? \n    | \n    |-- Yes \u2192 a3: Use Hybrid Search \n    |          | \n    |          v \n    |        o3: Vector + BM25 \ns4: Relationship data identified \n    | \n    v \nd1: Are entities connected by routes, dependencies, referrals, trips or networks? \n    | \n    |-- Yes \u2192 a1: Use Graph DB \n    |          | \n    |          v \n    |        o1: Neo4j / Cosmos DB Gremlin / Neptune \n    | \n    |-- No \u2192 a2: Use relational or document DB \ns5: Fast temporary state identified \n    | \n    v \nd1: Is low-latency acc"
     },
     {
@@ -1299,7 +1299,7 @@
       "page_end": null,
       "character_count": 1196,
       "word_count": 183,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "|          v \n    |        o1: Neo4j / Cosmos DB Gremlin / Neptune \n    | \n    |-- No \u2192 a2: Use relational or document DB \ns5: Fast temporary state identified \n    | \n    v \nd1: Is low-latency access needed? \n    | \n    |-- Yes \u2192 a1: Use Redis cache \n    |          | \n    |          v \n    |        o1: Session cache / workflow cache / geospatial cache \n    | \n    |-- No \u2192 a2: Use durable DB directly \ns6: Async or event data identified \n    | \n    v \nd1: Is it work that must be completed once? \n    | \n    |-- Yes \u2192 a1: Use queue \n    |          | \n    |          v \n    |        o1: Service Bus / SQS / RabbitMQ \n    | \n    |-- No \u2192 d2: Is it continuous event telemetry? \n                | \n                |-- Yes \u2192 a2: Use event stream / event log \n                |          | \n                |          v \n                |        o2: Kafka / Event Hubs / Kinesis \ns7: Governance and traceability identified \n    | \n    v \nd1: Is the data needed for audit, compliance or debugging? \n    | \n    |-- Yes \u2192 a1: Use audit log store \n\n\n[Page 47]\n    |          | \n    |          v \n    |        o1: Log Analytics / CloudWatch / immutable audit table \n    | \n    |-- No \u2192 continue \ns8: File o"
     },
     {
@@ -1311,7 +1311,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 191,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "| \n    |-- Yes \u2192 a1: Use audit log store \n\n\n[Page 47]\n    |          | \n    |          v \n    |        o1: Log Analytics / CloudWatch / immutable audit table \n    | \n    |-- No \u2192 continue \ns8: File or large object identified \n    | \n    v \nd1: Is the data a document, PDF, dataset, log archive or artefact? \n    | \n    |-- Yes \u2192 a1: Use object storage \n    |          | \n    |          v \n    |        o1: Blob Storage / S3 \n    | \n    |-- No \u2192 continue \n \nd2: Does access frequency change over time? \n    | \n    |-- Yes \u2192 a2: Apply hot / warm / cold tiers \n    |          | \n    |          v \n    |        o2: Cost-controlled lifecycle storage \n \nSimple rule summary \nIf it is transactional \u2192 relational DB. \n \nIf it is flexible workflow/user state \u2192 NoSQL/document DB. \n \nIf it is semantic knowledge \u2192 vector DB. \n \nIf it is exact keyword/policy retrieval \u2192 BM25 index. \n \nIf it is connected entities/routes/networks \u2192 graph DB. \n \nIf it is fast temporary state \u2192 Redis/cache. \n \nIf it is a document/file/archive \u2192 Blob/S3. \n \nIf it is async work \u2192 queue. \n \nIf it is continuous events \u2192 event stream. \n \nIf it is compliance evidence \u2192 audit log store. \n \nIf it is monitoring data \u2192 metrics/time-s"
     },
     {
@@ -1323,7 +1323,7 @@
       "page_end": null,
       "character_count": 435,
       "word_count": 71,
-      "created_at": "2026-06-30T21:39:50",
+      "created_at": "2026-07-01T11:52:54",
       "text": "nt/file/archive \u2192 Blob/S3. \n \nIf it is async work \u2192 queue. \n \nIf it is continuous events \u2192 event stream. \n \nIf it is compliance evidence \u2192 audit log store. \n \nIf it is monitoring data \u2192 metrics/time-series store. \n \nIf it is ML features \u2192 feature store. \n \n\n\n[Page 48]\nIf it is model/prompt/version metadata \u2192 registry. \n \nIf it is secret/credential \u2192 Key Vault/Secrets Manager. \n \nIf it is only during one request \u2192 local memory only."
     }
   ]

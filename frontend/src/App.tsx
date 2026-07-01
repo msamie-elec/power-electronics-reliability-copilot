@@ -39,6 +39,24 @@ function App() {
 
     if (!files || files.length === 0) return;
 
+    const allowedExtensions = [".pdf", ".txt", ".csv"];
+
+    const unsupportedFiles = Array.from(files).filter((file) => {
+      const fileName = file.name.toLowerCase();
+      return !allowedExtensions.some((extension) => fileName.endsWith(extension));
+    });
+
+    if (unsupportedFiles.length > 0) {
+      const unsupportedNames = unsupportedFiles.map((file) => file.name).join(", ");
+
+      setUploadStatus(
+        `Upload rejected: ${unsupportedNames}. Only PDF, TXT, and CSV files are supported.`
+      );
+
+      event.target.value = "";
+      return;
+    }
+
     try {
       setUploadStatus("Uploading...");
       await uploadDocuments(files);
@@ -46,13 +64,20 @@ function App() {
       const documents = await getDocuments();
       setUploadedFiles(documents);
       setUploadStatus("Upload complete");
-    } catch {
-      setUploadStatus("Upload failed");
+    } catch (error) {
+      setUploadStatus(
+        error instanceof Error ? error.message : "Upload failed"
+      );
+    } finally {
+      event.target.value = "";
     }
   }
 
   async function handleAskQuestion() {
-    if (!question.trim()) return;
+    if (!question.trim()) {
+      setRagStatus("Please enter a question before analysing.");
+      return;
+    }
 
     try {
       setIsAnswerLoading(true);
