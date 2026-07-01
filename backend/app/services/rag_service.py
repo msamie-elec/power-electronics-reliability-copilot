@@ -1,5 +1,6 @@
 from typing import Any
 
+from app.services.llm_service import generate_llm_answer
 from app.services.search_service import search_similar_chunks
 
 
@@ -20,12 +21,15 @@ def answer_question_with_retrieval(query: str, top_k: int = 5) -> dict[str, Any]
             "query": query,
             "answer": "No relevant engineering evidence was found in the indexed documents.",
             "confidence": "Low",
+            "top_score": 0,
             "sources": [],
             "retrieved_chunks": [],
         }
 
     top_score = chunks[0]["score"]
     confidence = calculate_confidence(top_score)
+
+    answer = generate_llm_answer(query=query, evidence_chunks=chunks)
 
     evidence_summary = []
 
@@ -39,13 +43,6 @@ def answer_question_with_retrieval(query: str, top_k: int = 5) -> dict[str, Any]
                 "excerpt": chunk["text"][:700],
             }
         )
-
-    answer = (
-        "The retrieved engineering evidence suggests that the most relevant information "
-        "is contained in the source documents listed below. Review the highest-scoring "
-        "chunks first, as they are most semantically related to the question. "
-        "A full LLM-generated engineering explanation will be added in Sprint 3.7."
-    )
 
     return {
         "query": query,
