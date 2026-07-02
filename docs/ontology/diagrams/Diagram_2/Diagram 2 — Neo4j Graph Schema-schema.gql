@@ -1,0 +1,94 @@
+type Material {
+  materialId: MT001
+  name: Aluminium
+  type: Metal
+  conductivity: High
+  subcomponentHasMaterial: SubComponent @relationship(type: "HAS_MATERIAL", direction: IN)
+}
+
+type Component {
+  componentId: C001
+  name: IGBT Module
+  category: Power Semiconductor
+  manufacturer: Infineon
+  containsSubcomponent: SubComponent @relationship(type: "CONTAINS", direction: OUT)
+  failuremodeAffects: FailureMode @relationship(type: "AFFECTS", direction: IN)
+}
+
+type SubComponent {
+  subComponentId: SC001
+  name: Bond Wire
+  material: Aluminium
+  function: Electrical connection
+  componentContains: Component @relationship(type: "CONTAINS", direction: IN)
+  experiencesFailuremechanism: FailureMechanism @relationship(type: "EXPERIENCES", direction: OUT)
+  hasMaterialMaterial: Material @relationship(type: "HAS_MATERIAL", direction: OUT)
+}
+
+type FailureMechanism {
+  mechanismId: M001
+  name: Thermal Cycling
+  physics: Thermomechanical fatigue
+  subcomponentExperiences: SubComponent @relationship(type: "EXPERIENCES", direction: IN)
+  resultsInFailuremode: FailureMode @relationship(type: "RESULTS_IN", direction: OUT)
+  operatingconditionIncreasesRiskOf: OperatingCondition @relationship(type: "INCREASES_RISK_OF", direction: IN)
+  documentevidenceSupports: DocumentEvidence @relationship(type: "SUPPORTS", direction: IN)
+  stressfactorAccelerates: StressFactor @relationship(type: "ACCELERATES", direction: IN)
+}
+
+type FailureMode {
+  failureId: FM001
+  name: Bond Wire Lift-off
+  severity: 9
+  failuremechanismResultsIn: FailureMechanism @relationship(type: "RESULTS_IN", direction: IN)
+  producesSymptom: Symptom @relationship(type: "PRODUCES", direction: OUT)
+  affectsComponent: Component @relationship(type: "AFFECTS", direction: OUT)
+  documentevidenceSupports: DocumentEvidence @relationship(type: "SUPPORTS", direction: IN)
+}
+
+type Symptom {
+  symptomId: SY001
+  name: Rising VCE(sat)
+  measurable: true
+  failuremodeProduces: FailureMode @relationship(type: "PRODUCES", direction: IN)
+  verifiedByTestmethod: TestMethod @relationship(type: "VERIFIED_BY", direction: OUT)
+}
+
+type TestMethod {
+  testId: TM001
+  name: Electrical Parameter Monitoring
+  equipment: Power Analyzer
+  symptomVerifiedBy: Symptom @relationship(type: "VERIFIED_BY", direction: IN)
+  recommendsMaintenanceaction: MaintenanceAction @relationship(type: "RECOMMENDS", direction: OUT)
+  documentevidenceSupports: DocumentEvidence @relationship(type: "SUPPORTS", direction: IN)
+}
+
+type MaintenanceAction {
+  actionId: MA001
+  name: Inspect Thermal Interface Material
+  priority: High
+  testmethodRecommends: TestMethod @relationship(type: "RECOMMENDS", direction: IN)
+}
+
+type OperatingCondition {
+  conditionId: OC001
+  loadType: High Load Cycling
+  ambientTemperature: 45
+  increasesRiskOfFailuremechanism: FailureMechanism @relationship(type: "INCREASES_RISK_OF", direction: OUT)
+}
+
+type DocumentEvidence {
+  chunkId:  <chunkId>
+  documentId: <documentId>
+  page: <pageNumber>
+  supportsFailuremechanism: FailureMechanism @relationship(type: "SUPPORTS", direction: OUT)
+  supportsFailuremode: FailureMode @relationship(type: "SUPPORTS", direction: OUT)
+  supportsTestmethod: TestMethod @relationship(type: "SUPPORTS", direction: OUT)
+}
+
+type StressFactor {
+  stressId: ST001
+  name: Junction Temperature Variation
+  unit: °C
+  acceleratesFailuremechanism: FailureMechanism @relationship(type: "ACCELERATES", direction: OUT)
+}

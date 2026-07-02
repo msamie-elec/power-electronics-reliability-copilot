@@ -9,6 +9,38 @@ The format follows Keep a Changelog principles.
 ---
 
 # v0.4.0
+
+# ✅ Sprint 4.3 — Ontology & Schema
+
+Completed:
+
+✔ Engineering ontology
+✔ Ontology tables
+✔ Relationship definitions
+✔ Node properties
+✔ Neo4j schema
+✔ Constraints
+✔ Indexes
+✔ Documentation
+✅ Sprint 4.3.1 — Design Diagrams
+
+Completed:
+
+✔ Diagram 1 — Conceptual Ontology
+✔ Diagram 2 — Neo4j Graph Schema
+✔ Diagram 3 — Engineering Knowledge Graph Example
+
+Exported as
+
+PNG
+SVG
+JSON
+Cypher
+
+plus documentation.
+
+
+
 # Sprint 4.1:
 Sprint 4.1 Status
 

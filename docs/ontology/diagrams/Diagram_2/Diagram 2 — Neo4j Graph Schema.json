@@ -1,0 +1,353 @@
+{
+  "style": {
+    "font-family": "sans-serif",
+    "background-color": "#ffffff",
+    "background-image": "",
+    "background-size": "100%",
+    "node-color": "#ffffff",
+    "border-width": 4,
+    "border-color": "#000000",
+    "radius": 50,
+    "node-padding": 5,
+    "node-margin": 2,
+    "outside-position": "auto",
+    "node-icon-image": "",
+    "node-background-image": "",
+    "icon-position": "inside",
+    "icon-size": 64,
+    "caption-position": "inside",
+    "caption-max-width": 200,
+    "caption-color": "#000000",
+    "caption-font-size": 50,
+    "caption-font-weight": "normal",
+    "label-position": "inside",
+    "label-display": "pill",
+    "label-color": "#000000",
+    "label-background-color": "#ffffff",
+    "label-border-color": "#000000",
+    "label-border-width": 4,
+    "label-font-size": 40,
+    "label-padding": 5,
+    "label-margin": 4,
+    "directionality": "directed",
+    "detail-position": "inline",
+    "detail-orientation": "parallel",
+    "arrow-width": 5,
+    "arrow-color": "#000000",
+    "margin-start": 5,
+    "margin-end": 5,
+    "margin-peer": 20,
+    "attachment-start": "normal",
+    "attachment-end": "normal",
+    "relationship-icon-image": "",
+    "type-color": "#000000",
+    "type-background-color": "#ffffff",
+    "type-border-color": "#000000",
+    "type-border-width": 0,
+    "type-font-size": 16,
+    "type-padding": 5,
+    "property-position": "outside",
+    "property-alignment": "colon",
+    "property-color": "#000000",
+    "property-font-size": 16,
+    "property-font-weight": "normal"
+  },
+  "nodes": [
+    {
+      "id": "n0",
+      "position": {
+        "x": -1762.811453737982,
+        "y": -420.87396494679615
+      },
+      "caption": "Material",
+      "labels": [
+        "Material"
+      ],
+      "properties": {
+        "materialId": "MT001",
+        "name": "Aluminium",
+        "type": "Metal",
+        "conductivity": "High"
+      },
+      "style": {}
+    },
+    {
+      "id": "n1",
+      "position": {
+        "x": -923.672178180799,
+        "y": -420.87396494679615
+      },
+      "caption": "Component",
+      "labels": [
+        "Component"
+      ],
+      "properties": {
+        "componentId": "C001",
+        "name": "IGBT Module",
+        "category": "Power Semiconductor",
+        "manufacturer": "Infineon"
+      },
+      "style": {}
+    },
+    {
+      "id": "n2",
+      "position": {
+        "x": -1343.2418159593906,
+        "y": -420.87396494679615
+      },
+      "caption": "Sub-Component",
+      "labels": [
+        "SubComponent"
+      ],
+      "properties": {
+        "subComponentId": "SC001",
+        "name": "Bond Wire",
+        "material": "Aluminium",
+        "function": "Electrical connection"
+      },
+      "style": {}
+    },
+    {
+      "id": "n3",
+      "position": {
+        "x": -1343.2418159593906,
+        "y": 193.12732901762894
+      },
+      "caption": "Failure Mechanism",
+      "labels": [
+        "FailureMechanism"
+      ],
+      "properties": {
+        "mechanismId": "M001",
+        "name": "Thermal Cycling",
+        "physics": "Thermomechanical fatigue"
+      },
+      "style": {}
+    },
+    {
+      "id": "n4",
+      "position": {
+        "x": -930.4776994890609,
+        "y": -134.39025468268562
+      },
+      "caption": "Failure Mode",
+      "labels": [
+        "FailureMode"
+      ],
+      "properties": {
+        "failureId": "FM001",
+        "name": "Bond Wire Lift-off",
+        "severity": "9"
+      },
+      "style": {}
+    },
+    {
+      "id": "n5",
+      "position": {
+        "x": -650.7186995552267,
+        "y": -134.39025468268557
+      },
+      "caption": "Symptom",
+      "labels": [
+        "Symptom"
+      ],
+      "properties": {
+        "symptomId": "SY001",
+        "name": "Rising VCE(sat)",
+        "measurable": "true"
+      },
+      "style": {}
+    },
+    {
+      "id": "n6",
+      "position": {
+        "x": -323.20111585491225,
+        "y": -134.39025468268557
+      },
+      "caption": "Test Method",
+      "labels": [
+        "TestMethod"
+      ],
+      "properties": {
+        "testId": "TM001",
+        "name": "Electrical Parameter Monitoring",
+        "equipment": "Power Analyzer"
+      },
+      "style": {}
+    },
+    {
+      "id": "n7",
+      "position": {
+        "x": -323.20111585491225,
+        "y": 193.12732901762894
+      },
+      "caption": "Maintenance Action",
+      "labels": [
+        "MaintenanceAction"
+      ],
+      "properties": {
+        "actionId": "MA001",
+        "name": "Inspect Thermal Interface Material",
+        "priority": "High"
+      },
+      "style": {}
+    },
+    {
+      "id": "n8",
+      "position": {
+        "x": -1756.0059324297201,
+        "y": 193.12732901762894
+      },
+      "caption": "Operating Condition",
+      "labels": [
+        "OperatingCondition"
+      ],
+      "properties": {
+        "conditionId": "OC001",
+        "loadType": "High Load Cycling",
+        "ambientTemperature": "45"
+      },
+      "style": {}
+    },
+    {
+      "id": "n9",
+      "position": {
+        "x": -930.4776994890609,
+        "y": 193.12732901762894
+      },
+      "caption": "Document Evidence",
+      "labels": [
+        "DocumentEvidence"
+      ],
+      "properties": {
+        "chunkId": " <chunkId>",
+        "documentId": "<documentId>",
+        "page": "<pageNumber>"
+      },
+      "style": {}
+    },
+    {
+      "id": "n10",
+      "position": {
+        "x": -1756.0059324297201,
+        "y": -134.39025468268562
+      },
+      "caption": "Stress Factor",
+      "labels": [
+        "StressFactor"
+      ],
+      "properties": {
+        "stressId": "ST001",
+        "name": "Junction Temperature Variation",
+        "unit": "°C"
+      },
+      "style": {}
+    }
+  ],
+  "relationships": [
+    {
+      "id": "n0",
+      "fromId": "n1",
+      "toId": "n2",
+      "type": "CONTAINS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n3",
+      "fromId": "n3",
+      "toId": "n4",
+      "type": "RESULTS_IN",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n4",
+      "fromId": "n4",
+      "toId": "n5",
+      "type": "PRODUCES",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n6",
+      "fromId": "n8",
+      "toId": "n3",
+      "type": "INCREASES_RISK_OF",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n7",
+      "fromId": "n9",
+      "toId": "n3",
+      "type": "SUPPORTS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n8",
+      "fromId": "n9",
+      "toId": "n4",
+      "type": "SUPPORTS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n9",
+      "fromId": "n2",
+      "toId": "n3",
+      "type": "EXPERIENCES",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n11",
+      "fromId": "n10",
+      "toId": "n3",
+      "type": "ACCELERATES",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n13",
+      "fromId": "n5",
+      "toId": "n6",
+      "type": "VERIFIED_BY",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n14",
+      "fromId": "n6",
+      "toId": "n7",
+      "type": "RECOMMENDS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n15",
+      "fromId": "n9",
+      "toId": "n6",
+      "type": "SUPPORTS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n16",
+      "fromId": "n4",
+      "toId": "n1",
+      "type": "AFFECTS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n17",
+      "fromId": "n2",
+      "toId": "n0",
+      "type": "HAS_MATERIAL",
+      "properties": {},
+      "style": {}
+    }
+  ]
+}
