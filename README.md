@@ -1,6 +1,6 @@
 # Power Electronics Reliability Copilot
 
-Enterprise AI Copilot for diagnosing reliability issues in power electronic systems using Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), Knowledge Graphs, and Agentic AI.
+Enterprise AI Copilot for diagnosing reliability issues in power electronic systems using Knowledge Graphs, GraphRAG, Retrieval-Augmented Generation (RAG), Large Language Models (LLMs) and Agentic AI
 
 ---
 
@@ -19,6 +19,15 @@ The project is being developed incrementally as a portfolio-quality demonstratio
 - Produce evidence-backed AI answers
 - Display confidence level and retrieved source chunks
 - Prepare engineering knowledge for future GraphRAG reasoning
+Also graph:
+• Engineering ontology modelling
+• Neo4j knowledge graph
+• Engineering document ingestion
+• Graph validation
+• Cypher query library
+• GraphRAG preparation
+• Hybrid graph + vector retrieval
+• Evidence-backed AI reasoning
 
 ---
 
@@ -28,40 +37,64 @@ The project is being developed incrementally as a portfolio-quality demonstratio
 | --------------- | ----------------------------- |
 | Frontend        | React + TypeScript + Vite     |
 | Backend         | FastAPI                       |
-| AI Framework    | LlamaIndex  + Sentence Transformers                   |
+| AI Framework    | LlamaIndex                    |
 | Agent Framework | LangGraph                     |
 | Knowledge Graph | Neo4j                         |
+| Graph Query Language | Cypher                   |
 | Vector Store    | FAISS (later Azure AI Search) |
+| Embeddings      | OpenAI Embeddings             |
 | LLM             | OpenAI GPT-4.1 (Azure OpenAI planned)         |
 | Deployment      | Docker                        |
 | Cloud           | Microsoft Azure               |
 | Orchestration   | Kubernetes                    |
+| Agent Framework | LangGraph                     |
 
 ---
 
 # Repository Structure
 
 ```text
-power-electronics-copilot
+power-electronics-copilot/
 │
 ├── architecture/
+│
 ├── backend/
 │   ├── app/
 │   ├── uploads/
 │   └── tests/
 │
 ├── frontend/
-│   ├── src/
-│   └── public/
+│   ├── public/
+│   └── src/
 │
 ├── graph/
-├── docker/
-├── docs/
-│   ├── releases/
-│   └── CHANGELOG.md
+│   ├── schema/
+│   ├── seed/
+│   ├── queries/
+│   └── README.md
 │
+├── documents/
+│
+├── docker/
+│
+├── docs/
+│   ├── adr/
+│   ├── graph_rag/
+│   ├── ontology/
+│   ├── releases/
+│   ├── sprints/
+│   ├── standards/
+│   ├── AI_ENGINEERING_DEVELOPMENT_MANUAL.md
+│   ├── CHANGELOG.md
+│   ├── PROJECT_METHODOLOGY.md
+│   ├── PROJECT_ROADMAP.md
+│   └── SYSTEM_ARCHITECTURE.md
+│
+├── .gitignore
 ├── LICENSE
 └── README.md
+
+
 ```
 
 ---
@@ -101,6 +134,12 @@ power-electronics-copilot
 * Engineering Documentation
 * Vector Databases (FAISS)
 * Automated Testing (Pytest)
+Knowledge Engineering
+* Ontology Design
+* Graph Data Modelling
+* Cypher
+* Graph Validation
+* Knowledge Representation
 ---
 
 # Current Status
@@ -131,26 +170,93 @@ power-electronics-copilot
 - Manual validation scenarios
 - Enterprise project structure
 
+Completed
+✓ Engineering ontology
+✓ Neo4j schema
+✓ Knowledge graph
+✓ Constraints
+✓ Indexes
+✓ Seed graph
+✓ Validation
+✓ Cypher query library
+✓ GraphRAG preparation
+
 ### Next Release
 
 **v0.4.0 — Knowledge Graph Intelligence**
 
-Planned additions:
+v0.5
 
-- Neo4j integration
-- Engineering ontology
-- Node and relationship creation
-- Graph database population
-- Graph retrieval
-- Hybrid Vector + Graph search
-- GraphRAG pipeline
-- Knowledge graph visualisation
+GraphRAG Integration
 
 ---
+# Architecture:
+Engineering Documents
+          │
+          ▼
+      LlamaIndex
+(Document Processing)
+          │
+ ┌────────┴────────┐
+ ▼                 ▼
+Neo4j          Vector Store
+ │                  │
+ └────────┬─────────┘
+          ▼
+     Hybrid GraphRAG
+          ▼
+      LangGraph
+          ▼
+Engineering AI Copilot
+
+### Notice this makes each technology's responsibility clear:
+
+LlamaIndex → ingestion, indexing, retrieval orchestration
+Neo4j → structured engineering knowledge
+FAISS/Azure AI Search → semantic vector retrieval
+LangGraph → agent orchestration
+GPT → reasoning and generation
 
 # Long-Term Architecture
 
 ```
+New version:
+
+Engineering Documents
+          │
+          ▼
+      LlamaIndex
+(Document Processing)
+          │
+          ▼
+      Chunking
+          │
+          ▼
+      Embeddings
+          │
+    ┌─────┴─────┐
+    ▼           ▼
+ FAISS      Neo4j Knowledge Graph
+(Vector)     (Structured Knowledge)
+    │           │
+    └─────┬─────┘
+          ▼
+ Hybrid Retrieval
+(Graph + Vector)
+          │
+          ▼
+   LangGraph Agent
+          │
+          ▼
+ OpenAI GPT-4.1
+ (Reasoning)
+          │
+          ▼
+Engineering AI Copilot
+
+
+```
+### Earlier version:
 React + TypeScript
           │
           ▼

@@ -32,6 +32,24 @@ graph/
 
 ---
 
+# Execution Order
+
+Execute the Cypher scripts in the following order when creating a new database.
+
+```
+1. schema/constraints.cypher
+2. schema/indexes.cypher
+3. schema/schema.cypher
+4. seed/seed_graph.cypher
+5. queries/validation.cypher
+6. queries/graph_statistics.cypher
+7. queries/engineering_queries.cypher
+```
+
+This sequence ensures that constraints and indexes are created before loading data, the graph is validated after population, and engineering queries are executed against a verified knowledge graph.
+
+---
+
 # Workflow
 
 The recommended workflow is:
@@ -45,45 +63,119 @@ The recommended workflow is:
 
 ---
 
+# Current Graph Status
+
+The current engineering knowledge graph contains a small seed dataset used to validate the ontology, schema and query library.
+
+### Graph Statistics
+
+| Item | Count |
+|------|------:|
+| Nodes | 11 |
+| Relationships | 13 |
+
+### Node Labels
+
+- Component
+- SubComponent
+- Material
+- OperatingCondition
+- StressFactor
+- FailureMechanism
+- FailureMode
+- Symptom
+- TestMethod
+- MaintenanceAction
+- DocumentEvidence
+
+### Relationship Types
+
+- CONTAINS
+- HAS_MATERIAL
+- EXPERIENCES
+- ACCELERATES
+- INCREASES_RISK_OF
+- RESULTS_IN
+- PRODUCES
+- VERIFIED_BY
+- RECOMMENDS
+- SUPPORTS
+- AFFECTS
+
+---
+
 # Graph Lifecycle
 
+```
 Engineering Documents
-
-↓
-
+          │
+          ▼
 Knowledge Extraction
-
-↓
-
+          │
+          ▼
 Graph-ready JSON
-
-↓
-
+          │
+          ▼
 Neo4j Knowledge Graph
-
-↓
-
+          │
+          ▼
 Cypher Queries
-
-↓
-
+          │
+          ▼
 GraphRAG
-
-↓
-
+          │
+          ▼
 AI Engineering Assistant
+```
+
+---
+
+# Future Expansion
+
+The current implementation represents the **Knowledge Graph Foundation (v0.4)**.
+
+Future releases will extend this module with:
+
+- Automated PDF ingestion
+- Document parsing
+- Knowledge extraction pipelines
+- Document chunking
+- Embedding generation
+- Vector indexing
+- GraphRAG integration
+- LLM-powered reasoning
+- Engineering assistant APIs
+- Multi-document knowledge fusion
 
 ---
 
 # Related Documentation
 
+### Ontology
+
 - `docs/ontology/POWER_ELECTRONICS_RELIABILITY_ONTOLOGY.md`
+
+### Neo4j Schema
+
 - `docs/ontology/POWER_ELECTRONICS_GRAPH_SCHEMA.md`
+
+### Knowledge Ingestion
+
 - `docs/ontology/KNOWLEDGE_INGESTION_DESIGN.md`
+
+### Ontology Diagrams
+
 - `docs/ontology/diagrams/`
 
 ---
 
-# Current Version
+# Version
 
-v0.4 — Knowledge Graph Foundation
+**Current Version**
+
+```
+v0.4
+Knowledge Graph Foundation
+```
+
+This module provides the foundational graph architecture upon which future GraphRAG and AI reasoning capabilities will be built.

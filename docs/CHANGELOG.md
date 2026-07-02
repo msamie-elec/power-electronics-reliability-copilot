@@ -1,190 +1,121 @@
 # Changelog
 
-Current Version: v0.3.0
+All notable changes to this project are documented in this file.
 
-All notable changes to this project will be documented in this file.
-
-The format follows Keep a Changelog principles.
+The format is based on **Keep a Changelog** and follows semantic versioning.
 
 ---
 
-# v0.4.0
+# [Unreleased]
 
-## Sprint 4.4.2 — Status
-Graph Statistics
-Item	Expected	Actual	Status
-Nodes	11	11	✅
-Relationships	13	13	✅
-Labels	11	11	✅
-Relationship Types	11 (SUPPORTS appears 3×)	Correct	✅
+## Planned
 
-Your graph now matches Diagram 3 perfectly.
+### v0.5.0 — GraphRAG Pipeline
 
-What you've achieved
+- GraphRAG implementation
+- Neo4j retrieval integration
+- Hybrid vector + graph retrieval
+- Knowledge graph traversal
+- Engineering reasoning pipeline
 
-This is a much bigger milestone than it might seem.
+---
 
-You have now built:
+# v0.4.0 — Knowledge Graph Foundation
 
-✅ An engineering ontology
-✅ A Neo4j schema
-✅ Unique constraints
-✅ Search indexes
-✅ Seed engineering data
-✅ A connected engineering knowledge graph
+Release Status:
+✅ Completed
 
-At this point, your project is no longer just documentation—it contains a working knowledge graph.
+## Added
 
-Sprint 4.4 is now COMPLETE
+### Sprint 4.1 — Neo4j Integration
 
-That means the repository already contains:
+- Neo4j Aura database
+- Graph service
+- FastAPI connectivity
+- Health endpoint
+- Environment configuration
 
-graph/
-│
-├── schema/
-│   ├── constraints.cypher
-│   ├── indexes.cypher
-│   └── schema.cypher
-│
-├── seed/
-│   ├── seed_graph.cypher
-│   └── sample_data.json
-│
-└── README.md
+### Sprint 4.2 — Ontology Design
 
-This is exactly the kind of project structure you'd expect in a professional repository.
+- Engineering ontology
+- Node definitions
+- Relationship definitions
+- Property model
+- Identifier strategy
 
-A milestone worth noting
+### Sprint 4.3 — Knowledge Graph Design
 
-This is actually the first complete engineering knowledge graph in your repository. From this point onward, every sprint builds on a working graph instead of diagrams and plans.
+- Neo4j schema
+- Knowledge ingestion architecture
+- Engineering ontology documentation
+- Three ontology diagrams
+- Graph schema documentation
 
-It's also the point where your workflow begins to mirror how enterprise teams work:
+### Sprint 4.4 — Graph Implementation
 
-Design the ontology ✅
-Design the schema ✅
-Create constraints and indexes ✅
-Load seed entities ✅
-Connect them into a graph ← You're doing this now
-Validate the graph
-Write reusable queries
-Scale to ingest real engineering literature
-Build GraphRAG and AI reasoning on top
+- Graph constraints
+- Search indexes
+- Seed engineering dataset
+- Knowledge graph creation
+- Sample engineering graph
 
-You're progressing through the same lifecycle used for production knowledge graph projects, which is exactly the foundation you wanted for becoming an Enterprise AI Solutions Architect.
+### Sprint 4.5 — Validation & Querying
 
+- Graph validation
+- Graph statistics
+- Engineering Cypher queries
+- Validation queries
+- End-to-end graph verification
 
-## Sprint 4.3.2:
-Its purpose is not to build software, but to define the architecture that the software will follow.
+### Sprint 4.6 — Repository Structure
 
-Think of it this way:
+- Graph module
+- Documentation structure
+- ADR framework
+- Standards directory
+- Sprint history
+- Graph README
 
-Sprint 4.3 defined what the knowledge graph should contain (ontology and schema).
-Sprint 4.3.1 defined how it should look (design diagrams).
-Sprint 4.3.2 defined how knowledge enters the system (ingestion architecture).
+### Sprint 4.7 — GraphRAG Preparation
 
-So, the deliverable for Sprint 4.3.2 is the design document:
+- GraphRAG preparation
+- Chunking strategy
+- Embedding strategy
+- Retrieval workflow
+- Source tracking design
 
-docs/
-└── ontology/
-    └── KNOWLEDGE_INGESTION_DESIGN.md
+### Sprint 4.8 — Enterprise Documentation
 
-No Python code, no FastAPI endpoints, and no Neo4j implementation are required at this stage.
+- Knowledge Graph Overview
+- Neo4j Schema documentation
+- Repository documentation
+- Architecture documentation
+- Data model documentation
+- Future expansion roadmap
 
-Why this was worth doing
+## Repository Milestone
 
-Without this document, we might have started manually creating nodes in Neo4j with no agreed process.
+The repository now includes:
 
-Now, before we write any code, we have already defined:
+- Engineering ontology
+- Neo4j knowledge graph
+- Cypher schema
+- Constraints
+- Indexes
+- Seed dataset
+- Validation queries
+- Engineering queries
+- Enterprise documentation
+- Architecture Decision Records (ADRs)
 
-✔ the ingestion pipeline
-✔ the target ontology
-✔ the JSON exchange format
-✔ validation rules
-✔ evidence model
-✔ enterprise design principles
+This release establishes the complete **Knowledge Graph Foundation** for future GraphRAG development.
 
+---
 
+# v0.3.0 — Engineering Knowledge Retrieval
 
-# ✅ Sprint 4.3 — Ontology & Schema
-
-Completed:
-
-✔ Engineering ontology
-✔ Ontology tables
-✔ Relationship definitions
-✔ Node properties
-✔ Neo4j schema
-✔ Constraints
-✔ Indexes
-✔ Documentation
-✅ Sprint 4.3.1 — Design Diagrams
-
-Completed:
-
-✔ Diagram 1 — Conceptual Ontology
-✔ Diagram 2 — Neo4j Graph Schema
-✔ Diagram 3 — Engineering Knowledge Graph Example
-
-Exported as
-
-PNG
-SVG
-JSON
-Cypher
-
-plus documentation.
-
-
-
-# Sprint 4.1:
-Sprint 4.1 Status
-
-We can now officially mark the first major objective of v0.4.0 as complete.
-
-Sprint 4.1 — Neo4j Integration
-Completed
-✅ Created dedicated Neo4j Aura database for the Power Electronics project
-✅ Configured secure environment variables
-✅ Installed Neo4j Python driver
-✅ Implemented Graph Service
-✅ Added /graph/health API endpoint
-✅ Verified FastAPI ↔ Neo4j connectivity
-✅ Confirmed successful query execution (RETURN 1)
-Current Architecture
-Frontend (React)
-        │
-        ▼
-FastAPI
-        │
-        ├─────────────► FAISS
-        │                │
-        │                ▼
-        │           Semantic Search
-        │
-        └─────────────► Neo4j Aura
-                         │
-                         ▼
-                 Graph Database
-
-This is a significant architectural milestone: your application now has both retrieval mechanisms in place:
-
-a vector store (FAISS) for semantic similarity, and
-a graph database (Neo4j) for structured relationships.
-
-which means:
-
-✅ FastAPI can reach Neo4j Aura
-✅ DNS resolution is working
-✅ Authentication succeeded
-✅ The Neo4j Python driver is working
-✅ Your .env configuration is correct
-✅ Your Graph Service is functioning
-
-
-# v0.3.0 — Engineering RAG Copilot
-
-Release status:
-🚧 Release Candidate
+Released:
+June 2026
 
 ## Added
 
@@ -192,99 +123,77 @@ Release status:
 
 - PDF parsing
 - Automatic text extraction
-- TXT generation
 - Metadata generation
 
-### Sprint 3.2 — Intelligent Chunking
+### Sprint 3.2 — Chunking
 
-- Document chunk generation
-- Chunk metadata
-- Word counts
+- Document chunking
 - Chunk identifiers
-- Timestamp metadata
+- Metadata generation
 
-### Sprint 3.3 — Embedding Generation
+### Sprint 3.3 — Embeddings
 
 - Sentence Transformer embeddings
 - Embedding persistence
-- Embedding metadata
 
-### Sprint 3.4 — Semantic Search
+### Sprint 3.4 — Vector Search
 
-- Cosine similarity search
+- FAISS vector database
+- Semantic similarity search
 - Top-k retrieval
-- Search API
 
 ### Sprint 3.5 — Engineering Retrieval
 
 - Evidence retrieval
-- Structured engineering responses
 - Confidence estimation
+- Structured engineering responses
 
 ### Sprint 3.6 — Frontend Integration
 
-- Frontend RAG integration
+- React integration
 - Evidence display
-- Confidence display
+- Confidence indicator
 - Source attribution
 
 ### Sprint 3.7 — LLM Integration
 
 - OpenAI integration
 - Prompt engineering
-- Grounded engineering answers
-- RAG pipeline
+- Retrieval-Augmented Generation (RAG)
 
-### Sprint 3.8 — Testing & Release Preparation
+### Sprint 3.8 — Testing
 
-#### Sprint 3.8.1
-
-- Pytest integration
-- API tests
-- TestClient configuration
-- Backend validation
-
-#### Sprint 3.8.2
-
-- End-to-end workflow validation
-- Invalid input handling
-- File type validation
-- Empty question validation
-- Upload workflow improvements
-
-#### Sprint 3.8.3
-
-- Documentation updates
-- README improvements
-- Roadmap updates
-- Release preparation
+- Pytest
+- API validation
+- End-to-end testing
+- Documentation improvements
 
 ---
 
 # v0.2.0 — Backend Foundation
 
-Released: 30 June 2026
+Released:
+June 2026
 
 ## Added
 
 - FastAPI backend
-- REST API architecture
-- Swagger/OpenAPI
+- REST API
 - File upload
 - Document management
-- Modular backend
+- Modular backend architecture
 
 ---
 
 # v0.1.0 — Frontend Prototype
 
-Released: 30 June 2026
+Released:
+June 2026
 
 ## Added
 
-- React frontend
+- React
 - TypeScript
 - Vite
-- Enterprise dashboard
-- Engineering UI
-- Project documentation
+- Engineering dashboard
+- Initial project documentation
