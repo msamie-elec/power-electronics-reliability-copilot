@@ -1,0 +1,2097 @@
+{
+  "documentId": "DOC-7E311A25",
+  "sourceChunkFile": "chunks\\knowledge\\DOC-7E311A25.json",
+  "entityCount": 150,
+  "relationshipCount": 169,
+  "entities": [
+    {
+      "name": "Graph Retrieval-Augmented Generation",
+      "type": "Process",
+      "description": "A process of building a graph retriever that involves multiple steps from understanding the problem domain to defining an ontology.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "name": "Problem Domain",
+      "type": "Concept",
+      "description": "The specific area or field for which the graph retriever is being built, determining the kind of reasoning the system should perform.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "name": "Entities",
+      "type": "Graph Component",
+      "description": "Important objects, concepts, or actors identified in the data that form the nodes of the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "name": "Relationships",
+      "type": "Graph Component",
+      "description": "Interactions, dependencies, or causal links between entities that form the edges of the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "name": "Raw Data",
+      "type": "Data",
+      "description": "Unstructured and inconsistent information collected from various sources such as PDFs, manuals, APIs, databases, telemetry streams, maintenance records, schedules, logs, or web documents.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "name": "Data Cleaning and Normalization",
+      "type": "Process",
+      "description": "The stage where terminology is standardized, duplicates are removed, formats are aligned, and inconsistencies are resolved to create coherent data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "name": "Chunking",
+      "type": "Process",
+      "description": "Dividing large documents into smaller chunks that can become evidence nodes or semantic references linked to entities.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "name": "Entity Extraction",
+      "type": "Process",
+      "description": "Identifying important objects, concepts, or actors in the data using NLP models, rule-based systems, or LLM-based extraction pipelines.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "name": "Relationship Extraction",
+      "type": "Process",
+      "description": "Analyzing text to discover interactions, dependencies, or causal links between entities.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "name": "Ontology or Schema",
+      "type": "Structure",
+      "description": "The structural blueprint of the graph that defines how entities and relationships are organized.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "name": "flight",
+      "type": "entity",
+      "description": "An entity representing a connection between two airports in a travel system.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "name": "airport",
+      "type": "entity",
+      "description": "A location node in the travel system graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "name": "airline",
+      "type": "entity",
+      "description": "An entity that operates routes between airports.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "name": "ontology",
+      "type": "concept",
+      "description": "A structural blueprint of the graph specifying allowed node types, relationships, and domain organization.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "name": "graph",
+      "type": "data structure",
+      "description": "A connected knowledge structure where entities are nodes and relationships are edges.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "name": "graph database",
+      "type": "technology",
+      "description": "Databases optimized for relationship-based querying and traversal, e.g., Neo4j, Amazon Neptune, TigerGraph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "name": "embedding",
+      "type": "data representation",
+      "description": "Vector representations generated for nodes, document chunks, summaries, or other graph elements to enable semantic similarity search.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "name": "indexing",
+      "type": "process",
+      "description": "The process of creating vector, graph, and metadata indexes to support semantic search, traversal, and filtering.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "name": "retriever",
+      "type": "system component",
+      "description": "A hybrid retrieval system combining vector search, graph traversal, keyword matching, and metadata filtering.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "name": "query processing",
+      "type": "process",
+      "description": "The online phase where the system interprets user queries by extracting intent, entities, goals, constraints, and context.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "name": "inverter",
+      "type": "component",
+      "description": "An electrical device that converts DC to AC, subject to temperature changes and faults.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "name": "temperature",
+      "type": "parameter",
+      "description": "A measurable physical quantity indicating heat level, used to detect faults such as overheating.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "name": "fault diagnosis",
+      "type": "process",
+      "description": "The method of identifying and analyzing faults in systems like inverters using graph traversal and reasoning.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "name": "graph traversal",
+      "type": "process",
+      "description": "The method of exploring connected nodes and relationships in a graph to discover contextual reasoning paths.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "name": "graph index",
+      "type": "indexing method",
+      "description": "An indexing structure that helps efficiently traverse relationships between nodes and edges in a graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "name": "vector index",
+      "type": "indexing method",
+      "description": "An indexing method used to retrieve information based on similarity in vector space.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "name": "metadata index",
+      "type": "indexing method",
+      "description": "An indexing method that organizes data based on metadata attributes to support retrieval.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "name": "retriever",
+      "type": "system component",
+      "description": "A system module that searches for suitable starting nodes and performs graph traversal to extract relevant subgraphs.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "name": "subgraph",
+      "type": "data structure",
+      "description": "A relevant subset of nodes, relationships, and evidence extracted from the graph for contextual reasoning.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "name": "LLM",
+      "type": "system component",
+      "description": "Large Language Model that generates responses using structured prompts derived from graph traversal.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "name": "RAG system",
+      "type": "architecture",
+      "description": "Retrieval-Augmented Generation system that supports adding additional knowledge and relationships dynamically.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "name": "Graph Retrieval-Augmented Generation (Graph RAG) system",
+      "type": "System",
+      "description": "A system architecture that combines graph, vector, and metadata indexes to enhance information retrieval and reasoning.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "name": "Graph index",
+      "type": "Index",
+      "description": "An index that helps efficiently traverse relationships between nodes and edges in a graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "name": "Vector index",
+      "type": "Index",
+      "description": "An index that supports semantic similarity search using embeddings.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "name": "Metadata index",
+      "type": "Index",
+      "description": "An index that enables filtering and structured querying based on attributes such as time, severity, region, device type, confidence score, or document source.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "name": "Semantic vector retrieval",
+      "type": "Retrieval Method",
+      "description": "A retrieval method that uses vector indexes to identify candidate entities or chunks based on semantic similarity.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "name": "Graph traversal engine",
+      "type": "Component",
+      "description": "A component that explores relationships around identified entities in a graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "name": "Metadata filtering",
+      "type": "Filtering Method",
+      "description": "A method that narrows retrieved context based on operational constraints using metadata indexes.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "name": "Graph RAG",
+      "type": "System",
+      "description": "A graph-based Retrieval-Augmented Generation system that continuously ingests new documents and data, extracts entities and relationships, and updates the graph structure incrementally to maintain a living contextual memory.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "name": "Entity",
+      "type": "Graph Component",
+      "description": "Nodes in the graph representing concepts, components, or faults extracted from ingested data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "name": "Relationship",
+      "type": "Graph Component",
+      "description": "Edges in the graph representing causal or associative links between entities.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "name": "Embedding",
+      "type": "Data Representation",
+      "description": "Vector representations of nodes and chunks used for semantic similarity search within the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "name": "Ingestion Pipeline",
+      "type": "Process",
+      "description": "The process that cleans, chunks, extracts entities and relationships from new data, compares with existing graph, and updates the graph accordingly.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "name": "Predictive Maintenance Graph",
+      "type": "Application Example",
+      "description": "A graph containing nodes such as inverter, cooling system, MOSFETs, and fault entities used to model maintenance knowledge and failure modes.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "name": "Fault Entity",
+      "type": "Entity",
+      "description": "A node representing a newly observed failure mode or fault condition.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "name": "Causal Relationship",
+      "type": "Relationship",
+      "description": "A directed edge indicating cause-effect linkage between entities.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "name": "Chunk Nodes",
+      "type": "Graph Component",
+      "description": "Additional nodes attached to entities or relationships providing evidence or context.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "name": "Vector Index",
+      "type": "Data Structure",
+      "description": "An index storing embeddings for efficient semantic similarity search.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "name": "Streaming Updates",
+      "type": "Capability",
+      "description": "The ability of the graph to incorporate new data in near real-time, such as sensor events or alerts.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "name": "Domains",
+      "type": "Application Areas",
+      "description": "Fields where Graph RAG is especially powerful, including predictive maintenance, healthcare, cybersecurity, supply chains, intelligent transportation, and digital twins.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "name": "provenance",
+      "type": "concept",
+      "description": "Information about where a graph relationship came from, how it was created, and how trustworthy it is; the traceable origin and history of a node or edge.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "name": "synchronous operation",
+      "type": "concept",
+      "description": "An operation where one operation directly waits for another operation to finish before continuing; the caller is blocked until the callee finishes.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "name": "synchronous workflow",
+      "type": "concept",
+      "description": "Operations where the request lifecycle, execution ordering, and transactional consistency require the system to wait for deterministic completion before proceeding to the next stage.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "name": "reconciliation worker",
+      "type": "component",
+      "description": "A background service that checks whether different systems ended up in the same correct state by periodically comparing records and fixing or escalating mismatches; responsible for state correction and consistency checking.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "name": "delayed retry",
+      "type": "mechanism",
+      "description": "A process that tries a failed operation again after a delay, potentially multiple times, or moves the failed operation to a dead-letter queue if it continues to fail.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "name": "Apache Kafka",
+      "type": "technology",
+      "description": "A distributed event streaming platform used for building real-time data pipelines and streaming applications.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "name": "Azure Event Hubs",
+      "type": "technology",
+      "description": "A big data streaming platform and event ingestion service capable of receiving and processing millions of events per second.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "name": "Amazon Kinesis",
+      "type": "technology",
+      "description": "A platform on AWS to collect, process, and analyze real-time streaming data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "name": "cloud service buses",
+      "type": "technology",
+      "description": "Messaging infrastructure that allows different applications and services to communicate with each other asynchronously.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "name": "Kafka",
+      "type": "Event Streaming Platform",
+      "description": "An event streaming platform suitable for handling many continuous events and allowing multiple consumers to read the same event stream independently.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "name": "Event Hubs",
+      "type": "Event Streaming Platform",
+      "description": "An event streaming platform similar to Kafka, used for high-volume continuous events, analytics, monitoring streams, or many independent consumers.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "name": "Kinesis",
+      "type": "Event Streaming Platform",
+      "description": "An event streaming platform similar to Kafka and Event Hubs, used for continuous event streaming and multiple independent consumers.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "name": "Azure Service Bus",
+      "type": "Cloud Service Bus / Queue",
+      "description": "A cloud service bus used mainly for reliable task execution, retries, background jobs, and worker processing.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "name": "AWS SQS",
+      "type": "Cloud Service Bus / Queue",
+      "description": "A cloud service queue used for reliable task execution, retries, background jobs, and worker processing.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "name": "RabbitMQ",
+      "type": "Cloud Service Bus / Queue",
+      "description": "A message queue system used for reliable task execution, retries, background jobs, and worker processing.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "name": "Event Streaming",
+      "type": "Concept",
+      "description": "Publishing facts/events for many services to react to, suitable for continuous event flows and multiple independent consumers.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "name": "Queue / Service Bus",
+      "type": "Concept",
+      "description": "Assigning work/tasks for workers to process, suitable for reliable task execution, retries, and background jobs.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "name": "Synchronous Execution",
+      "type": "Execution Behaviour",
+      "description": "Execution where the workflow waits for an operation to finish before continuing.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "name": "Asynchronous Execution",
+      "type": "Execution Behaviour",
+      "description": "Execution where the workflow continues immediately without waiting for the operation to finish; results arrive later.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "name": "Stateful",
+      "type": "Memory Behaviour",
+      "description": "System behaviour where workflow or session memory is stored between requests.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "name": "Stateless",
+      "type": "Memory Behaviour",
+      "description": "System behaviour where no workflow or session memory is stored between requests.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "name": "Stateful system",
+      "type": "System characteristic",
+      "description": "A system that remembers previous context or workflow state, preserving information across requests.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "name": "Stateless system",
+      "type": "System characteristic",
+      "description": "A system that does not remember anything between requests; each request is independent.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "name": "Redis",
+      "type": "Storage technology",
+      "description": "A storage system commonly used to preserve workflow state or session memory in stateful systems.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "name": "PostgreSQL",
+      "type": "Storage technology",
+      "description": "A relational database system used to store workflow state or session memory.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "name": "Session store",
+      "type": "Storage technology",
+      "description": "A storage mechanism used to preserve session information in stateful systems.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "name": "Workflow engine",
+      "type": "Storage technology",
+      "description": "A system component that manages and preserves workflow state.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "name": "Synchronous execution",
+      "type": "Execution coordination",
+      "description": "Execution coordination where processes wait for each other to complete.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "name": "Asynchronous execution",
+      "type": "Execution coordination",
+      "description": "Execution coordination where processes do not wait for each other to complete.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "name": "Graph Retriever pipeline",
+      "type": "System",
+      "description": "A system for retrieval-augmented generation using graph-based data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Offline Graph Construction Phase",
+      "type": "Phase",
+      "description": "Phase involving building the knowledge graph before query time.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Online Retrieval & Traversal Phase",
+      "type": "Phase",
+      "description": "Phase involving query-time reasoning and retrieval from the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Raw Data",
+      "type": "Data",
+      "description": "Initial unprocessed data input for the graph retriever pipeline.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Ingestion",
+      "type": "Process",
+      "description": "Process of importing raw data into the system.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Chunking & Cleaning",
+      "type": "Process",
+      "description": "Process of dividing data into manageable pieces and cleaning it.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Entity Extraction",
+      "type": "Process",
+      "description": "Process of identifying entities from the data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Relationship Extraction",
+      "type": "Process",
+      "description": "Process of identifying relationships between entities.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Ontology / Schema Design",
+      "type": "Process",
+      "description": "Designing the schema or ontology for the knowledge graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Graph Construction",
+      "type": "Process",
+      "description": "Building the knowledge graph from extracted entities and relationships.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Graph Storage & Indexing",
+      "type": "Process",
+      "description": "Storing and indexing the graph for efficient retrieval.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Embedding Generation",
+      "type": "Process",
+      "description": "Generating vector embeddings for graph elements to support retrieval.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Hybrid Retrieval Layer",
+      "type": "Component",
+      "description": "Layer combining different retrieval methods for querying the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Graph Traversal Engine",
+      "type": "Component",
+      "description": "Engine that performs traversal operations on the graph during queries.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Subgraph Assembly",
+      "type": "Process",
+      "description": "Assembling relevant subgraphs for answering queries.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Prompt Construction",
+      "type": "Process",
+      "description": "Constructing prompts for large language model reasoning.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "LLM Reasoning",
+      "type": "Process",
+      "description": "Reasoning performed by large language models using graph data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Final Response",
+      "type": "Output",
+      "description": "The final answer generated by the system.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Domain",
+      "type": "Concept",
+      "description": "The application area for the graph retriever, e.g., flight booking.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Objective",
+      "type": "Concept",
+      "description": "The goal of the graph retriever, e.g., route reasoning.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Node types",
+      "type": "Concept",
+      "description": "Types of nodes in the graph, e.g., airport, airline, flight.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Edge types",
+      "type": "Concept",
+      "description": "Types of edges in the graph, e.g., connects_to, operated_by.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Queries",
+      "type": "Concept",
+      "description": "Example queries the system should answer, e.g., cheapest route avoiding overnight stops.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "name": "Raw Data",
+      "type": "Data",
+      "description": "Initial collected data from various sources such as PDFs, APIs, databases, logs, tables, and web data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "name": "PDFs",
+      "type": "Data Source",
+      "description": "Manuals provided in PDF format used as a source of raw data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "name": "APIs",
+      "type": "Data Source",
+      "description": "Flight data accessed through APIs used as a source of raw data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "name": "Databases",
+      "type": "Data Source",
+      "description": "Maintenance records stored in databases used as a source of raw data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "name": "Logs",
+      "type": "Data Source",
+      "description": "Sensor logs used as a source of raw data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "name": "Tables",
+      "type": "Data Source",
+      "description": "Schedules stored in tables used as a source of raw data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "name": "Web Data",
+      "type": "Data Source",
+      "description": "Policies and other relevant data collected from the web.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "name": "Cleaning & Normalization",
+      "type": "Data Processing Phase",
+      "description": "Phase involving preparation of data by removing duplicates, standardizing names, normalizing units, cleaning formatting, and resolving inconsistencies.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "name": "Chunking",
+      "type": "Data Processing Phase",
+      "description": "Phase where large documents are split into smaller units such as sections, paragraphs, and chunks.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "name": "Entity Extraction",
+      "type": "Data Processing Phase",
+      "description": "Phase where important entities are identified using NLP, NER models, LLM extraction, or rules/patterns.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "name": "Graph RAG",
+      "type": "Technology",
+      "description": "A graph-based retrieval augmented generation method that uses chunking to create evidence nodes and embeddings.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "name": "NLP",
+      "type": "Technology",
+      "description": "Natural Language Processing used for entity extraction.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "name": "NER models",
+      "type": "Technology",
+      "description": "Named Entity Recognition models used for identifying important entities.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "name": "LLM extraction",
+      "type": "Technology",
+      "description": "Large Language Model extraction techniques used for entity identification.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "name": "MOSFET Q3",
+      "type": "Component",
+      "description": "A MOSFET transistor labeled Q3 in the power electronics system.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00011"
+    },
+    {
+      "name": "coolant failure",
+      "type": "Fault",
+      "description": "Failure of the cooling system leading to inadequate heat dissipation.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00011"
+    },
+    {
+      "name": "MOSFET_Q3",
+      "type": "Component",
+      "description": "A MOSFET component in the power electronics system.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "name": "Coolant_Failure",
+      "type": "Failure Mode",
+      "description": "A failure mode related to the cooling system that can affect components.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "name": "Neo4j",
+      "type": "Graph Database",
+      "description": "A popular graph database used for storing graph data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "name": "TigerGraph",
+      "type": "Graph Database",
+      "description": "A high-scale graph database option.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "name": "Amazon Neptune",
+      "type": "Graph Database",
+      "description": "An AWS-native graph database service.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "name": "ArangoDB",
+      "type": "Graph Database",
+      "description": "A database that supports both graph and document data models.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "name": "Graph RAG",
+      "type": "Methodology",
+      "description": "Modern retrieval augmented generation combining graph structure and vector embeddings.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "name": "Vector Embeddings",
+      "type": "Data Representation",
+      "description": "Vector representations generated for nodes, chunks, summaries, and sometimes edges to enable semantic search and reasoning.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "name": "Hybrid Retrieval",
+      "type": "Retrieval Method",
+      "description": "A retrieval approach combining vector, graph, keyword, and metadata indexes.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "name": "inverter",
+      "type": "component",
+      "description": "A power electronics device that converts DC to AC, subject to temperature variations.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "name": "temperature",
+      "type": "parameter",
+      "description": "A measurable physical quantity indicating the thermal state of a component.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "name": "temperature sensor",
+      "type": "sensor",
+      "description": "A device that measures the temperature of components such as the inverter.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "name": "cooling system",
+      "type": "system",
+      "description": "A system designed to manage and reduce the temperature of power electronics components.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "name": "cooling loop",
+      "type": "subsystem",
+      "description": "Part of the cooling system responsible for circulating coolant to dissipate heat.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "name": "pump",
+      "type": "component",
+      "description": "A mechanical device that circulates coolant within the cooling loop.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "name": "pump failure",
+      "type": "failure mode",
+      "description": "A malfunction of the pump leading to reduced coolant flow.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "name": "reduced coolant flow",
+      "type": "condition",
+      "description": "A state where the coolant flow is insufficient, potentially causing overheating.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "name": "MOSFET overheating",
+      "type": "failure mode",
+      "description": "A condition where the MOSFET device exceeds safe temperature limits, risking damage.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "name": "MOSFET",
+      "type": "Component",
+      "description": "A type of transistor used for switching and amplifying electronic signals.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "name": "sensor alerts",
+      "type": "System Feature",
+      "description": "Notifications generated by sensors to indicate abnormal conditions or faults.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "name": "reranking",
+      "type": "Process",
+      "description": "A method to reorder nodes based on relevance or importance.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "name": "scoring",
+      "type": "Process",
+      "description": "Assigning numerical values to nodes to evaluate their significance.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "name": "relevance filtering",
+      "type": "Process",
+      "description": "Filtering out nodes that are not relevant to the current context.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "name": "confidence weighting",
+      "type": "Process",
+      "description": "Assigning weights to nodes based on confidence levels.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "name": "structured prompt",
+      "type": "Output",
+      "description": "A formatted input built from relevant components and reasoning paths for LLM processing.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "name": "LLM reasoning",
+      "type": "Process",
+      "description": "Using a large language model to analyze query, context, and reasoning paths to generate responses.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "name": "response generation",
+      "type": "Process",
+      "description": "Producing answers, explanations, recommendations, and reasoning traces from the LLM.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "name": "feedback loop",
+      "type": "Process",
+      "description": "Capturing user feedback and updating the knowledge graph with new information.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "name": "Offline Build Phase",
+      "type": "Process Phase",
+      "description": "A phase involving data processing steps such as entity extraction, relationship extraction, ontology creation, graph building, embeddings generation, and indexing.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "name": "Online Query Phase",
+      "type": "Process Phase",
+      "description": "A phase involving user query processing steps including query understanding, start node detection, graph traversal, subgraph extraction, prompt building, LLM reasoning, and generating the final answer.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "name": "Classical RAG",
+      "type": "Retrieval Method",
+      "description": "A retrieval approach that retrieves similar chunks of data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "name": "Graph RAG",
+      "type": "Retrieval Method",
+      "description": "A retrieval approach that retrieves connected reasoning structures.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Problem Domain",
+      "relation": "determines",
+      "target": "Entities",
+      "description": "The understanding of the problem domain determines what entities will exist inside the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "source": "Problem Domain",
+      "relation": "determines",
+      "target": "Relationships",
+      "description": "The understanding of the problem domain determines what relationships will exist inside the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "source": "Raw Data",
+      "relation": "is processed by",
+      "target": "Data Cleaning and Normalization",
+      "description": "Raw data is cleaned and normalized to resolve inconsistencies and standardize information.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "source": "Data Cleaning and Normalization",
+      "relation": "enables",
+      "target": "Chunking",
+      "description": "Cleaned and normalized data is divided into smaller chunks for easier reference and evidence linking.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "source": "Chunking",
+      "relation": "supports",
+      "target": "Entity Extraction",
+      "description": "Chunks serve as semantic references that help identify entities.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "source": "Entity Extraction",
+      "relation": "produces",
+      "target": "Entities",
+      "description": "Entity extraction identifies important objects and concepts that become nodes in the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "source": "Relationship Extraction",
+      "relation": "produces",
+      "target": "Relationships",
+      "description": "Relationship extraction identifies connections between entities that form edges in the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "source": "Entities",
+      "relation": "are connected by",
+      "target": "Relationships",
+      "description": "Entities are linked through relationships to form the graph network.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "source": "Entities",
+      "relation": "are organized by",
+      "target": "Ontology or Schema",
+      "description": "Entities are structured according to the defined ontology or schema.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "source": "Relationships",
+      "relation": "are organized by",
+      "target": "Ontology or Schema",
+      "description": "Relationships are structured according to the defined ontology or schema.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00001"
+    },
+    {
+      "source": "flight",
+      "relation": "connects",
+      "target": "airport",
+      "description": "A flight connects two airports forming edges in the travel system graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "source": "airline",
+      "relation": "operates",
+      "target": "flight",
+      "description": "An airline operates the route represented by a flight.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "source": "ontology",
+      "relation": "defines",
+      "target": "graph",
+      "description": "The ontology defines the structure and organization of the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "source": "entities",
+      "relation": "become",
+      "target": "nodes",
+      "description": "Entities are represented as nodes in the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "source": "relationships",
+      "relation": "become",
+      "target": "edges",
+      "description": "Relationships between entities are represented as edges in the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "source": "graph",
+      "relation": "stored_in",
+      "target": "graph database",
+      "description": "The graph is stored in specialized graph databases optimized for querying and traversal.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "source": "embedding",
+      "relation": "enables",
+      "target": "semantic similarity search",
+      "description": "Embeddings allow the system to perform semantic similarity search in addition to structural traversal.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "source": "retriever",
+      "relation": "combines",
+      "target": "vector search, graph traversal, keyword matching, metadata filtering",
+      "description": "The retriever integrates multiple search and filtering methods into a unified retrieval framework.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "source": "indexing",
+      "relation": "supports",
+      "target": "semantic search, traversal, filtering",
+      "description": "Indexing creates vector, graph, and metadata indexes to support various retrieval operations.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "source": "query processing",
+      "relation": "extracts",
+      "target": "intent, entities, goals, constraints, contextual meaning",
+      "description": "During query processing, the system extracts key components from the user query to understand it.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00002"
+    },
+    {
+      "source": "inverter",
+      "relation": "has parameter",
+      "target": "temperature",
+      "description": "The inverter's temperature is monitored to detect faults such as overheating.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "source": "fault diagnosis",
+      "relation": "uses",
+      "target": "graph traversal",
+      "description": "Fault diagnosis relies on graph traversal to explore connected nodes and relationships for reasoning.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "source": "retriever",
+      "relation": "performs",
+      "target": "graph traversal",
+      "description": "The retriever moves through the graph to discover contextual reasoning paths.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "source": "graph traversal",
+      "relation": "extracts",
+      "target": "subgraph",
+      "description": "Graph traversal extracts a relevant subgraph containing useful nodes and relationships for reasoning.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "source": "subgraph",
+      "relation": "is input to",
+      "target": "LLM",
+      "description": "The extracted subgraph is transformed into a structured prompt for the LLM to generate responses.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "source": "LLM",
+      "relation": "generates",
+      "target": "response",
+      "description": "The LLM produces explanations, recommendations, and diagnostic conclusions based on graph context.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "source": "graph index",
+      "relation": "supports",
+      "target": "graph traversal",
+      "description": "Graph index enables efficient traversal of relationships between nodes and edges.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "source": "vector index",
+      "relation": "supports",
+      "target": "retrieval",
+      "description": "Vector index supports similarity-based retrieval of information.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "source": "metadata index",
+      "relation": "supports",
+      "target": "retrieval",
+      "description": "Metadata index supports retrieval based on metadata attributes.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "source": "RAG system",
+      "relation": "allows",
+      "target": "adding new entities and relationships",
+      "description": "RAG architectures enable continuous updating of the graph with new knowledge and relationships.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00003"
+    },
+    {
+      "source": "Graph Retrieval-Augmented Generation (Graph RAG) system",
+      "relation": "uses",
+      "target": "Graph index",
+      "description": "Graph RAG systems use graph indexes to efficiently traverse relationships between nodes.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "source": "Graph Retrieval-Augmented Generation (Graph RAG) system",
+      "relation": "uses",
+      "target": "Vector index",
+      "description": "Graph RAG systems use vector indexes to support semantic similarity search.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "source": "Graph Retrieval-Augmented Generation (Graph RAG) system",
+      "relation": "uses",
+      "target": "Metadata index",
+      "description": "Graph RAG systems use metadata indexes to enable filtering and structured querying.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "source": "Graph index",
+      "relation": "answers",
+      "target": "Queries about connections and reasoning paths",
+      "description": "Graph index answers questions like what is connected to an entity or what reasoning path exists between nodes.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "source": "Vector index",
+      "relation": "answers",
+      "target": "Semantic similarity queries",
+      "description": "Vector index answers questions about information semantically similar to a query.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "source": "Metadata index",
+      "relation": "answers",
+      "target": "Attribute-based queries",
+      "description": "Metadata index answers queries filtered by attributes such as time, severity, or device type.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "source": "Semantic vector retrieval",
+      "relation": "identifies",
+      "target": "Candidate entities or chunks",
+      "description": "Semantic vector retrieval identifies candidate entities or chunks based on semantic similarity.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "source": "Graph traversal engine",
+      "relation": "explores",
+      "target": "Relationships around candidate entities",
+      "description": "Graph traversal engine explores relationships around entities identified by semantic vector retrieval.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "source": "Metadata filtering",
+      "relation": "narrows",
+      "target": "Retrieved context",
+      "description": "Metadata filtering narrows the retrieved context based on operational constraints.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "source": "Graph Retrieval-Augmented Generation (Graph RAG) system",
+      "relation": "supports",
+      "target": "Graph growth after embedding and indexing",
+      "description": "Graph RAG systems are designed to evolve and grow after the initial embedding and indexing stage.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00004"
+    },
+    {
+      "source": "Ingestion Pipeline",
+      "relation": "updates",
+      "target": "Graph RAG",
+      "description": "Processes new data to extract entities and relationships and incrementally update the graph structure.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "source": "Graph RAG",
+      "relation": "contains",
+      "target": "Entity",
+      "description": "Represents concepts or components as nodes within the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "source": "Graph RAG",
+      "relation": "contains",
+      "target": "Relationship",
+      "description": "Represents links between entities as edges within the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "source": "Embedding",
+      "relation": "represents",
+      "target": "Entity",
+      "description": "Provides vector representations for semantic similarity search.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "source": "Embedding",
+      "relation": "represents",
+      "target": "Chunk Nodes",
+      "description": "Provides vector representations for evidence or context chunks.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "source": "New Data",
+      "relation": "introduces",
+      "target": "Entity",
+      "description": "New information can create new nodes if entities are previously unknown.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "source": "New Data",
+      "relation": "introduces",
+      "target": "Relationship",
+      "description": "New information can create new edges or strengthen existing relationships.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "source": "Chunk Nodes",
+      "relation": "attach_to",
+      "target": "Entity",
+      "description": "Provide additional context or evidence to existing entities.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "source": "Chunk Nodes",
+      "relation": "attach_to",
+      "target": "Relationship",
+      "description": "Provide additional context or evidence to existing relationships.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "source": "Graph RAG",
+      "relation": "supports",
+      "target": "Streaming Updates",
+      "description": "Can incorporate near real-time data such as sensor events or alerts to continuously evolve.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "source": "Graph RAG",
+      "relation": "applies_to",
+      "target": "Domains",
+      "description": "Used in various fields where evolving knowledge structures are beneficial.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "source": "Predictive Maintenance Graph",
+      "relation": "example_of",
+      "target": "Graph RAG",
+      "description": "An example application of Graph RAG modeling maintenance knowledge and failure modes.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "source": "Fault Entity",
+      "relation": "is_a",
+      "target": "Entity",
+      "description": "Represents a failure mode node within the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "source": "Causal Relationship",
+      "relation": "is_a",
+      "target": "Relationship",
+      "description": "Represents cause-effect edges within the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00005"
+    },
+    {
+      "source": "provenance",
+      "relation": "describes",
+      "target": "graph relationship",
+      "description": "Provenance provides traceable origin and history information about graph relationships.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "source": "synchronous operation",
+      "relation": "involves",
+      "target": "request → wait → response → continue",
+      "description": "Synchronous operations follow the sequence where the caller waits for the callee to finish before continuing.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "source": "synchronous workflow",
+      "relation": "requires",
+      "target": "deterministic completion",
+      "description": "Synchronous workflows require the system to wait for deterministic completion before proceeding.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "source": "reconciliation worker",
+      "relation": "performs",
+      "target": "state correction and consistency checking",
+      "description": "Reconciliation workers inspect final states across systems and repair inconsistencies.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "source": "delayed retry",
+      "relation": "performs",
+      "target": "retry failed operations",
+      "description": "Delayed retry mechanism attempts to repeat failed actions after a delay.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "source": "reconciliation worker",
+      "relation": "differs from",
+      "target": "delayed retry",
+      "description": "Reconciliation workers inspect and repair state inconsistencies, whereas delayed retries simply repeat failed operations.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "source": "delayed retry",
+      "relation": "may lead to",
+      "target": "successful operation",
+      "description": "Retries may eventually succeed in completing the operation.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "source": "reconciliation worker",
+      "relation": "validates",
+      "target": "overall workflow consistency",
+      "description": "Reconciliation workers check whether the entire workflow has become consistent after retries.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "source": "Apache Kafka",
+      "relation": "is related to",
+      "target": "Azure Event Hubs",
+      "description": "Both are event streaming platforms but do not perform exactly the same functions.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "source": "Apache Kafka",
+      "relation": "is related to",
+      "target": "Amazon Kinesis",
+      "description": "Both are event streaming platforms but do not perform exactly the same functions.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "source": "Apache Kafka",
+      "relation": "is related to",
+      "target": "cloud service buses",
+      "description": "All are messaging or event streaming technologies but differ in capabilities and implementations.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00006"
+    },
+    {
+      "source": "Kafka",
+      "relation": "is_a",
+      "target": "Event Streaming Platform",
+      "description": "Kafka is an example of an event streaming platform.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "source": "Event Hubs",
+      "relation": "is_a",
+      "target": "Event Streaming Platform",
+      "description": "Event Hubs is an example of an event streaming platform.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "source": "Kinesis",
+      "relation": "is_a",
+      "target": "Event Streaming Platform",
+      "description": "Kinesis is an example of an event streaming platform.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "source": "Azure Service Bus",
+      "relation": "is_a",
+      "target": "Cloud Service Bus / Queue",
+      "description": "Azure Service Bus is an example of a cloud service bus or queue.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "source": "AWS SQS",
+      "relation": "is_a",
+      "target": "Cloud Service Bus / Queue",
+      "description": "AWS SQS is an example of a cloud service queue.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "source": "RabbitMQ",
+      "relation": "is_a",
+      "target": "Cloud Service Bus / Queue",
+      "description": "RabbitMQ is an example of a message queue system.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "source": "Event Streaming",
+      "relation": "used_for",
+      "target": "High-volume continuous events",
+      "description": "Event streaming platforms are used for handling high-volume continuous events.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "source": "Queue / Service Bus",
+      "relation": "used_for",
+      "target": "Reliable task execution",
+      "description": "Queues and service buses are used for reliable task execution, retries, and background jobs.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "source": "Synchronous Execution",
+      "relation": "characterized_by",
+      "target": "Waiting for operation to finish",
+      "description": "Synchronous execution involves waiting for an operation to complete before continuing.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "source": "Asynchronous Execution",
+      "relation": "characterized_by",
+      "target": "Not waiting for operation to finish",
+      "description": "Asynchronous execution involves continuing immediately without waiting for operation completion.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "source": "Stateful",
+      "relation": "characterized_by",
+      "target": "Storing workflow/session memory",
+      "description": "Stateful systems store memory between requests.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "source": "Stateless",
+      "relation": "characterized_by",
+      "target": "Not storing workflow/session memory",
+      "description": "Stateless systems do not store memory between requests.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "source": "SYNC actions",
+      "relation": "similar_to",
+      "target": "Stateful",
+      "description": "SYNC actions are similar to stateful behaviour as they involve waiting for another action before proceeding.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00007"
+    },
+    {
+      "source": "Stateful system",
+      "relation": "uses",
+      "target": "Redis",
+      "description": "Stateful systems often store workflow state in Redis.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "source": "Stateful system",
+      "relation": "uses",
+      "target": "PostgreSQL",
+      "description": "Stateful systems often store workflow state in PostgreSQL.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "source": "Stateful system",
+      "relation": "uses",
+      "target": "Session store",
+      "description": "Stateful systems often use session stores to preserve session memory.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "source": "Stateful system",
+      "relation": "uses",
+      "target": "Workflow engine",
+      "description": "Stateful systems use workflow engines to manage and preserve workflow state.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "source": "Synchronous execution",
+      "relation": "contrasts_with",
+      "target": "Asynchronous execution",
+      "description": "Synchronous and asynchronous describe different execution coordination and waiting behaviors.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "source": "Stateful system",
+      "relation": "contrasts_with",
+      "target": "Stateless system",
+      "description": "Stateful and stateless describe different persistence of workflow or session memory.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "source": "Synchronous execution",
+      "relation": "is_different_dimension_from",
+      "target": "Stateful system",
+      "description": "Synchronous/asynchronous and stateful/stateless represent different architectural dimensions.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00008"
+    },
+    {
+      "source": "Raw Data",
+      "relation": "flows_into",
+      "target": "Ingestion",
+      "description": "Raw data is ingested into the system.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Ingestion",
+      "relation": "flows_into",
+      "target": "Chunking & Cleaning",
+      "description": "Ingested data is chunked and cleaned.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Chunking & Cleaning",
+      "relation": "flows_into",
+      "target": "Entity Extraction",
+      "description": "Cleaned data is used for entity extraction.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Entity Extraction",
+      "relation": "flows_into",
+      "target": "Relationship Extraction",
+      "description": "Extracted entities are used to find relationships.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Relationship Extraction",
+      "relation": "flows_into",
+      "target": "Ontology / Schema Design",
+      "description": "Extracted relationships inform ontology or schema design.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Ontology / Schema Design",
+      "relation": "flows_into",
+      "target": "Graph Construction",
+      "description": "Ontology/schema guides graph construction.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Graph Construction",
+      "relation": "flows_into",
+      "target": "Graph Storage & Indexing",
+      "description": "Constructed graph is stored and indexed.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Graph Storage & Indexing",
+      "relation": "flows_into",
+      "target": "Embedding Generation",
+      "description": "Stored graph is used to generate embeddings.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Embedding Generation",
+      "relation": "flows_into",
+      "target": "Hybrid Retrieval Layer",
+      "description": "Embeddings support hybrid retrieval.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Hybrid Retrieval Layer",
+      "relation": "flows_into",
+      "target": "Graph Traversal Engine",
+      "description": "Hybrid retrieval results are processed by the traversal engine.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Graph Traversal Engine",
+      "relation": "flows_into",
+      "target": "Subgraph Assembly",
+      "description": "Traversal engine assembles relevant subgraphs.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Subgraph Assembly",
+      "relation": "flows_into",
+      "target": "Prompt Construction",
+      "description": "Assembled subgraphs are used to construct prompts.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Prompt Construction",
+      "relation": "flows_into",
+      "target": "LLM Reasoning",
+      "description": "Prompts are used by large language models for reasoning.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "LLM Reasoning",
+      "relation": "flows_into",
+      "target": "Final Response",
+      "description": "LLM reasoning produces the final response.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Domain",
+      "relation": "defines_context_for",
+      "target": "Graph Retriever pipeline",
+      "description": "The domain sets the context for the graph retriever.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Objective",
+      "relation": "defines_goal_of",
+      "target": "Graph Retriever pipeline",
+      "description": "The objective defines the goal of the graph retriever.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Node types",
+      "relation": "defines_nodes_in",
+      "target": "Graph Construction",
+      "description": "Node types define the nodes used in graph construction.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Edge types",
+      "relation": "defines_edges_in",
+      "target": "Graph Construction",
+      "description": "Edge types define the edges used in graph construction.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Queries",
+      "relation": "are_handled_by",
+      "target": "Graph Retriever pipeline",
+      "description": "Queries are the inputs the graph retriever answers.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00009"
+    },
+    {
+      "source": "Raw Data",
+      "relation": "collected from",
+      "target": "PDFs",
+      "description": "Raw data is collected from manuals in PDF format.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "source": "Raw Data",
+      "relation": "collected from",
+      "target": "APIs",
+      "description": "Raw data is collected from flight data accessed via APIs.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "source": "Raw Data",
+      "relation": "collected from",
+      "target": "Databases",
+      "description": "Raw data is collected from maintenance records stored in databases.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "source": "Raw Data",
+      "relation": "collected from",
+      "target": "Logs",
+      "description": "Raw data is collected from sensor logs.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "source": "Raw Data",
+      "relation": "collected from",
+      "target": "Tables",
+      "description": "Raw data is collected from schedules stored in tables.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "source": "Raw Data",
+      "relation": "collected from",
+      "target": "Web Data",
+      "description": "Raw data is collected from policies and other data on the web.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "source": "Cleaning & Normalization",
+      "relation": "processes",
+      "target": "Raw Data",
+      "description": "Cleaning & Normalization prepares raw data by removing duplicates, standardizing names, normalizing units, cleaning formatting, and resolving inconsistencies.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "source": "Chunking",
+      "relation": "splits",
+      "target": "Large Documents",
+      "description": "Chunking splits large documents into smaller units such as sections, paragraphs, and chunks.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "source": "Graph RAG",
+      "relation": "uses",
+      "target": "Chunking",
+      "description": "Graph RAG uses chunking to create evidence nodes and to assign embeddings.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "source": "Entity Extraction",
+      "relation": "uses",
+      "target": "NLP",
+      "description": "Entity Extraction uses NLP techniques to identify important entities.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "source": "Entity Extraction",
+      "relation": "uses",
+      "target": "NER models",
+      "description": "Entity Extraction uses Named Entity Recognition models to identify important entities.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "source": "Entity Extraction",
+      "relation": "uses",
+      "target": "LLM extraction",
+      "description": "Entity Extraction uses Large Language Model extraction techniques to identify important entities.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00010"
+    },
+    {
+      "source": "MOSFET Q3",
+      "relation": "affected_by",
+      "target": "coolant failure",
+      "description": "The MOSFET Q3 overheated as a result of the coolant failure.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00011"
+    },
+    {
+      "source": "Coolant_Failure",
+      "relation": "causes",
+      "target": "MOSFET_Q3",
+      "description": "Coolant failure can cause issues or failure in the MOSFET_Q3 component.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Graph Storage",
+      "relation": "implemented_by",
+      "target": "Neo4j",
+      "description": "Neo4j is a common option for storing graph data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Graph Storage",
+      "relation": "implemented_by",
+      "target": "TigerGraph",
+      "description": "TigerGraph is a high-scale option for graph storage.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Graph Storage",
+      "relation": "implemented_by",
+      "target": "Amazon Neptune",
+      "description": "Amazon Neptune is an AWS-native graph database used for graph storage.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Graph Storage",
+      "relation": "implemented_by",
+      "target": "ArangoDB",
+      "description": "ArangoDB supports graph and document storage.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Graph RAG",
+      "relation": "combines",
+      "target": "Graph Structure",
+      "description": "Graph RAG methodology combines graph structure with vector embeddings.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Graph RAG",
+      "relation": "combines",
+      "target": "Vector Embeddings",
+      "description": "Graph RAG methodology combines graph structure with vector embeddings.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Vector Embeddings",
+      "relation": "generated_for",
+      "target": "Nodes",
+      "description": "Vector embeddings are generated for nodes to enable semantic search.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Vector Embeddings",
+      "relation": "generated_for",
+      "target": "Chunks",
+      "description": "Vector embeddings are generated for chunks to enable retrieval.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Vector Embeddings",
+      "relation": "generated_for",
+      "target": "Summaries",
+      "description": "Vector embeddings are generated for summaries to enable reasoning.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Vector Embeddings",
+      "relation": "sometimes_generated_for",
+      "target": "Edges",
+      "description": "Vector embeddings are sometimes generated for edges to represent semantic relations.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Indexing",
+      "relation": "includes",
+      "target": "Vector Index",
+      "description": "Vector index is used for semantic retrieval.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Indexing",
+      "relation": "includes",
+      "target": "Graph Index",
+      "description": "Graph index is used for traversal.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Indexing",
+      "relation": "includes",
+      "target": "Keyword Index",
+      "description": "Keyword index (BM25) is used for keyword-based retrieval.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Indexing",
+      "relation": "includes",
+      "target": "Metadata Index",
+      "description": "Metadata index is used for filtering.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Hybrid Retrieval",
+      "relation": "combines",
+      "target": "Vector Index",
+      "description": "Hybrid retrieval combines vector index with other indexes.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Hybrid Retrieval",
+      "relation": "combines",
+      "target": "Graph Index",
+      "description": "Hybrid retrieval combines graph index with other indexes.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Hybrid Retrieval",
+      "relation": "combines",
+      "target": "Keyword Index",
+      "description": "Hybrid retrieval combines keyword index with other indexes.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "Hybrid Retrieval",
+      "relation": "combines",
+      "target": "Metadata Index",
+      "description": "Hybrid retrieval combines metadata index with other indexes.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00012"
+    },
+    {
+      "source": "inverter",
+      "relation": "monitored_by",
+      "target": "temperature sensor",
+      "description": "The inverter's temperature is monitored by a temperature sensor.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "source": "inverter",
+      "relation": "cooled_by",
+      "target": "cooling system",
+      "description": "The inverter is cooled by the cooling system to maintain safe operating temperatures.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "source": "cooling system",
+      "relation": "includes",
+      "target": "cooling loop",
+      "description": "The cooling system includes the cooling loop as a subsystem.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "source": "cooling loop",
+      "relation": "circulated_by",
+      "target": "pump",
+      "description": "The cooling loop's coolant is circulated by the pump.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "source": "pump",
+      "relation": "can_experience",
+      "target": "pump failure",
+      "description": "The pump can fail, leading to malfunction.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "source": "pump failure",
+      "relation": "causes",
+      "target": "reduced coolant flow",
+      "description": "Pump failure causes reduced coolant flow in the cooling loop.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "source": "reduced coolant flow",
+      "relation": "leads_to",
+      "target": "MOSFET overheating",
+      "description": "Reduced coolant flow leads to MOSFET overheating.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "source": "MOSFET overheating",
+      "relation": "affects",
+      "target": "inverter",
+      "description": "MOSFET overheating negatively affects inverter operation.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00013"
+    },
+    {
+      "source": "reranking",
+      "relation": "applied_in",
+      "target": "PHASE 16 — CONTEXT RANKING & FILTERING",
+      "description": "Reranking is applied during context ranking and filtering to improve node usefulness.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "source": "scoring",
+      "relation": "applied_in",
+      "target": "PHASE 16 — CONTEXT RANKING & FILTERING",
+      "description": "Scoring is used to evaluate the importance of traversed nodes.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "source": "relevance filtering",
+      "relation": "applied_in",
+      "target": "PHASE 16 — CONTEXT RANKING & FILTERING",
+      "description": "Relevance filtering removes non-useful nodes during context ranking.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "source": "confidence weighting",
+      "relation": "applied_in",
+      "target": "PHASE 16 — CONTEXT RANKING & FILTERING",
+      "description": "Confidence weighting assigns weights to nodes based on certainty.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "source": "structured prompt",
+      "relation": "created_in",
+      "target": "PHASE 17 — PROMPT ASSEMBLY",
+      "description": "Structured prompts are built during prompt assembly phase.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "source": "LLM reasoning",
+      "relation": "performed_in",
+      "target": "PHASE 18 — LLM REASONING",
+      "description": "LLM reasoning is conducted in phase 18 using query, context, and reasoning paths.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "source": "response generation",
+      "relation": "performed_in",
+      "target": "PHASE 19 — RESPONSE GENERATION",
+      "description": "Response generation occurs in phase 19 producing answers and recommendations.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "source": "feedback loop",
+      "relation": "performed_in",
+      "target": "PHASE 20 — OPTIONAL FEEDBACK LOOP",
+      "description": "Feedback loop is optionally performed in phase 20 to update the graph.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "source": "sensor alerts",
+      "relation": "monitor",
+      "target": "MOSFET",
+      "description": "Sensor alerts monitor the condition of MOSFET components.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00014"
+    },
+    {
+      "source": "Offline Build Phase",
+      "relation": "includes",
+      "target": "Entity Extraction",
+      "description": "Entity extraction is a step within the offline build phase.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Offline Build Phase",
+      "relation": "includes",
+      "target": "Relationship Extraction",
+      "description": "Relationship extraction is a step within the offline build phase.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Offline Build Phase",
+      "relation": "includes",
+      "target": "Ontology",
+      "description": "Ontology creation is a step within the offline build phase.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Offline Build Phase",
+      "relation": "includes",
+      "target": "Graph Build",
+      "description": "Graph building is a step within the offline build phase.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Offline Build Phase",
+      "relation": "includes",
+      "target": "Embeddings",
+      "description": "Embeddings generation is a step within the offline build phase.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Offline Build Phase",
+      "relation": "includes",
+      "target": "Indexing",
+      "description": "Indexing is a step within the offline build phase.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Online Query Phase",
+      "relation": "includes",
+      "target": "Query Understanding",
+      "description": "Query understanding is a step within the online query phase.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Online Query Phase",
+      "relation": "includes",
+      "target": "Start Node Detection",
+      "description": "Start node detection is a step within the online query phase.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Online Query Phase",
+      "relation": "includes",
+      "target": "Graph Traversal",
+      "description": "Graph traversal is a step within the online query phase.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Online Query Phase",
+      "relation": "includes",
+      "target": "Subgraph Extraction",
+      "description": "Subgraph extraction is a step within the online query phase.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Online Query Phase",
+      "relation": "includes",
+      "target": "Prompt Building",
+      "description": "Prompt building is a step within the online query phase.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Online Query Phase",
+      "relation": "includes",
+      "target": "LLM Reasoning",
+      "description": "LLM reasoning is a step within the online query phase.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Online Query Phase",
+      "relation": "includes",
+      "target": "Final Answer",
+      "description": "Final answer generation is the last step within the online query phase.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Classical RAG",
+      "relation": "retrieves",
+      "target": "similar chunks",
+      "description": "Classical RAG retrieves similar chunks of data.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Graph RAG",
+      "relation": "retrieves",
+      "target": "connected reasoning structures",
+      "description": "Graph RAG retrieves connected reasoning structures.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    },
+    {
+      "source": "Graph RAG",
+      "relation": "differs from",
+      "target": "Classical RAG",
+      "description": "Graph RAG fundamentally differs from Classical RAG by retrieving connected reasoning structures instead of similar chunks.",
+      "evidenceChunkId": "DOC-7E311A25-CHUNK-00015"
+    }
+  ],
+  "metadata": {
+    "workflow": "knowledge",
+    "extractionMethod": "gpt-4.1-mini"
+  }
+}

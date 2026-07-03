@@ -30,3 +30,10 @@ EMBEDDINGS_DIR = BASE_DIR / "embeddings"
 
 EMBEDDING_MODEL_NAME = "BAAI/bge-small-en-v1.5"
 
+# OpenAI models
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+OPENAI_EXTRACTION_MODEL = os.getenv(
+    "OPENAI_EXTRACTION_MODEL",
+    "gpt-4.1-mini",
+)
+

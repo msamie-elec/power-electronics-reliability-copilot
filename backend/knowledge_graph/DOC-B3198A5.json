@@ -1,0 +1,553 @@
+{
+  "documentId": "DOC-B3198A5",
+  "sourceChunkFile": "chunks\\knowledge\\DOC-B3198A5.json",
+  "entityCount": 23,
+  "relationshipCount": 23,
+  "entities": [
+    {
+      "name": "IGBT Module",
+      "canonicalName": "igbt module",
+      "type": "Component",
+      "description": "Insulated Gate Bipolar Transistor module used in power electronics for switching and amplification.",
+      "aliases": [
+        "IGBT",
+        "IGBT module",
+        "IGBT modules"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00001",
+        "DOC-B3198A5-CHUNK-00002",
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "Failure Mode",
+      "canonicalName": "failure mode",
+      "type": "Concept",
+      "description": "Different ways in which IGBT modules can fail during operation.",
+      "aliases": [
+        "Failure modes"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00001",
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "name": "Lifetime Testing",
+      "canonicalName": "lifetime testing",
+      "type": "Process",
+      "description": "Testing procedures to evaluate the durability and operational lifespan of IGBT modules.",
+      "aliases": [
+        "Lifetime testing"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00001",
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "name": "Power Electronic Converters",
+      "canonicalName": "power electronic converters",
+      "type": "System",
+      "description": "Systems used for energy conversion in applications such as wind farms and photovoltaic installations, considered weak links affecting overall electrical system reliability.",
+      "aliases": [
+        "Power electronic converters"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "name": "Thermo Mechanical Stress",
+      "canonicalName": "thermo mechanical stress",
+      "type": "Stress Factor",
+      "description": "Combined thermal and mechanical stresses that contribute to degradation and failure of IGBT modules over time.",
+      "aliases": [
+        "Thermo-mechanical stress"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "name": "Power Cycling",
+      "canonicalName": "power cycling",
+      "type": "Stress Factor",
+      "description": "A type of stress involving repeated switching on and off of power devices, contributing to wear-out and failure.",
+      "aliases": [
+        "Power cycling"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "name": "Semiconductor Switches And Capacitors",
+      "canonicalName": "semiconductor switches and capacitors",
+      "type": "Component",
+      "description": "Most vulnerable components in power converters, prone to failure due to overloads, transients, thermal stress, mechanical vibrations, and humidity.",
+      "aliases": [
+        "Semiconductor switches and capacitors"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "name": "Motor Drives",
+      "canonicalName": "motor drives",
+      "type": "System",
+      "description": "Systems that may operate in harsh environments unknown at manufacturing, leading to mismatch between qualification tests and field conditions, causing power switches to fail before target lifetime.",
+      "aliases": [
+        "Motor drives"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "name": "Power Switches",
+      "canonicalName": "power switches",
+      "type": "Component",
+      "description": "Components in motor drives responsible for switching electrical power.",
+      "aliases": [
+        "Power switches"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "Motor Drive",
+      "canonicalName": "motor drive",
+      "type": "System",
+      "description": "System that controls the operation of electric motors using power electronic components.",
+      "aliases": [
+        "Motor drive"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "Power Converter",
+      "canonicalName": "power converter",
+      "type": "System",
+      "description": "Device that converts electrical power from one form to another, incorporating IGBT modules.",
+      "aliases": [
+        "Power converter"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "IGBT Lifecycle",
+      "canonicalName": "igbt lifecycle",
+      "type": "Process",
+      "description": "Stages through which an IGBT module passes from qualification to operation and end-of-life.",
+      "aliases": [
+        "IGBT lifecycle"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "Qualification",
+      "canonicalName": "qualification",
+      "type": "Stage",
+      "description": "Initial testing and validation of IGBT modules at the manufacturer site.",
+      "aliases": [
+        "Qualification"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "Storage And Transportation",
+      "canonicalName": "storage and transportation",
+      "type": "Stage",
+      "description": "Phase where IGBT modules are stored and transported to the power converter manufacturer.",
+      "aliases": [
+        "Storage and transportation"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "Converter Assembly And Testing",
+      "canonicalName": "converter assembly and testing",
+      "type": "Stage",
+      "description": "Stage where IGBT modules are assembled into converters and tested for qualification.",
+      "aliases": [
+        "Converter assembly and testing"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "Commissioning And Operation",
+      "canonicalName": "commissioning and operation",
+      "type": "Stage",
+      "description": "Final stage where the power converter is installed at the customer site and operated.",
+      "aliases": [
+        "Commissioning and operation"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "Mechanical Shock",
+      "canonicalName": "mechanical shock",
+      "type": "Stress",
+      "description": "Physical impact that can affect IGBT module reliability before commissioning.",
+      "aliases": [
+        "Mechanical shock"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "Temperature Shock",
+      "canonicalName": "temperature shock",
+      "type": "Stress",
+      "description": "Rapid temperature changes that can affect IGBT module reliability before commissioning.",
+      "aliases": [
+        "Temperature shock"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "Incorrect Handling And Assembly",
+      "canonicalName": "incorrect handling and assembly",
+      "type": "Stress",
+      "description": "Improper treatment of IGBT modules that may cause early failures.",
+      "aliases": [
+        "Incorrect handling and assembly"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "Random System Overstress Events",
+      "canonicalName": "random system overstress events",
+      "type": "Stress",
+      "description": "Unexpected electrical stresses such as overvoltage and overcurrent that can cause IGBT failure.",
+      "aliases": [
+        "Random system overstress events"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "Wear Out Failure Modes",
+      "canonicalName": "wear out failure modes",
+      "type": "Failure mode",
+      "description": "Long-term degradation mechanisms leading to IGBT module failure under sustained loading.",
+      "aliases": [
+        "Wear-out failure modes"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "End Of Life",
+      "canonicalName": "end of life",
+      "type": "State",
+      "description": "Point at which IGBT modules fail and no longer meet target lifetime.",
+      "aliases": [
+        "End-of-life"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "name": "Converter Design, Control, And Protection",
+      "canonicalName": "converter design, control, and protection",
+      "type": "Mitigation strategy",
+      "description": "Improvements made by power converter manufacturers to reduce effects of overstress and extend module lifetime.",
+      "aliases": [
+        "Converter design, control, and protection"
+      ],
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "source": "IGBT Module",
+      "sourceCanonicalName": "igbt module",
+      "relation": "HAS",
+      "target": "Failure Mode",
+      "targetCanonicalName": "failure mode",
+      "description": "IGBT modules exhibit various failure modes during their operational life.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00001"
+      ]
+    },
+    {
+      "source": "Lifetime Testing",
+      "sourceCanonicalName": "lifetime testing",
+      "relation": "EVALUATES",
+      "target": "IGBT Module",
+      "targetCanonicalName": "igbt module",
+      "description": "Lifetime testing is performed to assess the reliability and expected operational life of IGBT modules.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00001"
+      ]
+    },
+    {
+      "source": "IGBT Module",
+      "sourceCanonicalName": "igbt module",
+      "relation": "ARE_PART_OF",
+      "target": "Power Electronic Converters",
+      "targetCanonicalName": "power electronic converters",
+      "description": "IGBT modules are key components within power electronic converters.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "source": "Power Electronic Converters",
+      "sourceCanonicalName": "power electronic converters",
+      "relation": "AFFECTS",
+      "target": "Overall Electrical System Reliability",
+      "targetCanonicalName": "overall electrical system reliability",
+      "description": "Failures in power electronic converters significantly influence the reliability of the entire electrical system.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "source": "Failure Mode",
+      "sourceCanonicalName": "failure mode",
+      "relation": "CAUSES",
+      "target": "IGBT Modules Failure",
+      "targetCanonicalName": "igbt modules failure",
+      "description": "Various failure modes including overloads, transients, thermal stress, mechanical vibrations, and humidity cause IGBT module failures.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "source": "Lifetime Testing",
+      "sourceCanonicalName": "lifetime testing",
+      "relation": "EVALUATES",
+      "target": "IGBT Modules Reliability",
+      "targetCanonicalName": "igbt modules reliability",
+      "description": "Lifetime testing methods assess the long-term reliability and degradation of IGBT modules.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "source": "Thermo Mechanical Stress",
+      "sourceCanonicalName": "thermo mechanical stress",
+      "relation": "CONTRIBUTES_TO",
+      "target": "IGBT Modules Degradation",
+      "targetCanonicalName": "igbt modules degradation",
+      "description": "Thermo-mechanical stress is a primary factor causing degradation in IGBT modules.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "source": "Power Cycling",
+      "sourceCanonicalName": "power cycling",
+      "relation": "INDUCES",
+      "target": "Wear Out Failures",
+      "targetCanonicalName": "wear out failures",
+      "description": "Power cycling induces wear-out failures in power electronic components.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "source": "Semiconductor Switches And Capacitors",
+      "sourceCanonicalName": "semiconductor switches and capacitors",
+      "relation": "ARE_VULNERABLE_COMPONENTS_OF",
+      "target": "Power Electronic Converters",
+      "targetCanonicalName": "power electronic converters",
+      "description": "Semiconductor switches and capacitors are the most vulnerable components within power electronic converters.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "source": "Motor Drives",
+      "sourceCanonicalName": "motor drives",
+      "relation": "OPERATE_IN",
+      "target": "Harsh Environments",
+      "targetCanonicalName": "harsh environments",
+      "description": "Motor drives often operate in harsh environments that are difficult to predict at manufacturing.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "source": "Qualification Test Conditions",
+      "sourceCanonicalName": "qualification test conditions",
+      "relation": "MAY_NOT_MATCH",
+      "target": "Field Operation Conditions",
+      "targetCanonicalName": "field operation conditions",
+      "description": "Qualification tests may not accurately represent the harsh conditions experienced in the field.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "source": "Mismatch Between Test And Field Conditions",
+      "sourceCanonicalName": "mismatch between test and field conditions",
+      "relation": "LEADS_TO",
+      "target": "Power Switch Failures Before Target Lifetime",
+      "targetCanonicalName": "power switch failures before target lifetime",
+      "description": "Differences between test conditions and actual field environments cause power switches to fail prematurely.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00002"
+      ]
+    },
+    {
+      "source": "IGBT Lifecycle",
+      "sourceCanonicalName": "igbt lifecycle",
+      "relation": "INCLUDES",
+      "target": "Qualification",
+      "targetCanonicalName": "qualification",
+      "description": "IGBT lifecycle starts with qualification at the manufacturer site.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "source": "IGBT Lifecycle",
+      "sourceCanonicalName": "igbt lifecycle",
+      "relation": "INCLUDES",
+      "target": "Storage And Transportation",
+      "targetCanonicalName": "storage and transportation",
+      "description": "IGBT modules go through storage and transportation before reaching the converter manufacturer.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "source": "IGBT Lifecycle",
+      "sourceCanonicalName": "igbt lifecycle",
+      "relation": "INCLUDES",
+      "target": "Converter Assembly And Testing",
+      "targetCanonicalName": "converter assembly and testing",
+      "description": "IGBT modules are assembled into converters and tested for qualification.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "source": "IGBT Lifecycle",
+      "sourceCanonicalName": "igbt lifecycle",
+      "relation": "INCLUDES",
+      "target": "Commissioning And Operation",
+      "targetCanonicalName": "commissioning and operation",
+      "description": "Final stage where the converter is commissioned and operated at the customer site.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "source": "Mechanical Shock",
+      "sourceCanonicalName": "mechanical shock",
+      "relation": "AFFECTS",
+      "target": "IGBT Module Reliability",
+      "targetCanonicalName": "igbt module reliability",
+      "description": "Mechanical shock events before commissioning can reduce module reliability.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "source": "Temperature Shock",
+      "sourceCanonicalName": "temperature shock",
+      "relation": "AFFECTS",
+      "target": "IGBT Module Reliability",
+      "targetCanonicalName": "igbt module reliability",
+      "description": "Temperature shock events before commissioning can reduce module reliability.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "source": "Incorrect Handling And Assembly",
+      "sourceCanonicalName": "incorrect handling and assembly",
+      "relation": "AFFECTS",
+      "target": "IGBT Module Reliability",
+      "targetCanonicalName": "igbt module reliability",
+      "description": "Improper handling and assembly can cause early failures.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "source": "Random System Overstress Events",
+      "sourceCanonicalName": "random system overstress events",
+      "relation": "CAUSES",
+      "target": "IGBT Module Failure",
+      "targetCanonicalName": "igbt module failure",
+      "description": "Overvoltage and overcurrent events can cause random failures.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "source": "Wear Out Failure Modes",
+      "sourceCanonicalName": "wear out failure modes",
+      "relation": "CAUSES",
+      "target": "IGBT Module Failure",
+      "targetCanonicalName": "igbt module failure",
+      "description": "Long-term degradation under sustained loading leads to failure.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "source": "Overstress And Wear Out",
+      "sourceCanonicalName": "overstress and wear out",
+      "relation": "CAUSES",
+      "target": "Early End Of Life",
+      "targetCanonicalName": "early end of life",
+      "description": "These failure mechanisms can cause IGBT modules to fail before target lifetime.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    },
+    {
+      "source": "Converter Design, Control, And Protection",
+      "sourceCanonicalName": "converter design, control, and protection",
+      "relation": "MITIGATE",
+      "target": "System Overstress Effects",
+      "targetCanonicalName": "system overstress effects",
+      "description": "Improvements aim to reduce the impact of overstress and demanding mission profiles.",
+      "evidenceChunkIds": [
+        "DOC-B3198A5-CHUNK-00003"
+      ]
+    }
+  ],
+  "failedChunks": [],
+  "metadata": {
+    "workflow": "knowledge",
+    "extractionMethod": "gpt-4.1-mini",
+    "postProcessing": "entity_and_relationship_deduplication",
+    "chunksProcessed": 3,
+    "failedChunks": 0
+  }
+}

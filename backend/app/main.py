@@ -40,6 +40,12 @@ from app.api import documents, embeddings, graph, rag, search, upload
 from app.api.knowledge_documents import router as knowledge_documents_router
 from app.config import APP_NAME, APP_VERSION, FRONTEND_ORIGIN
 from app.api.knowledge_chunks import router as knowledge_chunks_router
+from app.api.knowledge_embeddings import router as knowledge_embeddings_router
+from app.api.knowledge_faiss import router as knowledge_faiss_router
+from app.api.knowledge_search import router as knowledge_search_router
+from app.api.knowledge_pipeline import router as knowledge_pipeline_router
+from app.api.knowledge_extraction import router as knowledge_extraction_router
+
 
 app = FastAPI(
     title=APP_NAME,
@@ -72,3 +78,9 @@ app.include_router(rag.router)
 app.include_router(graph.router)
 app.include_router(knowledge_documents_router)
 app.include_router(knowledge_chunks_router)
+app.include_router(knowledge_embeddings_router)
+app.include_router(knowledge_faiss_router)
+app.include_router(knowledge_search_router)
+app.include_router(knowledge_pipeline_router)
+app.include_router(knowledge_extraction_router)
+
