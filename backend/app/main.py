@@ -49,6 +49,7 @@ from app.api.graph_population import router as graph_population_router
 from app.api.graph_validation import router as graph_validation_router
 from app.api.knowledge_graph_retrieval import router as knowledge_graph_retrieval_router
 from app.api.evidence_reasoning import router as evidence_reasoning_router
+from app.api.engineering_copilot import router as engineering_copilot_router
 
 app = FastAPI(
     title=APP_NAME,
@@ -90,3 +91,4 @@ app.include_router(graph_population_router)
 app.include_router(graph_validation_router)
 app.include_router(knowledge_graph_retrieval_router)
 app.include_router(evidence_reasoning_router)
+app.include_router(engineering_copilot_router)

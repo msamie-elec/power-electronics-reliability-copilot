@@ -18,6 +18,15 @@ import json
 
 from openai import OpenAI
 
+from app.prompts.evidence_backed_answer_prompt import (
+    build_evidence_backed_prompt,
+)
+
+from app.prompts.engineering_reasoning_prompt import (
+    build_engineering_reasoning_prompt,
+)
+
+
 from app.config import (
     OPENAI_API_KEY,
     OPENAI_MODEL,
@@ -149,3 +158,41 @@ Engineering Text:
     )
 
     return json.loads(response.choices[0].message.content)
+
+
+# ==========================================================================
+# Evidence-backed Engineering Answer Generation
+# ==========================================================================
+
+def generate_evidence_backed_answer(
+    question: str,
+    semantic_evidence: list[dict],
+    graph_evidence: dict,
+) -> str:
+#    prompt = build_evidence_backed_prompt(
+#        question=question,
+#        semantic_evidence=semantic_evidence,
+#        graph_evidence=graph_evidence,
+#    )
+    prompt = build_engineering_reasoning_prompt(
+        question=question,
+        semantic_evidence=semantic_evidence,
+        graph_evidence=graph_evidence,
+    )
+
+    response = client.chat.completions.create(
+        model=OPENAI_MODEL,
+        temperature=0.2,
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a cautious engineering AI assistant. Use only supplied evidence.",
+            },
+            {
+                "role": "user",
+                "content": prompt,
+            },
+        ],
+    )
+
+    return response.choices[0].message.content or ""

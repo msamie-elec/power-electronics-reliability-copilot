@@ -9,6 +9,36 @@ The format is based on **Keep a Changelog** and follows semantic versioning.
 # [Unreleased]
 
 ## Planned
+✅ v0.1 — Frontend Prototype
+✅ v0.2 — Backend Foundation
+✅ v0.3 — Engineering RAG Copilot
+✅ v0.4 — Knowledge Graph Foundation
+🚧 v0.5 — Explainable Engineering Copilot (currently in progress)
+✅ Sprint 5.10
+✅ Sprint 5.11
+✅ Sprint 5.12
+▶️ Sprint 5.13 (next)
+
+At this stage, the backend architecture is becoming quite mature. Sprint 5.13 can now focus on making the copilot produce high-quality engineering answers rather than simply connecting the pipeline. This is where the system begins transitioning from a RAG application into an explainable engineering AI assistant.
+
+# Sprint 5.12 — Engineering Copilot API (Completed)
+
+Implemented the first end-to-end Engineering Copilot backend, enabling evidence-backed engineering question answering by combining semantic retrieval, knowledge graph reasoning, and Large Language Model (LLM) generation.
+
+Completed
+Added /engineering-copilot/ask REST API.
+Integrated semantic evidence retrieval with Knowledge Graph context.
+Implemented evidence-backed prompt generation using a dedicated prompt module.
+Refactored LLM prompt construction out of llm_service.py to improve modularity and maintainability.
+Implemented end-to-end engineering answer generation using OpenAI.
+Added comprehensive API validation and error handling.
+Added automated unit and integration tests for the Engineering Copilot endpoint.
+Verified compatibility with Sprint 5.10 (Knowledge Graph Retrieval) and Sprint 5.11 (Evidence-backed Reasoning Context).
+Validation
+Engineering Copilot API tests: 5/5 passed
+Backend regression tests (Sprints 5.10–5.12): 20/20 passed
+
+Status: ✅ Completed
 
 
 ## Sprint 5.11 — Evidence-backed AI Reasoning ✅
