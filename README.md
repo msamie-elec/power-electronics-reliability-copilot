@@ -94,6 +94,22 @@ power-electronics-copilot/
 ├── LICENSE
 └── README.md
 
+Updates:
+backend/
+│
+├── app/
+├── uploads/
+├── knowledge_base/
+├── chunks/
+│   ├── investigation/
+│   └── knowledge/
+├── embeddings/
+│   ├── investigation/
+│   └── knowledge/
+├── graph/
+├── metadata/
+└── tests/
+
 
 ```
 

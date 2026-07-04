@@ -10,6 +10,123 @@ The format is based on **Keep a Changelog** and follows semantic versioning.
 
 ## Planned
 
+
+## Sprint 5.11 — Evidence-backed AI Reasoning ✅
+
+Introduced the first version of the Evidence-backed AI Reasoning layer, providing a unified reasoning context for engineering questions by combining semantic document retrieval and Knowledge Graph evidence.
+
+### Added
+
+- Evidence Reasoning Service for building structured reasoning context.
+- Integration of FAISS semantic retrieval with Neo4j graph retrieval.
+- REST API endpoint: `POST /evidence-reasoning/context`.
+- Structured reasoning context containing semantic evidence, graph evidence, and reasoning metadata.
+- Request validation to reject invalid or empty engineering questions.
+- Comprehensive integration tests covering successful requests, validation, retrieval limits, and error handling.
+
+### Outcome
+
+The backend now provides a reusable evidence-backed reasoning context that serves as the foundation for the Engineering Copilot's grounded AI responses in the next sprint.
+
+
+
+# Add that Sprint 5.9 delivered:
+
+Neo4j population service
+/knowledge-graph/populate
+successful population from DOC-B3198A5
+graph summary endpoint
+/knowledge-graph/summary
+34 nodes and 21 relationships verified
+
+## Completed up to end of Sprint 5.9B Status: Completed ✅
+
+You now have the first version of an automatically populated engineering knowledge graph.
+
+From the screenshots I can see:
+
+23 EngineeringEntity nodes
+11 specialised entity labels
+23 relationships
+No skipped relationships
+Neo4j MERGE working correctly
+REST endpoint working correctly
+Population service working correctly
+
+Where we are in the overall architecture
+
+This is approximately where the project now stands.
+
+PDF
+ │
+ ▼
+Registration
+ │
+ ▼
+Chunking
+ │
+ ▼
+Embeddings
+ │
+ ▼
+Knowledge Extraction
+ │
+ ▼
+Graph JSON
+ │
+ ▼
+Neo4j Population   ← COMPLETE
+ │
+ ▼
+Knowledge Graph
+ │
+ ├─────────────► Graph Queries
+ │
+ └─────────────► GraphRAG
+
+Everything above the line is now operational.
+
+# Sprint 5.6 is complete
+
+# Sprint 5.5 is COMPLETE ✅
+
+From your screenshots:
+
+✅ /knowledge-search/search appears in Swagger.
+✅ Endpoint returns 200 OK.
+✅ FAISS successfully searched the index.
+✅ The embedding model loaded correctly.
+✅ The correct document was searched.
+✅ Top-k results were returned.
+✅ Returned chunk text, chunk ID, score and metadata.
+✅ No Python exceptions.
+
+# Sprint 5.4 is complete.
+
+Confirmed:
+
+{
+  "status": "success",
+  "documentId": "DOC-7E311A25",
+  "vectorsIndexed": 15,
+  "dimension": 384,
+  "indexFile": "vector_store\\knowledge\\DOC-7E311A25.index",
+  "mappingFile": "vector_store\\knowledge\\DOC-7E311A25_mapping.json"
+}
+
+You now have:
+
+Knowledge PDF
+↓
+Register
+↓
+Chunk
+↓
+Embedding
+↓
+FAISS Index
+
+
 ### v0.5.0 — GraphRAG Pipeline
 
 - GraphRAG implementation

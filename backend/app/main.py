@@ -45,7 +45,10 @@ from app.api.knowledge_faiss import router as knowledge_faiss_router
 from app.api.knowledge_search import router as knowledge_search_router
 from app.api.knowledge_pipeline import router as knowledge_pipeline_router
 from app.api.knowledge_extraction import router as knowledge_extraction_router
-
+from app.api.graph_population import router as graph_population_router
+from app.api.graph_validation import router as graph_validation_router
+from app.api.knowledge_graph_retrieval import router as knowledge_graph_retrieval_router
+from app.api.evidence_reasoning import router as evidence_reasoning_router
 
 app = FastAPI(
     title=APP_NAME,
@@ -83,4 +86,7 @@ app.include_router(knowledge_faiss_router)
 app.include_router(knowledge_search_router)
 app.include_router(knowledge_pipeline_router)
 app.include_router(knowledge_extraction_router)
-
+app.include_router(graph_population_router)
+app.include_router(graph_validation_router)
+app.include_router(knowledge_graph_retrieval_router)
+app.include_router(evidence_reasoning_router)
