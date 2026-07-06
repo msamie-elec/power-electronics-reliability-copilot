@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./App.css";
 
 import {
@@ -19,15 +19,17 @@ type ChatMessage = {
   response?: EngineeringCopilotResponse;
 };
 
+function createMessageId() {
+  return crypto.randomUUID();
+}
+
 function MarkdownText({ text }: { text: string }) {
   return (
     <div className="markdown-text">
       {text.split("\n").map((line, index) => {
         const trimmed = line.trim();
 
-        if (!trimmed) {
-          return <br key={index} />;
-        }
+        if (!trimmed) return <br key={index} />;
 
         if (trimmed.startsWith("## ")) {
           return <h3 key={index}>{trimmed.replace("## ", "")}</h3>;
@@ -38,7 +40,11 @@ function MarkdownText({ text }: { text: string }) {
         }
 
         if (trimmed.startsWith("- ")) {
-          return <p key={index} className="bullet">• {trimmed.replace("- ", "")}</p>;
+          return (
+            <p key={index} className="bullet">
+              • {trimmed.replace("- ", "")}
+            </p>
+          );
         }
 
         return <p key={index}>{trimmed}</p>;
@@ -50,7 +56,6 @@ function MarkdownText({ text }: { text: string }) {
 function App() {
   const [uploadedFiles, setUploadedFiles] = useState<UploadedDocument[]>([]);
   const [uploadStatus, setUploadStatus] = useState("Checking backend...");
-
   const [selectedDocumentId, setSelectedDocumentId] = useState("DOC-B3198A5");
 
   const [question, setQuestion] = useState(
@@ -58,11 +63,29 @@ function App() {
   );
 
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [copilotResponse, setCopilotResponse] =
-    useState<EngineeringCopilotResponse | null>(null);
+  const [selectedMessageId, setSelectedMessageId] = useState<string | null>(
+    null
+  );
 
   const [status, setStatus] = useState("Ready");
   const [isLoading, setIsLoading] = useState(false);
+
+  const selectedAssistantMessage = useMemo(() => {
+    const selected = messages.find(
+      (message) =>
+        message.id === selectedMessageId && message.role === "assistant"
+    );
+
+    if (selected?.response) return selected;
+
+    return [...messages]
+      .reverse()
+      .find(
+        (message) => message.role === "assistant" && Boolean(message.response)
+      );
+  }, [messages, selectedMessageId]);
+
+  const selectedResponse = selectedAssistantMessage?.response ?? null;
 
   useEffect(() => {
     async function loadDocuments() {
@@ -97,6 +120,12 @@ function App() {
     }
   }
 
+  function handleClearConversation() {
+    setMessages([]);
+    setSelectedMessageId(null);
+    setStatus("Ready");
+  }
+
   async function handleAskQuestion() {
     if (!question.trim()) {
       setStatus("Please enter a question.");
@@ -110,10 +139,13 @@ function App() {
 
     const userQuestion = question.trim();
 
-    setMessages((current) => [
-      ...current,
-      { role: "user", content: userQuestion },
-    ]);
+    const userMessage: ChatMessage = {
+      id: createMessageId(),
+      role: "user",
+      content: userQuestion,
+    };
+
+    setMessages((current) => [...current, userMessage]);
 
     try {
       setIsLoading(true);
@@ -126,12 +158,15 @@ function App() {
         10
       );
 
-      setCopilotResponse(response);
+      const assistantMessage: ChatMessage = {
+        id: createMessageId(),
+        role: "assistant",
+        content: response.answer,
+        response,
+      };
 
-      setMessages((current) => [
-        ...current,
-        { role: "assistant", content: response.answer },
-      ]);
+      setMessages((current) => [...current, assistantMessage]);
+      setSelectedMessageId(assistantMessage.id);
 
       setQuestion("");
       setStatus("Answer generated");
@@ -156,7 +191,6 @@ function App() {
 
         <div className="header-center">
           <h1>Power Electronics Reliability Copilot</h1>
-
           <p>
             Conversational engineering workspace for evidence-backed reliability
             analysis using semantic retrieval, Knowledge Graphs and AI reasoning.
@@ -187,9 +221,7 @@ function App() {
               Knowledge document ID
               <input
                 value={selectedDocumentId}
-                onChange={(event) =>
-                  setSelectedDocumentId(event.target.value)
-                }
+                onChange={(event) => setSelectedDocumentId(event.target.value)}
               />
             </label>
             <small>
@@ -200,6 +232,7 @@ function App() {
 
           <div className="document-list">
             <h3>Uploaded files</h3>
+
             {uploadedFiles.length === 0 ? (
               <p className="muted">No uploaded files found.</p>
             ) : (
@@ -221,6 +254,18 @@ function App() {
               ))
             )}
           </div>
+
+          {messages.length > 0 && (
+            <div className="document-list">
+              <h3>Conversation</h3>
+              <button
+                className="secondary-button"
+                onClick={handleClearConversation}
+              >
+                Clear conversation
+              </button>
+            </div>
+          )}
         </aside>
 
         <section className="chat-panel">
@@ -229,8 +274,9 @@ function App() {
               <h2>Engineering conversation</h2>
               <p>{status}</p>
             </div>
+
             <span className="confidence-pill">
-              Confidence: {copilotResponse?.confidence ?? "Not evaluated"}
+              Confidence: {selectedResponse?.confidence ?? "Not evaluated"}
             </span>
           </div>
 
@@ -245,17 +291,40 @@ function App() {
                 </p>
               </div>
             ) : (
-              messages.map((message, index) => (
+              messages.map((message) => (
                 <article
-                  className={`message ${message.role}`}
-                  key={`${message.role}-${index}`}
+                  className={`message ${message.role} ${
+                    message.id === selectedMessageId ? "selected-message" : ""
+                  }`}
+                  key={message.id}
+                  onClick={() => {
+                    if (message.role === "assistant") {
+                      setSelectedMessageId(message.id);
+                    }
+                  }}
                 >
                   <strong>
                     {message.role === "user" ? "You" : "Engineering Copilot"}
                   </strong>
 
                   {message.role === "assistant" ? (
-                    <MarkdownText text={message.content} />
+                    <>
+                      <MarkdownText text={message.content} />
+
+                      {message.response && (
+                        <div className="message-meta">
+                          <span>{message.response.confidence}</span>
+                          <span>
+                            {message.response.metadata.semanticEvidenceCount}{" "}
+                            evidence chunks
+                          </span>
+                          <span>
+                            {message.response.metadata.graphRelationshipCount}{" "}
+                            graph links
+                          </span>
+                        </div>
+                      )}
+                    </>
                   ) : (
                     <p>{message.content}</p>
                   )}
@@ -281,13 +350,15 @@ function App() {
           <section className="evidence-section">
             <h2>Evidence</h2>
 
-            {!copilotResponse ? (
+            {!selectedResponse ? (
               <p className="muted">
                 Retrieved evidence will appear after the first question.
               </p>
+            ) : selectedResponse.semanticEvidence.length === 0 ? (
+              <p className="muted">No semantic evidence returned.</p>
             ) : (
               <div className="evidence-list">
-                {copilotResponse.semanticEvidence.map((item, index) => (
+                {selectedResponse.semanticEvidence.map((item, index) => (
                   <article className="evidence-card" key={item.chunkId ?? index}>
                     <div className="evidence-card-top">
                       <strong>{item.documentId ?? "Document evidence"}</strong>
@@ -299,7 +370,7 @@ function App() {
                     </div>
 
                     <small>Chunk: {item.chunkId ?? "Unknown"}</small>
-                    <p>{item.text}</p>
+                    <p>{item.text ?? "No evidence text available."}</p>
                   </article>
                 ))}
               </div>
@@ -309,14 +380,14 @@ function App() {
           <section className="evidence-section">
             <h2>Citations</h2>
 
-            {!copilotResponse || copilotResponse.citations.length === 0 ? (
+            {!selectedResponse || selectedResponse.citations.length === 0 ? (
               <p className="muted">No citations available yet.</p>
             ) : (
               <div className="citation-list">
-                {copilotResponse.citations.map((citation, index) => (
+                {selectedResponse.citations.map((citation, index) => (
                   <div className="citation-chip" key={index}>
                     {citation.citationType === "graph_relationship"
-                      ? citation.relationship
+                      ? citation.relationship ?? "Graph relationship"
                       : `${citation.source ?? "Document"} · ${
                           citation.chunkId ?? "Chunk"
                         }`}
@@ -329,17 +400,17 @@ function App() {
           <section className="evidence-section">
             <h2>Graph context</h2>
 
-            {!copilotResponse ? (
+            {!selectedResponse ? (
               <div className="graph-placeholder">
                 <span>IGBT Module</span>
                 <span>Thermal Cycling</span>
                 <span>Bond Wire Fatigue</span>
               </div>
-            ) : copilotResponse.graphEvidence.relationships.length === 0 ? (
+            ) : selectedResponse.graphEvidence.relationships.length === 0 ? (
               <p className="muted">No graph relationships returned.</p>
             ) : (
               <div className="graph-list">
-                {copilotResponse.graphEvidence.relationships.map(
+                {selectedResponse.graphEvidence.relationships.map(
                   (relationship, index) => (
                     <div className="graph-link" key={index}>
                       <strong>{relationship.source}</strong>

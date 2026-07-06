@@ -120,7 +120,7 @@ input {
   display: grid;
   grid-template-columns: 230px minmax(620px, 1fr) 260px;
   gap: 14px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .sidebar,
@@ -139,6 +139,9 @@ input {
 .sidebar {
   padding: 14px;
   overflow-y: auto;
+  position: sticky;
+  top: 10px;
+  height: calc(100vh - 20px);
 }
 
 .sidebar h2,
@@ -247,7 +250,8 @@ input {
 .chat-panel {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 135px);
+  overflow: hidden;
 }
 
 .chat-header {
@@ -398,8 +402,10 @@ input {
   display: flex;
   flex-direction: column;
   gap: 9px;
-  height: calc(100vh - 135px);
+  height: calc(100vh - 20px);
   overflow-y: auto;
+  position: sticky;
+  top: 10px;
 }
 
 .evidence-section {
@@ -498,6 +504,49 @@ input {
   color: #94a3b8;
   line-height: 1.45;
   font-size: 0.7rem;
+}
+
+.selected-message {
+  outline: 2px solid #93c5fd;
+}
+
+.message.assistant {
+  cursor: pointer;
+}
+
+.message-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.message-meta span {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.secondary-button {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #334155;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+
+.secondary-button:hover {
+  background: #eef2ff;
 }
 
 @media (max-width: 1350px) {
