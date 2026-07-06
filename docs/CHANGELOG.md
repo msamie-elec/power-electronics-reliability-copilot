@@ -1,346 +1,343 @@
 # Changelog
 
-All notable changes to this project are documented in this file.
+All notable changes to the Power Electronics Reliability Copilot are documented in this file.
 
-The format is based on **Keep a Changelog** and follows semantic versioning.
+The project follows a release-based engineering methodology. Each release introduces a major architectural capability while preserving a stable and testable platform.
+
+For implementation details, architectural decisions and engineering discussions, refer to:
+
+- `PROJECT_ROADMAP.md`
+- `PROJECT_METHODOLOGY.md`
+- `ENGINEERING_PLAYBOOK.md`
+- `development/v0.5_IMPLEMENTATION_LOG.md`
 
 ---
 
 # [Unreleased]
 
-## Planned
-✅ v0.1 — Frontend Prototype
-✅ v0.2 — Backend Foundation
-✅ v0.3 — Engineering RAG Copilot
-✅ v0.4 — Knowledge Graph Foundation
-🚧 v0.5 — Explainable Engineering Copilot (currently in progress)
-✅ Sprint 5.10
-✅ Sprint 5.11
-✅ Sprint 5.12
-▶️ Sprint 5.13 (next)
+## Current Focus
 
-At this stage, the backend architecture is becoming quite mature. Sprint 5.13 can now focus on making the copilot produce high-quality engineering answers rather than simply connecting the pipeline. This is where the system begins transitioning from a RAG application into an explainable engineering AI assistant.
+**Version 0.5.1 — Conversational Engineering Copilot**
 
-# Sprint 5.12 — Engineering Copilot API (Completed)
+Current work focuses on:
 
-Implemented the first end-to-end Engineering Copilot backend, enabling evidence-backed engineering question answering by combining semantic retrieval, knowledge graph reasoning, and Large Language Model (LLM) generation.
-
-Completed
-Added /engineering-copilot/ask REST API.
-Integrated semantic evidence retrieval with Knowledge Graph context.
-Implemented evidence-backed prompt generation using a dedicated prompt module.
-Refactored LLM prompt construction out of llm_service.py to improve modularity and maintainability.
-Implemented end-to-end engineering answer generation using OpenAI.
-Added comprehensive API validation and error handling.
-Added automated unit and integration tests for the Engineering Copilot endpoint.
-Verified compatibility with Sprint 5.10 (Knowledge Graph Retrieval) and Sprint 5.11 (Evidence-backed Reasoning Context).
-Validation
-Engineering Copilot API tests: 5/5 passed
-Backend regression tests (Sprints 5.10–5.12): 20/20 passed
-
-Status: ✅ Completed
-
-
-## Sprint 5.11 — Evidence-backed AI Reasoning ✅
-
-Introduced the first version of the Evidence-backed AI Reasoning layer, providing a unified reasoning context for engineering questions by combining semantic document retrieval and Knowledge Graph evidence.
-
-### Added
-
-- Evidence Reasoning Service for building structured reasoning context.
-- Integration of FAISS semantic retrieval with Neo4j graph retrieval.
-- REST API endpoint: `POST /evidence-reasoning/context`.
-- Structured reasoning context containing semantic evidence, graph evidence, and reasoning metadata.
-- Request validation to reject invalid or empty engineering questions.
-- Comprehensive integration tests covering successful requests, validation, retrieval limits, and error handling.
-
-### Outcome
-
-The backend now provides a reusable evidence-backed reasoning context that serves as the foundation for the Engineering Copilot's grounded AI responses in the next sprint.
-
-
-
-# Add that Sprint 5.9 delivered:
-
-Neo4j population service
-/knowledge-graph/populate
-successful population from DOC-B3198A5
-graph summary endpoint
-/knowledge-graph/summary
-34 nodes and 21 relationships verified
-
-## Completed up to end of Sprint 5.9B Status: Completed ✅
-
-You now have the first version of an automatically populated engineering knowledge graph.
-
-From the screenshots I can see:
-
-23 EngineeringEntity nodes
-11 specialised entity labels
-23 relationships
-No skipped relationships
-Neo4j MERGE working correctly
-REST endpoint working correctly
-Population service working correctly
-
-Where we are in the overall architecture
-
-This is approximately where the project now stands.
-
-PDF
- │
- ▼
-Registration
- │
- ▼
-Chunking
- │
- ▼
-Embeddings
- │
- ▼
-Knowledge Extraction
- │
- ▼
-Graph JSON
- │
- ▼
-Neo4j Population   ← COMPLETE
- │
- ▼
-Knowledge Graph
- │
- ├─────────────► Graph Queries
- │
- └─────────────► GraphRAG
-
-Everything above the line is now operational.
-
-# Sprint 5.6 is complete
-
-# Sprint 5.5 is COMPLETE ✅
-
-From your screenshots:
-
-✅ /knowledge-search/search appears in Swagger.
-✅ Endpoint returns 200 OK.
-✅ FAISS successfully searched the index.
-✅ The embedding model loaded correctly.
-✅ The correct document was searched.
-✅ Top-k results were returned.
-✅ Returned chunk text, chunk ID, score and metadata.
-✅ No Python exceptions.
-
-# Sprint 5.4 is complete.
-
-Confirmed:
-
-{
-  "status": "success",
-  "documentId": "DOC-7E311A25",
-  "vectorsIndexed": 15,
-  "dimension": 384,
-  "indexFile": "vector_store\\knowledge\\DOC-7E311A25.index",
-  "mappingFile": "vector_store\\knowledge\\DOC-7E311A25_mapping.json"
-}
-
-You now have:
-
-Knowledge PDF
-↓
-Register
-↓
-Chunk
-↓
-Embedding
-↓
-FAISS Index
-
-
-### v0.5.0 — GraphRAG Pipeline
-
-- GraphRAG implementation
-- Neo4j retrieval integration
-- Hybrid vector + graph retrieval
-- Knowledge graph traversal
-- Engineering reasoning pipeline
+- Interactive engineering conversation interface
+- Chat session management
+- Streaming AI responses
+- Evidence visualisation
+- Knowledge Graph exploration
+- User experience improvements
 
 ---
 
-# v0.4.0 — Knowledge Graph Foundation
+# [v0.5.0] — Evidence-backed Engineering Copilot
 
-Release Status:
-✅ Completed
+**Status:** ✅ Release Candidate (Backend Complete)
+
+---
 
 ## Added
 
-### Sprint 4.1 — Neo4j Integration
+### Engineering Knowledge
 
-- Neo4j Aura database
-- Graph service
-- FastAPI connectivity
-- Health endpoint
-- Environment configuration
+- Engineering knowledge extraction
+- Graph-ready JSON generation
+- Entity extraction
+- Relationship extraction
+- Engineering ontology refinement
+- Neo4j graph population
+- Graph validation services
 
-### Sprint 4.2 — Ontology Design
+---
 
-- Engineering ontology
+### Knowledge Graph Retrieval
+
+- Knowledge Graph retrieval services
+- Graph summary API
+- Entity retrieval API
+- Relationship retrieval API
+- Knowledge graph search
+- Relationship filtering
+- Neighbour exploration
+- Evidence retrieval
+
+---
+
+### Evidence-backed AI Reasoning
+
+- Hybrid semantic and graph retrieval
+- Engineering reasoning context builder
+- Evidence ranking and deduplication
+- Graph evidence preparation
+- Prompt modularisation
+- Evidence-backed reasoning
+- Explainable engineering responses
+- Confidence-aware recommendations
+
+---
+
+### Engineering Copilot
+
+- Engineering Copilot service
+- Engineering Copilot REST API
+- Structured Pydantic response models
+- Engineering metadata models
+- Citation generation
+- Typed API contracts
+- End-to-end reasoning pipeline
+- Swagger validation
+- Backend integration
+
+---
+
+### Backend Quality Improvements
+
+- Dedicated Evidence Preparation Service
+- Dedicated Citation Service
+- Custom project exceptions
+- Structured logging
+- Improved service separation
+- Cleaner orchestration layer
+- Improved maintainability
+- Better API documentation
+
+---
+
+### Testing
+
+Added automated validation for:
+
+- Knowledge Graph Retrieval APIs
+- Evidence-backed Reasoning APIs
+- Engineering Copilot APIs
+- Negative validation scenarios
+- Backend regression testing
+
+Current regression status:
+
+- Knowledge Graph Retrieval: **10 / 10**
+- Evidence-backed Reasoning: **5 / 5**
+- Engineering Copilot: **5 / 5**
+
+**Total: 20 / 20 automated backend tests passing**
+
+---
+
+### Documentation
+
+Updated project documentation including:
+
+- README
+- CHANGELOG
+- PROJECT_ROADMAP
+- PROJECT_METHODOLOGY
+- ENGINEERING_PLAYBOOK
+- SYSTEM_ARCHITECTURE
+- INGESTION_ARCHITECTURE
+- KNOWLEDGE_GRAPH_ARCHITECTURE
+- RETRIEVAL_ARCHITECTURE
+- AI_REASONING_ARCHITECTURE
+- Version 0.5 Implementation Log
+- Version 0.5 Release Notes
+
+---
+
+## Changed
+
+- Engineering Copilot now returns structured response models instead of untyped dictionaries.
+- Prompt construction moved into dedicated prompt modules.
+- Evidence preparation extracted into dedicated services.
+- Citation generation separated from reasoning logic.
+- Backend services further modularised.
+- Evidence-backed reasoning standardised across APIs.
+- Logging introduced throughout the reasoning pipeline.
+- Custom exception hierarchy introduced.
+- Documentation reorganised into permanent and historical sections.
+
+---
+
+## Internal Milestones
+
+| Task | Capability | Status |
+|------|------------|--------|
+| 5.1 | Knowledge Document Registration | ✅ |
+| 5.2 | Document Chunking | ✅ |
+| 5.3 | Embedding Generation | ✅ |
+| 5.4 | FAISS Vector Index | ✅ |
+| 5.5 | Semantic Retrieval | ✅ |
+| 5.6 | Retrieval Service | ✅ |
+| 5.7 | Ingestion Pipeline | ✅ |
+| 5.8 | Engineering Knowledge Extraction | ✅ |
+| 5.9 | Knowledge Graph Population | ✅ |
+| 5.10 | Knowledge Graph Retrieval | ✅ |
+| 5.11 | Evidence-backed AI Reasoning | ✅ |
+| 5.12 | Engineering Copilot Backend | ✅ |
+| 5.13 | Backend Refinement & Release Preparation | ✅ |
+
+Detailed implementation information is available in:
+
+`development/v0.5_IMPLEMENTATION_LOG.md`
+
+---
+
+# [v0.4.0] — Knowledge Graph Foundation
+
+**Status:** ✅ Released
+
+## Added
+
+### Engineering Ontology
+
+- Engineering ontology design
 - Node definitions
 - Relationship definitions
 - Property model
 - Identifier strategy
 
-### Sprint 4.3 — Knowledge Graph Design
+### Neo4j Integration
 
-- Neo4j schema
-- Knowledge ingestion architecture
-- Engineering ontology documentation
-- Three ontology diagrams
-- Graph schema documentation
-
-### Sprint 4.4 — Graph Implementation
-
-- Graph constraints
-- Search indexes
-- Seed engineering dataset
-- Knowledge graph creation
-- Sample engineering graph
-
-### Sprint 4.5 — Validation & Querying
-
-- Graph validation
-- Graph statistics
-- Engineering Cypher queries
-- Validation queries
-- End-to-end graph verification
-
-### Sprint 4.6 — Repository Structure
-
-- Graph module
-- Documentation structure
-- ADR framework
-- Standards directory
-- Sprint history
-- Graph README
-
-### Sprint 4.7 — GraphRAG Preparation
-
-- GraphRAG preparation
-- Chunking strategy
-- Embedding strategy
-- Retrieval workflow
-- Source tracking design
-
-### Sprint 4.8 — Enterprise Documentation
-
-- Knowledge Graph Overview
-- Neo4j Schema documentation
-- Repository documentation
-- Architecture documentation
-- Data model documentation
-- Future expansion roadmap
-
-## Repository Milestone
-
-The repository now includes:
-
-- Engineering ontology
-- Neo4j knowledge graph
-- Cypher schema
+- Neo4j graph database
 - Constraints
 - Indexes
-- Seed dataset
-- Validation queries
-- Engineering queries
-- Enterprise documentation
-- Architecture Decision Records (ADRs)
+- Graph schema
+- Graph validation
 
-This release establishes the complete **Knowledge Graph Foundation** for future GraphRAG development.
+### Knowledge Graph
+
+- Engineering entity model
+- Relationship model
+- Seed dataset
+- Cypher query library
+- Graph inspection
+- Graph statistics
+
+### GraphRAG Preparation
+
+- Graph-ready architecture
+- Retrieval workflow
+- Source tracking
+- Chunk linkage
+- Embedding strategy
+
+### Documentation
+
+- Architecture documentation
+- Ontology documentation
+- Repository structure
+- ADR framework
+- Standards
 
 ---
 
-# v0.3.0 — Engineering Knowledge Retrieval
+# [v0.3.0] — Engineering Knowledge Retrieval
 
-Released:
-June 2026
+**Status:** ✅ Released
 
 ## Added
 
-### Sprint 3.1 — Document Processing
+### Document Processing
 
-- PDF parsing
-- Automatic text extraction
+- PDF ingestion
+- TXT ingestion
+- CSV ingestion
+- Automatic parsing
 - Metadata generation
 
-### Sprint 3.2 — Chunking
+### Semantic Retrieval
 
 - Document chunking
-- Chunk identifiers
-- Metadata generation
-
-### Sprint 3.3 — Embeddings
-
-- Sentence Transformer embeddings
-- Embedding persistence
-
-### Sprint 3.4 — Vector Search
-
-- FAISS vector database
+- Embedding generation
+- FAISS indexing
 - Semantic similarity search
-- Top-k retrieval
-
-### Sprint 3.5 — Engineering Retrieval
-
-- Evidence retrieval
-- Confidence estimation
-- Structured engineering responses
-
-### Sprint 3.6 — Frontend Integration
-
-- React integration
-- Evidence display
-- Confidence indicator
+- Retrieval-Augmented Generation
 - Source attribution
+- Confidence estimation
 
-### Sprint 3.7 — LLM Integration
+### AI Integration
 
 - OpenAI integration
-- Prompt engineering
-- Retrieval-Augmented Generation (RAG)
+- Engineering prompt generation
+- Evidence-backed responses
 
-### Sprint 3.8 — Testing
+### Validation
 
-- Pytest
-- API validation
-- End-to-end testing
-- Documentation improvements
+- API testing
+- End-to-end workflow validation
+- Pytest integration
 
 ---
 
-# v0.2.0 — Backend Foundation
+# [v0.2.0] — Backend Foundation
 
-Released:
-June 2026
+**Status:** ✅ Released
 
 ## Added
 
 - FastAPI backend
-- REST API
-- File upload
+- REST API architecture
+- Document upload
 - Document management
-- Modular backend architecture
+- Modular backend
+- Swagger documentation
 
 ---
 
-# v0.1.0 — Frontend Prototype
+# [v0.1.0] — Frontend Prototype
 
-Released:
-June 2026
+**Status:** ✅ Released
 
 ## Added
 
-- React
+- React application
 - TypeScript
-- Vite
 - Engineering dashboard
-- Initial project documentation
+- Document upload interface
+- AI response panel
+- Evidence panel
+- Initial Engineering Copilot interface
+
+---
+
+# Upcoming Releases
+
+## v0.5.1 — Conversational Engineering Copilot
+
+Planned
+
+- Interactive engineering chat
+- Multi-turn conversation
+- Conversation history
+- Streaming AI responses
+- Evidence visualisation
+- Knowledge Graph exploration
+
+---
+
+## v0.6.0 — Azure Cloud Deployment
+
+Planned
+
+- Azure deployment
+- Azure OpenAI integration
+- Cloud storage
+- Authentication
+- Monitoring
+
+---
+
+## v0.7.0 — Production Deployment
+
+Planned
+
+- Docker
+- Kubernetes
+- CI/CD
+- Production deployment
+
+---
+
+## v1.0.0 — Enterprise AI Copilot
+
+Planned
+
+Production-ready Power Electronics Reliability Copilot featuring hybrid GraphRAG, explainable engineering reasoning, conversational interaction, cloud deployment and enterprise-grade architecture.

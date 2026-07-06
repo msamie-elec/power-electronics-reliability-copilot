@@ -88,23 +88,33 @@ Relationships
 Return your answer using EXACTLY this structure
 ======================================================
 
-## Engineering Answer
+## Summary
 
-...
+Provide a concise engineering summary in 2–4 sentences.
 
-## Supporting Evidence
+## Engineering Analysis
 
-...
+Explain the likely engineering interpretation based only on the supplied evidence.
+Clearly distinguish observed evidence from engineering inference.
 
-## Knowledge Graph Reasoning
+## Supporting Document Evidence
 
-...
+List the most relevant document evidence.
+Mention chunk IDs where useful.
+
+## Supporting Graph Reasoning
+
+Explain the relevant entities and relationships from the Knowledge Graph.
+If graph evidence is weak or missing, state this clearly.
 
 ## Confidence
 
 High / Medium / Low
 
+Explain briefly why this confidence level was selected.
+
 ## Recommended Next Step
 
-...
+Provide one practical engineering next step.
+Clearly state whether it is an inspection, test, analysis, or maintenance action.
 """

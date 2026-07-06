@@ -1,300 +1,98 @@
 # Ingestion Architecture
 
-## Purpose
+## Overview
 
-This document describes the ingestion architecture adopted by the Power Electronics Reliability Copilot.
+The Power Electronics Reliability Copilot uses two independent document ingestion pipelines designed to support different engineering objectives.
 
-The project intentionally separates document ingestion into two independent pipelines because they serve different business objectives and have different processing requirements.
+Although both pipelines begin with engineering documents, they serve fundamentally different purposes:
 
-This architecture follows enterprise AI design principles by separating document retrieval from knowledge acquisition.
+- **Investigation Document Pipeline** – processes user-uploaded documents for a specific engineering investigation.
+- **Engineering Knowledge Pipeline** – processes trusted engineering references to build and continuously enrich the permanent Engineering Knowledge Graph.
+
+This separation follows enterprise AI design principles by distinguishing temporary investigation evidence from curated engineering knowledge.
 
 ---
 
 # Why Two Ingestion Pipelines?
 
-Although both pipelines begin with engineering documents, they have different purposes.
+Engineering documents do not all have the same role within the platform.
 
-The first pipeline supports day-to-day engineering assistance.
+Some documents are uploaded by engineers to investigate a particular problem. Others represent trusted engineering knowledge that should become part of the platform's long-term knowledge base.
 
-The second pipeline continuously builds and enriches the engineering knowledge base.
+Keeping these responsibilities separate provides several advantages.
 
-Keeping these responsibilities separate improves:
+| Investigation Pipeline | Engineering Knowledge Pipeline |
+|-------------------------|-------------------------------|
+| Temporary investigation evidence | Permanent engineering knowledge |
+| Supports one engineering investigation | Supports all future investigations |
+| Fast processing | Higher-quality processing |
+| Does not modify the Knowledge Graph | Updates the Knowledge Graph |
+| User-uploaded documents | Curated engineering references |
+| Optimised for responsiveness | Optimised for knowledge quality |
+
+This separation improves:
 
 - scalability
 - maintainability
 - explainability
 - security
-- operational cost
+- operational efficiency
 - knowledge quality
 
 ---
 
-# Pipeline 1 — User Document Pipeline
+# Pipeline 1 — Investigation Document Pipeline
 
 ## Purpose
 
-This pipeline processes documents uploaded by end users during normal system usage.
+The Investigation Document Pipeline processes engineering documents uploaded by users during day-to-day engineering investigations.
 
-Examples include:
+Typical documents include:
 
 - inspection reports
 - maintenance reports
 - fault logs
-- test reports
-- customer documentation
 - laboratory measurements
+- customer documentation
 - project-specific engineering documents
+- reliability investigation reports
 
-These documents are treated as temporary working documents.
-
-They provide contextual information for answering the current engineering question but do **not** automatically modify the trusted engineering knowledge graph.
+These documents provide contextual information for answering engineering questions but **do not automatically modify the trusted Engineering Knowledge Graph**.
 
 ---
 
-## Processing Flow
+## Current Processing Workflow
 
-```
-User Upload
-      │
-      ▼
+```text
+Investigation Document
+          │
+          ▼
 Document Registration
-      │
-      ▼
+          │
+          ▼
 Document Chunking
-      │
-      ▼
-Embedding Generation
-      │
-      ▼
-Hybrid Document Retrieval
-(BM25 + Vector Search)
-      │
-      ▼
-Retrieved Chunks
-      │
-      ▼
-Engineering Answer
-```
-
----
-
-## Output
-
-This pipeline produces:
-
-- registered documents
-- document metadata
-- chunks
-- embeddings
-- temporary retrieval context
-
-The resulting information is used only for the current engineering session.
-
----
-
-# Pipeline 2 — Evidence Knowledge Pipeline
-
-## Purpose
-
-This pipeline processes trusted engineering references that contribute to the permanent engineering knowledge base.
-
-Examples include:
-
-- manufacturer application notes
-- reliability handbooks
-- peer-reviewed journal papers
-- technical standards
-- approved internal engineering documents
-- maintenance procedures
-
-Only approved documents should enter this pipeline.
-
----
-
-## Processing Flow
-
-```
-Approved Engineering Document
-          │
-          ▼
-Document Registration
-          │
-          ▼
-Chunking
           │
           ▼
 Embedding Generation
           │
           ▼
-Knowledge Extraction
+FAISS Semantic Retrieval
+(Current)
           │
           ▼
-Graph-ready JSON
+Retrieved Evidence
           │
           ▼
-Neo4j Knowledge Graph
-          │
-          ▼
-Evidence Links
+Engineering Copilot
 ```
 
 ---
 
-## Output
+## Planned Retrieval Enhancement
 
-This pipeline produces:
+Future releases will extend the retrieval workflow by introducing BM25 keyword retrieval.
 
-- graph entities
-- graph relationships
-- document evidence
-- traceable engineering knowledge
-
-Unlike the User Document Pipeline, this pipeline continuously enriches the enterprise knowledge graph.
-
----
-
-# Retrieval Architecture
-
-The retrieval strategy also differs.
-
-## User Document Pipeline
-
-Retrieval combines:
-
-- BM25 keyword search
-- Vector similarity search (FAISS)
-
-The retrieved chunks are merged and supplied to the Large Language Model.
-
----
-
-## Evidence Knowledge Pipeline
-
-Retrieval combines:
-
-- BM25 keyword search
-- Vector similarity search
-- Neo4j graph traversal
-
-This provides explainable engineering reasoning supported by structured knowledge and trusted evidence.
-
----
-
-# Why BM25?
-
-Engineering documents contain many exact identifiers that semantic embeddings alone may not retrieve reliably.
-
-Examples include:
-
-- VCE(sat)
-- ΔTj
-- RthJC
-- IEC 60747
-- thermal cycling
-- bond wire lift-off
-- part numbers
-- numerical limits
-- engineering units
-
-BM25 complements semantic retrieval by preserving exact technical terminology.
-
----
-
-# Cost Considerations
-
-The two pipelines have different computational costs.
-
-## User Document Pipeline
-
-Optimised for responsiveness.
-
-Typical processing includes:
-
-- parsing
-- chunking
-- embeddings
-- BM25
-- FAISS retrieval
-
-This pipeline is expected to process the majority of uploaded documents.
-
----
-
-## Evidence Knowledge Pipeline
-
-Optimised for knowledge quality rather than speed.
-
-Additional processing includes:
-
-- LLM-assisted entity extraction
-- relationship extraction
-- graph population
-- evidence linking
-- graph validation
-
-Since this pipeline updates the enterprise knowledge graph, it is expected to be executed less frequently and only on trusted documents.
-
----
-
-# Orchestration
-
-The user should not choose which pipeline to use.
-
-Instead, an orchestration layer will route documents automatically.
-
-```
-Document Upload
-        │
-        ▼
-Document Type
-        │
-        ├───────────────┐
-        ▼               ▼
-User Document     Approved Evidence
-        │               │
-        ▼               ▼
-Pipeline 1       Pipeline 2
-```
-
-Future versions may implement this orchestration using LangGraph.
-
----
-
-# Architectural Benefits
-
-This design provides:
-
-- separation of concerns
-- reusable processing components
-- lower operational cost
-- explainable AI
-- scalable knowledge acquisition
-- trusted knowledge graph updates
-- enterprise-grade maintainability
-
----
-
-# Implementation Notes
-
-The existing document ingestion pipeline developed in Version 0.3 should be reused wherever possible.
-
-Version 0.5 extends this capability by introducing document registration, evidence tracking and knowledge graph integration rather than replacing the existing implementation.
-
----
-
-# Future Work
-
-The following enhancement has been identified.
-
-## Hybrid Retrieval for User Documents
-
-The original Version 0.3 retrieval pipeline relied primarily on semantic vector search.
-
-This should be upgraded to include **BM25 keyword retrieval** alongside FAISS semantic retrieval.
-
-Target architecture:
-
-```
+```text
 User Question
        │
        ▼
@@ -306,69 +104,357 @@ User Question
  Merge & Rank
        │
        ▼
- Retrieved Chunks
+ Retrieved Evidence
        │
        ▼
- Large Language Model
+ Engineering Copilot
 ```
 
-This enhancement will improve retrieval of:
+The hybrid retrieval strategy improves retrieval of:
 
 - technical terminology
 - engineering symbols
 - numerical values
 - standards
 - equations
-- part numbers
-- exact phrases
+- manufacturer part numbers
+- exact engineering phrases
+
+**Note**
+
+At the current implementation stage, the Investigation Pipeline uses **FAISS semantic retrieval**. BM25 integration is planned for a future release.
+
+---
+
+## Output
+
+The Investigation Pipeline produces:
+
+- registered documents
+- metadata
+- document chunks
+- embeddings
+- temporary retrieval context
+
+The generated information is used only for the current engineering investigation.
+
+---
+
+# Pipeline 2 — Engineering Knowledge Pipeline
+
+## Purpose
+
+The Engineering Knowledge Pipeline processes trusted engineering references that contribute to the permanent Engineering Knowledge Graph.
+
+Typical sources include:
+
+- manufacturer application notes
+- reliability handbooks
+- peer-reviewed journal papers
+- technical standards
+- approved internal engineering documentation
+- maintenance procedures
+- engineering design guides
+
+Only curated and approved engineering documents should enter this pipeline.
+
+---
+
+## Current Processing Workflow
+
+```text
+Engineering Knowledge Document
+               │
+               ▼
+Document Registration
+               │
+               ▼
+Document Chunking
+               │
+               ▼
+Embedding Generation
+               │
+               ▼
+Knowledge Extraction
+               │
+               ▼
+Graph-ready JSON
+               │
+               ▼
+Neo4j Population
+               │
+               ▼
+Engineering Knowledge Graph
+               │
+               ▼
+Knowledge Graph Retrieval
+               │
+               ▼
+Evidence-backed AI Reasoning
+```
+
+---
+
+## Output
+
+The Engineering Knowledge Pipeline produces:
+
+- engineering entities
+- engineering relationships
+- graph-ready knowledge
+- document evidence
+- evidence traceability
+- Engineering Knowledge Graph updates
+
+Unlike the Investigation Pipeline, this pipeline continuously enriches the platform's permanent engineering knowledge.
+
+---
+
+# Retrieval Architecture
+
+The retrieval strategy differs for each pipeline.
+
+## Investigation Pipeline
+
+Current implementation:
+
+- FAISS semantic retrieval
+
+Planned enhancement:
+
+- BM25 keyword retrieval
+- FAISS semantic retrieval
+- Hybrid ranking
+
+The retrieved evidence supports a single engineering investigation.
+
+---
+
+## Engineering Knowledge Pipeline
+
+Current implementation combines:
+
+- FAISS semantic retrieval
+- Neo4j Knowledge Graph retrieval
+- Engineering entity exploration
+- Relationship retrieval
+- Evidence retrieval
+
+The retrieved evidence supports explainable engineering reasoning.
+
+---
+
+# Why Hybrid Retrieval?
+
+Engineering documentation contains both semantic knowledge and exact technical terminology.
+
+Semantic embeddings alone may not reliably retrieve:
+
+- VCE(sat)
+- ΔTj
+- RthJC
+- IEC 60747
+- thermal cycling
+- bond wire lift-off
+- manufacturer part numbers
+- numerical limits
+- engineering units
+
+Future BM25 integration will complement semantic retrieval by preserving exact engineering terminology while FAISS captures semantic similarity.
+
+---
+
+# Physical Storage Layout
+
+The platform stores investigation documents and curated engineering knowledge separately.
+
+```text
+backend/
+
+uploads/
+    Investigation documents
+
+knowledge_base/
+    Curated engineering references
+
+chunks/
+    investigation/
+    knowledge/
+
+embeddings/
+    investigation/
+    knowledge/
+
+metadata/
+    investigation/
+    knowledge/
+
+graph/
+    Neo4j resources
+```
+
+---
+
+## Investigation Documents
+
+Location
+
+```text
+backend/uploads/
+```
+
+Purpose
+
+- Uploaded by end users
+- Temporary engineering investigations
+- Supports semantic retrieval
+- Does not update the Knowledge Graph
+
+---
+
+## Engineering Knowledge Base
+
+Location
+
+```text
+backend/knowledge_base/
+```
+
+Purpose
+
+- Curated engineering references
+- Trusted knowledge sources
+- Supports knowledge extraction
+- Populates the Engineering Knowledge Graph
+- Enables evidence-backed reasoning
+
+---
+
+# Processing Cost
+
+The two pipelines have different computational characteristics.
+
+## Investigation Pipeline
+
+Optimised for responsiveness.
+
+Typical processing includes:
+
+- parsing
+- chunking
+- embedding generation
+- FAISS retrieval
+
+This pipeline is expected to process the majority of uploaded documents.
+
+---
+
+## Engineering Knowledge Pipeline
+
+Optimised for knowledge quality.
+
+Additional processing includes:
+
+- LLM-assisted knowledge extraction
+- entity extraction
+- relationship extraction
+- graph population
+- evidence linking
+- graph validation
+
+This pipeline executes less frequently but performs significantly more processing.
+
+---
+
+# Orchestration
+
+Currently, the two pipelines are initiated independently depending on the document source.
+
+Future versions will introduce automatic document routing.
+
+```text
+Document Upload
+        │
+        ▼
+Document Classification
+        │
+ ┌──────┴──────┐
+ ▼             ▼
+Investigation   Engineering Knowledge
+Document        Document
+ ▼             ▼
+Pipeline 1     Pipeline 2
+```
+
+Future orchestration may be implemented using LangGraph.
+
+---
+
+# Current Implementation Status
+
+| Capability | Status |
+|------------|--------|
+| Document Registration | ✅ Implemented |
+| Document Chunking | ✅ Implemented |
+| Embedding Generation | ✅ Implemented |
+| FAISS Retrieval | ✅ Implemented |
+| Knowledge Extraction | ✅ Implemented |
+| Graph-ready JSON | ✅ Implemented |
+| Neo4j Population | ✅ Implemented |
+| Knowledge Graph Retrieval | ✅ Implemented |
+| Evidence-backed AI Reasoning | ✅ Implemented |
+| Investigation BM25 Retrieval | ⏳ Planned |
+| Automatic Pipeline Routing | ⏳ Planned |
+
+---
+
+# Architectural Benefits
+
+This architecture provides:
+
+- clear separation of responsibilities
+- reusable processing services
+- lower operational cost
+- explainable AI reasoning
+- scalable knowledge acquisition
+- trusted Knowledge Graph updates
+- modular software architecture
+- enterprise-grade maintainability
+- future extensibility
+
+---
+
+# Implementation Notes
+
+The document ingestion pipeline introduced in Version 0.3 forms the foundation of both ingestion pipelines.
+
+Version 0.5 extends this capability by introducing:
+
+- engineering knowledge extraction
+- graph-ready JSON generation
+- Neo4j population
+- Knowledge Graph retrieval
+- evidence-backed reasoning
+
+Rather than replacing the original ingestion workflow, Version 0.5 builds upon it through modular extensions.
+
+---
+
+# Related Architecture Documents
+
+This document focuses on document ingestion.
+
+Related architecture documents include:
+
+- `SYSTEM_ARCHITECTURE.md`
+- `KNOWLEDGE_GRAPH_ARCHITECTURE.md`
+- `RETRIEVAL_ARCHITECTURE.md`
+- `AI_REASONING_ARCHITECTURE.md`
 
 ---
 
 # Version
 
-Prepared for:
-
 **Power Electronics Reliability Copilot**
 
-Version **v0.5 – Evidence-Centred GraphRAG**
-
-## Updates:
-## Physical Storage Layout
-
-The system stores user investigation documents and approved engineering
-knowledge separately.
-
-### Investigation Documents
-
-Location:
-
-backend/uploads/
-
-Purpose:
-
-- Uploaded by end users
-- Temporary investigation evidence
-- Used for semantic retrieval (BM25 + FAISS)
-- Not automatically added to the Knowledge Graph
-
-### Engineering Knowledge Base
-
-Location:
-
-backend/knowledge_base/
-
-Purpose:
-
-- Curated engineering references
-- Approved by administrators
-- Used for Knowledge Extraction
-- Populates the Neo4j Knowledge Graph
-- Supports GraphRAG reasoning
-
-Generated artefacts are stored separately:
-
-backend/chunks/investigation/
-backend/chunks/knowledge/
-
-backend/embeddings/investigation/
-backend/embeddings/knowledge/
+Prepared for **Version 0.5.0 — Evidence-backed Engineering Copilot**

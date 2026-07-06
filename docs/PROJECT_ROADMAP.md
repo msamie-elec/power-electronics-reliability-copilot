@@ -2,291 +2,450 @@
 
 ## Product Vision
 
-Power Electronics Reliability Copilot is an Enterprise AI application designed to support reliability engineers in diagnosing power electronics failures using datasheets, maintenance records, technical documentation, Retrieval-Augmented Generation (RAG), Knowledge Graphs, and AI workflow orchestration.
+Power Electronics Reliability Copilot is an AI-powered engineering decision-support platform designed to assist reliability engineers in analysing failures, exploring engineering knowledge, and producing explainable, evidence-backed recommendations from technical documentation.
 
-The long-term goal is to build a production-ready engineering copilot capable of retrieving technical evidence, reasoning over engineering knowledge, and providing explainable reliability recommendations.
+The platform combines document intelligence, semantic retrieval, knowledge graphs, Retrieval-Augmented Generation (RAG), and engineering-focused AI reasoning into a modular software architecture that supports the investigation of reliability issues in power electronic systems.
+
+Development follows an incremental, release-based methodology in which each version introduces a major engineering capability while maintaining a stable and testable platform.
 
 ---
 
-# Version Roadmap
+# Engineering Development Philosophy
 
-## v0.1.0 — Frontend Prototype
+The project is developed as a sequence of engineering releases.
+
+Each release:
+
+- introduces one major architectural capability;
+- remains functional and testable;
+- extends the existing engineering workflow;
+- provides the foundation for subsequent releases.
+
+The objective is to evolve the platform from a document retrieval system into a complete AI-assisted engineering copilot.
+
+---
+
+# Release Strategy
+
+The development roadmap is organised into progressive engineering milestones.
+
+```text
+v0.1
+Frontend Prototype
+        │
+        ▼
+v0.2
+Backend Foundation
+        │
+        ▼
+v0.3
+Engineering Knowledge Retrieval
+        │
+        ▼
+v0.4
+Knowledge Graph Foundation
+        │
+        ▼
+v0.5
+Evidence-backed Engineering Copilot
+        │
+        ▼
+v0.5.1
+Conversational Engineering Copilot
+        │
+        ▼
+v0.6
+Cloud Deployment
+        │
+        ▼
+v0.7
+Production Platform
+        │
+        ▼
+v1.0
+Enterprise Power Electronics Reliability Copilot
+```
+
+---
+
+# Release Roadmap
+
+---
+
+# v0.1.0 — Frontend Prototype
 
 **Status:** ✅ Completed
 
-**Capability**
+## Objective
 
-- Interactive React dashboard
-- Engineering Copilot user interface
+Develop the first engineering user interface for interacting with the platform.
+
+## Major Capabilities
+
+- React dashboard
+- Engineering Copilot interface
 - Document upload panel
 - Reliability question panel
-- AI recommendation panel
+- AI response panel
 - Evidence panel
-- Knowledge graph preview
+- Knowledge graph placeholder
+- Modular frontend structure
 
-**Main Technology**
+## Main Technologies
 
 - React
 - TypeScript
 - Vite
 
+## Outcome
+
+Established the initial user interface and interaction model for the engineering copilot.
+
 ---
 
-## v0.2.0 — Backend Foundation
+# v0.2.0 — Backend Foundation
 
 **Status:** ✅ Completed
 
-**Capability**
+## Objective
+
+Build a modular backend capable of supporting engineering document processing and REST services.
+
+## Major Capabilities
 
 - FastAPI backend
 - REST API architecture
-- Document upload service
+- Document upload services
 - Document management
-- Frontend-to-backend integration
-- Local document repository
-- Modular backend architecture
+- Backend modularisation
+- Frontend integration
 - Swagger/OpenAPI documentation
 
-**Main Technology**
+## Main Technologies
 
 - FastAPI
 - Python
-- REST API
-- Swagger/OpenAPI
+- REST APIs
+- Swagger
+
+## Outcome
+
+Established the backend architecture supporting future AI services.
 
 ---
 
-## v0.3.0 — Engineering RAG Copilot
+# v0.3.0 — Engineering Knowledge Retrieval
 
 **Status:** ✅ Completed
 
-**Capability**
+## Objective
+
+Introduce semantic document retrieval using Retrieval-Augmented Generation (RAG).
+
+## Major Capabilities
 
 - Multi-document upload
 - PDF, TXT and CSV ingestion
 - Automatic document parsing
-- Text extraction
-- Chunk generation
-- Sentence-transformer embeddings
-- Local FAISS vector database
+- Metadata registration
+- Document chunking
+- Embedding generation
+- FAISS vector indexing
 - Semantic similarity search
-- Retrieval-Augmented Generation (RAG)
+- Retrieval-Augmented Generation
 - OpenAI answer generation
-- Evidence-based responses
 - Source attribution
 - Confidence scoring
-- Frontend RAG integration
-- API validation
-- Automated testing with Pytest
+- Automated API testing
 - End-to-end workflow validation
 
-**Main Technology**
+## Main Technologies
 
 - FastAPI
-- React + TypeScript
-- Sentence Transformers
+- React
+- OpenAI Embeddings
 - FAISS
 - OpenAI GPT
 - Pytest
 
+## Outcome
+
+Established semantic engineering knowledge retrieval and evidence-aware document search.
+
 ---
 
-## v0.4.0 — Knowledge Graph Foundation
+# v0.4.0 — Knowledge Graph Foundation
 
-**Status:** 🚧 Next Development
+**Status:** ✅ Completed
 
-**Capability**
+## Objective
 
-- Engineering ontology design
-- Reliability knowledge model
-- Neo4j graph database setup
-- Component nodes
-- Failure mode nodes
-- Symptom nodes
-- Evidence nodes
-- Maintenance action nodes
+Introduce structured engineering knowledge using Neo4j and engineering ontology modelling.
+
+## Major Capabilities
+
+- Engineering ontology
+- Knowledge graph schema
+- Entity modelling
 - Relationship modelling
-- Cypher querying
-- Initial graph population
-- Graph inspection and validation
+- Neo4j integration
+- Constraints and indexes
+- Graph population
+- Validation queries
+- Cypher query library
+- Graph statistics
+- Knowledge graph documentation
 
-**Main Technology**
+## Main Technologies
 
 - Neo4j
 - Cypher
 - Python
-- Graph data modelling
+- Knowledge Engineering
+
+## Outcome
+
+Established the structured engineering knowledge layer that supports graph exploration and future GraphRAG capabilities.
 
 ---
 
-## v0.5.0 — Hybrid GraphRAG Intelligence
+# v0.5.0 — Evidence-backed Engineering Copilot
 
-**Status:** Planned
+**Status:** 🚧 In Progress
 
-**Capability**
+## Objective
 
-- Hybrid Vector + Graph retrieval
-- Graph-enhanced evidence retrieval
-- Relationship-aware diagnostic reasoning
-- Subgraph retrieval
-- GraphRAG context assembly
-- Combined vector and graph prompts
-- Explainable engineering relationships
-- Improved reliability recommendations
+Transform the platform into an explainable engineering copilot by integrating semantic retrieval, knowledge graph retrieval, and evidence-backed AI reasoning.
 
-**Main Technology**
+## Major Capabilities
+
+### Knowledge Engineering
+
+- Engineering knowledge extraction
+- Graph-ready JSON generation
+- Neo4j graph population
+- Graph validation
+- Engineering ontology refinement
+
+### Knowledge Graph Retrieval
+
+- Graph summary API
+- Entity retrieval
+- Relationship retrieval
+- Evidence retrieval
+- Neighbour exploration
+- Knowledge graph search
+
+### Evidence-backed Reasoning
+
+- Hybrid semantic retrieval
+- Hybrid graph retrieval
+- Engineering reasoning context
+- Prompt architecture
+- Evidence-backed reasoning
+- Confidence-aware responses
+- Explainable engineering recommendations
+
+### Engineering Copilot
+
+- Engineering reasoning service
+- Engineering Copilot API
+- Prompt modularisation
+- Backend integration
+- Swagger validation
+- Automated API tests
+
+## Main Technologies
 
 - Neo4j
-- GraphRAG
+- Cypher
 - FAISS
 - OpenAI GPT
-- Cypher
+- LlamaIndex
+- FastAPI
+- Pytest
+
+## Outcome
+
+Establishes the first evidence-backed engineering reasoning platform combining semantic retrieval and structured engineering knowledge.
 
 ---
 
-## v0.6.0 — AI Engineering Agent
+# v0.5.1 — Conversational Engineering Copilot
 
 **Status:** Planned
 
-**Capability**
+## Objective
 
-- LangGraph agent workflow
-- Multi-step engineering reasoning
-- Tool calling
-- Graph + Vector orchestration
-- Engineering planning agent
-- Reflection and self-evaluation
-- Memory-enabled workflows
-- Recommendation workflow automation
+Connect the completed reasoning backend to an interactive engineering assistant.
 
-**Main Technology**
+## Major Capabilities
 
-- LangGraph
-- LangChain
-- Tool orchestration
-- Agent memory
+- Conversational engineering interface
+- Interactive engineering questions
+- Streaming AI responses
+- Evidence display
+- Knowledge graph visualisation
+- Engineering conversation history
+- Improved user experience
+
+## Main Technologies
+
+- React
+- TypeScript
+- FastAPI
+- Engineering Copilot APIs
+
+## Outcome
+
+Provides engineers with a complete conversational interface for interacting with the reasoning engine.
 
 ---
 
-## v0.7.0 — Cloud Deployment
+# v0.6.0 — Cloud Deployment
 
 **Status:** Planned
 
-**Capability**
+## Objective
 
-- Azure deployment
+Prepare the platform for cloud-hosted deployments.
+
+## Major Capabilities
+
+- Microsoft Azure deployment
 - Azure OpenAI integration
-- Azure AI Search
-- Persistent cloud storage
+- Cloud storage
 - Secure configuration
-- Environment management
+- Authentication
 - Monitoring
 - Logging
 
-**Main Technology**
+## Main Technologies
 
 - Microsoft Azure
 - Azure OpenAI
-- Azure AI Search
+
+## Outcome
+
+Provides scalable cloud deployment for engineering environments.
 
 ---
 
-## v0.8.0 — Production Platform
+# v0.7.0 — Production Platform
 
 **Status:** Planned
 
-**Capability**
+## Objective
+
+Prepare the platform for production-scale deployment.
+
+## Major Capabilities
 
 - Docker containers
 - Docker Compose
-- Kubernetes deployment
+- Kubernetes
 - CI/CD pipeline
-- Production monitoring
-- Scalable infrastructure
-- Deployment documentation
+- Monitoring
+- Logging
+- Production configuration
 
-**Main Technology**
+## Main Technologies
 
 - Docker
-- Docker Compose
 - Kubernetes
 - GitHub Actions
 
+## Outcome
+
+Provides production-ready deployment and operational infrastructure.
+
 ---
 
-# v1.0.0 — Enterprise AI Copilot
+# v1.0.0 — Enterprise Power Electronics Reliability Copilot
 
 **Status:** Planned
 
-**Enterprise Production Demonstrator**
+## Objective
 
-**Capability**
+Deliver the first complete production-ready release of the platform.
 
-- Complete engineering copilot
-- Intelligent document retrieval
-- Knowledge graph reasoning
+## Major Capabilities
+
+- Intelligent engineering document management
+- Semantic engineering retrieval
+- Engineering knowledge graph
 - Hybrid GraphRAG
-- AI engineering workflows
-- Explainable recommendations
-- Production deployment
-- Portfolio-quality documentation
-- End-to-end engineering AI platform
+- Evidence-backed AI reasoning
+- Conversational engineering assistant
+- Cloud deployment
+- Production infrastructure
+- Comprehensive engineering documentation
 
-**Main Technology**
+## Main Technologies
 
 - React
 - FastAPI
-- Sentence Transformers
-- FAISS
-- OpenAI / Azure OpenAI
+- LlamaIndex
+- OpenAI
 - Neo4j
-- GraphRAG
+- FAISS
 - LangGraph
-- Azure
+- Microsoft Azure
 - Docker
 - Kubernetes
+
+## Outcome
+
+Delivers an integrated AI-powered engineering decision-support platform for power electronics reliability.
 
 ---
 
 # Current Progress
 
-| Version | Progress |
-|---|---|
+| Release | Status |
+|----------|--------|
 | v0.1.0 | ✅ Complete |
 | v0.2.0 | ✅ Complete |
 | v0.3.0 | ✅ Complete |
-| v0.4.0 | 🚧 Next Development |
-| v0.5.0 | Planned |
-| v0.6.0 | Planned |
-| v0.7.0 | Planned |
-| v0.8.0 | Planned |
-| v1.0.0 | Planned |
+| v0.4.0 | ✅ Complete |
+| v0.5.0 | 🚧 In Progress |
+| v0.5.1 | ⏳ Planned |
+| v0.6.0 | ⏳ Planned |
+| v0.7.0 | ⏳ Planned |
+| v1.0.0 | ⏳ Planned |
 
 ---
 
-# Planned Release Documents
+# Planned Documentation
 
 ```text
-docs/releases/
+docs/
 
-v0.1.0_Frontend_Prototype.md
-v0.2.0_Backend_Foundation.md
-v0.3.0_Engineering_RAG_Copilot.md
-v0.4.0_Knowledge_Graph_Foundation.md
-v0.5.0_Hybrid_GraphRAG_Intelligence.md
-v0.6.0_AI_Engineering_Agent.md
-v0.7.0_Cloud_Deployment.md
-v0.8.0_Production_Platform.md
-v1.0.0_Enterprise_AI_Copilot.md
-````
+README.md
+PROJECT_ROADMAP.md
+PROJECT_METHODOLOGY.md
+CHANGELOG.md
+ENGINEERING_PLAYBOOK.md
+
+architecture/
+releases/
+development/
+ontology/
+adr/
+standards/
+```
 
 ---
 
-# Development Principle
+# Development Principles
 
-Each release is designed to add one major capability while keeping the system stable, testable, and demonstrable.
+The project follows a disciplined engineering methodology.
 
-The project is intentionally developed incrementally so that every version can be used as a portfolio milestone and as a foundation for the next stage of enterprise AI development.
+- Each release introduces one major architectural capability.
+- Every release remains functional and testable.
+- New capabilities extend, rather than replace, existing architecture.
+- Documentation evolves alongside the implementation.
+- Architectural decisions prioritise modularity, explainability, and maintainability.
+- Automated testing accompanies new backend functionality wherever practical.
 
-```
-```
+By Version 1.0, the platform will provide a complete, explainable engineering AI workflow that integrates document intelligence, semantic retrieval, knowledge graphs, and evidence-backed reasoning into a unified engineering copilot.
