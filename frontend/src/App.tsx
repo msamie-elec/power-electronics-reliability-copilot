@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
 
 import {
@@ -12,15 +12,28 @@ import {
   type EngineeringCopilotResponse,
 } from "./api/engineeringCopilot";
 
-type ChatMessage = {
+type ConversationItem = {
   id: string;
-  role: "user" | "assistant";
-  content: string;
+  question: string;
   response?: EngineeringCopilotResponse;
+  createdAt: string;
+  answeredAt?: string;
 };
 
 function createMessageId() {
   return crypto.randomUUID();
+}
+
+function formatTime(value: string) {
+  return new Date(value).toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
+function getPreview(text: string, limit = 220) {
+  if (text.length <= limit) return text;
+  return `${text.slice(0, limit).trim()}...`;
 }
 
 function MarkdownText({ text }: { text: string }) {
@@ -62,30 +75,23 @@ function App() {
     "Why does VCE(sat) increase during power cycling?"
   );
 
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [selectedMessageId, setSelectedMessageId] = useState<string | null>(
-    null
-  );
+  const [conversation, setConversation] = useState<ConversationItem[]>([]);
+  const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
 
   const [status, setStatus] = useState("Ready");
   const [isLoading, setIsLoading] = useState(false);
 
-  const selectedAssistantMessage = useMemo(() => {
-    const selected = messages.find(
-      (message) =>
-        message.id === selectedMessageId && message.role === "assistant"
-    );
+  const evidencePanelRef = useRef<HTMLElement | null>(null);
+
+  const selectedItem = useMemo(() => {
+    const selected = conversation.find((item) => item.id === selectedItemId);
 
     if (selected?.response) return selected;
 
-    return [...messages]
-      .reverse()
-      .find(
-        (message) => message.role === "assistant" && Boolean(message.response)
-      );
-  }, [messages, selectedMessageId]);
+    return [...conversation].reverse().find((item) => Boolean(item.response));
+  }, [conversation, selectedItemId]);
 
-  const selectedResponse = selectedAssistantMessage?.response ?? null;
+  const selectedResponse = selectedItem?.response ?? null;
 
   useEffect(() => {
     async function loadDocuments() {
@@ -100,6 +106,13 @@ function App() {
 
     loadDocuments();
   }, []);
+
+  useEffect(() => {
+    evidencePanelRef.current?.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [selectedItemId, selectedResponse?.answer]);
 
   async function handleFileUpload(event: React.ChangeEvent<HTMLInputElement>) {
     const files = event.target.files;
@@ -121,10 +134,61 @@ function App() {
   }
 
   function handleClearConversation() {
-    setMessages([]);
-    setSelectedMessageId(null);
+    setConversation([]);
+    setSelectedItemId(null);
     setStatus("Ready");
   }
+
+  async function handleCopySelectedAnswer() {
+  if (!selectedResponse) {
+    setStatus("No selected answer to copy.");
+    return;
+  }
+
+  await navigator.clipboard.writeText(selectedResponse.answer);
+  setStatus("Selected answer copied to clipboard.");
+}
+
+function handleExportConversationMarkdown() {
+  if (conversation.length === 0) {
+    setStatus("No conversation to export.");
+    return;
+  }
+
+  const markdown = conversation
+    .map((item, index) => {
+      const questionNumber = index + 1;
+
+      return [
+        `# Question ${questionNumber}`,
+        "",
+        item.question,
+        "",
+        item.response ? `# Answer ${questionNumber}` : "# Answer pending",
+        "",
+        item.response?.answer ?? "No answer generated.",
+        "",
+        item.response
+          ? `## Metadata\n\n- Confidence: ${item.response.confidence}\n- Evidence chunks: ${item.response.metadata.semanticEvidenceCount}\n- Graph entities: ${item.response.metadata.graphEntityCount}\n- Graph relationships: ${item.response.metadata.graphRelationshipCount}`
+          : "",
+        "",
+        "---",
+        "",
+      ].join("\n");
+    })
+    .join("\n");
+
+  const blob = new Blob([markdown], { type: "text/markdown;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "engineering-copilot-conversation.md";
+  link.click();
+
+  URL.revokeObjectURL(url);
+  setStatus("Conversation exported as Markdown.");
+}
 
   async function handleAskQuestion() {
     if (!question.trim()) {
@@ -138,14 +202,16 @@ function App() {
     }
 
     const userQuestion = question.trim();
+    const itemId = createMessageId();
 
-    const userMessage: ChatMessage = {
-      id: createMessageId(),
-      role: "user",
-      content: userQuestion,
+    const newItem: ConversationItem = {
+      id: itemId,
+      question: userQuestion,
+      createdAt: new Date().toISOString(),
     };
 
-    setMessages((current) => [...current, userMessage]);
+    setConversation((current) => [...current, newItem]);
+    setSelectedItemId(itemId);
 
     try {
       setIsLoading(true);
@@ -158,16 +224,19 @@ function App() {
         10
       );
 
-      const assistantMessage: ChatMessage = {
-        id: createMessageId(),
-        role: "assistant",
-        content: response.answer,
-        response,
-      };
+      setConversation((current) =>
+        current.map((item) =>
+          item.id === itemId
+            ? {
+                ...item,
+                response,
+                answeredAt: new Date().toISOString(),
+              }
+            : item
+        )
+      );
 
-      setMessages((current) => [...current, assistantMessage]);
-      setSelectedMessageId(assistantMessage.id);
-
+      setSelectedItemId(itemId);
       setQuestion("");
       setStatus("Answer generated");
     } catch (error) {
@@ -255,11 +324,25 @@ function App() {
             )}
           </div>
 
-          {messages.length > 0 && (
+          {conversation.length > 0 && (
             <div className="document-list">
               <h3>Conversation</h3>
               <button
                 className="secondary-button"
+                onClick={handleCopySelectedAnswer}
+              >
+                Copy selected answer
+              </button>
+
+              <button
+                className="secondary-button"
+                onClick={handleExportConversationMarkdown}
+              >
+                Export Markdown
+              </button>
+
+              <button
+                className="secondary-button danger-button"
                 onClick={handleClearConversation}
               >
                 Clear conversation
@@ -281,7 +364,7 @@ function App() {
           </div>
 
           <div className="chat-window">
-            {messages.length === 0 ? (
+            {conversation.length === 0 ? (
               <div className="welcome-card">
                 <h2>Ask an engineering reliability question</h2>
                 <p>
@@ -291,45 +374,64 @@ function App() {
                 </p>
               </div>
             ) : (
-              messages.map((message) => (
-                <article
-                  className={`message ${message.role} ${
-                    message.id === selectedMessageId ? "selected-message" : ""
-                  }`}
-                  key={message.id}
-                  onClick={() => {
-                    if (message.role === "assistant") {
-                      setSelectedMessageId(message.id);
-                    }
-                  }}
-                >
-                  <strong>
-                    {message.role === "user" ? "You" : "Engineering Copilot"}
-                  </strong>
+              conversation.map((item, index) => {
+                const isSelected = item.id === selectedItemId;
+                const answerNumber = index + 1;
 
-                  {message.role === "assistant" ? (
-                    <>
-                      <MarkdownText text={message.content} />
+                return (
+                  <div className="conversation-pair" key={item.id}>
+                    <article className="message user">
+                      <div className="message-title-row">
+                        <strong>Question #{answerNumber}</strong>
+                        <span>{formatTime(item.createdAt)}</span>
+                      </div>
+                      <p>{item.question}</p>
+                    </article>
 
-                      {message.response && (
-                        <div className="message-meta">
-                          <span>{message.response.confidence}</span>
+                    {item.response ? (
+                      <article
+                        className={`message assistant ${
+                          isSelected ? "selected-message" : "collapsed-message"
+                        }`}
+                        onClick={() => setSelectedItemId(item.id)}
+                      >
+                        <div className="message-title-row">
+                          <strong>Engineering Copilot — Answer #{answerNumber}</strong>
                           <span>
-                            {message.response.metadata.semanticEvidenceCount}{" "}
+                            {item.answeredAt ? formatTime(item.answeredAt) : ""}
+                          </span>
+                        </div>
+
+                        {isSelected ? (
+                          <MarkdownText text={item.response.answer} />
+                        ) : (
+                          <p className="answer-preview">
+                            {getPreview(item.response.answer)}
+                          </p>
+                        )}
+
+                        <div className="message-meta">
+                          <span>{item.response.confidence}</span>
+                          <span>
+                            {item.response.metadata.semanticEvidenceCount}{" "}
                             evidence chunks
                           </span>
                           <span>
-                            {message.response.metadata.graphRelationshipCount}{" "}
-                            graph links
+                            {item.response.metadata.graphRelationshipCount} graph
+                            links
                           </span>
+                          <span>{isSelected ? "Expanded" : "Click to expand"}</span>
                         </div>
-                      )}
-                    </>
-                  ) : (
-                    <p>{message.content}</p>
-                  )}
-                </article>
-              ))
+                      </article>
+                    ) : (
+                      <article className="message assistant selected-message">
+                        <strong>Engineering Copilot</strong>
+                        <p>Analysing evidence and preparing answer...</p>
+                      </article>
+                    )}
+                  </div>
+                );
+              })
             )}
           </div>
 
@@ -346,9 +448,23 @@ function App() {
           </div>
         </section>
 
-        <aside className="evidence-panel">
+        <aside className="evidence-panel" ref={evidencePanelRef}>
           <section className="evidence-section">
-            <h2>Evidence</h2>
+            <div className="evidence-panel-header">
+              <h2>Evidence</h2>
+              {selectedItem && (
+                <span>
+                  Question #
+                  {conversation.findIndex((item) => item.id === selectedItem.id) + 1}
+                </span>
+              )}
+            </div>
+
+            {selectedItem && (
+              <p className="evidence-question-preview">
+                {selectedItem.question}
+              </p>
+            )}
 
             {!selectedResponse ? (
               <p className="muted">
@@ -357,23 +473,37 @@ function App() {
             ) : selectedResponse.semanticEvidence.length === 0 ? (
               <p className="muted">No semantic evidence returned.</p>
             ) : (
-              <div className="evidence-list">
-                {selectedResponse.semanticEvidence.map((item, index) => (
-                  <article className="evidence-card" key={item.chunkId ?? index}>
-                    <div className="evidence-card-top">
-                      <strong>{item.documentId ?? "Document evidence"}</strong>
-                      <span>
-                        {typeof item.score === "number"
-                          ? item.score.toFixed(3)
-                          : "N/A"}
-                      </span>
-                    </div>
+              <>
+                <div className="evidence-summary-row">
+                  <span>{selectedResponse.semanticEvidence.length} chunks</span>
+                  <span>{selectedResponse.citations.length} citations</span>
+                  <span>
+                    {selectedResponse.graphEvidence.relationships.length} graph links
+                  </span>
+                </div>
 
-                    <small>Chunk: {item.chunkId ?? "Unknown"}</small>
-                    <p>{item.text ?? "No evidence text available."}</p>
-                  </article>
-                ))}
-              </div>
+                <div className="evidence-list">
+                  {selectedResponse.semanticEvidence.map((item, index) => (
+                    <article className="evidence-card" key={item.chunkId ?? index}>
+                      <div className="evidence-card-top">
+                        <strong>Evidence #{index + 1}</strong>
+                        <span>
+                          {typeof item.score === "number"
+                            ? item.score.toFixed(3)
+                            : "N/A"}
+                        </span>
+                      </div>
+
+                      <small>
+                        {item.documentId ?? "Document"} · Chunk{" "}
+                        {item.chunkId ?? "Unknown"}
+                      </small>
+
+                      <p>{item.text ?? "No evidence text available."}</p>
+                    </article>
+                  ))}
+                </div>
+              </>
             )}
           </section>
 
@@ -386,6 +516,7 @@ function App() {
               <div className="citation-list">
                 {selectedResponse.citations.map((citation, index) => (
                   <div className="citation-chip" key={index}>
+                    <strong>[{index + 1}] </strong>
                     {citation.citationType === "graph_relationship"
                       ? citation.relationship ?? "Graph relationship"
                       : `${citation.source ?? "Document"} · ${
@@ -398,7 +529,7 @@ function App() {
           </section>
 
           <section className="evidence-section">
-            <h2>Graph context</h2>
+            <h2>Knowledge Graph</h2>
 
             {!selectedResponse ? (
               <div className="graph-placeholder">
@@ -412,13 +543,43 @@ function App() {
               <div className="graph-list">
                 {selectedResponse.graphEvidence.relationships.map(
                   (relationship, index) => (
-                    <div className="graph-link" key={index}>
-                      <strong>{relationship.source}</strong>
-                      <span>{relationship.relationshipType}</span>
-                      <strong>{relationship.target}</strong>
+                    <div className="graph-path-card" key={index}>
+                      <strong>{relationship.source ?? "Unknown source"}</strong>
+                      <span>{relationship.relationshipType ?? "RELATED_TO"}</span>
+                      <strong>{relationship.target ?? "Unknown target"}</strong>
                     </div>
                   )
                 )}
+              </div>
+            )}
+          </section>
+
+          <section className="evidence-section">
+            <h2>Response Metadata</h2>
+
+            {!selectedResponse ? (
+              <p className="muted">Metadata will appear after an answer is generated.</p>
+            ) : (
+              <div className="metadata-grid">
+                <div>
+                  <strong>{selectedResponse.metadata.semanticEvidenceCount}</strong>
+                  <span>Evidence chunks</span>
+                </div>
+
+                <div>
+                  <strong>{selectedResponse.metadata.graphEntityCount}</strong>
+                  <span>Graph entities</span>
+                </div>
+
+                <div>
+                  <strong>{selectedResponse.metadata.graphRelationshipCount}</strong>
+                  <span>Graph links</span>
+                </div>
+
+                <div>
+                  <strong>{selectedResponse.metadata.topK}</strong>
+                  <span>Top-K retrieval</span>
+                </div>
               </div>
             )}
           </section>

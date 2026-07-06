@@ -74,6 +74,19 @@ The architecture has been designed as a collection of independent services, allo
 
 ---
 
+## Conversational Engineering Workspace
+
+- Multi-turn engineering conversations
+- Conversation history
+- Structured engineering reports
+- Evidence-aware responses
+- Interactive evidence panel
+- Citation tracking
+- Knowledge Graph summaries
+- Engineering investigation workflow
+
+---
+
 ## Software Engineering
 
 - Modular FastAPI backend
@@ -115,7 +128,21 @@ Hybrid Retrieval
 Evidence-backed AI Reasoning
           │
           ▼
-Engineering Copilot
+React Conversational Workspace
+          │
+          ▼
+Engineering Copilot API
+          │
+          ▼
+Evidence-backed AI Reasoning
+          │
+          ▼
+Hybrid Retrieval
+          │
+   ┌──────┴──────┐
+   ▼             ▼
+FAISS       Neo4j Knowledge Graph
+
 ```
 
 ---
@@ -165,7 +192,7 @@ power-electronics-reliability-copilot/
 │
 ├── docs/
 │   ├── architecture/
-│   ├── ontology/
+│   ├── Knowledge_Engineering/
 │   ├── releases/
 │   ├── development/
 │   ├── adr/
@@ -190,8 +217,9 @@ power-electronics-reliability-copilot/
 | v0.2.0 | Backend Foundation | ✅ Complete |
 | v0.3.0 | Engineering Knowledge Retrieval | ✅ Complete |
 | v0.4.0 | Knowledge Graph Foundation | ✅ Complete |
-| v0.5.0 | Evidence-backed Engineering Copilot | 🚧 In Progress |
-| v0.5.1 | Conversational Engineering Copilot UI | Planned |
+| v0.5.0 | Evidence-backed Engineering Copilot | ✅ Complete |
+| v0.5.1 | Conversational Engineering Copilot | ✅ Complete |
+| v0.5.2 | Professional Engineering Workspace | 🚧 In Progress |
 | v0.6.0 | Azure Cloud Deployment | Planned |
 | v0.7.0 | Production Deployment | Planned |
 | v1.0.0 | Enterprise Power Electronics Reliability Copilot | Planned |
@@ -200,16 +228,38 @@ power-electronics-reliability-copilot/
 
 # Current Status
 
-Current development is focused on **Version 0.5.0**, introducing:
+The project has completed the core engineering intelligence platform together with the first conversational engineering workspace.
 
-- Engineering knowledge extraction
-- Neo4j knowledge graph population
-- Knowledge graph retrieval APIs
-- Hybrid retrieval
-- Evidence-backed AI reasoning
-- Engineering Copilot services
-- Automated backend validation
-- Explainable engineering responses
+### Completed
+
+- Engineering document ingestion
+- Semantic document retrieval
+- FAISS vector search
+- Knowledge Graph foundation
+- Hybrid evidence-backed reasoning
+- Engineering Copilot backend
+- REST APIs
+- Automated backend testing
+- Conversational Engineering Workspace
+- Multi-turn engineering conversations
+- Conversation history
+- Active answer selection
+- Sticky engineering workspace
+- Evidence synchronisation
+- Structured engineering responses
+
+### Current Development
+
+Current work is focused on **Version 0.5.2 – Professional Engineering Workspace**, which introduces:
+
+- Backend conversation memory
+- Context-aware engineering conversations
+- Engineering document registry
+- Multiple document management
+- Enhanced evidence navigation
+- Workspace refinement before cloud deployment
+
+The objective is to complete the engineering investigation experience before moving to Azure deployment in Version 0.6.0.
 
 ---
 
@@ -234,9 +284,13 @@ The repository documentation is organised into dedicated engineering documents.
 
 # Getting Started
 
-The project is currently under active development.
+The project is under active development.
 
-Installation and deployment instructions will be finalised as part of the **v0.5.0** release once the APIs and project structure are fully stabilised.
+The backend and conversational frontend are fully functional for local development.
+
+The next development milestone is Version 0.5.2, followed by Azure cloud deployment in Version 0.6.0.
+
+Detailed setup instructions will continue to evolve alongside the project.
 
 ---
 

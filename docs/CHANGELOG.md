@@ -17,16 +17,119 @@ For implementation details, architectural decisions and engineering discussions,
 
 ## Current Focus
 
-**Version 0.5.1 — Conversational Engineering Copilot**
+**Version 0.5.2 — Professional Engineering Workspace**
 
 Current work focuses on:
 
-- Interactive engineering conversation interface
-- Chat session management
-- Streaming AI responses
-- Evidence visualisation
-- Knowledge Graph exploration
-- User experience improvements
+- Context-aware engineering conversations
+- Backend conversation memory
+- Engineering document registry
+- Multiple document management
+- Document-aware investigation sessions
+- Enhanced evidence navigation
+- Final workspace refinement before Azure deployment
+
+---
+
+# [v0.5.1] — Conversational Engineering Copilot
+
+**Status:** ✅ Completed
+
+---
+
+## Added
+
+### Conversational Engineering Workspace
+
+- Three-panel engineering workspace
+- Modern conversational engineering interface
+- Multi-turn engineering conversations
+- Conversation history
+- Clear Conversation functionality
+- Active answer selection
+- Collapsible engineering responses
+- Question numbering
+- Answer numbering
+- Conversation timestamps
+
+---
+
+### Evidence Workspace
+
+- Sticky Evidence panel
+- Sticky Documents panel
+- Evidence synchronisation with selected response
+- Active evidence switching
+- Evidence summary cards
+- Question preview within Evidence panel
+- Evidence statistics
+- Citation summary
+- Knowledge Graph summary
+- Automatic evidence scrolling
+
+---
+
+### User Experience
+
+- Responsive engineering dashboard
+- Improved workspace layout
+- Engineering report presentation
+- Better navigation for long conversations
+- Persistent engineering investigation workflow
+- Improved frontend responsiveness
+- Stable production build
+
+---
+
+### Frontend Integration
+
+- Full integration with the Engineering Copilot API
+- Structured rendering of engineering responses
+- Session-based conversation management
+- Improved evidence rendering
+- Enhanced engineering report formatting
+
+---
+
+### Documentation
+
+Updated project documentation including:
+
+- README
+- CHANGELOG
+- Version 0.5.1 Release Notes
+- Version 0.5.2 Planning
+- Development documentation
+
+---
+
+## Changed
+
+- Frontend redesigned into a conversational engineering workspace.
+- Engineering responses now support multi-turn interaction.
+- Evidence panel dynamically follows the selected engineering response.
+- Conversation workflow redesigned for engineering investigations.
+- Navigation significantly improved for long engineering sessions.
+- Frontend architecture prepared for conversation-aware backend integration.
+
+---
+
+## Internal Milestones
+
+| Task | Capability | Status |
+|------|------------|--------|
+| 5.1.1 | Conversational Workspace | ✅ |
+| 5.1.2 | Multi-turn Conversation | ✅ |
+| 5.1.3 | Conversation History | ✅ |
+| 5.1.4 | Active Answer Selection | ✅ |
+| 5.1.5 | Collapsible Responses | ✅ |
+| 5.1.6 | Sticky Workspace Panels | ✅ |
+| 5.1.7 | Evidence Synchronisation | ✅ |
+| 5.1.8 | Improved Evidence Cards | ✅ |
+| 5.1.9 | Question & Timestamp Metadata | ✅ |
+| 5.1.10 | Workspace Refinement | ✅ |
+
+Version 0.5.1 establishes the complete conversational engineering interface and prepares the project for context-aware engineering investigations in Version 0.5.2.
 
 ---
 
