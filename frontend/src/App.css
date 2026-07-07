@@ -702,6 +702,39 @@ input {
   background: #ffe4e6;
 }
 
+.active-document-name {
+  margin: 8px 0 6px;
+  color: #0f172a;
+  font-size: 0.7rem;
+  font-weight: 800;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.document-select-row {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.document-select-row:hover {
+  background: #f8fafc;
+}
+
+.active-document-row {
+  background: #eff6ff;
+  border-radius: 10px;
+  border: 1px solid #bfdbfe;
+  padding: 9px;
+}
+
+.active-document-row span {
+  color: #2563eb;
+}
+
 @media (max-width: 1350px) {
   .workspace-header {
     grid-template-columns: 190px minmax(320px, 1fr) 240px;

@@ -1,10 +1,12 @@
 import { API_BASE_URL } from "./client";
 
 export type UploadedDocument = {
+  documentId: string;
   filename: string;
-  size_bytes: number;
-  uploaded_at?: string;
-  content_type?: string;
+  sizeBytes: number;
+  uploadedAt?: string;
+  source?: string;
+  status?: string;
 };
 
 export async function uploadDocuments(files: FileList): Promise<UploadedDocument[]> {
@@ -25,7 +27,7 @@ export async function uploadDocuments(files: FileList): Promise<UploadedDocument
   }
 
   const data = await response.json();
-  return data.uploaded_files;
+  return data.uploaded_files ?? [];
 }
 
 export async function getDocuments(): Promise<UploadedDocument[]> {
@@ -36,5 +38,13 @@ export async function getDocuments(): Promise<UploadedDocument[]> {
   }
 
   const data = await response.json();
-  return data.documents;
+
+  return (data.documents ?? []).map((document: any) => ({
+    documentId: document.documentId,
+    filename: document.filename,
+    sizeBytes: document.sizeBytes ?? document.size_bytes ?? 0,
+    uploadedAt: document.uploadedAt ?? document.uploaded_at,
+    source: document.source,
+    status: document.status,
+  }));
 }

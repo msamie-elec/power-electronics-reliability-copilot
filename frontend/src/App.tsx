@@ -21,8 +21,11 @@ type ConversationItem = {
   answeredAt?: string;
 };
 
-const CONVERSATION_STORAGE_KEY = "power-electronics-copilot:v0.5.2:conversation";
-const SELECTED_DOCUMENT_STORAGE_KEY = "power-electronics-copilot:v0.5.2:selected-document";
+const CONVERSATION_STORAGE_KEY =
+  "power-electronics-copilot:v0.5.2:conversation";
+
+const SELECTED_DOCUMENT_STORAGE_KEY =
+  "power-electronics-copilot:v0.5.2:selected-document";
 
 function createMessageId() {
   return crypto.randomUUID();
@@ -38,6 +41,19 @@ function formatTime(value: string) {
 function getPreview(text: string, limit = 220) {
   if (text.length <= limit) return text;
   return `${text.slice(0, limit).trim()}...`;
+}
+
+function isConversationHistoryRequest(value: string) {
+  const q = value.toLowerCase().trim();
+
+  return (
+    q.includes("previous question") ||
+    q.includes("questions i asked") ||
+    q.includes("what did i ask") ||
+    q.includes("conversation history") ||
+    q.includes("list all questions") ||
+    q.includes("list of questions")
+  );
 }
 
 function MarkdownText({ text }: { text: string }) {
@@ -73,8 +89,9 @@ function MarkdownText({ text }: { text: string }) {
 function App() {
   const [uploadedFiles, setUploadedFiles] = useState<UploadedDocument[]>([]);
   const [uploadStatus, setUploadStatus] = useState("Checking backend...");
+
   const [selectedDocumentId, setSelectedDocumentId] = useState(() => {
-    return localStorage.getItem(SELECTED_DOCUMENT_STORAGE_KEY) ?? "DOC-B3198A5";
+    return localStorage.getItem(SELECTED_DOCUMENT_STORAGE_KEY) ?? "";
   });
 
   const [question, setQuestion] = useState(
@@ -93,8 +110,8 @@ function App() {
       return [];
     }
   });
-  const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
 
+  const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
   const [status, setStatus] = useState("Ready");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -110,6 +127,10 @@ function App() {
 
   const selectedResponse = selectedItem?.response ?? null;
 
+  const selectedDocument = useMemo(() => {
+    return uploadedFiles.find((file) => file.documentId === selectedDocumentId);
+  }, [uploadedFiles, selectedDocumentId]);
+
   useEffect(() => {
     localStorage.setItem(CONVERSATION_STORAGE_KEY, JSON.stringify(conversation));
   }, [conversation]);
@@ -123,6 +144,21 @@ function App() {
       try {
         const documents = await getDocuments();
         setUploadedFiles(documents);
+
+        if (documents.length > 0) {
+          const savedDocumentId = localStorage.getItem(
+            SELECTED_DOCUMENT_STORAGE_KEY
+          );
+
+          const savedDocumentExists = documents.some(
+            (document) => document.documentId === savedDocumentId
+          );
+
+          if (!savedDocumentId || !savedDocumentExists) {
+            setSelectedDocumentId(documents[0].documentId);
+          }
+        }
+
         setUploadStatus("Backend connected");
       } catch {
         setUploadStatus("Backend not connected");
@@ -150,6 +186,11 @@ function App() {
 
       const documents = await getDocuments();
       setUploadedFiles(documents);
+
+      if (documents.length > 0 && !selectedDocumentId) {
+        setSelectedDocumentId(documents[0].documentId);
+      }
+
       setUploadStatus("Upload complete");
     } catch (error) {
       setUploadStatus(error instanceof Error ? error.message : "Upload failed");
@@ -166,55 +207,58 @@ function App() {
   }
 
   async function handleCopySelectedAnswer() {
-  if (!selectedResponse) {
-    setStatus("No selected answer to copy.");
-    return;
+    if (!selectedResponse) {
+      setStatus("No selected answer to copy.");
+      return;
+    }
+
+    await navigator.clipboard.writeText(selectedResponse.answer);
+    setStatus("Selected answer copied to clipboard.");
   }
 
-  await navigator.clipboard.writeText(selectedResponse.answer);
-  setStatus("Selected answer copied to clipboard.");
-}
+  function handleExportConversationMarkdown() {
+    if (conversation.length === 0) {
+      setStatus("No conversation to export.");
+      return;
+    }
 
-function handleExportConversationMarkdown() {
-  if (conversation.length === 0) {
-    setStatus("No conversation to export.");
-    return;
+    const markdown = conversation
+      .map((item, index) => {
+        const questionNumber = index + 1;
+
+        return [
+          `# Question ${questionNumber}`,
+          "",
+          item.question,
+          "",
+          item.response ? `# Answer ${questionNumber}` : "# Answer pending",
+          "",
+          item.response?.answer ?? "No answer generated.",
+          "",
+          item.response
+            ? `## Metadata\n\n- Confidence: ${item.response.confidence}\n- Evidence chunks: ${item.response.metadata.semanticEvidenceCount}\n- Graph entities: ${item.response.metadata.graphEntityCount}\n- Graph relationships: ${item.response.metadata.graphRelationshipCount}`
+            : "",
+          "",
+          "---",
+          "",
+        ].join("\n");
+      })
+      .join("\n");
+
+    const blob = new Blob([markdown], {
+      type: "text/markdown;charset=utf-8",
+    });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "engineering-copilot-conversation.md";
+    link.click();
+
+    URL.revokeObjectURL(url);
+    setStatus("Conversation exported as Markdown.");
   }
-
-  const markdown = conversation
-    .map((item, index) => {
-      const questionNumber = index + 1;
-
-      return [
-        `# Question ${questionNumber}`,
-        "",
-        item.question,
-        "",
-        item.response ? `# Answer ${questionNumber}` : "# Answer pending",
-        "",
-        item.response?.answer ?? "No answer generated.",
-        "",
-        item.response
-          ? `## Metadata\n\n- Confidence: ${item.response.confidence}\n- Evidence chunks: ${item.response.metadata.semanticEvidenceCount}\n- Graph entities: ${item.response.metadata.graphEntityCount}\n- Graph relationships: ${item.response.metadata.graphRelationshipCount}`
-          : "",
-        "",
-        "---",
-        "",
-      ].join("\n");
-    })
-    .join("\n");
-
-  const blob = new Blob([markdown], { type: "text/markdown;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "engineering-copilot-conversation.md";
-  link.click();
-
-  URL.revokeObjectURL(url);
-  setStatus("Conversation exported as Markdown.");
-}
 
   function buildConversationHistory(): ConversationTurn[] {
     return conversation
@@ -226,30 +270,17 @@ function handleExportConversationMarkdown() {
       }));
   }
 
-function isConversationHistoryRequest(value: string) {
-  const q = value.toLowerCase().trim();
+  function buildPreviousQuestionsAnswer() {
+    const previousQuestions = conversation.map((item, index) => {
+      return `${index + 1}. ${item.question}`;
+    });
 
-  return (
-    q.includes("previous question") ||
-    q.includes("questions i asked") ||
-    q.includes("what did i ask") ||
-    q.includes("conversation history") ||
-    q.includes("list all questions") ||
-    q.includes("list of questions")
-  );
-}
+    if (previousQuestions.length === 0) {
+      return "No previous questions are available in the current conversation.";
+    }
 
-function buildPreviousQuestionsAnswer() {
-  const previousQuestions = conversation.map((item, index) => {
-    return `${index + 1}. ${item.question}`;
-  });
-
-  if (previousQuestions.length === 0) {
-    return "No previous questions are available in the current conversation.";
+    return `Previous questions:\n\n${previousQuestions.join("\n")}`;
   }
-
-  return `Previous questions:\n\n${previousQuestions.join("\n")}`;
-}
 
   async function handleAskQuestion() {
     if (!question.trim()) {
@@ -258,7 +289,7 @@ function buildPreviousQuestionsAnswer() {
     }
 
     if (!selectedDocumentId.trim()) {
-      setStatus("Please enter a document ID.");
+      setStatus("Please select an engineering document.");
       return;
     }
 
@@ -394,17 +425,18 @@ function buildPreviousQuestionsAnswer() {
           </label>
 
           <div className="document-id-card">
-            <label>
-              Active knowledge document ID
-              <input
-                value={selectedDocumentId}
-                onChange={(event) => setSelectedDocumentId(event.target.value)}
-              />
-            </label>
-            <small>
-              Used for evidence-backed reasoning. Full document registry integration is
-              completed progressively in v0.5.2.
-            </small>
+            <strong>Active engineering document</strong>
+
+            {selectedDocument ? (
+              <>
+                <p className="active-document-name">
+                  {selectedDocument.filename}
+                </p>
+                <small>Document ID: {selectedDocument.documentId}</small>
+              </>
+            ) : (
+              <small>No active document selected.</small>
+            )}
           </div>
 
           <div className="document-list">
@@ -413,28 +445,44 @@ function buildPreviousQuestionsAnswer() {
             {uploadedFiles.length === 0 ? (
               <p className="muted">No uploaded files found.</p>
             ) : (
-              uploadedFiles.map((file) => (
-                <div className="document-row" key={file.filename}>
-                  <span>✓</span>
-                  <div>
-                    <strong>{file.filename}</strong>
-                    <small>
-                      {Math.round(file.size_bytes / 1024)} KB
-                      {file.uploaded_at
-                        ? ` · ${new Date(
-                            file.uploaded_at
-                          ).toLocaleDateString()}`
-                        : ""}
-                    </small>
-                  </div>
-                </div>
-              ))
+              uploadedFiles.map((file) => {
+                const isActive = file.documentId === selectedDocumentId;
+
+                return (
+                  <button
+                    className={`document-row document-select-row ${
+                      isActive ? "active-document-row" : ""
+                    }`}
+                    key={file.documentId}
+                    onClick={() => {
+                      setSelectedDocumentId(file.documentId);
+                      setStatus(`Selected document: ${file.filename}`);
+                    }}
+                    type="button"
+                  >
+                    <span>{isActive ? "●" : "○"}</span>
+                    <div>
+                      <strong>{file.filename}</strong>
+                      <small>
+                        {file.documentId} · {Math.round(file.sizeBytes / 1024)}{" "}
+                        KB
+                        {file.uploadedAt
+                          ? ` · ${new Date(
+                              file.uploadedAt
+                            ).toLocaleDateString()}`
+                          : ""}
+                      </small>
+                    </div>
+                  </button>
+                );
+              })
             )}
           </div>
 
           {conversation.length > 0 && (
             <div className="document-list">
               <h3>Conversation memory</h3>
+
               <button
                 className="secondary-button"
                 onClick={handleCopySelectedAnswer}
@@ -463,7 +511,9 @@ function buildPreviousQuestionsAnswer() {
           <div className="chat-header">
             <div>
               <h2>Engineering conversation</h2>
-              <p>{status} · Memory: {conversation.length > 0 ? "active" : "empty"}</p>
+              <p>
+                {status} · Memory: {conversation.length > 0 ? "active" : "empty"}
+              </p>
             </div>
 
             <span className="confidence-pill">
@@ -504,7 +554,9 @@ function buildPreviousQuestionsAnswer() {
                         onClick={() => setSelectedItemId(item.id)}
                       >
                         <div className="message-title-row">
-                          <strong>Engineering Copilot — Answer #{answerNumber}</strong>
+                          <strong>
+                            Engineering Copilot — Answer #{answerNumber}
+                          </strong>
                           <span>
                             {item.answeredAt ? formatTime(item.answeredAt) : ""}
                           </span>
@@ -525,10 +577,12 @@ function buildPreviousQuestionsAnswer() {
                             evidence chunks
                           </span>
                           <span>
-                            {item.response.metadata.graphRelationshipCount} graph
-                            links
+                            {item.response.metadata.graphRelationshipCount}{" "}
+                            graph links
                           </span>
-                          <span>{isSelected ? "Expanded" : "Click to expand"}</span>
+                          <span>
+                            {isSelected ? "Expanded" : "Click to expand"}
+                          </span>
                         </div>
                       </article>
                     ) : (
@@ -563,15 +617,14 @@ function buildPreviousQuestionsAnswer() {
               {selectedItem && (
                 <span>
                   Question #
-                  {conversation.findIndex((item) => item.id === selectedItem.id) + 1}
+                  {conversation.findIndex((item) => item.id === selectedItem.id) +
+                    1}
                 </span>
               )}
             </div>
 
             {selectedItem && (
-              <p className="evidence-question-preview">
-                {selectedItem.question}
-              </p>
+              <p className="evidence-question-preview">{selectedItem.question}</p>
             )}
 
             {!selectedResponse ? (
@@ -586,7 +639,8 @@ function buildPreviousQuestionsAnswer() {
                   <span>{selectedResponse.semanticEvidence.length} chunks</span>
                   <span>{selectedResponse.citations.length} citations</span>
                   <span>
-                    {selectedResponse.graphEvidence.relationships.length} graph links
+                    {selectedResponse.graphEvidence.relationships.length} graph
+                    links
                   </span>
                 </div>
 
@@ -666,7 +720,9 @@ function buildPreviousQuestionsAnswer() {
             <h2>Response Metadata</h2>
 
             {!selectedResponse ? (
-              <p className="muted">Metadata will appear after an answer is generated.</p>
+              <p className="muted">
+                Metadata will appear after an answer is generated.
+              </p>
             ) : (
               <div className="metadata-grid">
                 <div>
@@ -680,7 +736,9 @@ function buildPreviousQuestionsAnswer() {
                 </div>
 
                 <div>
-                  <strong>{selectedResponse.metadata.graphRelationshipCount}</strong>
+                  <strong>
+                    {selectedResponse.metadata.graphRelationshipCount}
+                  </strong>
                   <span>Graph links</span>
                 </div>
 
