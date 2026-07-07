@@ -22,11 +22,33 @@ The platform combines:
 
 - Intelligent document processing
 - Semantic search
-- Engineering knowledge graphs
+- Engineering Knowledge Graphs
 - Retrieval-Augmented Generation (RAG)
+- Hybrid GraphRAG retrieval
 - Evidence-backed AI reasoning
+- Conversational engineering workflows
 
 The architecture has been designed as a collection of independent services, allowing individual components to evolve while maintaining a consistent engineering workflow.
+
+---
+
+# Current Features
+
+The current implementation provides:
+
+- ✅ React conversational engineering workspace
+- ✅ FastAPI backend
+- ✅ Hybrid semantic + Knowledge Graph retrieval
+- ✅ Neo4j Engineering Knowledge Graph
+- ✅ Evidence-backed AI reasoning
+- ✅ Conversation-aware engineering discussions
+- ✅ Backend conversation memory
+- ✅ Backend document registry
+- ✅ Active engineering document selection
+- ✅ Explainable engineering responses
+- ✅ Structured engineering reports
+- ✅ Evidence traceability
+- ✅ Automated backend regression testing
 
 ---
 
@@ -65,8 +87,8 @@ The architecture has been designed as a collection of independent services, allo
 
 ## Evidence-backed AI Reasoning
 
-- Hybrid vector and graph retrieval
-- Knowledge graph exploration
+- Hybrid semantic and graph retrieval
+- Knowledge Graph exploration
 - Evidence-backed engineering reasoning
 - Confidence-aware responses
 - Explainable engineering recommendations
@@ -74,16 +96,18 @@ The architecture has been designed as a collection of independent services, allo
 
 ---
 
-## Conversational Engineering Workspace
+## Professional Engineering Workspace
 
 - Multi-turn engineering conversations
-- Conversation history
+- Conversation-aware reasoning
+- Backend conversation memory
+- Active engineering document selection
+- Backend document registry
 - Structured engineering reports
-- Evidence-aware responses
 - Interactive evidence panel
 - Citation tracking
 - Knowledge Graph summaries
-- Engineering investigation workflow
+- Professional engineering investigation workflow
 
 ---
 
@@ -101,48 +125,36 @@ The architecture has been designed as a collection of independent services, allo
 # System Architecture
 
 ```text
-Engineering Documents
-          │
-          ▼
-Document Registration
-          │
-          ▼
-Document Processing
-          │
-          ▼
-Chunking
-          │
-          ▼
-Embeddings
-          │
-   ┌──────┴──────┐
-   ▼             ▼
-FAISS       Neo4j Knowledge Graph
-(Vector)     (Structured Knowledge)
-   │             │
-   └──────┬──────┘
-          ▼
-Hybrid Retrieval
-          │
-          ▼
-Evidence-backed AI Reasoning
-          │
-          ▼
-React Conversational Workspace
-          │
-          ▼
+Engineer
+      │
+      ▼
+React Engineering Workspace
+      │
+      ▼
 Engineering Copilot API
-          │
-          ▼
-Evidence-backed AI Reasoning
-          │
-          ▼
+      │
+      ▼
+Engineering Answer Service
+      │
+      ▼
+Evidence-backed Reasoning
+      │
+      ▼
 Hybrid Retrieval
-          │
-   ┌──────┴──────┐
-   ▼             ▼
-FAISS       Neo4j Knowledge Graph
-
+      │
+ ┌────┴─────────────┐
+ ▼                  ▼
+FAISS         Neo4j Knowledge Graph
+(Vector)      (Structured Knowledge)
+      │
+      ▼
+Engineering Evidence
+      │
+      ▼
+OpenAI GPT-4.1
+      │
+      ▼
+Structured Engineering Response
 ```
 
 ---
@@ -219,8 +231,8 @@ power-electronics-reliability-copilot/
 | v0.4.0 | Knowledge Graph Foundation | ✅ Complete |
 | v0.5.0 | Evidence-backed Engineering Copilot | ✅ Complete |
 | v0.5.1 | Conversational Engineering Copilot | ✅ Complete |
-| v0.5.2 | Professional Engineering Workspace | 🚧 In Progress |
-| v0.6.0 | Azure Cloud Deployment | Planned |
+| v0.5.2 | Professional Engineering Workspace | ✅ Complete |
+| v0.6.0 | Azure Cloud Deployment | 🚧 Planned |
 | v0.7.0 | Production Deployment | Planned |
 | v1.0.0 | Enterprise Power Electronics Reliability Copilot | Planned |
 
@@ -228,38 +240,46 @@ power-electronics-reliability-copilot/
 
 # Current Status
 
-The project has completed the core engineering intelligence platform together with the first conversational engineering workspace.
+The project has completed the core engineering intelligence platform together with a professional conversational engineering workspace.
 
-### Completed
+## Completed
+
+The current implementation delivers:
 
 - Engineering document ingestion
 - Semantic document retrieval
 - FAISS vector search
-- Knowledge Graph foundation
-- Hybrid evidence-backed reasoning
+- Neo4j Engineering Knowledge Graph
+- Hybrid GraphRAG retrieval
+- Evidence-backed AI reasoning
 - Engineering Copilot backend
 - REST APIs
-- Automated backend testing
-- Conversational Engineering Workspace
-- Multi-turn engineering conversations
-- Conversation history
-- Active answer selection
-- Sticky engineering workspace
-- Evidence synchronisation
-- Structured engineering responses
-
-### Current Development
-
-Current work is focused on **Version 0.5.2 – Professional Engineering Workspace**, which introduces:
-
+- React conversational workspace
 - Backend conversation memory
-- Context-aware engineering conversations
-- Engineering document registry
-- Multiple document management
-- Enhanced evidence navigation
-- Workspace refinement before cloud deployment
+- Active engineering document selection
+- Backend document registry
+- Structured engineering reports
+- Evidence synchronisation
+- Explainable engineering responses
+- 20 automated backend regression tests
 
-The objective is to complete the engineering investigation experience before moving to Azure deployment in Version 0.6.0.
+---
+
+## Next Milestone
+
+Development now transitions to **Version 0.6.0 – Azure Cloud Deployment**.
+
+The objective of Version 0.6.0 is not to introduce significant new AI functionality, but to deploy the existing engineering platform using Microsoft Azure while preserving the architecture established during Versions 0.5.0–0.5.2.
+
+Planned activities include:
+
+- Azure App Service / Container Apps
+- Azure OpenAI integration
+- Azure Blob Storage
+- Azure Key Vault
+- Secure cloud configuration
+- Monitoring and logging
+- Deployment automation
 
 ---
 
@@ -277,20 +297,26 @@ The repository documentation is organised into dedicated engineering documents.
 | architecture/ | System architecture |
 | releases/ | Release documentation |
 | development/ | Implementation history |
-| ontology/ | Knowledge modelling |
+| Knowledge_Engineering/ | Knowledge engineering design |
 | adr/ | Architectural Decision Records |
 
 ---
 
 # Getting Started
 
-The project is under active development.
+The project is fully functional for local development.
 
-The backend and conversational frontend are fully functional for local development.
+The application currently provides:
 
-The next development milestone is Version 0.5.2, followed by Azure cloud deployment in Version 0.6.0.
+- Engineering document processing
+- Semantic retrieval
+- Knowledge Graph retrieval
+- Evidence-backed AI reasoning
+- Conversational engineering workspace
+- Backend document registry
+- Active engineering document selection
 
-Detailed setup instructions will continue to evolve alongside the project.
+The next development milestone focuses on deploying the existing application to Microsoft Azure without introducing significant functional changes.
 
 ---
 

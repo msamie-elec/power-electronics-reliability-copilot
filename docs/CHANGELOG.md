@@ -17,17 +17,105 @@ For implementation details, architectural decisions and engineering discussions,
 
 ## Current Focus
 
-**Version 0.5.2 — Professional Engineering Workspace**
+**Version 0.6.0 — Azure Cloud Deployment**
 
 Current work focuses on:
 
-- Context-aware engineering conversations
-- Backend conversation memory
-- Engineering document registry
-- Multiple document management
-- Document-aware investigation sessions
-- Enhanced evidence navigation
-- Final workspace refinement before Azure deployment
+- Azure deployment preparation
+- Cloud configuration
+- Azure OpenAI integration
+- Cloud storage planning
+- Deployment documentation
+- Preparing the project for scalable hosted use
+---
+
+# [v0.5.2] — Professional Engineering Workspace
+
+**Status:** ✅ Completed
+
+---
+
+## Added
+
+### Conversation Memory
+
+- Backend conversation history support
+- Context-aware follow-up questions
+- Conversation history passed into engineering reasoning prompts
+- Local handling for previous-question requests
+- Copy selected answer functionality
+- Markdown conversation export
+
+---
+
+### Document Registry
+
+- Document Registry Service
+- `/documents` registry endpoint returning frontend-ready document records
+- Stable document identifiers
+- Pipeline-compatible document ID mapping
+- Active engineering document display
+- Document selection from the frontend UI
+
+---
+
+### Workspace Refinement
+
+- Active document selection persisted in local storage
+- Selected document shown in the conversation header
+- Improved conversation memory status display
+- Cleaner document registry panel
+- Improved frontend integration with backend document metadata
+
+---
+
+## Fixed
+
+- Neo4j `DateTime` serialization issue in graph/evidence responses
+- JSON-safe evidence preparation for frontend/API responses
+- Backend response stability for graph metadata
+
+---
+
+## Testing
+
+Validated:
+
+- Active document selection
+- Document selection persistence after refresh
+- Context-aware follow-up questions
+- Previous-question listing
+- Engineering Copilot API integration
+- Frontend production build
+- Backend regression suite
+
+Current regression status:
+
+- Backend regression tests: **20 / 20 passing**
+- Frontend production build: **Passing**
+
+---
+
+## Changed
+
+- Frontend no longer relies on manually entering `DOC-B3198A5`.
+- Engineering Copilot requests now use the selected active document.
+- Document handling moved toward a registry-based workflow.
+- v0.5.2 scope was simplified to complete the end-to-end MVP before Azure deployment.
+
+---
+
+## Internal Milestones
+
+| Task | Capability | Status |
+|------|------------|--------|
+| 5.2.1 | Conversation Memory Foundation | ✅ |
+| 5.2.2 | JSON-safe Evidence Serialization | ✅ |
+| 5.2.3 | Document Registry Integration | ✅ |
+| 5.2.4 | Active Document Selection | ✅ |
+| 5.2.5 | Final Workspace Validation | ✅ |
+
+Version 0.5.2 completes the professional engineering workspace refinement before cloud deployment.
 
 ---
 
@@ -403,28 +491,15 @@ Detailed implementation information is available in:
 
 # Upcoming Releases
 
-## v0.5.1 — Conversational Engineering Copilot
-
-Planned
-
-- Interactive engineering chat
-- Multi-turn conversation
-- Conversation history
-- Streaming AI responses
-- Evidence visualisation
-- Knowledge Graph exploration
-
----
-
 ## v0.6.0 — Azure Cloud Deployment
 
 Planned
 
 - Azure deployment
 - Azure OpenAI integration
+- Cloud configuration
 - Cloud storage
-- Authentication
-- Monitoring
+- Monitoring and logging
 
 ---
 
