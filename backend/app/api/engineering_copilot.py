@@ -23,7 +23,6 @@ from pydantic import BaseModel, Field, field_validator
 from app.core.exceptions import DocumentNotFoundError, ReasoningError, RetrievalError
 from app.models.engineering_copilot_models import (
     ConversationTurn,
-    EngineeringCitation,
     EngineeringCopilotMetadata,
     EngineeringCopilotResponse,
     ReasoningContextMetadata,
@@ -80,7 +79,10 @@ def ask_engineering_copilot(request: EngineeringCopilotRequest):
             question=request.question,
             top_k=request.top_k,
             graph_limit=request.graph_limit,
-            conversation_history=[turn.model_dump() for turn in request.conversation_history],
+            conversation_history=[
+                turn.model_dump()
+                for turn in request.conversation_history
+            ],
         )
 
         semantic_evidence = result.get("semanticEvidence", [])
