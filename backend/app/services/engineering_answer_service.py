@@ -4,6 +4,12 @@ Engineering Answer Service
 
 Orchestrates evidence retrieval, evidence preparation, and evidence-backed
 LLM answer generation.
+
+v0.5.2 update
+-------------
+The service accepts recent conversation history and passes it to the reasoning
+prompt so follow-up questions can use prior engineering context without losing
+evidence-first grounding.
 """
 
 import logging
@@ -25,8 +31,13 @@ class EngineeringAnswerService:
         question: str,
         top_k: int = 5,
         graph_limit: int = 10,
+        conversation_history: list[dict[str, Any]] | None = None,
     ) -> dict[str, Any]:
-        logger.info("Building engineering answer for document_id=%s", document_id)
+        logger.info(
+            "Building engineering answer for document_id=%s history_turns=%s",
+            document_id,
+            len(conversation_history or []),
+        )
 
         try:
             reasoning_context = evidence_reasoning_service.build_reasoning_context(
@@ -54,17 +65,19 @@ class EngineeringAnswerService:
             )
 
             logger.info(
-                "Prepared evidence for document_id=%s semantic=%s graph_entities=%s graph_relationships=%s",
+                "Prepared evidence for document_id=%s semantic=%s graph_entities=%s graph_relationships=%s history_turns=%s",
                 document_id,
                 len(semantic_evidence),
                 len(graph_evidence["entities"]),
                 len(graph_evidence["relationships"]),
+                len(conversation_history or []),
             )
 
             answer = generate_evidence_backed_answer(
                 question=question,
                 semantic_evidence=semantic_evidence,
                 graph_evidence=graph_evidence,
+                conversation_history=conversation_history or [],
             )
 
         except Exception as ex:
@@ -86,6 +99,7 @@ class EngineeringAnswerService:
                 "semanticEvidenceCount": len(semantic_evidence),
                 "graphEntityCount": len(graph_evidence["entities"]),
                 "graphRelationshipCount": len(graph_evidence["relationships"]),
+                "conversationHistoryCount": len(conversation_history or []),
             },
         }
 

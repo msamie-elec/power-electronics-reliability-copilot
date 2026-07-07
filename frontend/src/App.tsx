@@ -9,6 +9,7 @@ import {
 
 import {
   askEngineeringCopilot,
+  type ConversationTurn,
   type EngineeringCopilotResponse,
 } from "./api/engineeringCopilot";
 
@@ -19,6 +20,9 @@ type ConversationItem = {
   createdAt: string;
   answeredAt?: string;
 };
+
+const CONVERSATION_STORAGE_KEY = "power-electronics-copilot:v0.5.2:conversation";
+const SELECTED_DOCUMENT_STORAGE_KEY = "power-electronics-copilot:v0.5.2:selected-document";
 
 function createMessageId() {
   return crypto.randomUUID();
@@ -69,13 +73,26 @@ function MarkdownText({ text }: { text: string }) {
 function App() {
   const [uploadedFiles, setUploadedFiles] = useState<UploadedDocument[]>([]);
   const [uploadStatus, setUploadStatus] = useState("Checking backend...");
-  const [selectedDocumentId, setSelectedDocumentId] = useState("DOC-B3198A5");
+  const [selectedDocumentId, setSelectedDocumentId] = useState(() => {
+    return localStorage.getItem(SELECTED_DOCUMENT_STORAGE_KEY) ?? "DOC-B3198A5";
+  });
 
   const [question, setQuestion] = useState(
     "Why does VCE(sat) increase during power cycling?"
   );
 
-  const [conversation, setConversation] = useState<ConversationItem[]>([]);
+  const [conversation, setConversation] = useState<ConversationItem[]>(() => {
+    const savedConversation = localStorage.getItem(CONVERSATION_STORAGE_KEY);
+
+    if (!savedConversation) return [];
+
+    try {
+      return JSON.parse(savedConversation) as ConversationItem[];
+    } catch {
+      localStorage.removeItem(CONVERSATION_STORAGE_KEY);
+      return [];
+    }
+  });
   const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
 
   const [status, setStatus] = useState("Ready");
@@ -92,6 +109,14 @@ function App() {
   }, [conversation, selectedItemId]);
 
   const selectedResponse = selectedItem?.response ?? null;
+
+  useEffect(() => {
+    localStorage.setItem(CONVERSATION_STORAGE_KEY, JSON.stringify(conversation));
+  }, [conversation]);
+
+  useEffect(() => {
+    localStorage.setItem(SELECTED_DOCUMENT_STORAGE_KEY, selectedDocumentId);
+  }, [selectedDocumentId]);
 
   useEffect(() => {
     async function loadDocuments() {
@@ -136,7 +161,8 @@ function App() {
   function handleClearConversation() {
     setConversation([]);
     setSelectedItemId(null);
-    setStatus("Ready");
+    localStorage.removeItem(CONVERSATION_STORAGE_KEY);
+    setStatus("Conversation cleared.");
   }
 
   async function handleCopySelectedAnswer() {
@@ -190,6 +216,41 @@ function handleExportConversationMarkdown() {
   setStatus("Conversation exported as Markdown.");
 }
 
+  function buildConversationHistory(): ConversationTurn[] {
+    return conversation
+      .filter((item) => Boolean(item.response?.answer))
+      .slice(-6)
+      .map((item) => ({
+        question: item.question,
+        answer: item.response?.answer ?? null,
+      }));
+  }
+
+function isConversationHistoryRequest(value: string) {
+  const q = value.toLowerCase().trim();
+
+  return (
+    q.includes("previous question") ||
+    q.includes("questions i asked") ||
+    q.includes("what did i ask") ||
+    q.includes("conversation history") ||
+    q.includes("list all questions") ||
+    q.includes("list of questions")
+  );
+}
+
+function buildPreviousQuestionsAnswer() {
+  const previousQuestions = conversation.map((item, index) => {
+    return `${index + 1}. ${item.question}`;
+  });
+
+  if (previousQuestions.length === 0) {
+    return "No previous questions are available in the current conversation.";
+  }
+
+  return `Previous questions:\n\n${previousQuestions.join("\n")}`;
+}
+
   async function handleAskQuestion() {
     if (!question.trim()) {
       setStatus("Please enter a question.");
@@ -203,6 +264,52 @@ function handleExportConversationMarkdown() {
 
     const userQuestion = question.trim();
     const itemId = createMessageId();
+
+    if (isConversationHistoryRequest(userQuestion)) {
+      const localAnswer = buildPreviousQuestionsAnswer();
+
+      const localResponse: EngineeringCopilotResponse = {
+        status: "success",
+        documentId: selectedDocumentId,
+        question: userQuestion,
+        answer: localAnswer,
+        confidence: "High",
+        recommendedNextStep: null,
+        semanticEvidence: [],
+        graphEvidence: {
+          entities: [],
+          relationships: [],
+        },
+        citations: [],
+        reasoningContext: {
+          readyForLLM: true,
+          semanticEvidenceCount: 0,
+          graphEntityCount: 0,
+          graphRelationshipCount: 0,
+        },
+        metadata: {
+          topK: 0,
+          graphLimit: 0,
+          semanticEvidenceCount: 0,
+          graphEntityCount: 0,
+          graphRelationshipCount: 0,
+        },
+      };
+
+      const localItem: ConversationItem = {
+        id: itemId,
+        question: userQuestion,
+        response: localResponse,
+        createdAt: new Date().toISOString(),
+        answeredAt: new Date().toISOString(),
+      };
+
+      setConversation((current) => [...current, localItem]);
+      setSelectedItemId(itemId);
+      setQuestion("");
+      setStatus("Previous questions listed.");
+      return;
+    }
 
     const newItem: ConversationItem = {
       id: itemId,
@@ -221,7 +328,8 @@ function handleExportConversationMarkdown() {
         selectedDocumentId,
         userQuestion,
         5,
-        10
+        10,
+        buildConversationHistory()
       );
 
       setConversation((current) =>
@@ -269,7 +377,7 @@ function handleExportConversationMarkdown() {
         <div className="header-right">
           <div className="release-badge">
             <span />
-            v0.5.1 Conversational Engineering Workspace
+            v0.5.2 Engineering Workspace Refinement
           </div>
         </div>
       </header>
@@ -287,20 +395,20 @@ function handleExportConversationMarkdown() {
 
           <div className="document-id-card">
             <label>
-              Knowledge document ID
+              Active knowledge document ID
               <input
                 value={selectedDocumentId}
                 onChange={(event) => setSelectedDocumentId(event.target.value)}
               />
             </label>
             <small>
-              Temporary manual ID until the UI is connected to the knowledge
-              document registry.
+              Used for evidence-backed reasoning. Full document registry integration is
+              completed progressively in v0.5.2.
             </small>
           </div>
 
           <div className="document-list">
-            <h3>Uploaded files</h3>
+            <h3>Document registry</h3>
 
             {uploadedFiles.length === 0 ? (
               <p className="muted">No uploaded files found.</p>
@@ -326,7 +434,7 @@ function handleExportConversationMarkdown() {
 
           {conversation.length > 0 && (
             <div className="document-list">
-              <h3>Conversation</h3>
+              <h3>Conversation memory</h3>
               <button
                 className="secondary-button"
                 onClick={handleCopySelectedAnswer}
@@ -355,7 +463,7 @@ function handleExportConversationMarkdown() {
           <div className="chat-header">
             <div>
               <h2>Engineering conversation</h2>
-              <p>{status}</p>
+              <p>{status} · Memory: {conversation.length > 0 ? "active" : "empty"}</p>
             </div>
 
             <span className="confidence-pill">
@@ -370,7 +478,7 @@ function handleExportConversationMarkdown() {
                 <p>
                   The Copilot will retrieve relevant document evidence, inspect
                   Knowledge Graph context and generate a structured engineering
-                  response.
+                  response. Follow-up questions use recent conversation memory.
                 </p>
               </div>
             ) : (

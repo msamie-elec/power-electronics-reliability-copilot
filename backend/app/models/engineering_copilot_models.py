@@ -58,6 +58,13 @@ class EngineeringCitation(BaseModel):
     score: float | None = None
     relationship: str | None = None
 
+
+class ConversationTurn(BaseModel):
+    """A previous user/assistant exchange supplied for context-aware reasoning."""
+
+    question: str
+    answer: str | None = None
+
 class EngineeringCopilotResponse(BaseModel):
     status: str = "success"
     documentId: str
@@ -70,7 +77,4 @@ class EngineeringCopilotResponse(BaseModel):
     reasoningContext: ReasoningContextMetadata
     metadata: EngineeringCopilotMetadata
     citations: list[EngineeringCitation] = Field(default_factory=list)
-
-
-
 

@@ -22,7 +22,7 @@ CHUNKS_DIR = BASE_DIR / "chunks"
 FRONTEND_ORIGIN = "http://localhost:5173"
 
 APP_NAME = "Power Electronics Reliability Copilot API"
-APP_VERSION = "0.5.0-dev"
+APP_VERSION = "0.5.2-dev"
 
 CHUNKS_DIR = BASE_DIR / "chunks"
 

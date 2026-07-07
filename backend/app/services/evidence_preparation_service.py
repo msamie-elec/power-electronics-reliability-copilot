@@ -2,8 +2,8 @@
 Power Electronics Reliability Copilot
 Evidence Preparation Service
 
-Ranks, deduplicates, and normalises semantic and graph evidence before it is
-sent to the Engineering Copilot LLM prompt.
+Ranks, deduplicates, normalises, and JSON-safes semantic and graph evidence
+before it is sent to the Engineering Copilot LLM prompt or API response.
 """
 
 from typing import Any
@@ -34,7 +34,7 @@ class EvidencePreparationService:
             if chunk_id:
                 seen_chunk_ids.add(chunk_id)
 
-            deduplicated.append(item)
+            deduplicated.append(self._make_json_safe(item))
 
             if len(deduplicated) >= limit:
                 break
@@ -63,7 +63,8 @@ class EvidencePreparationService:
         deduplicated: list[dict[str, Any]] = []
 
         for entity in entities:
-            properties = entity.get("properties", {})
+            properties = self._make_json_safe(entity.get("properties", {}))
+
             name = (
                 properties.get("canonicalName")
                 or properties.get("name")
@@ -73,6 +74,7 @@ class EvidencePreparationService:
             if not name:
                 continue
 
+            name = str(name)
             key = name.lower().strip()
 
             if key in seen_names:
@@ -83,7 +85,7 @@ class EvidencePreparationService:
             deduplicated.append(
                 {
                     "name": name,
-                    "labels": entity.get("labels", []),
+                    "labels": self._make_json_safe(entity.get("labels", [])),
                     "properties": properties,
                 }
             )
@@ -115,6 +117,10 @@ class EvidencePreparationService:
             if not source or not relationship_type or not target:
                 continue
 
+            source = str(source)
+            relationship_type = str(relationship_type)
+            target = str(target)
+
             key = f"{source.lower()}|{relationship_type}|{target.lower()}"
 
             if key in seen_relationships:
@@ -122,13 +128,17 @@ class EvidencePreparationService:
 
             seen_relationships.add(key)
 
+            properties = (
+                relationship.get("properties")
+                or relationship.get("relationshipProperties", {})
+            )
+
             deduplicated.append(
                 {
                     "source": source,
                     "relationshipType": relationship_type,
                     "target": target,
-                    "properties": relationship.get("properties")
-                    or relationship.get("relationshipProperties", {}),
+                    "properties": self._make_json_safe(properties),
                 }
             )
 
@@ -152,6 +162,28 @@ class EvidencePreparationService:
         }
 
         return priority.get(relationship.get("relationshipType", ""), 0)
+
+    @classmethod
+    def _make_json_safe(cls, value: Any) -> Any:
+        if isinstance(value, dict):
+            return {str(key): cls._make_json_safe(item) for key, item in value.items()}
+
+        if isinstance(value, list):
+            return [cls._make_json_safe(item) for item in value]
+
+        if isinstance(value, tuple):
+            return [cls._make_json_safe(item) for item in value]
+
+        if isinstance(value, set):
+            return [cls._make_json_safe(item) for item in value]
+
+        if hasattr(value, "iso_format"):
+            return value.iso_format()
+
+        if hasattr(value, "isoformat"):
+            return value.isoformat()
+
+        return value
 
 
 evidence_preparation_service = EvidencePreparationService()

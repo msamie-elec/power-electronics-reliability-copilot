@@ -1,17 +1,36 @@
+"""
+===========================================================================
+Power Electronics Reliability Copilot
+Engineering Copilot API
+===========================================================================
+
+Purpose
+-------
+Expose the evidence-backed Engineering Copilot REST endpoint.
+
+v0.5.2 update
+-------------
+The API now accepts recent conversation history so follow-up questions can be
+answered with awareness of prior engineering context while still grounding the
+answer in retrieved evidence and Knowledge Graph context.
+"""
+
+import logging
+
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field, field_validator
 
+from app.core.exceptions import DocumentNotFoundError, ReasoningError, RetrievalError
 from app.models.engineering_copilot_models import (
+    ConversationTurn,
+    EngineeringCitation,
     EngineeringCopilotMetadata,
     EngineeringCopilotResponse,
     ReasoningContextMetadata,
 )
-from app.services.engineering_answer_service import engineering_answer_service
 from app.services.citation_service import citation_service
+from app.services.engineering_answer_service import engineering_answer_service
 
-from app.core.exceptions import DocumentNotFoundError, ReasoningError, RetrievalError
-
-import logging
 logger = logging.getLogger(__name__)
 
 router = APIRouter(
@@ -25,6 +44,17 @@ class EngineeringCopilotRequest(BaseModel):
     question: str = Field(..., description="Engineering question")
     top_k: int = Field(5, ge=1, le=20)
     graph_limit: int = Field(10, ge=1, le=50)
+    conversation_history: list[ConversationTurn] = Field(
+        default_factory=list,
+        description="Recent conversation turns used for context-aware reasoning.",
+    )
+
+    @field_validator("document_id")
+    @classmethod
+    def document_id_must_not_be_empty(cls, value: str) -> str:
+        if not value or not value.strip():
+            raise ValueError("document_id must not be empty")
+        return value.strip()
 
     @field_validator("question")
     @classmethod
@@ -38,10 +68,11 @@ class EngineeringCopilotRequest(BaseModel):
 def ask_engineering_copilot(request: EngineeringCopilotRequest):
     try:
         logger.info(
-            "Engineering Copilot request received document_id=%s top_k=%s graph_limit=%s",
+            "Engineering Copilot request received document_id=%s top_k=%s graph_limit=%s history_turns=%s",
             request.document_id,
             request.top_k,
             request.graph_limit,
+            len(request.conversation_history),
         )
 
         result = engineering_answer_service.answer_question(
@@ -49,6 +80,7 @@ def ask_engineering_copilot(request: EngineeringCopilotRequest):
             question=request.question,
             top_k=request.top_k,
             graph_limit=request.graph_limit,
+            conversation_history=[turn.model_dump() for turn in request.conversation_history],
         )
 
         semantic_evidence = result.get("semanticEvidence", [])
@@ -98,13 +130,6 @@ def ask_engineering_copilot(request: EngineeringCopilotRequest):
         )
         raise HTTPException(status_code=404, detail=str(ex)) from ex
 
-    except DocumentNotFoundError as ex:
-        logger.warning(
-            "Engineering Copilot document not found document_id=%s",
-            request.document_id,
-        )
-        raise HTTPException(status_code=404, detail=str(ex)) from ex
-
     except RetrievalError as ex:
         logger.warning(
             "Engineering Copilot retrieval failed document_id=%s",
@@ -128,10 +153,3 @@ def ask_engineering_copilot(request: EngineeringCopilotRequest):
             status_code=500,
             detail="Engineering Copilot request failed",
         ) from ex
-
-    except Exception as ex:
-        logger.exception(
-            "Engineering Copilot request failed document_id=%s",
-            request.document_id,
-        )
-        raise HTTPException(status_code=500, detail="Engineering Copilot request failed") from ex

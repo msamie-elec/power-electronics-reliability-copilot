@@ -168,6 +168,7 @@ def generate_evidence_backed_answer(
     question: str,
     semantic_evidence: list[dict],
     graph_evidence: dict,
+    conversation_history: list[dict] | None = None,
 ) -> str:
 #    prompt = build_evidence_backed_prompt(
 #        question=question,
@@ -178,6 +179,7 @@ def generate_evidence_backed_answer(
         question=question,
         semantic_evidence=semantic_evidence,
         graph_evidence=graph_evidence,
+        conversation_history=conversation_history or [],
     )
 
     response = client.chat.completions.create(

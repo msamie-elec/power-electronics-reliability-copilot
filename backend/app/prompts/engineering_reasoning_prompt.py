@@ -1,26 +1,51 @@
-"""
-===========================================================================
-Power Electronics Reliability Copilot
-Engineering Reasoning Prompt
-===========================================================================
+from typing import Any
 
-Purpose
--------
-Construct the prompt used by the Engineering Copilot to generate
-evidence-backed engineering answers.
-"""
+
+MAX_HISTORY_TURNS = 6
+MAX_HISTORY_ANSWER_CHARS = 900
+
+
+def _truncate(value: str | None, limit: int) -> str:
+    if not value:
+        return ""
+    value = value.strip()
+    if len(value) <= limit:
+        return value
+    return f"{value[:limit].rstrip()}..."
+
+
+def _format_conversation_history(
+    conversation_history: list[dict[str, Any]] | None,
+) -> str:
+    if not conversation_history:
+        return "No previous conversation supplied."
+
+    selected_history = conversation_history[-MAX_HISTORY_TURNS:]
+
+    return "\n\n".join(
+        "\n".join(
+            [
+                f"Turn {index}",
+                f"Previous question: {_truncate(str(turn.get('question', '')), 500)}",
+                f"Previous answer summary: {_truncate(str(turn.get('answer', '')), MAX_HISTORY_ANSWER_CHARS) or 'No previous answer text supplied.'}",
+            ]
+        )
+        for index, turn in enumerate(selected_history, start=1)
+    )
 
 
 def build_engineering_reasoning_prompt(
     question: str,
     semantic_evidence: list[dict],
     graph_evidence: dict,
+    conversation_history: list[dict[str, Any]] | None = None,
 ) -> str:
 
     semantic_text = "\n\n".join(
         f"""
 Evidence Chunk
 --------------
+Document ID: {item.get("documentId")}
 Chunk ID: {item.get("chunkId")}
 Similarity Score: {item.get("score")}
 
@@ -33,7 +58,7 @@ Similarity Score: {item.get("score")}
     graph_relationships = graph_evidence.get("relationships", [])
 
     entity_text = "\n".join(
-        f"- {entity.get('properties', {}).get('name')}"
+        f"- {entity.get('properties', {}).get('name') or entity.get('name')}"
         for entity in graph_entities
     )
 
@@ -44,6 +69,8 @@ Similarity Score: {item.get("score")}
         for rel in graph_relationships
     )
 
+    history_text = _format_conversation_history(conversation_history)
+
     return f"""
 You are a senior Power Electronics Reliability Engineer.
 
@@ -52,8 +79,10 @@ a technically accurate answer.
 
 Rules
 
-• Use ONLY the supplied evidence.
+• Use the previous conversation only to understand context and follow-up intent.
+• Use ONLY the supplied semantic evidence and Knowledge Graph evidence for engineering claims.
 • Never invent engineering facts.
+• Never invent values, test results, citations, or causal mechanisms.
 • If evidence is insufficient, explicitly state this.
 • Distinguish observed evidence from engineering inference.
 • Base conclusions on both semantic evidence and graph relationships.
@@ -67,10 +96,16 @@ Question
 {question}
 
 ======================================================
+Recent Conversation Context
+======================================================
+
+{history_text}
+
+======================================================
 Semantic Engineering Evidence
 ======================================================
 
-{semantic_text}
+{semantic_text or "No semantic engineering evidence supplied."}
 
 ======================================================
 Knowledge Graph
@@ -78,11 +113,11 @@ Knowledge Graph
 
 Entities
 
-{entity_text}
+{entity_text or "No graph entities supplied."}
 
 Relationships
 
-{relationship_text}
+{relationship_text or "No graph relationships supplied."}
 
 ======================================================
 Return your answer using EXACTLY this structure
@@ -100,7 +135,7 @@ Clearly distinguish observed evidence from engineering inference.
 ## Supporting Document Evidence
 
 List the most relevant document evidence.
-Mention chunk IDs where useful.
+Mention document IDs and chunk IDs where useful.
 
 ## Supporting Graph Reasoning
 

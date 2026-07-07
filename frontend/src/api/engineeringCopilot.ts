@@ -35,6 +35,11 @@ export type EngineeringCitation = {
   relationship?: string | null;
 };
 
+export type ConversationTurn = {
+  question: string;
+  answer?: string | null;
+};
+
 export type EngineeringCopilotResponse = {
   status: string;
   documentId: string;
@@ -64,7 +69,8 @@ export async function askEngineeringCopilot(
   documentId: string,
   question: string,
   topK: number = 5,
-  graphLimit: number = 10
+  graphLimit: number = 10,
+  conversationHistory: ConversationTurn[] = []
 ): Promise<EngineeringCopilotResponse> {
   const response = await fetch(`${API_BASE_URL}/engineering-copilot/ask`, {
     method: "POST",
@@ -76,6 +82,7 @@ export async function askEngineeringCopilot(
       question,
       top_k: topK,
       graph_limit: graphLimit,
+      conversation_history: conversationHistory,
     }),
   });
 
