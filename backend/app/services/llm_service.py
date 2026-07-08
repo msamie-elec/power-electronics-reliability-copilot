@@ -6,35 +6,26 @@ LLM Service
 
 Purpose
 -------
-Provides all OpenAI interactions used throughout the project.
+Provides language-model operations used throughout the project.
 
 Responsibilities
 ----------------
 - Generate RAG answers
 - Extract engineering knowledge
+- Generate evidence-backed engineering answers
+
+v0.6.0 update
+-------------
+LLM calls are now routed through the AI Provider Service so the application can
+use either OpenAI or Azure OpenAI through configuration.
 """
 
 import json
 
-from openai import OpenAI
-
-from app.prompts.evidence_backed_answer_prompt import (
-    build_evidence_backed_prompt,
-)
-
 from app.prompts.engineering_reasoning_prompt import (
     build_engineering_reasoning_prompt,
 )
-
-
-from app.config import (
-    OPENAI_API_KEY,
-    OPENAI_MODEL,
-    OPENAI_EXTRACTION_MODEL,
-)
-
-
-client = OpenAI(api_key=OPENAI_API_KEY)
+from app.services.ai_provider_service import ai_provider_service
 
 
 # ==========================================================================
@@ -78,25 +69,13 @@ def generate_llm_answer(
     query: str,
     evidence_chunks: list[dict],
 ) -> str:
-
     prompt = build_rag_prompt(query, evidence_chunks)
 
-    response = client.chat.completions.create(
-        model=OPENAI_MODEL,
+    return ai_provider_service.generate_chat_completion(
+        system_prompt="You are a careful engineering AI assistant.",
+        user_prompt=prompt,
         temperature=0.2,
-        messages=[
-            {
-                "role": "system",
-                "content": "You are a careful engineering AI assistant."
-            },
-            {
-                "role": "user",
-                "content": prompt
-            },
-        ],
     )
-
-    return response.choices[0].message.content or ""
 
 
 # ==========================================================================
@@ -141,23 +120,15 @@ Engineering Text:
 {text}
 """
 
-    response = client.chat.completions.create(
-        model=OPENAI_EXTRACTION_MODEL,
+    response_text = ai_provider_service.generate_chat_completion(
+        system_prompt="Return valid JSON only.",
+        user_prompt=prompt,
         temperature=0,
+        use_extraction_model=True,
         response_format={"type": "json_object"},
-        messages=[
-            {
-                "role": "system",
-                "content": "Return valid JSON only."
-            },
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ]
     )
 
-    return json.loads(response.choices[0].message.content)
+    return json.loads(response_text)
 
 
 # ==========================================================================
@@ -170,11 +141,10 @@ def generate_evidence_backed_answer(
     graph_evidence: dict,
     conversation_history: list[dict] | None = None,
 ) -> str:
-#    prompt = build_evidence_backed_prompt(
-#        question=question,
-#        semantic_evidence=semantic_evidence,
-#        graph_evidence=graph_evidence,
-#    )
+    """
+    Generate an evidence-backed engineering answer.
+    """
+
     prompt = build_engineering_reasoning_prompt(
         question=question,
         semantic_evidence=semantic_evidence,
@@ -182,19 +152,11 @@ def generate_evidence_backed_answer(
         conversation_history=conversation_history or [],
     )
 
-    response = client.chat.completions.create(
-        model=OPENAI_MODEL,
+    return ai_provider_service.generate_chat_completion(
+        system_prompt=(
+            "You are a cautious engineering AI assistant. "
+            "Use only supplied evidence."
+        ),
+        user_prompt=prompt,
         temperature=0.2,
-        messages=[
-            {
-                "role": "system",
-                "content": "You are a cautious engineering AI assistant. Use only supplied evidence.",
-            },
-            {
-                "role": "user",
-                "content": prompt,
-            },
-        ],
     )
-
-    return response.choices[0].message.content or ""

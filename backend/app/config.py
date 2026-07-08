@@ -2,8 +2,8 @@
 Power Electronics Reliability Copilot
 Application Configuration
 
-Centralised environment-aware configuration for local development and
-future Azure cloud deployment.
+Centralised environment-aware configuration for local development and Azure
+cloud deployment.
 
 v0.6.0 introduces cloud-ready configuration while preserving backward
 compatibility with the existing local development workflow.
@@ -31,15 +31,15 @@ class AppConfig:
 
     @property
     def is_azure(self) -> bool:
-        return self.environment.lower() == "azure"
+        return self.environment.lower().strip() == "azure"
 
 
 @dataclass(frozen=True)
 class OpenAIConfig:
+    ai_provider: str
     api_key: str
     model: str
     extraction_model: str
-
     azure_endpoint: str
     azure_api_key: str
     azure_api_version: str
@@ -48,7 +48,19 @@ class OpenAIConfig:
 
     @property
     def use_azure_openai(self) -> bool:
-        return bool(self.azure_endpoint and self.azure_chat_deployment)
+        provider = self.ai_provider.lower().strip()
+
+        if provider == "azure_openai":
+            return True
+
+        if provider == "openai":
+            return False
+
+        return bool(
+            self.azure_endpoint
+            and self.azure_api_key
+            and self.azure_chat_deployment
+        )
 
 
 @dataclass(frozen=True)
@@ -66,7 +78,6 @@ class StorageConfig:
     metadata_dir: Path
     chunks_dir: Path
     embeddings_dir: Path
-
     azure_storage_connection_string: str
     azure_storage_account_name: str
     azure_blob_container_name: str
@@ -99,6 +110,7 @@ app_config = AppConfig(
 )
 
 openai_config = OpenAIConfig(
+    ai_provider=os.getenv("AI_PROVIDER", "openai"),
     api_key=os.getenv("OPENAI_API_KEY", ""),
     model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
     extraction_model=os.getenv("OPENAI_EXTRACTION_MODEL", "gpt-4.1-mini"),
@@ -122,10 +134,7 @@ storage_config = StorageConfig(
     metadata_dir=BASE_DIR / os.getenv("METADATA_DIR", "metadata"),
     chunks_dir=BASE_DIR / os.getenv("CHUNKS_DIR", "chunks"),
     embeddings_dir=BASE_DIR / os.getenv("EMBEDDINGS_DIR", "embeddings"),
-    azure_storage_connection_string=os.getenv(
-        "AZURE_STORAGE_CONNECTION_STRING",
-        "",
-    ),
+    azure_storage_connection_string=os.getenv("AZURE_STORAGE_CONNECTION_STRING", ""),
     azure_storage_account_name=os.getenv("AZURE_STORAGE_ACCOUNT_NAME", ""),
     azure_blob_container_name=os.getenv(
         "AZURE_BLOB_CONTAINER_NAME",
@@ -146,15 +155,14 @@ azure_config = AzureConfig(
 
 # --------------------------------------------------------------------------
 # Backward-compatible constants
-#
-# Existing services can continue importing these constants while the project
-# gradually migrates to grouped configuration objects.
 # --------------------------------------------------------------------------
 
 APP_NAME = app_config.name
 APP_VERSION = app_config.version
 APP_ENV = app_config.environment
 FRONTEND_ORIGIN = app_config.frontend_origin
+
+AI_PROVIDER = openai_config.ai_provider
 
 OPENAI_API_KEY = openai_config.api_key
 OPENAI_MODEL = openai_config.model
