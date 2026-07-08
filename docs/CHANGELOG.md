@@ -491,6 +491,40 @@ Detailed implementation information is available in:
 
 # Upcoming Releases
 
+## v0.6.0 — Azure Cloud Deployment (Progress)
+
+✅ Cloud configuration (done)
+✅ AI provider abstraction (done)
+Azure Blob Storage integration
+
+Previously:
+
+file_service
+      │
+      ▼
+write_bytes()
+
+Now:
+
+file_service
+      │
+      ▼
+DocumentStorageService
+      │
+      ▼
+Storage Provider
+      │
+      ├── Local Storage   ✓
+      └── Azure Blob      (later)
+
+Azure Container Apps deployment
+Azure Static Web Apps
+Azure Monitor & Application Insights
+Azure Key Vault
+End-to-end deployment
+GitHub Actions (v0.7.0)
+AKS / Kubernetes (v0.7.0)
+
 ## v0.6.0 — Azure Cloud Deployment
 
 Planned

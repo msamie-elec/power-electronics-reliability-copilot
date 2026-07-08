@@ -18,7 +18,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -81,6 +80,7 @@ class StorageConfig:
     azure_storage_connection_string: str
     azure_storage_account_name: str
     azure_blob_container_name: str
+    storage_provider: str
 
     @property
     def use_azure_blob_storage(self) -> bool:
@@ -136,11 +136,13 @@ storage_config = StorageConfig(
     embeddings_dir=BASE_DIR / os.getenv("EMBEDDINGS_DIR", "embeddings"),
     azure_storage_connection_string=os.getenv("AZURE_STORAGE_CONNECTION_STRING", ""),
     azure_storage_account_name=os.getenv("AZURE_STORAGE_ACCOUNT_NAME", ""),
+    storage_provider=os.getenv("DOCUMENT_STORAGE_PROVIDER", "local"),
     azure_blob_container_name=os.getenv(
         "AZURE_BLOB_CONTAINER_NAME",
         "engineering-documents",
     ),
 )
+DOCUMENT_STORAGE_PROVIDER = storage_config.storage_provider
 
 embedding_config = EmbeddingConfig(
     model_name=os.getenv("EMBEDDING_MODEL_NAME", "BAAI/bge-small-en-v1.5"),

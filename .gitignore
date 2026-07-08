@@ -47,3 +47,6 @@ backend/metadata/*
 # Discussions
 Discussions/
 Discussions/*
+
+# infra
+infra/azure/env/azure.local.env
