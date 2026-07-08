@@ -493,6 +493,62 @@ Detailed implementation information is available in:
 
 ## v0.6.0 — Azure Cloud Deployment (Progress)
 
+## Current Focus
+
+**Version 0.6.0 — Azure Cloud Deployment**
+
+Current work focuses on moving the local engineering application towards Azure cloud deployment while preserving the existing evidence-backed reasoning workflow.
+
+Progress completed:
+
+- Cloud-ready backend configuration added.
+- AI provider abstraction introduced for OpenAI and future Azure OpenAI support.
+- Document storage provider abstraction introduced.
+- Local storage and Azure Blob Storage providers implemented.
+- Azure CLI deployment scripts added under `infra/azure/powershell`.
+- Secure local Azure configuration added under `infra/azure/env`.
+- Azure Resource Group automation added.
+- Azure Storage Account and Blob Container automation added.
+- Azure Key Vault automation scaffold added.
+- Deployment wrapper scripts added for cloud foundation, backend, frontend and complete deployment.
+- Cleanup script added to remove Azure resources after experiments and control cloud cost.
+- Azure Blob Storage integration tested successfully with frontend upload.
+- Uploaded engineering document confirmed in Azure Blob Storage.
+
+Next work:
+
+- Azure OpenAI resource creation and model deployment.
+- Azure Key Vault secret integration.
+- Backend deployment to Azure Container Apps.
+- Frontend deployment to Azure Static Web Apps.
+- Azure Monitor and Application Insights.
+- End-to-end cloud validation.
+
+
+### v0.6.0 — Azure Cloud Deployment
+
+✅ Cloud configuration
+✅ AI provider abstraction
+✅ Storage provider abstraction
+✅ Azure CLI login working
+✅ Resource Group created
+✅ Azure Storage Account created
+✅ Blob Container created
+✅ Key Vault created
+✅ Azure deployment scripts working
+✅ 10-deploy-complete.ps1 working
+
+Next:
+➡️ Connect backend upload to live Azure Blob Storage
+➡️ Azure OpenAI resource + deployments
+➡️ Key Vault secret storage
+➡️ Azure Container Apps backend deployment
+➡️ Azure Static Web Apps frontend deployment
+➡️ Azure Monitor / Application Insights
+➡️ End-to-end cloud validation
+
+###
+
 ✅ Cloud configuration (done)
 ✅ AI provider abstraction (done)
 Azure Blob Storage integration
