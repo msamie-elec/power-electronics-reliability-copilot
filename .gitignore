@@ -17,10 +17,6 @@ env/
 .env.*
 !.env.example
 
-# Uploads and generated data
-backend/uploads/*
-!backend/uploads/.gitkeep
-
 # Node / React
 node_modules/
 frontend/node_modules/
@@ -30,6 +26,8 @@ frontend/dist/
 # Logs
 *.log
 logs/
+backend/logs/*
+!backend/logs/.gitkeep
 
 # OS / editor
 .DS_Store
@@ -38,15 +36,29 @@ Thumbs.db
 .idea/
 
 # Generated document processing outputs
+backend/uploads/*
+!backend/uploads/.gitkeep
+
 backend/documents/*
 !backend/documents/.gitkeep
 
 backend/metadata/*
 !backend/metadata/.gitkeep
 
+backend/chunks/*
+!backend/chunks/.gitkeep
+
+backend/embeddings/*
+!backend/embeddings/.gitkeep
+
+backend/vector_store/*
+!backend/vector_store/.gitkeep
+
+backend/workspace/*
+!backend/workspace/.gitkeep
+
 # Discussions
 Discussions/
-Discussions/*
 
-# infra
+# Azure local configuration
 infra/azure/env/azure.local.env

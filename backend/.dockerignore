@@ -1,0 +1,47 @@
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Git
+.git/
+.gitignore
+
+# Local environment and secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated document processing data
+uploads/
+documents/
+metadata/
+chunks/
+embeddings/
+vector_store/
+workspace/
+logs/
+
+# Tests and caches
+tests/
+.coverage
+htmlcov/
+
+# Local docs / temporary files
+*.log
+*.tmp
+*.bak
