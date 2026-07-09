@@ -17,6 +17,137 @@ For implementation details, architectural decisions and engineering discussions,
 
 ## Current Focus
 
+## v0.6.0 Progress — Azure Cloud Deployment
+
+### Added
+
+- Azure Blob Storage provider integration for uploaded engineering documents.
+- Azure infrastructure automation under `infra/azure/powershell`.
+- Secure local Azure configuration under `infra/azure/env`.
+- Idempotent deployment scripts for resource group, storage, Key Vault, backend placeholder, frontend placeholder and complete deployment.
+- Azure cleanup script for cost-controlled development.
+- Azure infrastructure test suite under `infra/azure/tests`.
+- Storage connection validation test.
+- Blob upload validation test.
+- Blob list validation test.
+- Blob download validation test.
+- Full Azure infrastructure test runner.
+
+### Validated
+
+- Azure CLI login with tenant-specific authentication.
+- Resource Group creation.
+- Storage Account creation.
+- Blob Container creation.
+- Key Vault creation.
+- Frontend upload to Azure Blob Storage.
+- Uploaded PDF confirmed in Azure Blob Storage.
+- Azure Blob upload/list/download tests passing.
+
+### Security and Cost Control
+
+- Secrets are excluded from Git.
+- Connection strings are retrieved securely and not printed by scripts.
+- Local Azure configuration is excluded from Git.
+- Cleanup script removes the development resource group after experiments.
+
+### Next
+
+- Azure OpenAI resource creation.
+- Chat model deployment.
+- Embedding model deployment.
+- Backend configuration switch from OpenAI to Azure OpenAI.
+
+## v0.6.0 — Azure Cloud Deployment (Progress)
+
+## Current Focus
+
+**Version 0.6.0 — Azure Cloud Deployment**
+
+Current work focuses on moving the local engineering application towards Azure cloud deployment while preserving the existing evidence-backed reasoning workflow.
+
+Progress completed:
+
+- Cloud-ready backend configuration added.
+- AI provider abstraction introduced for OpenAI and future Azure OpenAI support.
+- Document storage provider abstraction introduced.
+- Local storage and Azure Blob Storage providers implemented.
+- Azure CLI deployment scripts added under `infra/azure/powershell`.
+- Secure local Azure configuration added under `infra/azure/env`.
+- Azure Resource Group automation added.
+- Azure Storage Account and Blob Container automation added.
+- Azure Key Vault automation scaffold added.
+- Deployment wrapper scripts added for cloud foundation, backend, frontend and complete deployment.
+- Cleanup script added to remove Azure resources after experiments and control cloud cost.
+- Azure Blob Storage integration tested successfully with frontend upload.
+- Uploaded engineering document confirmed in Azure Blob Storage.
+
+Next work:
+
+- Azure OpenAI resource creation and model deployment.
+- Azure Key Vault secret integration.
+- Backend deployment to Azure Container Apps.
+- Frontend deployment to Azure Static Web Apps.
+- Azure Monitor and Application Insights.
+- End-to-end cloud validation.
+
+
+### v0.6.0 — Azure Cloud Deployment
+
+✅ Cloud configuration
+✅ AI provider abstraction
+✅ Storage provider abstraction
+✅ Azure CLI login working
+✅ Resource Group created
+✅ Azure Storage Account created
+✅ Blob Container created
+✅ Key Vault created
+✅ Azure deployment scripts working
+✅ 10-deploy-complete.ps1 working
+
+Next:
+➡️ Connect backend upload to live Azure Blob Storage
+➡️ Azure OpenAI resource + deployments
+➡️ Key Vault secret storage
+➡️ Azure Container Apps backend deployment
+➡️ Azure Static Web Apps frontend deployment
+➡️ Azure Monitor / Application Insights
+➡️ End-to-end cloud validation
+
+###
+
+✅ Cloud configuration (done)
+✅ AI provider abstraction (done)
+Azure Blob Storage integration
+
+Previously:
+
+file_service
+      │
+      ▼
+write_bytes()
+
+Now:
+
+file_service
+      │
+      ▼
+DocumentStorageService
+      │
+      ▼
+Storage Provider
+      │
+      ├── Local Storage   ✓
+      └── Azure Blob      (later)
+
+Azure Container Apps deployment
+Azure Static Web Apps
+Azure Monitor & Application Insights
+Azure Key Vault
+End-to-end deployment
+GitHub Actions (v0.7.0)
+AKS / Kubernetes (v0.7.0)
+
 **Version 0.6.0 — Azure Cloud Deployment**
 
 Current work focuses on:
@@ -490,96 +621,6 @@ Detailed implementation information is available in:
 ---
 
 # Upcoming Releases
-
-## v0.6.0 — Azure Cloud Deployment (Progress)
-
-## Current Focus
-
-**Version 0.6.0 — Azure Cloud Deployment**
-
-Current work focuses on moving the local engineering application towards Azure cloud deployment while preserving the existing evidence-backed reasoning workflow.
-
-Progress completed:
-
-- Cloud-ready backend configuration added.
-- AI provider abstraction introduced for OpenAI and future Azure OpenAI support.
-- Document storage provider abstraction introduced.
-- Local storage and Azure Blob Storage providers implemented.
-- Azure CLI deployment scripts added under `infra/azure/powershell`.
-- Secure local Azure configuration added under `infra/azure/env`.
-- Azure Resource Group automation added.
-- Azure Storage Account and Blob Container automation added.
-- Azure Key Vault automation scaffold added.
-- Deployment wrapper scripts added for cloud foundation, backend, frontend and complete deployment.
-- Cleanup script added to remove Azure resources after experiments and control cloud cost.
-- Azure Blob Storage integration tested successfully with frontend upload.
-- Uploaded engineering document confirmed in Azure Blob Storage.
-
-Next work:
-
-- Azure OpenAI resource creation and model deployment.
-- Azure Key Vault secret integration.
-- Backend deployment to Azure Container Apps.
-- Frontend deployment to Azure Static Web Apps.
-- Azure Monitor and Application Insights.
-- End-to-end cloud validation.
-
-
-### v0.6.0 — Azure Cloud Deployment
-
-✅ Cloud configuration
-✅ AI provider abstraction
-✅ Storage provider abstraction
-✅ Azure CLI login working
-✅ Resource Group created
-✅ Azure Storage Account created
-✅ Blob Container created
-✅ Key Vault created
-✅ Azure deployment scripts working
-✅ 10-deploy-complete.ps1 working
-
-Next:
-➡️ Connect backend upload to live Azure Blob Storage
-➡️ Azure OpenAI resource + deployments
-➡️ Key Vault secret storage
-➡️ Azure Container Apps backend deployment
-➡️ Azure Static Web Apps frontend deployment
-➡️ Azure Monitor / Application Insights
-➡️ End-to-end cloud validation
-
-###
-
-✅ Cloud configuration (done)
-✅ AI provider abstraction (done)
-Azure Blob Storage integration
-
-Previously:
-
-file_service
-      │
-      ▼
-write_bytes()
-
-Now:
-
-file_service
-      │
-      ▼
-DocumentStorageService
-      │
-      ▼
-Storage Provider
-      │
-      ├── Local Storage   ✓
-      └── Azure Blob      (later)
-
-Azure Container Apps deployment
-Azure Static Web Apps
-Azure Monitor & Application Insights
-Azure Key Vault
-End-to-end deployment
-GitHub Actions (v0.7.0)
-AKS / Kubernetes (v0.7.0)
 
 ## v0.6.0 — Azure Cloud Deployment
 

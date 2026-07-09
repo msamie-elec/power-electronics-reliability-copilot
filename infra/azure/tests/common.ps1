@@ -1,0 +1,1 @@
+. "$PSScriptRoot\..\powershell\common.ps1"
