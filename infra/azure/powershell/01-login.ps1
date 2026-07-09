@@ -6,10 +6,9 @@ param(
 
 $Config = Import-AzureConfig -ConfigPath $ConfigPath
 
-Assert-AzureLoggedIn
+az login --tenant $Config.TENANT_ID --use-device-code
+
 Set-AzureSubscription -SubscriptionId $Config.SUBSCRIPTION_ID
 Show-AzureAccount
-
-az login --tenant $Config.TENANT_ID --use-device-code
 
 az account show --output table

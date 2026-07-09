@@ -54,4 +54,7 @@ if ($LASTEXITCODE -ne 0) { exit 1 }
 & "$PSScriptRoot\04-test-blob-download.ps1" -ConfigPath $ConfigPath
 if ($LASTEXITCODE -ne 0) { exit 1 }
 
+& "$PSScriptRoot\05-test-openai-deployments.ps1" -ConfigPath $ConfigPath
+if ($LASTEXITCODE -ne 0) { exit 1 }
+
 Write-Success "All Azure infrastructure tests PASSED"

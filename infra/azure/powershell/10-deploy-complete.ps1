@@ -28,6 +28,9 @@ Write-Info "Foundation deployment"
 & "$PSScriptRoot\04-create-openai.ps1" `
     -ConfigPath $ConfigPath
 
+& "$PSScriptRoot\04b-deploy-openai-models.ps1" `
+    -ConfigPath $ConfigPath
+
 & "$PSScriptRoot\05-create-keyvault.ps1" `
     -ConfigPath $ConfigPath
 

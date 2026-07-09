@@ -21,6 +21,15 @@ For implementation details, architectural decisions and engineering discussions,
 
 ### Added
 
+- Azure OpenAI resource creation and recovery tested.
+- Azure OpenAI model discovery script added.
+- Cost-effective GA model selection completed.
+- Chat deployment validated: `gpt-5-mini`.
+- Embedding deployment validated: `text-embedding-3-small`.
+- Azure OpenAI deployment test added and passed.
+
+### Added
+
 - Azure Blob Storage provider integration for uploaded engineering documents.
 - Azure infrastructure automation under `infra/azure/powershell`.
 - Secure local Azure configuration under `infra/azure/env`.
