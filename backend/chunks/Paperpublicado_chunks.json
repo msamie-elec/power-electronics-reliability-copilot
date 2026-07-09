@@ -4,7 +4,7 @@
   "chunk_count": 45,
   "chunk_size": 1200,
   "chunk_overlap": 200,
-  "created_at": "2026-07-08T20:12:59",
+  "created_at": "2026-07-09T15:49:43",
   "chunks": [
     {
       "chunk_id": "doc_paperpublicado_chunk_000001",
@@ -15,7 +15,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 171,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "[Page 1]\nIEEE TRANSACTIONS ON INDUSTRIAL ELECTRONICS, VOL. 58, NO. 5, MAY 2011\n1625\nA Failure-Detection Strategy for IGBT Based\non Gate-Voltage Behavior Applied to\na Motor Drive System\nMarco Antonio Rodr\u00edguez-Blanco, Member, IEEE, Abraham Claudio-S\u00e1nchez, Member, IEEE,\nDidier Theilliol, Luis Gerardo Vela-Vald\u00e9s, Pedro Sibaja-Ter\u00e1n,\nLeobardo Hern\u00e1ndez-Gonz\u00e1lez, Member, IEEE, and Jesus Aguayo-Alquicira, Member, IEEE\nAbstract\u2014In this paper, a novel failure-detection technique and\nits analog circuit for insulated gate bipolar transistors (IGBTs),\nunder open- and short-circuit failures, are proposed. This tech-\nnique is applied to a three-phase induction-motor (IM) drive\nsystem. The detection technique is adapted to detect failures of\nshort-circuit and open-circuit in the IGBT, which is based on\ngate-signal monitoring. The most important issue of this technique\nis the reduction of time for fault detection. This is very important\nin a failure-tolerant IM drive based on the material-redundancy\napproach or protection systems since the detection must be done\nbefore the device is damaged, in approximately less than 10 \u03bcs.\nThe experimental test and simulations are presented in order to\nvalida"
     },
     {
@@ -27,7 +27,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 165,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "y\napproach or protection systems since the detection must be done\nbefore the device is damaged, in approximately less than 10 \u03bcs.\nThe experimental test and simulations are presented in order to\nvalidate the proposed fault-detection technique, and it is validated,\nachieving replacement of the damaged element in the most suitable\ntime.\nIndex Terms\u2014Analog circuits, driver circuits, fault location,\ninsulated gate bipolar transistors (IGBTs), semiconductor-device\nmeasurements, time delay.\nNOMENCLATURE\nAGD\nGate\u2013drain area.\nCGD\nGate\u2013drain capacitance.\nCGDJ\nGate\u2013drain depletion capacitance.\nCOXD\nGate\u2013drain oxide capacitance.\nNB\nn-layer doping concentration.\nq\nElectron charge.\nManuscript received December 22, 2009; revised July 23, 2010; accepted\nAugust 25, 2010. Date of publication December 10, 2010; date of current\nversion April 13, 2011. This work was supported in part by the Secretar\u00eda de\nEducaci\u00f3n P\u00fablica through Programa de mejoramiento al profesorado Nancy-\nUniversit\u00e9 (PROMEP/103.5/10/4451) and in part by Projects DAIT/2010/10\nand SIP20100437 of Autonomous University of Carmen City (UNACAR) and\nEscuela Superior de Ingenier\u00eda Mec\u00e1nica y El\u00e9ctrica del Instituto Polit\u00e9cnico\nNacional, re"
     },
     {
@@ -39,7 +39,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 142,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "51) and in part by Projects DAIT/2010/10\nand SIP20100437 of Autonomous University of Carmen City (UNACAR) and\nEscuela Superior de Ingenier\u00eda Mec\u00e1nica y El\u00e9ctrica del Instituto Polit\u00e9cnico\nNacional, respectively.\nM. A. Rodr\u00edguez-Blanco and P. Sibaja-Ter\u00e1n are with the Department of\nElectronics Engineering, Autonomous University of Carmen City, Carmen\nCity, Campeche 24180, Mexico (e-mail: mrodriguez@pampano.unacar.mx;\npsibaja@pampano.unacar.mx).\nA. Claudio-S\u00e1nchez, L. G. Vela-Vald\u00e9s, and J. Aguayo-Alquicira are with\nthe National Center for Research and Technological Development (cenidet),\nCuernavaca, Morelos 62431, Mexico (e-mail: peabraha@cenidet.edu.mx;\nvelaluis@cenidet.edu.mx; jaguayo@cenidet.edu.mx).\nD. Theilliol is with the Research Centre for Automatic Control, Nancy-\nUniversit\u00e9, 54506 Vandoeuvre-l\u00e8s-Nancy, France (e-mail: didier.theilliol@\ncran.uhp-nancy.fr).\nL. Hern\u00e1ndez-Gonz\u00e1lez is with the ESIME, National Polytechnic Institute of\nMexico, Mexico City 07738, Mexico (e-mail: bilbito_98@yahoo.com).\nColor versions of one or more of the \ufb01gures in this paper are available online\nat http://ieeexplore.ieee.org.\nDigital Object Identi\ufb01er 10.1109/TIE.2010.2098355\nRG\nGate driver resisto"
     },
     {
@@ -51,7 +51,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 178,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "to_98@yahoo.com).\nColor versions of one or more of the \ufb01gures in this paper are available online\nat http://ieeexplore.ieee.org.\nDigital Object Identi\ufb01er 10.1109/TIE.2010.2098355\nRG\nGate driver resistor.\nVGE\nGate\u2013emitter voltage.\nV \u2217\nGE\nGate\u2013emitter voltage with attenuation.\nVT\nThreshold voltage.\nI. INTRODUCTION\nT\nECHNOLOGICAL advances have allowed very complex\nindustrial processes with high degree of automation. This\nhas improved the quality of its products and increased the\nef\ufb01ciency in its processes. Consequently, this makes a most\ncomplex system and more vulnerability to faults; this is due\nto the great exigency of automation and safety in modern\nproduction systems. Thus, presently, there is a growing need\nand interest in developing fault-tolerant systems, which contain\ntolerant mechanisms that make more reliable equipment when\na fault occurs on the system [1]\u2013[3]. This is feasible for the\ncase of study where control objectives allow a moderate de-\nlay time in order to diagnose faults (detection, location, and\nidenti\ufb01cation), which generally are focused to incipient faults\nof mechatronic systems. However, there are abrupt faults in\nsome subsystems where it is not possible to acc"
     },
     {
@@ -63,7 +63,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 194,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "ts (detection, location, and\nidenti\ufb01cation), which generally are focused to incipient faults\nof mechatronic systems. However, there are abrupt faults in\nsome subsystems where it is not possible to accept a moderate\ndelay time. In this case, the time for diagnostic has to be as\nfast as possible in order to avoid the propagation of fault,\ne.g., in the switching of communication systems [3] or power-\nelectronic systems [4]. It is important to highlight that the fault-\ndetection stage is the one which takes up most of the delay\ntime because the \ufb01rst physical contact when the fault is carried\nout occurs at this phase. In [5], a failure-prognostic system for\ninsulated gate bipolar transistor (IGBT) has been developed\nbased on early symptoms and warning signs of power-module\ndegradation due to thermomechanical stress but using a special\ndegradation trace on the VCEsat signal, which is also used to\ndetect overcurrent in the IGBT. However, the platform used is\nnot in real time, and fault identi\ufb01cation has not been considered.\nAn interesting application, for the case of study, in switching\nsystems of power electronics is the induction-motor (IM) drive.\nGenerally, this kind of application is"
     },
     {
@@ -75,7 +75,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 186,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "\ufb01cation has not been considered.\nAn interesting application, for the case of study, in switching\nsystems of power electronics is the induction-motor (IM) drive.\nGenerally, this kind of application is integrated to many critical\nprocesses where the speed-tracking problem is an essential\nissue to maintain the quality of products and reliability of the\nprocess to avoid production cuts, such as in the metallurgical\nand paper industries, among others, where there are many fault-\ntolerant schemes applied to motor drive [6]\u2013[13]. In [9], a\nresearch is aimed on a new algorithm design for fault diagnostic\n0278-0046/$26.00 \u00a9 2010 IEEE\n\n\n[Page 2]\n1626\nIEEE TRANSACTIONS ON INDUSTRIAL ELECTRONICS, VOL. 58, NO. 5, MAY 2011\nand fault recon\ufb01guration. Also, new tolerant-scheme analyses\nof converters based on material redundancy of the inverter drive\nwith dual pack of IGBTs as redundant unit are presented in\n[6]\u2013[10], multilevel inverter drives with bridge inverter cells\nimplemented with IGBT modules [14], [15], or dual pack of\nIGBTs [16], [17] as redundant unit. In the aforementioned\nresearch, the important point is that the fault detection in the\nredundant units is performed during the steady stat"
     },
     {
@@ -87,7 +87,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 204,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "4], [15], or dual pack of\nIGBTs [16], [17] as redundant unit. In the aforementioned\nresearch, the important point is that the fault detection in the\nredundant units is performed during the steady state and not\nduring the transient state (IGBT switching). A very early fault\ndetection can be possible during switching in order to avoid\na fast fault propagation by short circuit in the complementary\npower device of the same inverter pole; it has to be avoided in\nless than 10 \u03bcs.\nMost inverter drives use IGBTs as the switching device for\nthe following reasons: 1) The IGBT is available in high-voltage\nand high-current ratings; 2) the IGBT\u2019s ability to handle short-\ncircuit current up to 10 \u03bcs plays a critical role for increasing\nthe reliability of motor drive circuits; and 3) the easy control\nof gate-signal commutations. Generally, the IGBTs are robust,\nalthough they suffer failures due to excess of electrical and\nthermal stresses that are very common in many applications.\nThus, IGBTs are vulnerable to fail, and it is estimated that\naround 38% of the fault in industrial IM drives are due to\nfailure of the power device [18], [19]. A problem detected in the\nliterature is that the fault loca"
     },
     {
@@ -99,7 +99,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 201,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "nerable to fail, and it is estimated that\naround 38% of the fault in industrial IM drives are due to\nfailure of the power device [18], [19]. A problem detected in the\nliterature is that the fault localization only identi\ufb01es the inverter\npole or cell damage instead of the power device affected [1],\n[14], which is of crucial importance for the fault-tolerant motor\ndrive or neutral-point-clamped inverter [16] made with a single-\npack module of IGBTs, such as a redundant unit instead of a\ncomplete inverter leg. The main interest of these tolerant con-\nverter types appears because the manufacturer tends to package\nhigh power device as a single-module type. In most of the\nliterature reported about the power-device location, the delay\ntime reported is not considered or is above 1 ms, as in [18] and\n[19]. On the other hand, in [4] a detection time of less than 10 \u03bcs\nis reported by using a \ufb01eld-programmable gate array (FPGA),\nbut the delay times of the voltage sensor, optical couples,\nanalog data acquisition, and analog-to-digital converter are not\nconsidered because the detection circuit is implemented outside\nthe gate driver, and in [12], a fuzzy-based approach for the\ndiagnosis of open c"
     },
     {
@@ -111,7 +111,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 184,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "ta acquisition, and analog-to-digital converter are not\nconsidered because the detection circuit is implemented outside\nthe gate driver, and in [12], a fuzzy-based approach for the\ndiagnosis of open circuit of the device by using also the current-\ntrajectory approach is presented, but the implementation is not\nin real time. Likewise, in [20], an algorithm of fault detection in\na pulsewidth modulation (PWM) inverter based on the current\ntrajectory and fuzzy signatures is implemented in an embedded\nsystem by using a digital signal processor (DSP) and an FPGA\nin order to share the tasks of control and diagnosis, but the\nshort-circuit failure in the device is not carried out; therefore,\nboth techniques are not suitable for a tolerant voltage-source-\ninverter system because this failure type is very common.\nIn the literature, various approaches have been proposed to\ndetect IGBT failures by short circuit based on the measurement\nof the collector voltage, the collector current, the gate voltage,\nor the induced voltage across the emitter stray inductance [21]\u2013\n[25]. However, the implementation of fault-detection circuits\nhas higher cost, larger con\ufb01guration, and lower performance at\ntransi"
     },
     {
@@ -123,7 +123,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 189,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "ge,\nor the induced voltage across the emitter stray inductance [21]\u2013\n[25]. However, the implementation of fault-detection circuits\nhas higher cost, larger con\ufb01guration, and lower performance at\ntransient, e.g., in [25], a short-circuit detecting scheme using\nthe gate-voltage pattern at turn-on switching of IGBT was\nproposed; the problem is that the typical induced interference\nin the gate signal at turn-on transient of IGBT and experimental\ntests has not been considered.\nIn this paper, a new technique and experimental results of an\nanalog circuit implemented in the gate driver to detect failure\nby open circuit and short circuit in the IGBT are presented.\nThe proposal is based on the gate-voltage behavior at turn-on\ntransient of the IGBTs of an IM drive.\nII. FAULT DETECTION IN POWER DEVICE\nFOR MOTOR DRIVE\nIn the literature, several techniques used have been reported\nto detect failures in the inverter of an IM drive system. Failures\nby short-circuit and open-circuit devices can be detected based\non mathematical transforms such as the fast Fourier transform\n[26], discrete Fourier transform [27], and Park transform [28]\nThe main advantage of these techniques is that they may locate\nthe"
     },
     {
@@ -135,7 +135,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 187,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "ed based\non mathematical transforms such as the fast Fourier transform\n[26], discrete Fourier transform [27], and Park transform [28]\nThe main advantage of these techniques is that they may locate\nthe damaged inverter leg by only analyzing the measured vari-\nable. The problem of these techniques is the very long detection\ndelay time that is not suitable for avoiding a short-circuit fault\nthat may spread immediately to the complementary power\ndevice of the same inverter leg in a failure-tolerant system.\nOther techniques used to detect faults in power devices are\nbased on the voltage-level change, such as in the control signal\n[17], normalized current deviation [20], [29], and voltage slope\n[5], [13]. These techniques are faster than the previously men-\ntioned techniques with regard to the delay time. However, the\nfault location requires too many measurements. In summary,\nfault-detection techniques in power devices applied to motor\ndrive can be classi\ufb01ed as follows: 1) based on the analysis of the\ncurrent-vector trajectory and the instantaneous frequency [14];\n2) based on \ufb01eld-oriented composition of the voltage harmonics\nat the switching frequency [15], and 3) based on the inherent"
     },
     {
@@ -147,7 +147,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 190,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "sis of the\ncurrent-vector trajectory and the instantaneous frequency [14];\n2) based on \ufb01eld-oriented composition of the voltage harmonics\nat the switching frequency [15], and 3) based on the inherent\ncharacteristic of continuous PWM [17]. The last technique is\nmore useful to be considered because the delay time for fault\ndetection is reduced. Nevertheless, the detection is not achieved\nin an early stage because all analysis is taken in steady state. In\naddition, the detection in the power device is limited to open-\ncircuit and inverter-leg failures, respectively.\nWhen a failure occurs in the power device of the IM drive,\nit is possible to maintain a no-degraded constant operation;\ntherefore, a fault-tolerant mechanism is necessary in order\nto replace the damaged element in the material redundancy\nframework.\nA. Material Redundancy\nIn the literature, two material-redundancy types in the digital-\nsystem area have been published [30] and retaken in the control-\nsystem area [31]. These material redundancies are static and\ndynamic. In both cases, a standby unit is used to replace the\ndamaged element, but in the static material redundancy, it is\nnot applied to a power system because the e"
     },
     {
@@ -159,7 +159,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 189,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "rial redundancies are static and\ndynamic. In both cases, a standby unit is used to replace the\ndamaged element, but in the static material redundancy, it is\nnot applied to a power system because the energy manipulated\nin this system type is large. In this way, the dynamic material\nredundancy uses fewer modules at the cost of more information\nprocessing and, consequently, at the cost of more response time.\nAlso, in this redundancy type, a module is usually working in\n\n\n[Page 3]\nRODR\u00cdGUEZ-BLANCO et al.: FAILURE-DETECTION STRATEGY FOR IGBT BASED ON GATE-VOLTAGE BEHAVIOR\n1627\nFig. 1.\nFault-tolerant schemes with dynamic material redundancy.\ncontinuous operation, and when a fault occurs, then the backup\nunit takes over. This requires fault detection to be observed if\nthe operational modules become faulty. After the fault detection\nand isolation (diagnosis), the recon\ufb01guration task is to isolate\nelectrically and replace the damaged element, as shown in\nFig. 1.\nThe dynamic redundancy has found a special application in\nthe fault-tolerant electric systems due to its modular \ufb02exibility,\nas in the case of three-phase IM drive where the fault of power-\nelectronic device can be tolerated without"
     },
     {
@@ -171,7 +171,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 194,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "a special application in\nthe fault-tolerant electric systems due to its modular \ufb02exibility,\nas in the case of three-phase IM drive where the fault of power-\nelectronic device can be tolerated without affecting the control\nalgorithm.\nB. Motor Drive With Material Redundancy\nMost of the fault-tolerant schemes reported in the literature\nare focused on the analysis of the IM drive. They use high-speed\nfuses for the electrical-isolation stage [6]\u2013[10], and also, some\nof them use fault-detection techniques based on the switching\nwaveform of the power-electronic device [7], [8]. In both cases,\nthe most suitable replacement time to reduce the tracking\nproblem of the motor current has not been analyzed; in addition,\nthe replacement of damaged element is done by an auxiliary\npole instead of a single IGBT module. In this paper, a fault-\ntolerant IM drive scheme reported in [11] and shown in Fig. 2\nis used to emphasize the fault-detection technique proposed.\nThe fault-tolerant IM drive system of Fig. 2 is composed\nof a three-phase inverter based on eight single IGBT modules.\nThe system designed is enabled to tolerate two IGBT faults,\nlocated in a different position of the inverter, by means of"
     },
     {
@@ -183,7 +183,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 195,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "ig. 2 is composed\nof a three-phase inverter based on eight single IGBT modules.\nThe system designed is enabled to tolerate two IGBT faults,\nlocated in a different position of the inverter, by means of bidi-\nrectional switches S(a,b,c) and S(a,b,c)(p,n) in order to replace\nthe damaged element. Therefore, any IGBT devices Q(a,b,c)p\nand Q(a,b,c)n can be replaced by the material redundancy Qp\nand Qn, respectively, e.g., when Qcn fails, then Qn is the\nreplacement device; Sc is the switch for isolation, and Scn is\nthe switch for connection.\nThe detection and the location of the fault are the \ufb01rst and the\nmost important events in a tolerant-system sequence, as shown\nin Fig. 3. After that, the tolerant mechanism is activated in order\nto guarantee process-operation continuity of the motor drive\nsystem used; the electrical isolation and the replacement of the\ndamaged element are made possible by the activation of the\nisolation switches S(a,b,c) and connection switches S(a,b,c)(p,n).\nThe fault detection and the identi\ufb01cation of the damage\nelement are the events to achieve as soon as possible in a fault-\ntolerant sequence. In this way, in this paper, a novel early fault-\ndetection technique is"
     },
     {
@@ -195,7 +195,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 207,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "tection and the identi\ufb01cation of the damage\nelement are the events to achieve as soon as possible in a fault-\ntolerant sequence. In this way, in this paper, a novel early fault-\ndetection technique is presented, which is able to detect a fault\nFig. 2.\nFault-tolerant scheme for three-phase IM drive.\nFig. 3.\nFault-tolerant sequence for an IM drive system.\nby short circuit and open circuit in the power devices of the\ninverter. The technique proposed is achieved by monitoring the\ngate signal of an IGBT, which is presented in the following\nsection.\nIII. FAULT DETECTION IN THE IGBT BASED ON THE\nGATE-SIGNAL MEASUREMENT\nA. Behavior of IGBT Gate-Voltage Signal\nThe analysis of this technique is derived from the equivalent\ncircuit seen from the gate to source of the IGBT. The region\nfrom the gate to drain of the IGBT is modeled by CGD, which is\nthe most vulnerable region to fail because there is a great mobil-\nity of carrier in the channel during the IGBT turn-on transient.\nThis region is formed by variable capacitance CGDJ, which\nmodels the depletion zone, and a \ufb01xed capacitance COXD,\nwhich models the oxide zone [32]. Fig. 4 shows a simpli\ufb01ed\nequivalent circuit that is seen from the gate to"
     },
     {
@@ -207,7 +207,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 198,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "by variable capacitance CGDJ, which\nmodels the depletion zone, and a \ufb01xed capacitance COXD,\nwhich models the oxide zone [32]. Fig. 4 shows a simpli\ufb01ed\nequivalent circuit that is seen from the gate to emitter obtained\nwithout taking into account the small modulation voltage of\nthe base resistor and the small turn-on voltage of the diode of\nthe internal bipolar junction transistor of the IGBT. Then, we\nassumed that the drain D and collector C terminals are equal.\nTherefore, the collector-to-emitter voltage VCE and the drain-\nto-source voltage VDS of the IGBT are considered equivalent.\n\n\n[Page 4]\n1628\nIEEE TRANSACTIONS ON INDUSTRIAL ELECTRONICS, VOL. 58, NO. 5, MAY 2011\nFig. 4.\nIGBT equivalent circuit seen from the gate to emitter.\nEquation (1) is taken from the IGBT physical model [33] and\ndescribes the behavior of the depletion gate\u2013drain region\nCGDJ = AGD\n\u0002\u0003 q \u00b7 NB \u00b7 \u03b5si\n2(VDS \u2212VGS)\n\u0004\n.\n(1)\nIn the previous expression, the variation of some design and\nsemiconductor-material parameters, such as the gate\u2013drain area\nAGD and dielectric constant \u03b5si, can cause a signi\ufb01cant mod-\nulation of CGDJ into the depletion region. Variation of these\nparameters can appear in the IGBT with destructiv"
     },
     {
@@ -219,7 +219,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 221,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "such as the gate\u2013drain area\nAGD and dielectric constant \u03b5si, can cause a signi\ufb01cant mod-\nulation of CGDJ into the depletion region. Variation of these\nparameters can appear in the IGBT with destructive effect [34].\nThe modulation of CGDJ also affects the characteristic equation\nof CGD in (2), which is de\ufb01ned by the transient behavior of VDS\nand VGS during the IGBT turn on (VDS > VGS)\nCGD =\n\u0005\u0005\u0005\u0005\u0005\nCOXD\nif\n\u2212\u2192(VDS \u2264VGS)\nCOXD\u00b7CGDJ\nCOXD+CGDJ\nif\n\u2212\u2192(VDS > VGS).\n(2)\nThe gate current IG is deduced from the equivalent circuit\nthat it is seen from the gate to emitter of the IGBT in Fig. 1 and\nis given by\nIG(t) = CGS\ndVGS(t)\ndt\n\u2212CGD\ndVDS(t)\ndt\n+ CGD\ndVGS(t)\ndt\n.\n(3)\nIn the previous expression, it can be noted that IG is directly\naffected by CGD, which causes a signi\ufb01cant change under\nthe IGBT gate voltage. The changes of the IGBT gate are\ncharacterized by three phases due to capacitance variations, and\nit is shown in Fig. 5 for a speci\ufb01c experiment of a chopper\ncircuit when a constant gate current IG is forced to circulate\nduring the IGBT turn on to have a better de\ufb01nition of the\naforementioned behavior phases.\nThe behavior during the turn on of the IGBT depends on the\nVGS and VDS voltage level"
     },
     {
@@ -231,7 +231,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 223,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "IG is forced to circulate\nduring the IGBT turn on to have a better de\ufb01nition of the\naforementioned behavior phases.\nThe behavior during the turn on of the IGBT depends on the\nVGS and VDS voltage levels following different phases.\nPhase 1 (t1 < t < t2): At this point, VDS(t) is greater; then,\nthe equivalent capacitance that it is seen from the gate to\nemitter of the IGBT only depends on CGS because at this\npoint, CGDJ is smaller than COXD, and therefore, CGD is\nomitted to simplify the analysis.\nPhase 2 (t2 < t < t3): This phase has the most complex be-\nhavior because at this point, a plateau zone in the gate\nsignal is generated by the Miller effect causing the \ufb01rst and\nthird terms of IG(t) in (3) to be neglected by simplicity;\nFig. 5.\nExperimental gate charge.\nFig. 6.\nSimulation of gate-voltage signal varying AGD.\nthen, the gate current IG(t) is determined only by the\nnegative slope of VDS, a magnitude of CGD when CGD =\nCOXD + CGDJ.\nPhase 3 (t3 < t < t4): During this phase and according to (2),\nthe value of CGD can be considered equal to COXD be-\ncause VDS(t) acquires a smaller value than VGS(t) during\nIGBT turn-on; then, the total equivalent capacitance that\nis seen from the gate t"
     },
     {
@@ -243,7 +243,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 199,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "to (2),\nthe value of CGD can be considered equal to COXD be-\ncause VDS(t) acquires a smaller value than VGS(t) during\nIGBT turn-on; then, the total equivalent capacitance that\nis seen from the gate to emitter is the electrical parallel of\nCOXD and CGS.\nAs has been mentioned previously, one of the electrical\nparameters most affected during degradation is the capacitance\nCGDJ. Therefore, it is possible to use the modulation of the\ndepletion zone in order to detect faults by short circuit or open\ncircuit in the IGBT by means of the Phase 2 measurement. The\nbasic behavior to simulate short circuit and open circuit is to\nincrease and to decrease CGDJ, respectively. This behavior can\nbe shown in the parametric analysis shown in Fig. 6, which was\nimplemented in PSpice software, where the capacitance CGDJ\nis modi\ufb01ed indirectly by means of AGD variation.\nIn Fig. 6, the fault zone is shown during IGBT turn on; the\nfault can be evaluated from VT (threshold voltage) to upper\ngate voltage, which can assure full evaluation of the depletion\n\n\n[Page 5]\nRODR\u00cdGUEZ-BLANCO et al.: FAILURE-DETECTION STRATEGY FOR IGBT BASED ON GATE-VOLTAGE BEHAVIOR\n1629\nFig. 7.\nExperimental chopper circuit with resisti"
     },
     {
@@ -255,7 +255,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 200,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "an assure full evaluation of the depletion\n\n\n[Page 5]\nRODR\u00cdGUEZ-BLANCO et al.: FAILURE-DETECTION STRATEGY FOR IGBT BASED ON GATE-VOLTAGE BEHAVIOR\n1629\nFig. 7.\nExperimental chopper circuit with resistive load.\nregion (VDS < VGS); taking into account most of the IGBTs,\nthe VT parameter is approximately a quarter of the gate\u2013emitter\nsaturation voltage continuous VGES, which commonly is\n\u00b120 V, and the plateau zone of the gate voltage is almost\nconstant when the gate voltage is 5 V. Then, the threshold\nlevels can be de\ufb01ned from VT to VT + 5 V in order to assure\nthe existence of a depletion region (Phase 2). Additionally, the\nPhase 2 behavior can also be used to avoid physical destruction\nof the IGBT and to activate quickly the tolerant mechanisms\nin fast dynamic systems, such as the IM drive. Fig. 7 shows an\nexperimental test obtained in the IGBT gate signal for fault-free\ncase and faulty case by short circuit caused by overtemperature\nand limited to nominal current in order to avoid fault propaga-\ntion. The signal obtained for the faulty case during short-circuit\nfailure can be generalized for whatever application since the\nCGDJ is reduced when AGD and/or \u03b5si are decreasing, which\nnorm"
     },
     {
@@ -267,7 +267,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 190,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "propaga-\ntion. The signal obtained for the faulty case during short-circuit\nfailure can be generalized for whatever application since the\nCGDJ is reduced when AGD and/or \u03b5si are decreasing, which\nnormally occur when there are thermal stress in the IGBT [35].\nIn a real-time application, the inductive interference in the\nIGBT gate-voltage signal is a great problem, but it is well\nknown that this problem is mainly generated by the emitter\ninductance Le. Therefore, it can then be solved by character-\nizing the parasitic elements in order to consider them in the\nfault-detection circuit design based on a high-speed differential\nampli\ufb01er with high input impedance.\nThe IGBT type used for the experimental circuit is the dis-\ncrete device GT15Q101 with high-voltage switching (1200 V),\nlow collector current (15 A), and TO-247 package. Experimen-\ntal results in Fig. 7 show the validity of the IGBT destructive\nanalysis proposed for failure detection by using the gate-voltage\nsignal.\nB. Fault-Detection Circuit Proposed\nThe detection-circuit design is based on the measurement\nof the gate signal. The principle of the design consists of\nmeasuring the energy of the IGBT gate charge during the turn\no"
     },
     {
@@ -279,7 +279,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 220,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "ion Circuit Proposed\nThe detection-circuit design is based on the measurement\nof the gate signal. The principle of the design consists of\nmeasuring the energy of the IGBT gate charge during the turn\non, from VT up to VT + 5 V, giving an output signal P1,\nwhich is evaluated by using detection thresholds V Z1, V Z2,\nand V Z3 in order to determine the IGBT short circuit or open\ncircuit. Fig. 8 shows detection windows V 1, V 2, and V 3 for\nhysteresis zones of the fault-free and faulty cases.\nFig. 8.\nTime diagram to determine the P1 width and P2 amplitude.\nFig. 9.\nFault-detection scheme in the IGBT based on the measurement and\nevaluation in the turn-on transient period.\nFig. 9 shows the block diagram of the proposed detection\ncircuit to evaluate the gate energy of the IGBT.\nThe P1 pulsewidth is determined by a window detector,\nwhich is composed of a comparator circuit with hysteresis. This\nis capable of neglecting the turn-off phase, and thus, the limit\nof the detection window is established at the turn-on phase by\nmeans of two level comparators C1 and C2, which are tuned\nfrom the threshold voltage VT to VT + 5 V in such a way that\nthe width of P1 may be proportional to the dynamics of"
     },
     {
@@ -291,7 +291,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 231,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "d at the turn-on phase by\nmeans of two level comparators C1 and C2, which are tuned\nfrom the threshold voltage VT to VT + 5 V in such a way that\nthe width of P1 may be proportional to the dynamics of the\nPhase 2 of gate signal V \u2217\nGE of the IGBT. Note that V \u2217\nGE is the\nIGBT gate voltage but without the induced interference caused\nby the emitter inductance Le.\nDuring the turn-on time of P1, the charge capacitor C is\npumped by a constant current source I; then, switch S1 is\nenabled, and a sawtooth wave is produced (P2), and during\nthe turn off of P1, capacitor C is short circuited in order to\ndischarge it to 0 V. Therefore, the magnitude of the voltage\nreached is proportional to the width of P1.\nThen, the P2 voltage value is compared with three detection\nthreshold levels V Z1, V Z2, and V Z3, located around VT ,\nVT + 5 V, and Vsat, but in fact, the tracking is performed by\nthe varying of C and Ik values. This comparison generates the\nZ1, Z2, and Z3 signals. Finally, these signals are evaluated\nat the end of P1 by the decision circuit which determines the\n\n\n[Page 6]\n1630\nIEEE TRANSACTIONS ON INDUSTRIAL ELECTRONICS, VOL. 58, NO. 5, MAY 2011\nFig. 10.\nDecision criterion. (a) Threshold v"
     },
     {
@@ -303,7 +303,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 203,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "aluated\nat the end of P1 by the decision circuit which determines the\n\n\n[Page 6]\n1630\nIEEE TRANSACTIONS ON INDUSTRIAL ELECTRONICS, VOL. 58, NO. 5, MAY 2011\nFig. 10.\nDecision criterion. (a) Threshold voltage level. (b) Diagnostic matrix.\nFig. 11.\nMeasurement circuit of V \u2217\nGE.\nqualitative diagnostic of the system (failure-free or short-circuit\nor open-circuit device or initial condition).\nThe diagnostic matrix is shown in Fig. 10 and is very simple;\nthus, the circuit of decision is implemented by using a gate-\nlogic array.\nIt is well known that the induced interference on the IGBT\ngate signal in a typical application can be a critical problem\nduring the measurement. This is due to the emitter inductor\nLe = Le1 + Le2, where Le1 denotes the internal inductance of\nthe device and Le2 denotes the external inductance from the\nemitter to ground. Thus, the problem can be solved characteriz-\ning this parasitic inductance and tuning the V \u2217\nGE measurement\ncircuit, which is formed by two instrumentation ampli\ufb01ers and\na common differential ampli\ufb01er. Fig. 11 shows the detail of the\nmeasurement circuit of V \u2217\nGE.\nThe operation of the measurement circuit of V \u2217\nGE is based on\ndeducing the gate vol"
     },
     {
@@ -315,7 +315,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 224,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "tation ampli\ufb01ers and\na common differential ampli\ufb01er. Fig. 11 shows the detail of the\nmeasurement circuit of V \u2217\nGE.\nThe operation of the measurement circuit of V \u2217\nGE is based on\ndeducing the gate voltage VG without taking into account the\ninduced interference on the Phase 2 of the gate charge which\nis produced by Le. Therefore, the VLe2 ampli\ufb01ed K times is\nreduced to VGE by means of U2, and K is obtained based on the\nvoltage relation of VLe1 and VLe2 of the IGBT and the power-\ncircuit parasitic inductances according to\nV \u2217\nGE = VG \u2212K(VLe2)\n(4)\nwhere\nVLe1 = (K \u22121)VLe2\n(5)\nK =\n\u0005\u0005\u0005\u0005\u0005\n(1 + n)/n\nif\n\u2212\u2192Le1 < Le2\n(1 + n)\nif\n\u2212\u2192Le1 > Le2\n(6)\nwhere n is the relationship Le2/Le1.\nAn important aspect is that the K value can change for differ-\nent applications. It is due to the parasitic inductance Le, which\nFig. 12.\nFault-detection circuit implemented in the IGBT gate driver of IM\ndrive. (a) Fault-tolerant system. (b) Scheme implemented.\ncan also change. Obviously, this procedure has to be imple-\nmented for different applications, and the tuning of this K value\nis a part of a test setup to be developed for the system design.\nOn the other hand, for a better evaluation of the gate signal,\nthe tu"
     },
     {
@@ -327,7 +327,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 198,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "mented for different applications, and the tuning of this K value\nis a part of a test setup to be developed for the system design.\nOn the other hand, for a better evaluation of the gate signal,\nthe turn-on transient period can be ampli\ufb01ed by increasing the\nvalue of the external gate resistance RG in order to have a\nslow pumped of the gate but sacri\ufb01cing the maximum operating\nfrequency of the converter. The compromise is to establish the\nturn-on transient period to three times greater than the total\nfault-detection time. In this case, the delay time of the fault-\ndetection circuit proposed is 2.065 \u03bcs, which is not advisable\nfor high frequency, but this technique becomes very interesting\nfor medium power, and particularly for high-power motor-drive\napplications, since the commutation frequency for medium\npower is less than 25 kHz, and for high power, it is around\n6 kHz.\nIV. EXPERIMENTAL RESULTS\nIn order to verify the performance of the fault-detection\ncircuit proposed, an experimental setup of the fault-tolerant\nIM drive system has been developed (see Fig. 12), which is\nused to validate the novel detection technique proposed. The\nexperimental setup is composed of a three-phase IM of"
     },
     {
@@ -339,7 +339,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 190,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "etup of the fault-tolerant\nIM drive system has been developed (see Fig. 12), which is\nused to validate the novel detection technique proposed. The\nexperimental setup is composed of a three-phase IM of 1 hp,\nan inverter with six IGBTs, a dc-link voltage \ufb01xed at 300 V,\nand an open-loop control Volts/Hertz generated by a DSP\n(TMS320F2812) with a switching frequency imposed at 10 kHz\nusing a sinusoidal PWM technique; the bidirectional switches\nfor connection and isolation are formed by the back-to-back\nIGBT con\ufb01guration, and the tolerant decision circuit has been\n\n\n[Page 7]\nRODR\u00cdGUEZ-BLANCO et al.: FAILURE-DETECTION STRATEGY FOR IGBT BASED ON GATE-VOLTAGE BEHAVIOR\n1631\nFig. 13.\nExperimental test of detection circuit by different cases. (a) Failure\nby short circuit. (b) Failure-free. (c) Failure by open circuit.\nimplemented by an integer circuit programmable logic device\n(TIBPAL22V10ACNT).\nFig. 13 shows the experimental results based on the detec-\ntion circuit proposed; the IGBT used is a discrete type IGBT\n(G4PH30K). The operating condition is set up by a collector\ncurrent of IC = 10 A, and the test collector\u2013emitter voltage\nVCE = 300 V. The failure-free and faulty conditions of the\nfa"
     },
     {
@@ -351,7 +351,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 198,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "iscrete type IGBT\n(G4PH30K). The operating condition is set up by a collector\ncurrent of IC = 10 A, and the test collector\u2013emitter voltage\nVCE = 300 V. The failure-free and faulty conditions of the\nfault-detection circuit are emulated by reducing and extend-\ning the gate-signal plateau. It is done by varying the gate-\nFig. 14.\nExperimental results under short-circuit failure.\nresistance value RG signi\ufb01cantly, e.g., the failure by short-\ncircuit device is obtained by reducing RG = 0.1 \u03a9 (RG1),\nthe failure by open-circuit device is obtained by incrementing\nRG = 1 k\u03a9 (RG2), and the failure-free condition is obtained\nby using RG = 100 \u03a9 (RG3).\nThe diagnosis matrix of Fig. 10(b) is easily evaluated if the\nZ1, Z2, and Z3 signals are maintained and evaluated after\nthe P1 pulse because at this moment, the detection window is\n\ufb01nished. Therefore early fault detection is obtained.\nThe most important issue of this technique is the reduction\nof time for fault detection. This is very important in a failure-\ntolerant IM drive based on the material-redundancy approach\nbecause it permits activating correctly the replacement mech-\nanism of the damaged element in order to reduce the speed-\ntracking e"
     },
     {
@@ -363,7 +363,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 193,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "failure-\ntolerant IM drive based on the material-redundancy approach\nbecause it permits activating correctly the replacement mech-\nanism of the damaged element in order to reduce the speed-\ntracking error during the fault transient and also to avoid the\nfailure, particularly for the short-circuit device, which can be\npropagated to other power devices on the same leg of the\ninverter. Therefore, the fault-detection mechanism must be\nactivated in less than 10 \u03bcs.\nFig. 14 shows the experimental results for current waveform\napplying the detection technique proposed for a failure by\nshort circuit. The experimental conditions of the failure are\nas follows: Qcn fails by short circuit, the electrical isolation\nestimated is 5 ms after the fault detection, and replacement\ntime of the damaged element is at the next zero crossing of the\nreference current of the motor.\nWhen a short circuit appears in an inverter, the collector\ncurrent grows up to dangerous values, and although the IGBT\nsupports large transient currents that are not longer that 10 \u03bcs,\nthe current can exceed that time and \ufb01nally destroy it. There-\nfore, early detection is very important because it not only\nprotects the device unde"
     },
     {
@@ -375,7 +375,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 199,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "e transient currents that are not longer that 10 \u03bcs,\nthe current can exceed that time and \ufb01nally destroy it. There-\nfore, early detection is very important because it not only\nprotects the device under test and the complementary device of\nthe same leg by disabling the gate signal but also continues with\nthe tolerant sequence. This is accomplished by anticipating the\nexecution of the electrical-isolation stage whose delay time is\nmainly attributed to the response time of the fuses used, which\nis re\ufb02ected in a smaller tracking error of the motor current, as\nlong as the replacement of the damaged element is executed at\n\n\n[Page 8]\n1632\nIEEE TRANSACTIONS ON INDUSTRIAL ELECTRONICS, VOL. 58, NO. 5, MAY 2011\na more suitable time. That is because replacing the damaged\nelement in a speed-tracking control system as soon as possible\nis not always the best decision because the control-loop type\ndetermines the best moment to replace the damaged element. In\n[12], for an open-loop or closed-loop control with low dynamic\nresponse, such as volts/hertz strategy, the most suitable time\nto replace the power device is at zero crossing of the motor\ncurrent, whereas for a closed-loop control with fast dyn"
     },
     {
@@ -387,7 +387,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 193,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "ol with low dynamic\nresponse, such as volts/hertz strategy, the most suitable time\nto replace the power device is at zero crossing of the motor\ncurrent, whereas for a closed-loop control with fast dynamic\nresponse, such as \ufb01eld-oriented strategy, the most suitable time\nof replacement is as soon as possible because the time constant\nof the controller is not strongly determined by the magnetic\n\ufb02ux of the motor, which has a long time constant.\nV. CONCLUSION\nA fault-detection circuit based on the IGBT gate-voltage\nbehavior has been proposed, and in addition, this fault-detection\ncircuit has been implemented in the gate drive focused on a mo-\ntor drive. The delay time of the fault-detection circuit obtained\nis less than 3 \u03bcs; thus, this strategy is suitable for fault-tolerant\nmotor drive since the nonlinearities of the inverter as death\ntime, induced interference, and voltage peaks do not affect the\nfault-free operation of the fault-detection circuit in the inverter.\nA disadvantage of this strategy is that it is not generalized\nfor every power device, although the proposed fault-detection\ncircuit can also be applied with MOSFET because the current\nof the channel MOS in the gate voltage"
     },
     {
@@ -399,7 +399,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 185,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "strategy is that it is not generalized\nfor every power device, although the proposed fault-detection\ncircuit can also be applied with MOSFET because the current\nof the channel MOS in the gate voltage is similar. Another\ndisadvantage is that the measurement of VLe2 that attenuates the\ninduced interference adds an extra voltage sensor to the strategy\nproposed.\nREFERENCES\n[1] L. de Lillo, L. Empringham, P. W. Wheeler, S. Khwan-On, C. Gerada,\nM. N. Othman, and X. Huang, \u201cMultiphase power converter drive\nfor fault-tolerant machine development in aerospace application,\u201d IEEE\nTrans. Ind. Electron., vol. 57, no. 2, pp. 575\u2013583, Feb. 2010.\n[2] Z. Sun, J. Wang, D. Howe, and G. Jewell, \u201cAnalytical prediction of\nshort-circuit current in fault-tolerant permanent magnet machines,\u201d IEEE\nTrans. Ind. Electron., vol. 55, no. 12, pp. 4210\u20134217, Dec. 2008.\n[3] A. Namazi, M. Nourani, and M. Saquib, \u201cA fault-tolerant interconnect\nmechanism for NMR nanoarchitectures,\u201d IEEE Trans. Very Large Scale\nIntegr. (VLSI) Syst., vol. 18, no. 10, pp. 1433\u20131446, Oct. 2010.\n[4] S. Karimi, A. Gaillard, P. Poure, and S. Saadate, \u201cFPGA-based real-\ntime power converter failure diagnosis for wind energy conversion\nsystems,"
     },
     {
@@ -411,7 +411,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 201,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "SI) Syst., vol. 18, no. 10, pp. 1433\u20131446, Oct. 2010.\n[4] S. Karimi, A. Gaillard, P. Poure, and S. Saadate, \u201cFPGA-based real-\ntime power converter failure diagnosis for wind energy conversion\nsystems,\u201d IEEE Trans. Ind. Electron., vol. 55, no. 12, pp. 4299\u20134308,\nDec. 2008.\n[5] Y. Xiong, X. Cheng, Z. J. Shen, C. Mi, H. Wu, and V. K. Garg,\n\u201cPrognostic and warning system for power-electronic modules in\nelectric, hybrid electric, and fuel-cell vehicles,\u201d IEEE Trans. Ind. Elec-\ntron., vol. 55, no. 6, pp. 2268\u20132276, Jun. 2008.\n[6] S. Bolognani, M. Zordan, and M. Zigliotto, \u201cExperimental fault-tolerant\ncontrol of a PMSM drive,\u201d IEEE Trans. Ind. Electron., vol. 47, no. 5,\npp. 1134\u20131141, Oct. 2000.\n[7] N. Bianchi and S. Bolognani, \u201cStrategies for the fault-tolerant current\ncontrol of \ufb01ve phase permanent-magnetic motor,\u201d IEEE Trans. Ind. Appl.,\nvol. 43, no. 4, pp. 960\u2013970, Jul./Aug. 2007.\n[8] B. A. Welchko, T. A. Lipo, T. M. Jahns, and S. E. Schulz, \u201cFault tolerant\nthree-phase AC motor drive topologies: A comparison of features,\ncost, and limitations,\u201d IEEE Trans. Power Electron., vol. 19, no. 4,\npp. 1108\u20131116, Jul. 2004.\n[9] R. L. A. Ribeiro, C. B. Jacobina, E. R. C. da Silva, and A. M. N. L"
     },
     {
@@ -423,7 +423,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 190,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "logies: A comparison of features,\ncost, and limitations,\u201d IEEE Trans. Power Electron., vol. 19, no. 4,\npp. 1108\u20131116, Jul. 2004.\n[9] R. L. A. Ribeiro, C. B. Jacobina, E. R. C. da Silva, and A. M. N. Lima,\n\u201cFault-tolerant voltage-fed PWM inverter AC motor drive systems,\u201d IEEE\nTrans. Ind. Electron., vol. 51, no. 2, pp. 439\u2013446, Apr. 2004.\n[10] P. Barriuso, J. Dixon, P. Flores, and L. Mor\u00e1n, \u201cFault tolerant\nrecon\ufb01guration system for asymmetric multilevel converters using\nbi-directional power switches,\u201d IEEE Trans. Ind. Electron., vol. 56, no. 4,\npp. 1300\u20131306, Mar. 2009.\n[11] M. A. Rodr\u00edguez, A. Claudio, D. Theillio, L. G. Vela, and L. Hern\u00e1ndez,\n\u201cStrategy to replace the damaged element for fault-tolerant induction\nmotor drive,\u201d in Proc. IEEE Appl. Power Electron. Conf., Washington,\nDC, Feb. 15\u201319, 2009, pp. 343\u2013346.\n[12] F. Zidani, D. Diallo, M. El Hachemi Benbouzid, and R. Na\u00eft-Sa\u00efd, \u201cA\nfuzzy-based approach for the diagnosis of fault modes in a voltage-fed\nPWM inverter induction motor drive,\u201d IEEE Trans. Ind. Electron., vol. 55,\nno. 2, pp. 586\u2013593, Feb. 2008.\n[13] J. Klima, \u201cAnalytical investigation of an induction motor drive under\ninverter fault mode operations,\u201d Proc. Inst. Elect"
     },
     {
@@ -435,7 +435,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 185,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "rive,\u201d IEEE Trans. Ind. Electron., vol. 55,\nno. 2, pp. 586\u2013593, Feb. 2008.\n[13] J. Klima, \u201cAnalytical investigation of an induction motor drive under\ninverter fault mode operations,\u201d Proc. Inst. Elect. Eng.\u2014Elect. Power\nAppl., vol. 150, no. 3, pp. 255\u2013262, May 2003.\n[14] P. Lezana, R. Aguilera, and J. Rodr\u00edguez, \u201cFault detection on multicell\nconverter based on output voltage frequency analysis,\u201d IEEE Trans. Ind.\nElectron., vol. 56, no. 6, pp. 2275\u20132283, Jun. 2009.\n[15] F. Richardeau, P. Baudesson, and T. A. Meynard, \u201cFailure-tolerance and\nremedial strategies of a PWM multicell inverter,\u201d IEEE Trans. Power\nElectron., vol. 17, no. 6, pp. 905\u2013912, Nov. 2002.\n[16] S. Caballos, J. Pou, E. Robles, J. Zaragoza, and J. L. Mart\u00edn,\n\u201cPerformance\nevaluation\nof\nfault-tolerant\nneutral-point-clamped\nconverters,\u201d IEEE Trans. Ind. Electron., vol. 57, no. 8, pp. 2709\u20132718,\nAug. 2010.\n[17] T.-J. Klim, W.-C. Lee, and D. S. Hyun, \u201cDetection method for\nopen-circuit fault in neutral-point-clamped inverter systems,\u201d IEEE Trans.\nInd. Electron., vol. 56, no. 7, pp. 2754\u20132763, Jul. 2009.\n[18] B. Lu and S. Sharma, \u201cA survey of IGBT fault diagnostic methods for\nthree-phase power inverters,\u201d in Proc. IEEE Int."
     },
     {
@@ -447,7 +447,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 190,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "stems,\u201d IEEE Trans.\nInd. Electron., vol. 56, no. 7, pp. 2754\u20132763, Jul. 2009.\n[18] B. Lu and S. Sharma, \u201cA survey of IGBT fault diagnostic methods for\nthree-phase power inverters,\u201d in Proc. IEEE Int. Conf. Condition Monit.\nDiagnosis, Apr. 2008, pp. 756\u2013763.\n[19] B. Lu and S. Sharma, \u201cA literature review of IGBT fault diagnostic and\nprotection methods for power inverters,\u201d IEEE Trans. Ind. Appl., vol. 45,\nno. 5, pp. 1770\u20131777, Sep./Oct. 2009.\n[20] W. Sleszynski, J. Nieznanski, and A. Cichowski, \u201cOpen-transistor\nfault diagnostics in voltage-source inverters by analyzing the load\ncurrents,\u201d IEEE Trans. Ind. Electron., vol. 56, no. 11, pp. 4681\u20134688,\nNov. 2009.\n[21] R. S. Chokhawala and S. Sobhani, \u201cSwitching voltage transient protection\nschemes for high-current IGBT modules,\u201d IEEE Trans. Ind. Appl., vol. 33,\nno. 6, pp. 1601\u20131610, Nov./Dec. 1997.\n[22] R. S. Chokhawala, J. Catt, and L. Kiraly, \u201cA discussion on IGBT short-\ncircuit behavior and fault protection schemes,\u201d IEEE Trans. Ind. Appl.,\nvol. 31, no. 2, pp. 256\u2013263, Mar./Apr. 1995.\n[23] R. Pagano, Y. Chen, K. Smedley, S. Musumeci, and A. Raciti, \u201cShort\ncircuit analysis and protection of power module IGBTs,\u201d in Proc.\nIEEE Appl. Powe"
     },
     {
@@ -459,7 +459,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 204,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": ".,\nvol. 31, no. 2, pp. 256\u2013263, Mar./Apr. 1995.\n[23] R. Pagano, Y. Chen, K. Smedley, S. Musumeci, and A. Raciti, \u201cShort\ncircuit analysis and protection of power module IGBTs,\u201d in Proc.\nIEEE Appl. Power Electron. Conf., Austin, TX, Feb. 19\u201323, 2005,\npp. 777\u2013783.\n[24] F. Huang and F. Flett, \u201cIGBT fault protection based on di/dt feed-\nback control,\u201d in Proc. IEEE Power Electron. Spec. Conf., 2007,\npp. 1913\u20131917.\n[25] B. G. Park, J.-B. Lee, D.-S. Hyun, F. Huang, and F. Flett, \u201cA novel\nshort-circuit detecting scheme using turn-on switching characteristic of\nIGBT,\u201d in Conf. Rec. IEEE IAS Annu. Meeting, Edmonton, AB, Canada,\nOct. 5\u20139, 2008, pp. 1\u20135.\n[26] R. L. de Araujo Ribeiro, C. B. Jacobina, E. R. C. da Silva, and\nA. M. N. Lima, \u201cFault detection of open-switch damage in voltage-fed\nPWM motors drive systems,\u201d IEEE Trans. Power Electron., vol. 18, no. 2,\npp. 587\u2013593, Mar. 2003.\n[27] S. F. Farag, R. G. Bartheld, and T. G. Habetler, \u201cIntegrated on-line\nmotor protection system,\u201d in Conf. Rec. IEEE IAS Annu. Meeting,\nMar./Apr. 1996, vol. 2, pp. 21\u201326.\n[28] A. M. S. Mendes and A. J. Marques, \u201cVoltage source inverter fault\ndiagnosis in variable speed AC drives, by the average current Park\u2019s ve"
     },
     {
@@ -471,7 +471,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 194,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "EEE IAS Annu. Meeting,\nMar./Apr. 1996, vol. 2, pp. 21\u201326.\n[28] A. M. S. Mendes and A. J. Marques, \u201cVoltage source inverter fault\ndiagnosis in variable speed AC drives, by the average current Park\u2019s vector\napproach,\u201d in Proc. IEMDC, 1999, pp. 704\u2013706.\n[29] K. Rothenhagen and F. W. Fuchs, \u201cPerformance of diagnosis methods\nfor IGBT open circuit faults in three phase voltage source inverters for\nAC variable speed drives,\u201d in Proc. Eur. Conf. Power Electron. Appl.,\nDresden, Germany, Sep. 2005, pp. 1\u201310.\n[30] A. Aviziens, \u201cFault-tolerant systems,\u201d IEEE Trans. Comput., vol. C-25,\nno. 12, pp. 1304\u20131312, Dec. 1976.\n[31] R. Isermann, R. Schwarz, and S. St\u00f6lzl, \u201cFault-tolerant drive-by-\nwire system,\u201d IEEE Control Syst. Mag., vol. 22, no. 5, pp. 64\u201381,\nOct. 2002.\n[32] C. Yu, J. S. Yuan, and H. Yang, \u201cMOSFET linearity performance degrada-\ntion subject to drain and gate voltage stress,\u201d IEEE Trans. Device Mater.\nRel., vol. 4, no. 4, pp. 681\u2013689, Dec. 2004.\n[33] A. R. Hefner, Jr. and D. L. Blackburn, \u201cAn analytical model for the\nsteady-state and transient characteristics of the power insulated-gate\nbipolar transistor,\u201d Solid State Electron., vol. 31, no. 10, pp. 1513\u20131532,\nOct. 1988.\n\n\n[Page 9]\nR"
     },
     {
@@ -483,7 +483,7 @@
       "page_end": null,
       "character_count": 1199,
       "word_count": 172,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "\u201cAn analytical model for the\nsteady-state and transient characteristics of the power insulated-gate\nbipolar transistor,\u201d Solid State Electron., vol. 31, no. 10, pp. 1513\u20131532,\nOct. 1988.\n\n\n[Page 9]\nRODR\u00cdGUEZ-BLANCO et al.: FAILURE-DETECTION STRATEGY FOR IGBT BASED ON GATE-VOLTAGE BEHAVIOR\n1633\n[34] A. H. Craing, R. H. Randall, and J. Yedinak, \u201cIGBT ghost failures in\nboost topology circuits explained through third quadrant operation,\u201d in\nProc. IEEE Appl. Power Electron. Conf., New Orleans, LA, 2000, vol. 2,\npp. 1103\u20131108.\n[35] M. Trivedi and K. Shenai, \u201cFailure mechanisms of IGBT\u2019s under\nshort-circuit and clamped inductive switching stress,\u201d IEEE Trans. Power\nElectron., vol. 14, no. 1, pp. 108\u2013115, Jan. 1999.\nMarco Antonio Rodr\u00edguez-Blanco (S\u201909\u2013M\u201910)\nreceived the B.Sc. degree in electronics engineering\nfrom the Technological Institute of Orizaba, Orizaba,\nVeracruz, M\u00e9xico, in 1997 and the M.Sc. and Ph.D.\ndegrees in electronics engineering from the National\nCenter for Research and Technological Development\n(cenidet), Cuernavaca, Morelos, Mexico, in 2001 and\n2009, respectively.\nSince 2001, he has been with the Autonomous\nUniversity of Carmen City (UNACAR), Carmen\nCity, Campeche, Mex"
     },
     {
@@ -495,7 +495,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 165,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "nological Development\n(cenidet), Cuernavaca, Morelos, Mexico, in 2001 and\n2009, respectively.\nSince 2001, he has been with the Autonomous\nUniversity of Carmen City (UNACAR), Carmen\nCity, Campeche, Mexico, as a full-time Professor in\nthe Department of Electronics Engineering. His research interests are focused\non the area of electronic-circuit systems, characterization and parameter extrac-\ntion of power-semiconductor devices, and fault detection in motor drives.\nAbraham Claudio-S\u00e1nchez (S\u201996\u2013M\u201900) received\nthe B.Sc. degree and M.Sc. degree in electrical engi-\nneering from the Technological Institute of Laguna,\nTorre\u00b4on, Coahuila, M\u00e9xico, in 1983 and 1987, re-\nspectively, the advance studies degree (DEA), and\nthe Ph.D. degree in electrical engineering (power\nelectronics) from the National Polytechnic Institute\nof Grenoble (INPG), Grenoble, France, in 1992 and\n1995, respectively.\nHe was a Postdoctoral Researcher with the Center\nfor Power Electronics Systems, Virginia Polytech-\nnic Institute and State University, Blacksburg, in 2002. Since 1987, he has\nbeen with the National Center for Research and Technological Development\n(cenidet), Cuernavaca, Morelos, Mexico, as a full-time Profes"
     },
     {
@@ -507,7 +507,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 167,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "ute and State University, Blacksburg, in 2002. Since 1987, he has\nbeen with the National Center for Research and Technological Development\n(cenidet), Cuernavaca, Morelos, Mexico, as a full-time Professor in the Power\nElectronics Group. His \ufb01eld of major interest and experience is characterization\nand modeling of power-semiconductor devices, and he has af\ufb01nity with other\nrelated topics like ac motor control and fault detection.\nDidier Theilliol received the Ph.D. degree in control\nengineering from Nancy-Universit\u00e9, Vandoeuvre-\nl\u00e8s-Nancy, France, in 1993.\nSince 2004, he is a full Professor with the Re-\nsearch Centre for Automatic Control of Nancy\n(CRAN), Nancy University, where he coordinates\nand leads national, European, and international R&D\nprojects in steel industries, wastewater-treatment\nplant, or aerospace domain. He is the Chair of Intel-\nligent Control and Diagnosis working group where\ndifferent French and German research teams are\ninvolved. His current research interests include model-based fault-diagnosis\nmethod synthesis and active fault-tolerant control system design for linear time-\ninvariant, linear parameter-varying, and multilinear systems.\nLuis Gerardo Vela-Vald\u00e9s r"
     },
     {
@@ -519,7 +519,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 169,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "e model-based fault-diagnosis\nmethod synthesis and active fault-tolerant control system design for linear time-\ninvariant, linear parameter-varying, and multilinear systems.\nLuis Gerardo Vela-Vald\u00e9s received the B.Sc. and\nM.Sc. degrees in industrial electronics engineering\nand electrical engineering from the Technological\nInstitute of Laguna, Torre\u00b4on, Coahuila, M\u00e9xico, in\n1986 and 1989, respectively, and the Ph.D. degree\nfrom Universit\u00e9 Henri Poincar\u00e9, Nancy I, Nancy,\nFrance, in 1998.\nSince 1989, he has been with the National Cen-\nter for Research and Technological Development\n(cenidet), Cuernavaca, Morelos, Mexico, as a full-\ntime Professor in the Automatic Control Group. His\nareas of research include control and diagnosis of electrical machines, robotics,\nand adaptive control.\nDr. Vela-Vald\u00e9s was reviewer of the Israel Science Foundation in 2010.\nPedro Sibaja-Ter\u00e1n received the M.Sc. degree in\nelectronics engineering in the area of digital systems\nin the National Center of Research and Technol-\nogy Development (cenidet), Cuernavaca, Morelos,\nMexico, in 2000. He is currently working toward\nthe Ph.D. degree in the Engineering Faculty, Na-\ntional Autonomous University of Mexico (UN"
     },
     {
@@ -531,7 +531,7 @@
       "page_end": null,
       "character_count": 1200,
       "word_count": 169,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "and Technol-\nogy Development (cenidet), Cuernavaca, Morelos,\nMexico, in 2000. He is currently working toward\nthe Ph.D. degree in the Engineering Faculty, Na-\ntional Autonomous University of Mexico (UNAM),\nMexico City, Mexico.\nSince 2002, he has been with the Autonomous\nUniversity of Carmen City (UNACAR), Carmen\nCity, Campeche, Mexico, as a full-time Professor in\nthe Department of Electronics Engineering. His research interests are focused\non the area of electronic-circuit systems, coding for wireless channels, iterative\ndecoding, and recon\ufb01gurable hardware for low-density parity-check codes.\nLeobardo Hern\u00e1ndez-Gonz\u00e1lez (M\u201905) received\nthe B.Sc. degree in electronics communications en-\ngineering and the M.Sc. degree in microelectronics\ndegree from the National Polytechnic Institute of\nM\u00e9xico City, M\u00e9xico City, M\u00e9xico, in 1991 and\n2001, respectively, and the Ph.D. degree in electron-\nics engineering in the area of power electronics from\nthe National Center for Research and Technolog-\nical Development (cenidet), Cuernavaca, Morelos,\nMexico, in 2009.\nSince 1992, he has been a full-time Professor\nwith the ESIME, National Polytechnic Institute of Mexico, Mexico City. His\nresearch interes"
     },
     {
@@ -543,7 +543,7 @@
       "page_end": null,
       "character_count": 990,
       "word_count": 141,
-      "created_at": "2026-07-08T20:12:59",
+      "created_at": "2026-07-09T15:49:43",
       "text": "l Development (cenidet), Cuernavaca, Morelos,\nMexico, in 2009.\nSince 1992, he has been a full-time Professor\nwith the ESIME, National Polytechnic Institute of Mexico, Mexico City. His\nresearch interests are modeling of power devices and failure detection and\ncharacterization.\nJesus Aguayo-Alquicira (S\u201900\u2013M\u201904) received the\nB.Sc. degree in electromechanical engineering from\nthe Technological Institute of Zacatepec, Zacatepec,\nMorelos, M\u00e9xico, in 1995 and the M.Sc. and Ph.D.\ndegrees in the area of power electronics from the\nNational Center for Research and Technological De-\nvelopment (cenidet), Cuernavaca, Morelos, in 2000\nand 2004, respectively.\nSince 2006, he has been with the cenidet,\nCuernavaca, as a full-time Professor in the Power\nElectronics Group. His \ufb01eld of major interest and ex-\nperience is fault-tolerant system and characterization of power-semiconductor\ndevices; he has af\ufb01nity with other related topics like ac motor control and fault\ndetection of electric machines."
     }
   ]
