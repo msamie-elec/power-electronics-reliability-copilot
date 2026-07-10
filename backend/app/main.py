@@ -36,7 +36,10 @@ and service modules.
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import documents, embeddings, graph, rag, search, upload
+from app.core.logging_config import RequestIdMiddleware, configure_logging
+from app.core.telemetry import configure_telemetry
+
+from app.api import documents, embeddings, graph, health, rag, search, upload
 from app.api.knowledge_documents import router as knowledge_documents_router
 from app.config import APP_NAME, APP_VERSION, FRONTEND_ORIGIN
 from app.api.knowledge_chunks import router as knowledge_chunks_router
@@ -51,10 +54,14 @@ from app.api.knowledge_graph_retrieval import router as knowledge_graph_retrieva
 from app.api.evidence_reasoning import router as evidence_reasoning_router
 from app.api.engineering_copilot import router as engineering_copilot_router
 
+configure_logging()
+
 app = FastAPI(
     title=APP_NAME,
     version=APP_VERSION,
 )
+
+app.add_middleware(RequestIdMiddleware)
 
 app.add_middleware(
     CORSMiddleware,
@@ -74,6 +81,9 @@ def health_check() -> dict:
     }
 
 
+configure_telemetry(app)
+
+app.include_router(health.router)
 app.include_router(upload.router)
 app.include_router(documents.router)
 app.include_router(embeddings.router)

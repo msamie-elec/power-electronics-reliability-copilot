@@ -200,3 +200,26 @@ The following deployment stages will be implemented in future releases:
 - Managed Identity
 - CI/CD using GitHub Actions
 - Bicep Infrastructure as Code
+
+
+## Azure Key Vault Workflow
+
+The repository now supports enterprise-grade secret management using Azure Key Vault.
+
+### Configuration Files
+
+| File | Purpose |
+|------|---------|
+| azure.local.env | Azure infrastructure configuration (non-secret). |
+| azure.secrets.local.env | Local development secrets. Never commit this file. |
+
+### Key Vault Workflow
+
+1. 01-login.ps1
+2. 02-create-resource-group.ps1
+3. 05-create-keyvault.ps1
+4. 05a-assign-keyvault-rbac.ps1
+5. 05b-import-keyvault-secrets.ps1
+6. 05c-validate-keyvault.ps1
+
+The backend retrieves secrets through the Secret Service abstraction rather than directly from environment variables.
