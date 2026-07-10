@@ -1,14 +1,12 @@
 """
-Integration tests for Sprint 5.11 Evidence-backed AI Reasoning API.
-
-Covered endpoint:
-
-POST /evidence-reasoning/context
+Integration tests for Evidence-backed AI Reasoning API.
 
 Security note:
-Do not print response.json(), environment variables, API keys,
-Neo4j credentials, OpenAI keys, or raw exception output in these tests.
+These tests use mocked reasoning context data and must not print secrets,
+environment variables, API keys, connection strings, or credentials.
 """
+
+from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
@@ -19,11 +17,39 @@ TEST_DOCUMENT_ID = "DOC-B3198A5"
 MISSING_DOCUMENT_ID = "DOC-UNKNOWN123"
 TEST_QUESTION = "Why does VCE(sat) increase during power cycling?"
 
+MOCK_REASONING_CONTEXT = {
+    "status": "success",
+    "documentId": TEST_DOCUMENT_ID,
+    "question": TEST_QUESTION,
+    "semanticEvidence": [
+        {
+            "chunkId": "DOC-B3198A5-CHUNK-00001",
+            "documentId": TEST_DOCUMENT_ID,
+            "text": "VCE(sat) can increase as IGBT module degradation progresses.",
+            "score": 0.91,
+            "sourceDocument": "test_fixture.pdf",
+        }
+    ],
+    "graphEvidence": {
+        "entities": [],
+        "relationships": [],
+    },
+    "reasoningContext": {
+        "semanticEvidenceCount": 1,
+        "graphEntityCount": 0,
+        "graphRelationshipCount": 0,
+        "readyForLLM": True,
+    },
+}
+
 
 client = TestClient(app)
 
 
-def test_build_reasoning_context_success():
+@patch("app.api.evidence_reasoning.evidence_reasoning_service.build_reasoning_context")
+def test_build_reasoning_context_success(mock_build_context):
+    mock_build_context.return_value = MOCK_REASONING_CONTEXT
+
     response = client.post(
         "/evidence-reasoning/context",
         json={
@@ -56,7 +82,17 @@ def test_build_reasoning_context_success():
     assert data["reasoningContext"]["semanticEvidenceCount"] >= 1
 
 
-def test_build_reasoning_context_respects_top_k():
+@patch("app.api.evidence_reasoning.evidence_reasoning_service.build_reasoning_context")
+def test_build_reasoning_context_respects_top_k(mock_build_context):
+    mock_build_context.return_value = {
+        **MOCK_REASONING_CONTEXT,
+        "semanticEvidence": MOCK_REASONING_CONTEXT["semanticEvidence"][:1],
+        "reasoningContext": {
+            **MOCK_REASONING_CONTEXT["reasoningContext"],
+            "semanticEvidenceCount": 1,
+        },
+    }
+
     response = client.post(
         "/evidence-reasoning/context",
         json={
@@ -75,7 +111,17 @@ def test_build_reasoning_context_respects_top_k():
     assert data["reasoningContext"]["semanticEvidenceCount"] <= 2
 
 
-def test_build_reasoning_context_respects_graph_limit():
+@patch("app.api.evidence_reasoning.evidence_reasoning_service.build_reasoning_context")
+def test_build_reasoning_context_respects_graph_limit(mock_build_context):
+    mock_build_context.return_value = {
+        **MOCK_REASONING_CONTEXT,
+        "reasoningContext": {
+            **MOCK_REASONING_CONTEXT["reasoningContext"],
+            "graphEntityCount": 0,
+            "graphRelationshipCount": 0,
+        },
+    }
+
     response = client.post(
         "/evidence-reasoning/context",
         json={
@@ -119,4 +165,4 @@ def test_empty_question_rejected():
         },
     )
 
-    assert response.status_code in [400, 422]
+    assert response.status_code == 422

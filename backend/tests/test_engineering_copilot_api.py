@@ -1,15 +1,9 @@
 """
-Integration tests for Sprint 5.12 Engineering Copilot API.
-
-Covered endpoint:
-
-POST /engineering-copilot/ask
+Integration tests for Engineering Copilot API.
 
 Security note:
-Do not print response.json(), environment variables, API keys,
-Neo4j credentials, OpenAI keys, or raw exception output in these tests.
-
-The LLM call is mocked so these tests do not use OpenAI credits.
+These tests do not call live LLM providers and must not print secrets,
+environment variables, API keys, connection strings, or credentials.
 """
 
 from unittest.mock import patch
@@ -39,13 +33,30 @@ Medium.
 Inspect the module for bond wire and thermal cycling related degradation.
 """
 
+MOCK_ENGINEERING_RESULT = {
+    "answer": MOCK_ANSWER,
+    "semanticEvidence": [
+        {
+            "chunkId": "DOC-B3198A5-CHUNK-00001",
+            "documentId": TEST_DOCUMENT_ID,
+            "text": "VCE(sat) can increase as IGBT module degradation progresses.",
+            "score": 0.91,
+            "sourceDocument": "test_fixture.pdf",
+        }
+    ],
+    "graphEvidence": {
+        "entities": [],
+        "relationships": [],
+    },
+}
+
 
 client = TestClient(app)
 
 
-@patch("app.services.engineering_answer_service.generate_evidence_backed_answer")
-def test_engineering_copilot_ask_success(mock_generate_answer):
-    mock_generate_answer.return_value = MOCK_ANSWER
+@patch("app.api.engineering_copilot.engineering_answer_service.answer_question")
+def test_engineering_copilot_ask_success(mock_answer_question):
+    mock_answer_question.return_value = MOCK_ENGINEERING_RESULT
 
     response = client.post(
         "/engineering-copilot/ask",
@@ -73,12 +84,12 @@ def test_engineering_copilot_ask_success(mock_generate_answer):
     assert isinstance(data["semanticEvidence"], list)
     assert isinstance(data["graphEvidence"], dict)
 
-    assert mock_generate_answer.called is True
+    assert mock_answer_question.called is True
 
 
-@patch("app.services.engineering_answer_service.generate_evidence_backed_answer")
-def test_engineering_copilot_response_contains_evidence(mock_generate_answer):
-    mock_generate_answer.return_value = MOCK_ANSWER
+@patch("app.api.engineering_copilot.engineering_answer_service.answer_question")
+def test_engineering_copilot_response_contains_evidence(mock_answer_question):
+    mock_answer_question.return_value = MOCK_ENGINEERING_RESULT
 
     response = client.post(
         "/engineering-copilot/ask",
@@ -100,9 +111,12 @@ def test_engineering_copilot_response_contains_evidence(mock_generate_answer):
     assert data["reasoningContext"]["readyForLLM"] is True
 
 
-@patch("app.services.engineering_answer_service.generate_evidence_backed_answer")
-def test_engineering_copilot_respects_top_k(mock_generate_answer):
-    mock_generate_answer.return_value = MOCK_ANSWER
+@patch("app.api.engineering_copilot.engineering_answer_service.answer_question")
+def test_engineering_copilot_respects_top_k(mock_answer_question):
+    mock_answer_question.return_value = {
+        **MOCK_ENGINEERING_RESULT,
+        "semanticEvidence": MOCK_ENGINEERING_RESULT["semanticEvidence"][:1],
+    }
 
     response = client.post(
         "/engineering-copilot/ask",

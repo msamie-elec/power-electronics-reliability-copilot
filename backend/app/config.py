@@ -1,12 +1,40 @@
 """
+==============================================================================
 Power Electronics Reliability Copilot
 Application Configuration
 
-Centralised environment-aware configuration for local development and Azure
-cloud deployment.
+File
+----
+config.py
 
-v0.6.0 introduces cloud-ready configuration while preserving backward
-compatibility with the existing local development workflow.
+Purpose
+-------
+Provides centralised environment-aware configuration for local development and
+Azure cloud integration.
+
+Version 0.6.0 introduces provider-based configuration so infrastructure
+concerns can be changed through environment variables rather than application
+code.
+
+Responsibilities
+----------------
+- Load environment variables.
+- Define application configuration models.
+- Configure AI, storage, secrets, graph and Azure resources independently.
+- Preserve backward-compatible constants used by existing services.
+
+Security
+--------
+- Does not print secrets.
+- Does not log credentials.
+- Does not validate secrets by exposing their values.
+- Secret values are loaded from environment variables until Azure Key Vault
+  integration is activated through the Secret Provider architecture.
+
+Version
+-------
+v0.6.0
+==============================================================================
 """
 
 from dataclasses import dataclass
@@ -31,6 +59,14 @@ class AppConfig:
     @property
     def is_azure(self) -> bool:
         return self.environment.lower().strip() == "azure"
+
+
+@dataclass(frozen=True)
+class ProviderConfig:
+    ai_provider: str
+    storage_provider: str
+    secret_provider: str
+    graph_provider: str
 
 
 @dataclass(frozen=True)
@@ -84,10 +120,23 @@ class StorageConfig:
 
     @property
     def use_azure_blob_storage(self) -> bool:
-        return bool(
-            self.azure_storage_connection_string
-            and self.azure_blob_container_name
-        )
+        return self.storage_provider.lower().strip() == "azure_blob"
+
+
+@dataclass(frozen=True)
+class SecretConfig:
+    secret_provider: str
+    azure_key_vault_name: str
+    azure_key_vault_uri: str
+
+    @property
+    def use_azure_key_vault(self) -> bool:
+        return self.secret_provider.lower().strip() == "azure_key_vault"
+
+
+@dataclass(frozen=True)
+class GraphConfig:
+    graph_provider: str
 
 
 @dataclass(frozen=True)
@@ -98,6 +147,7 @@ class EmbeddingConfig:
 @dataclass(frozen=True)
 class AzureConfig:
     key_vault_name: str
+    key_vault_uri: str
     resource_group: str
     location: str
 
@@ -109,8 +159,15 @@ app_config = AppConfig(
     frontend_origin=os.getenv("FRONTEND_ORIGIN", "http://localhost:5173"),
 )
 
-openai_config = OpenAIConfig(
+provider_config = ProviderConfig(
     ai_provider=os.getenv("AI_PROVIDER", "openai"),
+    storage_provider=os.getenv("DOCUMENT_STORAGE_PROVIDER", "local"),
+    secret_provider=os.getenv("SECRET_PROVIDER", "local"),
+    graph_provider=os.getenv("GRAPH_PROVIDER", "neo4j"),
+)
+
+openai_config = OpenAIConfig(
+    ai_provider=provider_config.ai_provider,
     api_key=os.getenv("OPENAI_API_KEY", ""),
     model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
     extraction_model=os.getenv("OPENAI_EXTRACTION_MODEL", "gpt-4.1-mini"),
@@ -136,20 +193,30 @@ storage_config = StorageConfig(
     embeddings_dir=BASE_DIR / os.getenv("EMBEDDINGS_DIR", "embeddings"),
     azure_storage_connection_string=os.getenv("AZURE_STORAGE_CONNECTION_STRING", ""),
     azure_storage_account_name=os.getenv("AZURE_STORAGE_ACCOUNT_NAME", ""),
-    storage_provider=os.getenv("DOCUMENT_STORAGE_PROVIDER", "local"),
     azure_blob_container_name=os.getenv(
         "AZURE_BLOB_CONTAINER_NAME",
         "engineering-documents",
     ),
+    storage_provider=provider_config.storage_provider,
 )
-DOCUMENT_STORAGE_PROVIDER = storage_config.storage_provider
+
+secret_config = SecretConfig(
+    secret_provider=provider_config.secret_provider,
+    azure_key_vault_name=os.getenv("AZURE_KEY_VAULT_NAME", ""),
+    azure_key_vault_uri=os.getenv("AZURE_KEY_VAULT_URI", ""),
+)
+
+graph_config = GraphConfig(
+    graph_provider=provider_config.graph_provider,
+)
 
 embedding_config = EmbeddingConfig(
     model_name=os.getenv("EMBEDDING_MODEL_NAME", "BAAI/bge-small-en-v1.5"),
 )
 
 azure_config = AzureConfig(
-    key_vault_name=os.getenv("AZURE_KEY_VAULT_NAME", ""),
+    key_vault_name=secret_config.azure_key_vault_name,
+    key_vault_uri=secret_config.azure_key_vault_uri,
     resource_group=os.getenv("AZURE_RESOURCE_GROUP", "rg-powerelec-copilot-dev"),
     location=os.getenv("AZURE_LOCATION", "uksouth"),
 )
@@ -164,7 +231,10 @@ APP_VERSION = app_config.version
 APP_ENV = app_config.environment
 FRONTEND_ORIGIN = app_config.frontend_origin
 
-AI_PROVIDER = openai_config.ai_provider
+AI_PROVIDER = provider_config.ai_provider
+DOCUMENT_STORAGE_PROVIDER = provider_config.storage_provider
+SECRET_PROVIDER = provider_config.secret_provider
+GRAPH_PROVIDER = provider_config.graph_provider
 
 OPENAI_API_KEY = openai_config.api_key
 OPENAI_MODEL = openai_config.model
@@ -194,5 +264,6 @@ AZURE_BLOB_CONTAINER_NAME = storage_config.azure_blob_container_name
 EMBEDDING_MODEL_NAME = embedding_config.model_name
 
 AZURE_KEY_VAULT_NAME = azure_config.key_vault_name
+AZURE_KEY_VAULT_URI = azure_config.key_vault_uri
 AZURE_RESOURCE_GROUP = azure_config.resource_group
 AZURE_LOCATION = azure_config.location
