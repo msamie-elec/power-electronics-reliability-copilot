@@ -36,6 +36,8 @@ v0.6.0
 ==============================================================================
 """
 
+import os
+
 from app.config import AZURE_KEY_VAULT_NAME, SECRET_PROVIDER
 from app.services.secrets.azure_keyvault_secret_provider import (
     AzureKeyVaultSecretProvider,
@@ -52,11 +54,41 @@ class SecretService:
     def __init__(self) -> None:
         self._provider = self._create_provider()
 
-    def get_secret(self, name: str) -> str:
+    _LOCAL_ENV_ALIASES: dict[str, str] = {
+        "openai-api-key": "OPENAI_API_KEY",
+        "azure-openai-api-key": "AZURE_OPENAI_API_KEY",
+        "azure-storage-connection-string": "AZURE_STORAGE_CONNECTION_STRING",
+        "neo4j-password": "NEO4J_PASSWORD",
+    }
+
+    def get_secret(self, name: str, fallback_env: str | None = None) -> str:
         """
         Retrieve a secret from the active provider.
+
+        Args:
+            name: Provider-native secret name. For Azure Key Vault, use
+                Azure-safe names such as ``azure-openai-api-key``.
+            fallback_env: Optional local environment variable name used when
+                the active provider cannot return the secret.
+
+        Returns:
+            Secret value as a string.
+
+        Raises:
+            KeyError: If the secret cannot be resolved.
         """
-        return self._provider.get_secret(name)
+        try:
+            return self._provider.get_secret(name)
+        except (KeyError, RuntimeError):
+            env_name = fallback_env or self._LOCAL_ENV_ALIASES.get(name)
+
+            if env_name:
+                fallback_value = os.getenv(env_name, "")
+
+                if fallback_value:
+                    return fallback_value
+
+            raise
 
     @staticmethod
     def _create_provider() -> BaseSecretProvider:

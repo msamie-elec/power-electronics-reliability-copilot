@@ -2,18 +2,28 @@ from neo4j import GraphDatabase
 
 from app.config import (
     NEO4J_DATABASE,
-    NEO4J_PASSWORD,
     NEO4J_URI,
     NEO4J_USERNAME,
 )
+from app.services.secrets.secret_service import secret_service
 
 
 class Neo4jService:
     def __init__(self) -> None:
         self.driver = GraphDatabase.driver(
             NEO4J_URI,
-            auth=(NEO4J_USERNAME, NEO4J_PASSWORD),
+            auth=(NEO4J_USERNAME, self._get_password()),
         )
+
+    @staticmethod
+    def _get_password() -> str:
+        try:
+            return secret_service.get_secret(
+                "neo4j-password",
+                fallback_env="NEO4J_PASSWORD",
+            )
+        except KeyError as exc:
+            raise ValueError("NEO4J_PASSWORD must be configured.") from exc
 
     def close(self) -> None:
         self.driver.close()

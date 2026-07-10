@@ -41,6 +41,7 @@ from azure.storage.blob import BlobServiceClient, ContentSettings
 from fastapi import UploadFile
 
 from app.config import storage_config
+from app.services.secrets.secret_service import secret_service
 from app.services.storage.base_storage_provider import BaseStorageProvider
 
 
@@ -67,8 +68,10 @@ class AzureBlobStorageProvider(BaseStorageProvider):
 
         local_path.write_bytes(content)
 
+        connection_string = self._get_connection_string()
+
         blob_service_client = BlobServiceClient.from_connection_string(
-            storage_config.azure_storage_connection_string
+            connection_string
         )
 
         container_client = blob_service_client.get_container_client(
@@ -109,8 +112,10 @@ class AzureBlobStorageProvider(BaseStorageProvider):
         documents: list[dict[str, Any]] = []
 
         try:
+            connection_string = self._get_connection_string()
+
             blob_service_client = BlobServiceClient.from_connection_string(
-                storage_config.azure_storage_connection_string
+                connection_string
             )
 
             container_client = blob_service_client.get_container_client(
@@ -134,3 +139,18 @@ class AzureBlobStorageProvider(BaseStorageProvider):
             return []
 
         return documents
+    @staticmethod
+    def _get_connection_string() -> str:
+        """
+        Retrieve the Azure Storage connection string through the secret service.
+        """
+        try:
+            return secret_service.get_secret(
+                "azure-storage-connection-string",
+                fallback_env="AZURE_STORAGE_CONNECTION_STRING",
+            )
+        except KeyError as exc:
+            raise ValueError(
+                "AZURE_STORAGE_CONNECTION_STRING must be configured when "
+                "DOCUMENT_STORAGE_PROVIDER=azure_blob."
+            ) from exc

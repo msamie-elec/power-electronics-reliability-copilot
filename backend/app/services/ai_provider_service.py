@@ -38,6 +38,7 @@ from typing import Any
 from openai import AzureOpenAI, BadRequestError, OpenAI, OpenAIError
 
 from app.config import openai_config
+from app.services.secrets.secret_service import secret_service
 
 
 logger = logging.getLogger(__name__)
@@ -80,21 +81,31 @@ class AIProviderService:
         )
 
     def _get_openai_client(self) -> OpenAI:
-        if not openai_config.api_key:
+        try:
+            api_key = secret_service.get_secret(
+                "openai-api-key",
+                fallback_env="OPENAI_API_KEY",
+            )
+        except KeyError as exc:
             raise ValueError(
                 "OPENAI_API_KEY must be configured when AI_PROVIDER=openai."
-            )
+            ) from exc
 
         if self._openai_client is None:
-            self._openai_client = OpenAI(api_key=openai_config.api_key)
+            self._openai_client = OpenAI(api_key=api_key)
 
         return self._openai_client
 
     def _get_azure_client(self) -> AzureOpenAI:
-        if not openai_config.azure_api_key:
+        try:
+            azure_api_key = secret_service.get_secret(
+                "azure-openai-api-key",
+                fallback_env="AZURE_OPENAI_API_KEY",
+            )
+        except KeyError as exc:
             raise ValueError(
                 "AZURE_OPENAI_API_KEY must be configured when AI_PROVIDER=azure_openai."
-            )
+            ) from exc
 
         if not openai_config.azure_endpoint:
             raise ValueError(
@@ -103,7 +114,7 @@ class AIProviderService:
 
         if self._azure_client is None:
             self._azure_client = AzureOpenAI(
-                api_key=openai_config.azure_api_key,
+                api_key=azure_api_key,
                 api_version=openai_config.azure_api_version,
                 azure_endpoint=openai_config.azure_endpoint,
             )
