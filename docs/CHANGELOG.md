@@ -10,56 +10,46 @@ The project follows a release-based engineering methodology. Each release introd
 
 ## Current Focus
 
-The project is currently completing **v0.6.0 — Cloud-Native Azure Integration**.
+Development now transitions to **v0.7.0 — Production Engineering and DevOps**.
 
-Completed v0.6.0 work has established cloud-aware configuration, Azure Blob Storage, Azure OpenAI, Azure Key Vault, provider-based secret management, and automatic engineering knowledge indexing for uploaded documents.
+Version **v0.7.0** will focus on production hosting, containerisation, managed identity, Azure Container Apps backend deployment, Azure Static Web Apps frontend deployment, CI/CD, and production operational hardening.
 
-Remaining v0.6.0 work focuses on observability, diagnostics, validation, documentation, and release finalisation.
+## Planned v0.7.0 Priorities
 
-## v0.6.0 Remaining Roadmap
+- Docker containerisation.
+- Azure Container Apps backend deployment.
+- Azure Static Web Apps frontend deployment.
+- Managed Identity for Azure-hosted backend services.
+- Replace Azure Storage connection strings with Managed Identity and Azure RBAC for Blob Storage access.
+- Production environment configuration.
+- CI/CD deployment workflow.
+- Production observability and alerting.
+- End-to-end cloud deployment validation.
+
+---
+
+# [0.6.0] — Cloud-Native Azure Integration
+
+**Status:** ✅ Completed  
+**Release Theme:** Cloud-native Azure integration, secure secret management, automated ingestion, observability and release validation.
+
+## Overview
+
+Version **0.6.0** transitions the Power Electronics Reliability Copilot from a local engineering AI application into a cloud-integrated architecture built around Microsoft Azure services.
+
+This release introduces Azure Blob Storage, Azure OpenAI, Azure Key Vault, Azure Monitor, Application Insights, provider-based configuration management, automated engineering knowledge indexing for newly uploaded documents, and production-style health diagnostics.
+
+Frontend and backend cloud hosting are intentionally deferred to **v0.7.0**, where Docker, Azure Container Apps, Azure Static Web Apps, Managed Identity and CI/CD will become the main focus.
+
+## v0.6.0 Milestone Summary
 
 | Milestone | Status | Focus |
 |----------|--------|-------|
 | v0.6.0-01 | ✅ Completed | Secret Provider Architecture |
 | v0.6.0-02 | ✅ Completed | Secret Service Integration |
 | v0.6.0-03 | ✅ Completed | Azure Key Vault Integration |
-| v0.6.0-04 | ▶ In Progress | Azure Monitor, Application Insights and Health Diagnostics |
-| v0.6.0-05 | ⏳ Planned | Documentation, Release and GitHub Tag |
-
-## Remaining Work
-
-### v0.6.0-04 — Observability and Diagnostics
-
-- Azure Monitor integration.
-- Application Insights integration.
-- Request telemetry.
-- Dependency telemetry.
-- Exception telemetry.
-- Structured logging.
-- Production Health Diagnostics endpoint.
-
-### v0.6.0-05 — Release Finalisation
-
-- End-to-end cloud validation.
-- Azure infrastructure documentation update.
-- Cloud validation guide.
-- Release notes.
-- GitHub tag for v0.6.0.
-
----
-
-# [0.6.0] — Cloud-Native Azure Integration
-
-**Status:** 🚧 In Progress  
-**Release Theme:** Cloud-native Azure integration, secure secrets, automated ingestion and production-readiness preparation.
-
-## Overview
-
-Version **0.6.0** transitions the Power Electronics Reliability Copilot from a local engineering AI application into a cloud-integrated architecture built around Microsoft Azure services.
-
-The release introduces Azure Blob Storage, Azure OpenAI, Azure Key Vault, provider-based configuration management, and automatic engineering knowledge indexing for newly uploaded documents.
-
-Frontend and backend hosting are intentionally deferred to **v0.7.0**, where Docker, Azure Container Apps, Azure Static Web Apps, CI/CD and production deployment will become the main focus.
+| v0.6.0-04 | ✅ Completed | Azure Monitor, Application Insights and Health Diagnostics |
+| v0.6.0-05 | ✅ Completed | Documentation, Release Validation and GitHub Tag Preparation |
 
 ---
 
@@ -153,7 +143,7 @@ Optional secret:
 - Backend can run with `SECRET_PROVIDER=azure_key_vault`.
 - Azure OpenAI, Azure Blob Storage and Neo4j credentials can now be removed from local `.env` files.
 - Local development fallback remains supported through `SECRET_PROVIDER=local`.
-- Cloud secret management now follows provider-based architecture.
+- Cloud secret management now follows the provider-based architecture.
 
 ### Validation
 
@@ -168,6 +158,89 @@ Successfully validated:
 - Neo4j authentication through Key Vault.
 - Backend execution with Key Vault-based secrets.
 - Regression status: **25 / 25 backend tests passed**.
+
+---
+
+## v0.6.0-04 — Observability and Health Diagnostics
+
+**Status:** ✅ Completed
+
+### Added
+
+- Azure Monitor foundation.
+- Log Analytics Workspace automation:
+  - `infra/azure/powershell/06a-create-log-analytics.ps1`
+- Application Insights automation:
+  - `infra/azure/powershell/06b-create-application-insights.ps1`
+- Monitoring validation automation:
+  - `infra/azure/powershell/06c-validate-monitoring.ps1`
+- Application Insights connection string stored securely in Azure Key Vault:
+  - `applicationinsights-connection-string`
+- Backend telemetry configuration module.
+- Backend structured logging configuration module.
+- Production-style health diagnostics service.
+- Enhanced `/health` endpoint for lightweight status checks.
+- New `/health/details` endpoint for dependency diagnostics.
+
+### Health Diagnostics
+
+The detailed health endpoint validates:
+
+- Azure Key Vault reachability.
+- Azure Blob Storage account and container reachability.
+- Azure OpenAI configuration and credential resolution.
+- Neo4j database connectivity.
+- Active AI, storage, secret and graph providers.
+- Dependency latency in milliseconds.
+- Application uptime.
+- Application version and environment.
+
+### Validation
+
+Successfully validated:
+
+- Log Analytics Workspace creation.
+- Application Insights creation.
+- Application Insights connection string stored in Key Vault.
+- Monitoring validation script execution.
+- `/health` lightweight endpoint.
+- `/health/details` dependency diagnostics endpoint.
+- Azure Blob Storage health after connection string refresh.
+- Azure Key Vault health.
+- Azure OpenAI configuration health.
+- Neo4j connectivity health.
+- Swagger/OpenAPI version updated to `0.6.0-dev`.
+- Regression status: **25 / 25 backend tests passed**.
+- Frontend production build passed.
+
+---
+
+## v0.6.0-05 — Documentation and Release Validation
+
+**Status:** ✅ Completed
+
+### Added
+
+- v0.6.0 release notes:
+  - `docs/releases/v0.6.0_RELEASE_NOTES.md`
+- Observability validation documentation:
+  - `docs/cloud/OBSERVABILITY_VALIDATION.md`
+- v0.6.0-04 implementation notes:
+  - `docs/cloud/v0.6.0-04_IMPLEMENTATION_NOTES.md`
+- Updated Azure infrastructure documentation.
+- Updated root README for cloud-native v0.6.0 capabilities.
+- Updated release roadmap for v0.7.0 production deployment and Managed Identity.
+
+### Validation
+
+Final release validation completed:
+
+- Backend regression test suite: **25 / 25 tests passed**.
+- Frontend production build: **Passed**.
+- Key Vault validation: **Passed**.
+- Monitoring validation: **Passed**.
+- `/health`: **healthy**.
+- `/health/details`: **healthy**.
 
 ---
 
@@ -192,6 +265,7 @@ Successfully validated:
 - Azure Blob Container automation.
 - Azure OpenAI resource and deployment workflow.
 - Azure Key Vault automation.
+- Azure Monitor and Application Insights automation.
 - Azure infrastructure validation scripts.
 
 ### Validated Azure Services
@@ -201,12 +275,15 @@ Successfully validated:
 - Storage Account creation.
 - Blob Container creation.
 - Key Vault creation.
+- Log Analytics Workspace creation.
+- Application Insights creation.
 - Blob upload.
 - Blob listing.
 - Blob download.
 - Azure OpenAI chat deployment.
 - Azure OpenAI embedding deployment.
 - Key Vault secret retrieval.
+- Health diagnostics.
 
 ---
 
@@ -256,6 +333,10 @@ Successfully validated:
 - Frontend upload successfully stored documents in Azure Blob Storage.
 - Uploaded PDFs confirmed in Azure Blob Storage.
 - Azure Blob upload/list/download tests passed.
+
+### Future Improvement
+
+In **v0.7.0**, Azure Blob Storage authentication will be upgraded from connection-string based access to **Managed Identity + Azure RBAC**. This will remove the need to store or rotate Azure Storage connection strings and align Blob Storage access with production Azure identity practices.
 
 ---
 
@@ -316,11 +397,13 @@ Major architectural capabilities introduced include:
 - Azure OpenAI integration.
 - Enterprise Secret Provider architecture.
 - Azure Key Vault secret management.
+- Azure Monitor and Application Insights foundation.
+- Production-style health diagnostics.
 - Automated engineering knowledge ingestion.
 - Automatic vector indexing.
 - Evidence-backed Retrieval-Augmented Generation for newly uploaded documents.
 
-The project is now prepared for production-oriented observability, monitoring and deployment work in the remaining v0.6.0 milestones and full hosting in v0.7.0.
+The project is now prepared for production hosting, Managed Identity, CI/CD and full Azure deployment in v0.7.0.
 
 ---
 
@@ -475,7 +558,7 @@ Version **0.5.1** introduced the modern conversational Engineering Copilot works
 | 5.1.6 | Sticky Workspace Panels | ✅ Completed |
 | 5.1.7 | Evidence Synchronisation | ✅ Completed |
 | 5.1.8 | Improved Evidence Cards | ✅ Completed |
-| 5.1.9 | Question & Timestamp Metadata | ✅ Completed |
+| 5.1.9 | Question and Timestamp Metadata | ✅ Completed |
 | 5.1.10 | Workspace Refinement | ✅ Completed |
 
 ---
@@ -797,7 +880,7 @@ Version **0.2.0** established the FastAPI backend foundation and connected the R
 
 ## Technical Impact
 
-This release established a working enterprise-style backend communicating successfully with the frontend and prepared the project for document parsing and Retrieval-Augmented Generation in v0.3.0.
+This release established a working backend communicating successfully with the frontend and prepared the project for document parsing and Retrieval-Augmented Generation in v0.3.0.
 
 ---
 
@@ -815,7 +898,7 @@ Version **0.1.0** created the first interactive frontend prototype for the Power
 - React application.
 - TypeScript configuration.
 - Vite development environment.
-- Professional dashboard layout.
+- Dashboard layout.
 - Engineering dashboard UI.
 - Document upload interface.
 - Uploaded filename display using React state.
@@ -855,6 +938,9 @@ Planned capabilities:
 - Docker containerisation.
 - Azure Container Apps backend deployment.
 - Azure Static Web Apps frontend deployment.
+- Managed Identity for Azure-hosted backend services.
+- Azure RBAC-based Blob Storage access.
+- Removal of Azure Storage connection string dependency.
 - CI/CD pipelines.
 - Production deployment automation.
 - Production monitoring and diagnostics.

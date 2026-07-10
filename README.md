@@ -27,6 +27,9 @@ The platform combines:
 - Hybrid GraphRAG retrieval
 - Evidence-backed AI reasoning
 - Conversational engineering workflows
+- Azure cloud integration
+- Secure secret management
+- Observability and health diagnostics
 
 The architecture has been designed as a collection of independent services, allowing individual components to evolve while maintaining a consistent engineering workflow.
 
@@ -48,7 +51,14 @@ The current implementation provides:
 - ✅ Explainable engineering responses
 - ✅ Structured engineering reports
 - ✅ Evidence traceability
-- ✅ Automated backend regression testing
+- ✅ Automatic engineering document indexing after upload
+- ✅ Azure Blob Storage integration
+- ✅ Azure OpenAI integration
+- ✅ Azure Key Vault integration
+- ✅ Azure Monitor and Application Insights foundation
+- ✅ Production-style health diagnostics
+- ✅ Backend regression testing
+- ✅ Frontend production build validation
 
 ---
 
@@ -61,15 +71,16 @@ The current implementation provides:
 - Metadata registration
 - Intelligent document chunking
 - Structured engineering document management
+- Automatic post-upload indexing
 
 ---
 
 ## Semantic Knowledge Retrieval
 
-- OpenAI embedding generation
+- Embedding generation
 - FAISS vector indexing
 - Semantic similarity search
-- Retrieval-Augmented Generation (RAG)
+- Retrieval-Augmented Generation
 - Source-aware evidence retrieval
 
 ---
@@ -96,7 +107,7 @@ The current implementation provides:
 
 ---
 
-## Professional Engineering Workspace
+## Conversational Engineering Workspace
 
 - Multi-turn engineering conversations
 - Conversation-aware reasoning
@@ -107,7 +118,21 @@ The current implementation provides:
 - Interactive evidence panel
 - Citation tracking
 - Knowledge Graph summaries
-- Professional engineering investigation workflow
+- Engineering investigation workflow
+
+---
+
+## Cloud and Operations
+
+- Azure Blob Storage document persistence
+- Azure OpenAI provider support
+- Azure Key Vault secret management
+- Provider-based secret retrieval
+- Azure Monitor and Application Insights resources
+- `/health` lightweight health endpoint
+- `/health/details` dependency diagnostics endpoint
+- Azure infrastructure automation scripts
+- Key Vault and monitoring validation scripts
 
 ---
 
@@ -116,9 +141,11 @@ The current implementation provides:
 - Modular FastAPI backend
 - React + TypeScript frontend
 - REST APIs
-- Swagger documentation
+- Swagger/OpenAPI documentation
+- Provider-based architecture
 - Automated backend testing using Pytest
-- Enterprise-oriented project structure
+- Frontend production build validation
+- Cloud-ready configuration
 
 ---
 
@@ -151,10 +178,38 @@ FAISS         Neo4j Knowledge Graph
 Engineering Evidence
       │
       ▼
-OpenAI GPT-4.1
+Azure OpenAI / OpenAI
       │
       ▼
 Structured Engineering Response
+```
+
+---
+
+# Cloud Architecture
+
+```text
+FastAPI Backend
+      │
+      ├── SecretService
+      │       ├── LocalSecretProvider
+      │       └── AzureKeyVaultSecretProvider
+      │
+      ├── DocumentStorageService
+      │       ├── LocalStorageProvider
+      │       └── AzureBlobStorageProvider
+      │
+      ├── AIProviderService
+      │       ├── OpenAI
+      │       └── Azure OpenAI
+      │
+      ├── Neo4j Aura
+      │
+      └── Health Diagnostics
+              ├── Azure Key Vault
+              ├── Azure Blob Storage
+              ├── Azure OpenAI
+              └── Neo4j
 ```
 
 ---
@@ -165,24 +220,25 @@ Structured Engineering Response
 |--------|------------|
 | Frontend | React + TypeScript + Vite |
 | Backend | FastAPI |
-| AI Framework | LlamaIndex |
-| Workflow Orchestration | LangGraph |
-| Knowledge Graph | Neo4j |
+| Knowledge Graph | Neo4j Aura |
 | Graph Query Language | Cypher |
 | Vector Store | FAISS |
-| Embeddings | OpenAI Embeddings |
-| LLM | OpenAI GPT-4.1 |
+| Embeddings | OpenAI / Azure OpenAI embeddings |
+| LLM | OpenAI / Azure OpenAI GPT deployments |
+| Cloud Storage | Azure Blob Storage |
+| Secret Management | Azure Key Vault |
+| Observability | Azure Monitor + Application Insights |
 | Testing | Pytest |
-| Cloud (Planned) | Microsoft Azure |
-| Containerisation (Planned) | Docker |
-| Orchestration (Planned) | Kubernetes |
+| Cloud Platform | Microsoft Azure |
+| Containerisation | Planned for v0.7.0 |
+| Production Hosting | Planned for v0.7.0 |
 
 ---
 
 # Repository Structure
 
 ```text
-power-electronics-reliability-copilot/
+power-electronics-copilot/
 
 ├── backend/
 │   ├── app/
@@ -198,23 +254,26 @@ power-electronics-reliability-copilot/
 │
 ├── graph/
 │
+├── infra/
+│   └── azure/
+│       ├── env/
+│       ├── powershell/
+│       └── tests/
+│
 ├── docker/
 │
 ├── documents/
 │
 ├── docs/
 │   ├── architecture/
+│   ├── cloud/
 │   ├── Knowledge_Engineering/
 │   ├── releases/
 │   ├── development/
 │   ├── adr/
-│   ├── standards/
-│   ├── CHANGELOG.md
-│   ├── PROJECT_ROADMAP.md
-│   ├── PROJECT_METHODOLOGY.md
-│   ├── ENGINEERING_PLAYBOOK.md
-│   └── AI_ENGINEERING_DEVELOPMENT_GUIDE.md
+│   └── standards/
 │
+├── CHANGELOG.md
 ├── LICENSE
 └── README.md
 ```
@@ -232,21 +291,24 @@ power-electronics-reliability-copilot/
 | v0.5.0 | Evidence-backed Engineering Copilot | ✅ Complete |
 | v0.5.1 | Conversational Engineering Copilot | ✅ Complete |
 | v0.5.2 | Professional Engineering Workspace | ✅ Complete |
-| v0.6.0 | Azure Cloud Deployment | 🚧 Planned |
-| v0.7.0 | Production Deployment | Planned |
+| v0.6.0 | Cloud-Native Azure Integration | ✅ Complete |
+| v0.7.0 | Production Engineering and DevOps | Planned |
 | v1.0.0 | Enterprise Power Electronics Reliability Copilot | Planned |
 
 ---
 
 # Current Status
 
-The project has completed the core engineering intelligence platform together with a professional conversational engineering workspace.
+Version **v0.6.0** is complete.
+
+The project now provides the core engineering intelligence platform together with Azure cloud integration, secure secret management, observability foundations and health diagnostics.
 
 ## Completed
 
 The current implementation delivers:
 
 - Engineering document ingestion
+- Automatic document indexing
 - Semantic document retrieval
 - FAISS vector search
 - Neo4j Engineering Knowledge Graph
@@ -261,25 +323,107 @@ The current implementation delivers:
 - Structured engineering reports
 - Evidence synchronisation
 - Explainable engineering responses
-- 20 automated backend regression tests
+- Azure Blob Storage integration
+- Azure OpenAI integration
+- Azure Key Vault secret management
+- Azure Monitor and Application Insights resources
+- Health diagnostics for Azure services and Neo4j
+- 25 automated backend regression tests
+- Frontend production build validation
 
 ---
 
 ## Next Milestone
 
-Development now transitions to **Version 0.6.0 – Azure Cloud Deployment**.
+Development now transitions to **Version 0.7.0 — Production Engineering and DevOps**.
 
-The objective of Version 0.6.0 is not to introduce significant new AI functionality, but to deploy the existing engineering platform using Microsoft Azure while preserving the architecture established during Versions 0.5.0–0.5.2.
+The objective of Version 0.7.0 is to move from cloud-integrated local execution toward production deployment and operational hardening.
 
 Planned activities include:
 
-- Azure App Service / Container Apps
-- Azure OpenAI integration
-- Azure Blob Storage
-- Azure Key Vault
-- Secure cloud configuration
-- Monitoring and logging
-- Deployment automation
+- Docker containerisation
+- Azure Container Apps backend deployment
+- Azure Static Web Apps frontend deployment
+- Managed Identity for Azure-hosted backend services
+- Azure RBAC-based Blob Storage access
+- Removal of Azure Storage connection string dependency
+- Production environment configuration
+- CI/CD workflow
+- Production monitoring and diagnostics
+
+---
+
+# Validation
+
+## Backend
+
+From `backend`:
+
+```powershell
+pytest -v
+```
+
+Expected result:
+
+```text
+25 passed
+```
+
+## Frontend
+
+From `frontend`:
+
+```powershell
+npm run build
+```
+
+Expected result:
+
+```text
+built
+```
+
+## Azure Key Vault
+
+From repository root:
+
+```powershell
+.\infra\azure\powershell\05c-validate-keyvault.ps1
+```
+
+Expected result:
+
+```text
+Required secrets are present and accessible.
+```
+
+## Azure Monitoring
+
+From repository root:
+
+```powershell
+.\infra\azure\powershell\06c-validate-monitoring.ps1
+```
+
+Expected result:
+
+```text
+Azure monitoring validation completed.
+```
+
+## Health Endpoints
+
+Run the backend and check:
+
+```text
+http://localhost:8000/health
+http://localhost:8000/health/details
+```
+
+Expected result:
+
+- `/health` reports the service as healthy.
+- `/health/details` reports Azure Key Vault, Azure Blob Storage and Neo4j as healthy, with Azure OpenAI configuration resolved.
 
 ---
 
@@ -290,21 +434,21 @@ The repository documentation is organised into dedicated engineering documents.
 | Document | Purpose |
 |----------|---------|
 | README.md | Project overview |
-| PROJECT_ROADMAP.md | Product evolution |
 | CHANGELOG.md | Version history |
-| PROJECT_METHODOLOGY.md | Development methodology |
-| ENGINEERING_PLAYBOOK.md | Engineering standards |
-| architecture/ | System architecture |
-| releases/ | Release documentation |
-| development/ | Implementation history |
-| Knowledge_Engineering/ | Knowledge engineering design |
-| adr/ | Architectural Decision Records |
+| docs/releases/ | Release documentation |
+| docs/cloud/ | Cloud validation and observability documentation |
+| docs/architecture/ | System architecture |
+| docs/Knowledge_Engineering/ | Knowledge engineering design |
+| docs/development/ | Implementation history |
+| docs/adr/ | Architectural Decision Records |
+| docs/standards/ | Repository standards |
+| infra/azure/README.md | Azure infrastructure workflow |
 
 ---
 
 # Getting Started
 
-The project is fully functional for local development.
+The project is fully functional for local development with cloud-integrated services.
 
 The application currently provides:
 
@@ -315,8 +459,12 @@ The application currently provides:
 - Conversational engineering workspace
 - Backend document registry
 - Active engineering document selection
+- Azure Blob Storage support
+- Azure OpenAI support
+- Azure Key Vault secret retrieval
+- Health diagnostics
 
-The next development milestone focuses on deploying the existing application to Microsoft Azure without introducing significant functional changes.
+The next development milestone focuses on production deployment and operational hardening.
 
 ---
 
