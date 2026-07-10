@@ -2,19 +2,91 @@
 
 ## Current Focus
 
-Version **0.6.0 — Cloud-Native Azure Deployment** is currently in progress.
+## v0.6.0 Roadmap update:
+The roadmap becomes:
 
-The application has successfully transitioned to a cloud-aware architecture with Azure Blob Storage and Azure OpenAI integration. Current work focuses on completing Azure infrastructure deployment and production readiness while preserving the evidence-backed engineering workflow.
+✔ v0.6.0-01
+Secret Provider Architecture
 
----
+✔ v0.6.0-02
+Secret Service Integration
 
-# [0.6.0] – In Progress
+✔ v0.6.0-03
+Azure Key Vault Integration
 
-## Overview
+▶ v0.6.0-04
+Azure Monitor
+Application Insights
+Health Diagnostics
 
-Version **0.6.0** transitions the Power Electronics Reliability Copilot from a locally executed engineering application into a cloud-native AI engineering platform running on Microsoft Azure.
+▶ v0.6.0-05
+Documentation
+Release
+GitHub Tag
 
-In addition to Azure integration, this release introduces a fully automated engineering knowledge ingestion pipeline. Newly uploaded engineering documents are automatically processed into searchable semantic knowledge without requiring manual chunking, embedding generation or FAISS indexing.
+## v6.0.6 Progress:
+review what has actually been achieved.
+
+✅ Azure Key Vault Secret Integration (Completed)
+Infrastructure
+✅ Azure Key Vault created
+✅ RBAC authorization enabled
+✅ Key Vault Secrets Officer role assigned
+✅ Azure login automation (01-login.ps1)
+✅ Key Vault creation automation (05-create-keyvault.ps1)
+✅ Secret import automation (05b-import-keyvault-secrets.ps1)
+Application
+✅ BaseSecretProvider
+✅ LocalSecretProvider
+✅ AzureKeyVaultSecretProvider
+✅ SecretService
+✅ Provider-based architecture
+✅ Azure OpenAI uses SecretService
+✅ Azure Blob Storage uses SecretService
+✅ Neo4j uses SecretService
+✅ Local fallback still supported
+Validation
+✅ Secrets imported into Key Vault
+✅ Backend runs successfully
+
+## Added:
+
+Azure Key Vault
+Enterprise Secret Provider architecture.
+Secret Provider abstraction supporting local and Azure Key Vault implementations.
+Azure Key Vault Secret Provider integration using Azure SDK.
+Azure Key Vault deployment automation.
+Automated Key Vault secret import script.
+Local development fallback for secrets.
+Azure RBAC-based Key Vault authorization.
+Secure retrieval of Azure OpenAI, Azure Storage and Neo4j credentials from Azure Key Vault.
+### Changed
+Configuration Management
+Refactored application configuration to use the Secret Service abstraction.
+Azure OpenAI now retrieves API credentials through the Secret Service.
+Azure Blob Storage now retrieves connection credentials through the Secret Service.
+Neo4j now retrieves authentication credentials through the Secret Service.
+Removed direct dependency on environment variables within cloud service implementations.
+Improved separation between infrastructure configuration and application secrets.
+### Fixed
+Fixed Neo4j authentication after Secret Provider integration.
+Fixed cloud service credential resolution using provider-based secret retrieval.
+Fixed Azure Key Vault RBAC configuration for secret management.
+Improved secret retrieval reliability for local development and Azure environments.
+Validation
+
+### Added these to the existing validation checklist:
+
+Azure Key Vault deployment
+Azure RBAC role assignment
+Secure Key Vault secret import
+Azure Key Vault secret retrieval
+Secret Provider abstraction
+Local secret fallback
+Azure OpenAI authentication through Key Vault
+Azure Blob Storage authentication through Key Vault
+Neo4j authentication through Key Vault
+Full backend regression test suite (25/25 tests passed)
 
 ---
 
